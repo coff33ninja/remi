@@ -1,5 +1,6 @@
 from datetime import datetime
 import os  # Remove this if still unused after fixes  # noqa: F401
+import logging
 from dotenv import load_dotenv
 from apis import (
     get_weather,
@@ -57,6 +58,12 @@ from coding import generate_code, execute_code, explain_concept, save_command
 from calculations import calculate
 
 load_dotenv()
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[logging.FileHandler("assistant.log"), logging.StreamHandler()],
+)
 
 tools = {
     "get_weather": get_weather,
@@ -219,24 +226,24 @@ def process_command(command):
 
 
 def main():
-    print("Starting personal assistant...")
+    logging.info("Starting personal assistant...")
     use_voice = False  # Set to False for testing with input
     while True:
         if use_voice:
-            print("Listening...")
+            logging.info("Listening...")
             command = listen_for_command()
         else:
             command = input("Enter command: ")
 
         if command.lower() in ["exit", "quit"]:
-            print("Shutting down...")
+            logging.info("Shutting down...")
             for db in databases.values():
                 db["conn"].close()
             break
 
-        print(f"Command: {command}")
+        logging.info(f"Command: {command}")
         response = process_command(command)
-        print(f"Response: {response}")
+        logging.info(f"Response: {response}")
         if use_voice:
             speak_response(response)
 

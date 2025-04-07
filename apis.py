@@ -1,4 +1,4 @@
-import requests
+import httpx  # Replace requests with httpx for async support
 import os
 import pywhatkit
 from bs4 import BeautifulSoup
@@ -19,13 +19,23 @@ API_KEYS = {
 }
 
 
-def get_weather(city, api_key=API_KEYS["openweathermap"]):
+def validate_api_keys():
+    missing_keys = [key for key, value in API_KEYS.items() if not value]
+    if missing_keys:
+        raise EnvironmentError(f"Missing API keys: {', '.join(missing_keys)}")
+
+validate_api_keys()
+
+
+async def get_weather(city, api_key=API_KEYS["openweathermap"]):
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
     try:
-        response = requests.get(url).json()
-        if response.get("weather"):
-            temp = response["main"]["temp"]
-            desc = response["weather"][0]["description"]
+        async with httpx.AsyncClient() as client:
+            response = await client.get(url)
+            data = response.json()
+        if data.get("weather"):
+            temp = data["main"]["temp"]
+            desc = data["weather"][0]["description"]
             return f"The weather in {city} is {desc} with a temperature of {temp}°C."
         return "Could not retrieve weather data."
     except Exception as e:

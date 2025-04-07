@@ -15,6 +15,7 @@ if tokenizer.pad_token_id is None:
 def recognize_intent(command):
     doc = nlp(command.lower())
     entities = {ent.label_: ent.text for ent in doc.ents}
+    verbs = [token.lemma_ for token in doc if token.pos_ == "VERB"]
     command_lower = command.lower()
 
     if " and " in command_lower or " then " in command_lower or " if " in command_lower:
