@@ -2139,7 +2139,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\ntokenizer = AutoTokenizer.from_pretrained(\n    model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\")\n)\ntokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token\n# Optionally add special tokens if not present\nspecial_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\ntokenizer.add_special_tokens(special_tokens)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,",
+        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\ntokenizer = AutoTokenizer.from_pretrained(\n    model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\")\n)\ntokenizer.pad_token = tokenizer.eos_token  # Set padding token to EOS\n# Check if [INST] is already a token\nprint(\"Tokenizing [INST]:\", tokenizer.encode(\"[INST]\"))\nif len(tokenizer.encode(\"[INST]\", add_special_tokens=False)) > 1:\n    special_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\n    tokenizer.add_special_tokens(special_tokens)",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2148,7 +2148,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(\n    model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\")\n)\ntokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token\n# Optionally add special tokens if not present\nspecial_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\ntokenizer.add_special_tokens(special_tokens)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(\n    model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\")\n)\ntokenizer.pad_token = tokenizer.eos_token  # Set padding token to EOS\n# Check if [INST] is already a token\nprint(\"Tokenizing [INST]:\", tokenizer.encode(\"[INST]\"))\nif len(tokenizer.encode(\"[INST]\", add_special_tokens=False)) > 1:\n    special_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\n    tokenizer.add_special_tokens(special_tokens)\nmodel = AutoModelForCausalLM.from_pretrained(",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2157,16 +2157,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token\n# Optionally add special tokens if not present\nspecial_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\ntokenizer.add_special_tokens(special_tokens)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(\n        load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n    ),\n    device_map=\"auto\",",
-        "detail": "train_lora",
-        "documentation": {}
-    },
-    {
-        "label": "special_tokens",
-        "kind": 5,
-        "importPath": "train_lora",
-        "description": "train_lora",
-        "peekOfCode": "special_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\ntokenizer.add_special_tokens(special_tokens)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(\n        load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n    ),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),",
+        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token  # Set padding token to EOS\n# Check if [INST] is already a token\nprint(\"Tokenizing [INST]:\", tokenizer.encode(\"[INST]\"))\nif len(tokenizer.encode(\"[INST]\", add_special_tokens=False)) > 1:\n    special_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\n    tokenizer.add_special_tokens(special_tokens)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(\n        load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2175,7 +2166,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(\n        load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n    ),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)\nmodel.resize_token_embeddings(len(tokenizer))  # Adjust for added tokens",
+        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(\n        load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n    ),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)\nif tokenizer.get_added_vocab():",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2193,7 +2184,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "model = get_peft_model(model, lora_config)\n# Load dataset\nwith open(\"dataset.txt\", \"r\") as f:\n    data = f.read().split(\"###\")[1:]  # Skip empty first split\nexamples = [entry.strip().split(\"\\nOutput: \") for entry in data]\ninputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Print for debugging\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)",
+        "peekOfCode": "model = get_peft_model(model, lora_config)\n# Load dataset\nwith open(\"dataset.txt\", \"r\") as f:\n    data = f.read().split(\"###\")[1:]  # Skip empty first split\nexamples = [entry.strip().split(\"\\nOutput: \") for entry in data]\ninputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\nif len(inputs) != len(outputs):",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2202,7 +2193,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "examples = [entry.strip().split(\"\\nOutput: \") for entry in data]\ninputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Print for debugging\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\nif len(inputs) != len(outputs):\n    raise ValueError(\n        f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\"\n    )",
+        "peekOfCode": "examples = [entry.strip().split(\"\\nOutput: \") for entry in data]\ninputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\nif len(inputs) != len(outputs):\n    raise ValueError(\n        f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\"\n    )\n# Combine inputs and outputs",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2211,7 +2202,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "inputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Print for debugging\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\nif len(inputs) != len(outputs):\n    raise ValueError(\n        f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\"\n    )\n# Combine inputs and outputs",
+        "peekOfCode": "inputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\nif len(inputs) != len(outputs):\n    raise ValueError(\n        f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\"\n    )\n# Combine inputs and outputs\ncombined_texts = [",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2220,7 +2211,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "outputs = [e[1] for e in examples]\n# Print for debugging\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\nif len(inputs) != len(outputs):\n    raise ValueError(\n        f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\"\n    )\n# Combine inputs and outputs\ncombined_texts = [",
+        "peekOfCode": "outputs = [e[1] for e in examples]\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\nif len(inputs) != len(outputs):\n    raise ValueError(\n        f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\"\n    )\n# Combine inputs and outputs\ncombined_texts = [\n    f\"<s>[INST] {inp} [/INST] {out}</s>\" for inp, out in zip(inputs, outputs)",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2238,7 +2229,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "encodings = tokenizer(\n    combined_texts, truncation=True, padding=True, max_length=512, return_tensors=\"pt\"\n)\ninput_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()\n# Mask input tokens in labels\ninst_end_seq = tokenizer.encode(\"[/INST]\", add_special_tokens=False)\nfor i, ids in enumerate(input_ids):\n    tokens = ids.tolist()",
+        "peekOfCode": "encodings = tokenizer(\n    combined_texts, truncation=True, padding=True, max_length=512, return_tensors=\"pt\"\n)\ninput_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()\n# Trim leading </s> tokens and adjust masks\nfor i in range(len(input_ids)):\n    tokens = input_ids[i].tolist()\n    start_idx = 0",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2247,7 +2238,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "input_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()\n# Mask input tokens in labels\ninst_end_seq = tokenizer.encode(\"[/INST]\", add_special_tokens=False)\nfor i, ids in enumerate(input_ids):\n    tokens = ids.tolist()\n    for pos in range(len(tokens) - len(inst_end_seq) + 1):\n        if tokens[pos : pos + len(inst_end_seq)] == inst_end_seq:\n            labels[i, : pos + len(inst_end_seq)] = -100",
+        "peekOfCode": "input_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()\n# Trim leading </s> tokens and adjust masks\nfor i in range(len(input_ids)):\n    tokens = input_ids[i].tolist()\n    start_idx = 0\n    while start_idx < len(tokens) and tokens[start_idx] == tokenizer.eos_token_id:\n        start_idx += 1\n    input_ids[i, :start_idx] = tokenizer.pad_token_id",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2256,7 +2247,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "attention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()\n# Mask input tokens in labels\ninst_end_seq = tokenizer.encode(\"[/INST]\", add_special_tokens=False)\nfor i, ids in enumerate(input_ids):\n    tokens = ids.tolist()\n    for pos in range(len(tokens) - len(inst_end_seq) + 1):\n        if tokens[pos : pos + len(inst_end_seq)] == inst_end_seq:\n            labels[i, : pos + len(inst_end_seq)] = -100\n            break",
+        "peekOfCode": "attention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()\n# Trim leading </s> tokens and adjust masks\nfor i in range(len(input_ids)):\n    tokens = input_ids[i].tolist()\n    start_idx = 0\n    while start_idx < len(tokens) and tokens[start_idx] == tokenizer.eos_token_id:\n        start_idx += 1\n    input_ids[i, :start_idx] = tokenizer.pad_token_id\n    attention_mask[i, :start_idx] = 0",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2265,7 +2256,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "labels = input_ids.clone()\n# Mask input tokens in labels\ninst_end_seq = tokenizer.encode(\"[/INST]\", add_special_tokens=False)\nfor i, ids in enumerate(input_ids):\n    tokens = ids.tolist()\n    for pos in range(len(tokens) - len(inst_end_seq) + 1):\n        if tokens[pos : pos + len(inst_end_seq)] == inst_end_seq:\n            labels[i, : pos + len(inst_end_seq)] = -100\n            break\n    else:",
+        "peekOfCode": "labels = input_ids.clone()\n# Trim leading </s> tokens and adjust masks\nfor i in range(len(input_ids)):\n    tokens = input_ids[i].tolist()\n    start_idx = 0\n    while start_idx < len(tokens) and tokens[start_idx] == tokenizer.eos_token_id:\n        start_idx += 1\n    input_ids[i, :start_idx] = tokenizer.pad_token_id\n    attention_mask[i, :start_idx] = 0\n    labels[i, :start_idx] = -100",
         "detail": "train_lora",
         "documentation": {}
     },

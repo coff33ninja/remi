@@ -9,16 +9,18 @@ from peft import LoraConfig, get_peft_model
 import torch
 import os
 
-# Load model and tokenizer
+# Load tokenizer and model
 model_name = "mistralai/Mistral-7B-Instruct-v0.1"
 tokenizer = AutoTokenizer.from_pretrained(
     model_name, token=os.getenv("HUGGINGFACE_TOKEN")
 )
-tokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token
+tokenizer.pad_token = tokenizer.eos_token  # Set padding token to EOS
 
-# Optionally add special tokens if not present
-special_tokens = {"additional_special_tokens": ["[INST]", "[/INST]"]}
-tokenizer.add_special_tokens(special_tokens)
+# Check if [INST] is already a token
+print("Tokenizing [INST]:", tokenizer.encode("[INST]"))
+if len(tokenizer.encode("[INST]", add_special_tokens=False)) > 1:
+    special_tokens = {"additional_special_tokens": ["[INST]", "[/INST]"]}
+    tokenizer.add_special_tokens(special_tokens)
 
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
@@ -29,7 +31,8 @@ model = AutoModelForCausalLM.from_pretrained(
     torch_dtype=torch.float16,
     token=os.getenv("HUGGINGFACE_TOKEN"),
 )
-model.resize_token_embeddings(len(tokenizer))  # Adjust for added tokens
+if tokenizer.get_added_vocab():
+    model.resize_token_embeddings(len(tokenizer))
 
 # Configure LoRA
 lora_config = LoraConfig(
@@ -48,7 +51,6 @@ examples = [entry.strip().split("\nOutput: ") for entry in data]
 inputs = [e[0].replace("Input: ", "") for e in examples]
 outputs = [e[1] for e in examples]
 
-# Print for debugging
 print("Inputs:", inputs)
 print("Outputs:", outputs)
 
@@ -70,6 +72,16 @@ input_ids = encodings["input_ids"]
 attention_mask = encodings["attention_mask"]
 labels = input_ids.clone()
 
+# Trim leading </s> tokens and adjust masks
+for i in range(len(input_ids)):
+    tokens = input_ids[i].tolist()
+    start_idx = 0
+    while start_idx < len(tokens) and tokens[start_idx] == tokenizer.eos_token_id:
+        start_idx += 1
+    input_ids[i, :start_idx] = tokenizer.pad_token_id
+    attention_mask[i, :start_idx] = 0
+    labels[i, :start_idx] = -100
+
 # Mask input tokens in labels
 inst_end_seq = tokenizer.encode("[/INST]", add_special_tokens=False)
 for i, ids in enumerate(input_ids):
@@ -84,7 +96,6 @@ for i, ids in enumerate(input_ids):
         print(f"Example input: {tokenizer.decode(tokens)}")
         print(f"Labels (first 20 tokens): {labels[i, :20].tolist()}")
 
-# Debug shapes
 print(f"Input IDs shape: {input_ids.shape}")
 print(f"Labels shape: {labels.shape}")
 
