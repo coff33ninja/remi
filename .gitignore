@@ -1,3 +1,5 @@
 *.db
 *.log
 .env
+/fine_tuned_model
+/results
