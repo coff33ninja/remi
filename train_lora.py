@@ -57,10 +57,38 @@ def clean_text(text):
     for old, new in contractions.items():
         if old in data:
             print(f"Found {old} -> {new}")
+            data = data.replace(old, new)
+    text = data
+    # Remove extra spaces
+    text = " ".join(text.split())
+    # Remove leading/trailing spaces
+    text = text.strip()
+    # Remove newlines
+    text = text.replace("\n", " ")
+    # Remove multiple spaces
+    text = " ".join(text.split())
+    # Remove non-ASCII characters
+    text = "".join(c for c in text if ord(c) < 128)
+    # Remove URLs
+    text = text.replace("http://", "").replace("https://", "")
+    # Remove email addresses
+    text = text.replace("@", "")
+    # Remove special characters
+    text = "".join(c for c in text if c.isalnum() or c.isspace())
+    # Remove extra punctuation
+    text = " ".join(text.split())
+    # Remove leading/trailing spaces
+    text = text.strip()
+    # Remove extra spaces
+    text = " ".join(text.split())
+    # Remove multiple spaces
+    text = " ".join(text.split())
+    # Remove newlines
+    text = text.replace("\n", " ")
 
     # Optional: Convert "you're" to "your" before nouns (uncomment if needed)
-    # import re
-    # text = re.sub(r"you're\s+(\w+)", r"your \1", text)  # e.g., "you're day" -> "your day"
+    import re
+    text = re.sub(r"you're\s+(\w+)", r"your \1", text)  # e.g., "you're day" -> "your day"
 
     return text
 
