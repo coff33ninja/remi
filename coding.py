@@ -1,6 +1,8 @@
 import subprocess
 import os
 import logging
+
+import torch
 from conversation import tokenizer, model  # Use Mistral 7B from conversation.py
 from offline_tools import save_command as save_command_to_db
 

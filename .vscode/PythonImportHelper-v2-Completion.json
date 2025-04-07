@@ -1,0 +1,2254 @@
+[
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "glob",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "glob",
+        "description": "glob",
+        "detail": "glob",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "sysconfig",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sysconfig",
+        "description": "sysconfig",
+        "detail": "sysconfig",
+        "documentation": {}
+    },
+    {
+        "label": "tempfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tempfile",
+        "description": "tempfile",
+        "detail": "tempfile",
+        "documentation": {}
+    },
+    {
+        "label": "winreg",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "winreg",
+        "description": "winreg",
+        "detail": "winreg",
+        "documentation": {}
+    },
+    {
+        "label": "site",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "site",
+        "description": "site",
+        "detail": "site",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "get_weather",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_news",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "API_KEYS",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_weather",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_news",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "translate_text",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "search_images",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "add_task",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "create_trello_card",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "send_slack_message",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "send_discord_message",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "send_whatsapp_message",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "query_wolfram",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_directions",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_game_info",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_game_news",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_web_content",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "scrape_store_specials",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "httpx",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "httpx",
+        "description": "httpx",
+        "detail": "httpx",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "pywhatkit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pywhatkit",
+        "description": "pywhatkit",
+        "detail": "pywhatkit",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "torch",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch",
+        "description": "torch",
+        "detail": "torch",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer",
+        "importPath": "conversation",
+        "description": "conversation",
+        "isExtraImport": true,
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "importPath": "conversation",
+        "description": "conversation",
+        "isExtraImport": true,
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "generate_response",
+        "importPath": "conversation",
+        "description": "conversation",
+        "isExtraImport": true,
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "recognize_intent",
+        "importPath": "conversation",
+        "description": "conversation",
+        "isExtraImport": true,
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "generate_response",
+        "importPath": "conversation",
+        "description": "conversation",
+        "isExtraImport": true,
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "switch_to_better_model",
+        "importPath": "conversation",
+        "description": "conversation",
+        "isExtraImport": true,
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "switch_to_better_conversational_model",
+        "importPath": "conversation",
+        "description": "conversation",
+        "isExtraImport": true,
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "save_command",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "nlp",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "speak_response",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "listen_for_command",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "speak_response",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "listen_for_command",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "speak_response",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "cache_result",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_cached_result",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_command",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "add_contact",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_contact",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "create_database",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "add_to_database",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_from_database",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "set_volume",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "open_app",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "type_text",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "create_file",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "delete_file",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "move_file",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_cpu_usage",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_memory_usage",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_disk_space",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "click_at",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "find_and_click",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "log_query",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "save_research",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_research",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "analyze_personality",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "feed_data_from_file",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "feed_specials_from_file",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_specials",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "find_items_within_budget",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "find_nearest_special",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "databases",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "Trainer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "TrainingArguments",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "BitsAndBytesConfig",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "pygame",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pygame",
+        "description": "pygame",
+        "detail": "pygame",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "queue",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "queue",
+        "description": "queue",
+        "detail": "queue",
+        "documentation": {}
+    },
+    {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "gradio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "gradio",
+        "description": "gradio",
+        "detail": "gradio",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "config",
+        "description": "config",
+        "isExtraImport": true,
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "generate_code",
+        "importPath": "coding",
+        "description": "coding",
+        "isExtraImport": true,
+        "detail": "coding",
+        "documentation": {}
+    },
+    {
+        "label": "execute_code",
+        "importPath": "coding",
+        "description": "coding",
+        "isExtraImport": true,
+        "detail": "coding",
+        "documentation": {}
+    },
+    {
+        "label": "explain_concept",
+        "importPath": "coding",
+        "description": "coding",
+        "isExtraImport": true,
+        "detail": "coding",
+        "documentation": {}
+    },
+    {
+        "label": "save_command",
+        "importPath": "coding",
+        "description": "coding",
+        "isExtraImport": true,
+        "detail": "coding",
+        "documentation": {}
+    },
+    {
+        "label": "calculate",
+        "importPath": "calculations",
+        "description": "calculations",
+        "isExtraImport": true,
+        "detail": "calculations",
+        "documentation": {}
+    },
+    {
+        "label": "haversine_distance",
+        "importPath": "calculations",
+        "description": "calculations",
+        "isExtraImport": true,
+        "detail": "calculations",
+        "documentation": {}
+    },
+    {
+        "label": "spacy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "spacy",
+        "description": "spacy",
+        "detail": "spacy",
+        "documentation": {}
+    },
+    {
+        "label": "sqlite3",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sqlite3",
+        "description": "sqlite3",
+        "detail": "sqlite3",
+        "documentation": {}
+    },
+    {
+        "label": "LiveSpeech",
+        "importPath": "pocketsphinx",
+        "description": "pocketsphinx",
+        "isExtraImport": true,
+        "detail": "pocketsphinx",
+        "documentation": {}
+    },
+    {
+        "label": "pyttsx3",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pyttsx3",
+        "description": "pyttsx3",
+        "detail": "pyttsx3",
+        "documentation": {}
+    },
+    {
+        "label": "CLSCTX_ALL",
+        "importPath": "comtypes",
+        "description": "comtypes",
+        "isExtraImport": true,
+        "detail": "comtypes",
+        "documentation": {}
+    },
+    {
+        "label": "AudioUtilities",
+        "importPath": "pycaw.pycaw",
+        "description": "pycaw.pycaw",
+        "isExtraImport": true,
+        "detail": "pycaw.pycaw",
+        "documentation": {}
+    },
+    {
+        "label": "IAudioEndpointVolume",
+        "importPath": "pycaw.pycaw",
+        "description": "pycaw.pycaw",
+        "isExtraImport": true,
+        "detail": "pycaw.pycaw",
+        "documentation": {}
+    },
+    {
+        "label": "pyautogui",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pyautogui",
+        "description": "pyautogui",
+        "detail": "pyautogui",
+        "documentation": {}
+    },
+    {
+        "label": "psutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psutil",
+        "description": "psutil",
+        "detail": "psutil",
+        "documentation": {}
+    },
+    {
+        "label": "pytesseract",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytesseract",
+        "description": "pytesseract",
+        "detail": "pytesseract",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "PyPDF2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "PyPDF2",
+        "description": "PyPDF2",
+        "detail": "PyPDF2",
+        "documentation": {}
+    },
+    {
+        "label": "LoraConfig",
+        "importPath": "peft",
+        "description": "peft",
+        "isExtraImport": true,
+        "detail": "peft",
+        "documentation": {}
+    },
+    {
+        "label": "get_peft_model",
+        "importPath": "peft",
+        "description": "peft",
+        "isExtraImport": true,
+        "detail": "peft",
+        "documentation": {}
+    },
+    {
+        "label": "Tee",
+        "kind": 6,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "class Tee:\n    def __init__(self, file):\n        self.f = file\n    def write(self, what):\n        if self.f is not None:\n            try:\n                self.f.write(what.replace(\"\\n\", \"\\r\\n\"))\n            except OSError:\n                pass\n        tee_f.write(what)",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "get_root_hkey",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def get_root_hkey():\n    try:\n        winreg.OpenKey(\n            winreg.HKEY_LOCAL_MACHINE, root_key_name, 0, winreg.KEY_CREATE_SUB_KEY\n        )\n        return winreg.HKEY_LOCAL_MACHINE\n    except OSError:\n        # Either not exist, or no permissions to create subkey means\n        # must be HKCU\n        return winreg.HKEY_CURRENT_USER",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "create_shortcut",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def create_shortcut(\n    path, description, filename, arguments=\"\", workdir=\"\", iconpath=\"\", iconindex=0\n):\n    import pythoncom\n    from win32com.shell import shell\n    ilink = pythoncom.CoCreateInstance(\n        shell.CLSID_ShellLink,\n        None,\n        pythoncom.CLSCTX_INPROC_SERVER,\n        shell.IID_IShellLink,",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "get_special_folder_path",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def get_special_folder_path(path_name):\n    from win32com.shell import shell, shellcon\n    for maybe in \"\"\"\n        CSIDL_COMMON_STARTMENU CSIDL_STARTMENU CSIDL_COMMON_APPDATA\n        CSIDL_LOCAL_APPDATA CSIDL_APPDATA CSIDL_COMMON_DESKTOPDIRECTORY\n        CSIDL_DESKTOPDIRECTORY CSIDL_COMMON_STARTUP CSIDL_STARTUP\n        CSIDL_COMMON_PROGRAMS CSIDL_PROGRAMS CSIDL_PROGRAM_FILES_COMMON\n        CSIDL_PROGRAM_FILES CSIDL_FONTS\"\"\".split():\n        if maybe == path_name:\n            csidl = getattr(shellcon, maybe)",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "CopyTo",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def CopyTo(desc, src, dest):\n    import win32api\n    import win32con\n    while 1:\n        try:\n            win32api.CopyFile(src, dest, 0)\n            return\n        except win32api.error as details:\n            if details.winerror == 5:  # access denied - user not admin.\n                raise",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "LoadSystemModule",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def LoadSystemModule(lib_dir, modname):\n    # See if this is a debug build.\n    import importlib.machinery\n    import importlib.util\n    suffix = \"_d\" if \"_d.pyd\" in importlib.machinery.EXTENSION_SUFFIXES else \"\"\n    filename = \"%s%d%d%s.dll\" % (\n        modname,\n        sys.version_info.major,\n        sys.version_info.minor,\n        suffix,",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "SetPyKeyVal",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def SetPyKeyVal(key_name, value_name, value):\n    root_hkey = get_root_hkey()\n    root_key = winreg.OpenKey(root_hkey, root_key_name)\n    try:\n        my_key = winreg.CreateKey(root_key, key_name)\n        try:\n            winreg.SetValueEx(my_key, value_name, 0, winreg.REG_SZ, value)\n            if verbose:\n                print(f\"-> {root_key_name}\\\\{key_name}[{value_name}]={value!r}\")\n        finally:",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "UnsetPyKeyVal",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def UnsetPyKeyVal(key_name, value_name, delete_key=False):\n    root_hkey = get_root_hkey()\n    root_key = winreg.OpenKey(root_hkey, root_key_name)\n    try:\n        my_key = winreg.OpenKey(root_key, key_name, 0, winreg.KEY_SET_VALUE)\n        try:\n            winreg.DeleteValue(my_key, value_name)\n            if verbose:\n                print(f\"-> DELETE {root_key_name}\\\\{key_name}[{value_name}]\")\n        finally:",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "RegisterCOMObjects",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def RegisterCOMObjects(register=True):\n    import win32com.server.register\n    if register:\n        func = win32com.server.register.RegisterClasses\n    else:\n        func = win32com.server.register.UnregisterClasses\n    flags = {}\n    if not verbose:\n        flags[\"quiet\"] = 1\n    for module, klass_name in com_modules:",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "RegisterHelpFile",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def RegisterHelpFile(register=True, lib_dir=None):\n    if lib_dir is None:\n        lib_dir = sysconfig.get_paths()[\"platlib\"]\n    if register:\n        # Register the .chm help file.\n        chm_file = os.path.join(lib_dir, \"PyWin32.chm\")\n        if os.path.isfile(chm_file):\n            # This isn't recursive, so if 'Help' doesn't exist, we croak\n            SetPyKeyVal(\"Help\", None, None)\n            SetPyKeyVal(\"Help\\\\Pythonwin Reference\", None, chm_file)",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "RegisterPythonwin",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def RegisterPythonwin(register=True, lib_dir=None):\n    \"\"\"Add (or remove) Pythonwin to context menu for python scripts.\n    ??? Should probably also add Edit command for pys files also.\n    Also need to remove these keys on uninstall, but there's no function\n    to add registry entries to uninstall log ???\n    \"\"\"\n    import os\n    if lib_dir is None:\n        lib_dir = sysconfig.get_paths()[\"platlib\"]\n    classes_root = get_root_hkey()",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "get_shortcuts_folder",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def get_shortcuts_folder():\n    if get_root_hkey() == winreg.HKEY_LOCAL_MACHINE:\n        try:\n            fldr = get_special_folder_path(\"CSIDL_COMMON_PROGRAMS\")\n        except OSError:\n            # No CSIDL_COMMON_PROGRAMS on this platform\n            fldr = get_special_folder_path(\"CSIDL_PROGRAMS\")\n    else:\n        # non-admin install - always goes in this user's start menu.\n        fldr = get_special_folder_path(\"CSIDL_PROGRAMS\")",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "get_system_dir",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def get_system_dir():\n    import win32api  # we assume this exists.\n    try:\n        import pythoncom\n        import win32process\n        from win32com.shell import shell, shellcon\n        try:\n            if win32process.IsWow64Process():\n                return shell.SHGetSpecialFolderPath(0, shellcon.CSIDL_SYSTEMX86)\n            return shell.SHGetSpecialFolderPath(0, shellcon.CSIDL_SYSTEM)",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "fixup_dbi",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def fixup_dbi():\n    # We used to have a dbi.pyd with our .pyd files, but now have a .py file.\n    # If the user didn't uninstall, they will find the .pyd which will cause\n    # problems - so handle that.\n    import win32api\n    import win32con\n    pyd_name = os.path.join(os.path.dirname(win32api.__file__), \"dbi.pyd\")\n    pyd_d_name = os.path.join(os.path.dirname(win32api.__file__), \"dbi_d.pyd\")\n    py_name = os.path.join(os.path.dirname(win32con.__file__), \"dbi.py\")\n    for this_pyd in (pyd_name, pyd_d_name):",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "install",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def install(lib_dir):\n    import traceback\n    # The .pth file is now installed as a regular file.\n    # Create the .pth file in the site-packages dir, and use only relative paths\n    # We used to write a .pth directly to sys.prefix - clobber it.\n    if os.path.isfile(os.path.join(sys.prefix, \"pywin32.pth\")):\n        os.unlink(os.path.join(sys.prefix, \"pywin32.pth\"))\n    # The .pth may be new and therefore not loaded in this session.\n    # Setup the paths just in case.\n    for name in \"win32 win32\\\\lib Pythonwin\".split():",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "uninstall",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def uninstall(lib_dir):\n    # First ensure our system modules are loaded from pywin32_system, so\n    # we can remove the ones we copied...\n    LoadSystemModule(lib_dir, \"pywintypes\")\n    LoadSystemModule(lib_dir, \"pythoncom\")\n    try:\n        RegisterCOMObjects(False)\n    except Exception as why:\n        print(f\"Failed to unregister COM objects: {why}\")\n    try:",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "verify_destination",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def verify_destination(location: str) -> str:\n    location = os.path.abspath(location)\n    if not os.path.isdir(location):\n        raise argparse.ArgumentTypeError(\n            f'Path \"{location}\" is not an existing directory!'\n        )\n    return location\ndef main():\n    parser = argparse.ArgumentParser(\n        formatter_class=argparse.RawDescriptionHelpFormatter,",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def main():\n    parser = argparse.ArgumentParser(\n        formatter_class=argparse.RawDescriptionHelpFormatter,\n        description=\"\"\"A post-install script for the pywin32 extensions.\n    * Typical usage:\n    > python -m pywin32_postinstall -install\n    * or (shorter but you don't have control over which python environment is used)\n    > pywin32_postinstall -install\n    You need to execute this script, with a '-install' parameter,\n    to ensure the environment is setup correctly to install COM objects, services, etc.",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "tee_f",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "tee_f = open(\n    os.path.join(\n        tempfile.gettempdir(),  # Send output somewhere so it can be found if necessary...\n        \"pywin32_postinstall.log\",\n    ),\n    \"w\",\n)\nclass Tee:\n    def __init__(self, file):\n        self.f = file",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "sys.stderr",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "sys.stderr = Tee(sys.stderr)\nsys.stdout = Tee(sys.stdout)\ncom_modules = [\n    # module_name,                      class_names\n    (\"win32com.servers.interp\", \"Interpreter\"),\n    (\"win32com.servers.dictionary\", \"DictionaryPolicy\"),\n    (\"win32com.axscript.client.pyscript\", \"PyScript\"),\n]\n# Is this a 'silent' install - ie, avoid all dialogs.\n# Different than 'verbose'",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "sys.stdout",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "sys.stdout = Tee(sys.stdout)\ncom_modules = [\n    # module_name,                      class_names\n    (\"win32com.servers.interp\", \"Interpreter\"),\n    (\"win32com.servers.dictionary\", \"DictionaryPolicy\"),\n    (\"win32com.axscript.client.pyscript\", \"PyScript\"),\n]\n# Is this a 'silent' install - ie, avoid all dialogs.\n# Different than 'verbose'\nsilent = 0",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "com_modules",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "com_modules = [\n    # module_name,                      class_names\n    (\"win32com.servers.interp\", \"Interpreter\"),\n    (\"win32com.servers.dictionary\", \"DictionaryPolicy\"),\n    (\"win32com.axscript.client.pyscript\", \"PyScript\"),\n]\n# Is this a 'silent' install - ie, avoid all dialogs.\n# Different than 'verbose'\nsilent = 0\n# Verbosity of output messages.",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "silent",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "silent = 0\n# Verbosity of output messages.\nverbose = 1\nroot_key_name = \"Software\\\\Python\\\\PythonCore\\\\\" + sys.winver\ndef get_root_hkey():\n    try:\n        winreg.OpenKey(\n            winreg.HKEY_LOCAL_MACHINE, root_key_name, 0, winreg.KEY_CREATE_SUB_KEY\n        )\n        return winreg.HKEY_LOCAL_MACHINE",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "verbose",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "verbose = 1\nroot_key_name = \"Software\\\\Python\\\\PythonCore\\\\\" + sys.winver\ndef get_root_hkey():\n    try:\n        winreg.OpenKey(\n            winreg.HKEY_LOCAL_MACHINE, root_key_name, 0, winreg.KEY_CREATE_SUB_KEY\n        )\n        return winreg.HKEY_LOCAL_MACHINE\n    except OSError:\n        # Either not exist, or no permissions to create subkey means",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "root_key_name",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "root_key_name = \"Software\\\\Python\\\\PythonCore\\\\\" + sys.winver\ndef get_root_hkey():\n    try:\n        winreg.OpenKey(\n            winreg.HKEY_LOCAL_MACHINE, root_key_name, 0, winreg.KEY_CREATE_SUB_KEY\n        )\n        return winreg.HKEY_LOCAL_MACHINE\n    except OSError:\n        # Either not exist, or no permissions to create subkey means\n        # must be HKCU",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "run_test",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_testall",
+        "description": ".venv.Scripts.pywin32_testall",
+        "peekOfCode": "def run_test(script, cmdline_extras):\n    dirname, scriptname = os.path.split(script)\n    # some tests prefer to be run from their directory.\n    cmd = [sys.executable, \"-u\", scriptname] + cmdline_extras\n    print(\"--- Running '%s' ---\" % script)\n    sys.stdout.flush()\n    result = subprocess.run(cmd, check=False, cwd=dirname)\n    print(f\"*** Test script '{script}' exited with {result.returncode}\")\n    sys.stdout.flush()\n    if result.returncode:",
+        "detail": ".venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "find_and_run",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_testall",
+        "description": ".venv.Scripts.pywin32_testall",
+        "peekOfCode": "def find_and_run(possible_locations, extras):\n    for maybe in possible_locations:\n        if os.path.isfile(maybe):\n            run_test(maybe, extras)\n            break\n    else:\n        raise RuntimeError(\n            \"Failed to locate a test script in one of %s\" % possible_locations\n        )\ndef main():",
+        "detail": ".venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_testall",
+        "description": ".venv.Scripts.pywin32_testall",
+        "peekOfCode": "def main():\n    import argparse\n    code_directories = [project_root] + site_packages\n    parser = argparse.ArgumentParser(\n        description=\"A script to trigger tests in all subprojects of PyWin32.\"\n    )\n    parser.add_argument(\n        \"-no-user-interaction\",\n        default=False,\n        action=\"store_true\",",
+        "detail": ".venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "project_root",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_testall",
+        "description": ".venv.Scripts.pywin32_testall",
+        "peekOfCode": "project_root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))\nsite_packages = [site.getusersitepackages()] + site.getsitepackages()\nfailures = []\n# Run a test using subprocess and wait for the result.\n# If we get an returncode != 0, we know that there was an error, but we don't\n# abort immediately - we run as many tests as we can.\ndef run_test(script, cmdline_extras):\n    dirname, scriptname = os.path.split(script)\n    # some tests prefer to be run from their directory.\n    cmd = [sys.executable, \"-u\", scriptname] + cmdline_extras",
+        "detail": ".venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "site_packages",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_testall",
+        "description": ".venv.Scripts.pywin32_testall",
+        "peekOfCode": "site_packages = [site.getusersitepackages()] + site.getsitepackages()\nfailures = []\n# Run a test using subprocess and wait for the result.\n# If we get an returncode != 0, we know that there was an error, but we don't\n# abort immediately - we run as many tests as we can.\ndef run_test(script, cmdline_extras):\n    dirname, scriptname = os.path.split(script)\n    # some tests prefer to be run from their directory.\n    cmd = [sys.executable, \"-u\", scriptname] + cmdline_extras\n    print(\"--- Running '%s' ---\" % script)",
+        "detail": ".venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "failures",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_testall",
+        "description": ".venv.Scripts.pywin32_testall",
+        "peekOfCode": "failures = []\n# Run a test using subprocess and wait for the result.\n# If we get an returncode != 0, we know that there was an error, but we don't\n# abort immediately - we run as many tests as we can.\ndef run_test(script, cmdline_extras):\n    dirname, scriptname = os.path.split(script)\n    # some tests prefer to be run from their directory.\n    cmd = [sys.executable, \"-u\", scriptname] + cmdline_extras\n    print(\"--- Running '%s' ---\" % script)\n    sys.stdout.flush()",
+        "detail": ".venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_news",
+        "kind": 2,
+        "importPath": "tests.test_apis",
+        "description": "tests.test_apis",
+        "peekOfCode": "def test_get_news():\n    result = get_news(\"technology\")\n    assert \"No news found.\" in result or \"1.\" in result",
+        "detail": "tests.test_apis",
+        "documentation": {}
+    },
+    {
+        "label": "validate_api_keys",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def validate_api_keys():\n    missing_keys = [key for key, value in API_KEYS.items() if not value]\n    if missing_keys:\n        logging.warning(f\"Missing API keys: {', '.join(missing_keys)}\")\n        # Uncomment the next line to enforce validation\n        # raise EnvironmentError(f\"Missing API keys: {', '.join(missing_keys)}\")\nvalidate_api_keys()\nasync def get_weather(city, api_key=API_KEYS[\"openweathermap\"]):\n    url = f\"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric\"\n    try:",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_news",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def get_news(topic, api_key=API_KEYS[\"newsapi\"]):\n    url = f\"https://newsapi.org/v2/everything?q={topic}&apiKey={api_key}\"\n    try:\n        response = requests.get(url)\n        response.raise_for_status()  # Raise HTTPError for bad responses\n        articles = response.json().get(\"articles\", [])[:3]\n        if articles:\n            return \"\\n\".join(\n                [f\"{i+1}. {article['title']}\" for i, article in enumerate(articles)]\n            )",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "translate_text",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def translate_text(text, target_lang, api_key=API_KEYS[\"deepl\"]):\n    url = \"https://api-free.deepl.com/v2/translate\"\n    params = {\"auth_key\": api_key, \"text\": text, \"target_lang\": target_lang.upper()}\n    try:\n        response = requests.post(url, data=params).json()\n        return response[\"translations\"][0][\"text\"]\n    except Exception as e:\n        return f\"Translation error: {str(e)}\"\ndef search_images(query, api_key=API_KEYS[\"unsplash\"]):\n    url = f\"https://api.unsplash.com/search/photos?query={query}&client_id={api_key}\"",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "search_images",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def search_images(query, api_key=API_KEYS[\"unsplash\"]):\n    url = f\"https://api.unsplash.com/search/photos?query={query}&client_id={api_key}\"\n    try:\n        response = requests.get(url).json()\n        if response.get(\"results\"):\n            return response[\"results\"][0][\"urls\"][\"small\"]\n        return \"No images found.\"\n    except Exception as e:\n        return f\"Image search error: {str(e)}\"\ndef add_task(task, due=None, api_key=API_KEYS[\"todoist\"]):",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "add_task",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def add_task(task, due=None, api_key=API_KEYS[\"todoist\"]):\n    url = \"https://api.todoist.com/rest/v2/tasks\"\n    headers = {\"Authorization\": f\"Bearer {api_key}\"}\n    data = {\"content\": task}\n    if due:\n        data[\"due_string\"] = due\n    try:\n        response = requests.post(url, headers=headers, json=data).json()\n        return f\"Task '{task}' added with ID: {response['id']}\"\n    except Exception as e:",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "create_trello_card",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def create_trello_card(\n    title, desc, api_key=API_KEYS[\"trello_key\"], token=API_KEYS[\"trello_token\"]\n):\n    url = \"https://api.trello.com/1/cards\"\n    params = {\n        \"key\": api_key,\n        \"token\": token,\n        \"idList\": \"your_list_id_here\",\n        \"name\": title,\n        \"desc\": desc,",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "send_slack_message",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def send_slack_message(channel, text, api_key=API_KEYS[\"slack\"]):\n    url = \"https://slack.com/api/chat.postMessage\"\n    headers = {\"Authorization\": f\"Bearer {api_key}\"}\n    data = {\"channel\": channel, \"text\": text}\n    try:\n        response = requests.post(url, headers=headers, json=data).json()\n        return \"Message sent to Slack.\" if response[\"ok\"] else response[\"error\"]\n    except Exception as e:\n        return f\"Slack error: {str(e)}\"\ndef send_discord_message(channel_id, text, api_key=API_KEYS[\"discord\"]):",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "send_discord_message",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def send_discord_message(channel_id, text, api_key=API_KEYS[\"discord\"]):\n    url = f\"https://discord.com/api/v10/channels/{channel_id}/messages\"\n    headers = {\"Authorization\": f\"Bot {api_key}\"}\n    data = {\"content\": text}\n    try:\n        response = requests.post(url, headers=headers, json=data).json()\n        if response.get(\"id\"):\n            return \"Message sent to Discord.\"\n        return response.get(\"message\", \"Error\")\n    except Exception as e:",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "send_whatsapp_message",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def send_whatsapp_message(phone, message):\n    try:\n        pywhatkit.sendwhatmsg_instantly(phone, message, wait_time=10, tab_close=True)\n        return \"WhatsApp message sent!\"\n    except Exception as e:\n        return f\"WhatsApp error: {str(e)}\"\ndef query_wolfram(query, api_key=API_KEYS[\"wolframalpha\"]):\n    url = f\"http://api.wolframalpha.com/v2/query?input={query}&appid={api_key}&output=json\"\n    try:\n        response = requests.get(url).json()",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "query_wolfram",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def query_wolfram(query, api_key=API_KEYS[\"wolframalpha\"]):\n    url = f\"http://api.wolframalpha.com/v2/query?input={query}&appid={api_key}&output=json\"\n    try:\n        response = requests.get(url).json()\n        pods = response[\"queryresult\"][\"pods\"]\n        if pods:\n            return pods[0][\"subpods\"][0][\"plaintext\"]\n        return \"No answer from Wolfram Alpha.\"\n    except Exception as e:\n        return f\"Wolfram Alpha error: {str(e)}\"",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_directions",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def get_directions(origin, destination, api_key=API_KEYS[\"googlemaps\"]):\n    url = f\"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&key={api_key}\"\n    try:\n        response = requests.get(url).json()\n        if response[\"routes\"]:\n            distance = response[\"routes\"][0][\"legs\"][0][\"distance\"][\"text\"]\n            return f\"Distance from {origin} to {destination}: {distance}\"\n        return \"Could not find directions.\"\n    except Exception as e:\n        return f\"Google Maps error: {str(e)}\"",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_game_info",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def get_game_info(game):\n    url = f\"https://en.wikipedia.org/wiki/{game.replace(' ', '_')}\"\n    try:\n        response = requests.get(url)\n        soup = BeautifulSoup(response.text, \"html.parser\")\n        intro = soup.find(\"p\", class_=None).text.strip()\n        return intro[:200] + \"...\" if len(intro) > 200 else intro\n    except Exception as e:\n        return f\"Game info error: {str(e)}\"\ndef get_game_news(game, api_key=API_KEYS[\"newsapi\"]):",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_game_news",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def get_game_news(game, api_key=API_KEYS[\"newsapi\"]):\n    return get_news(f\"{game} gaming\", api_key)\ndef fetch_web_content(url):\n    try:\n        response = requests.get(url)\n        soup = BeautifulSoup(response.text, \"html.parser\")\n        text = \" \".join(p.text for p in soup.find_all(\"p\"))\n        return text[:500] + \"...\" if len(text) > 500 else text\n    except Exception as e:\n        return f\"Web fetch error: {str(e)}\"",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_web_content",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def fetch_web_content(url):\n    try:\n        response = requests.get(url)\n        soup = BeautifulSoup(response.text, \"html.parser\")\n        text = \" \".join(p.text for p in soup.find_all(\"p\"))\n        return text[:500] + \"...\" if len(text) > 500 else text\n    except Exception as e:\n        return f\"Web fetch error: {str(e)}\"\ndef scrape_store_specials(store):\n    store_urls = {",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "scrape_store_specials",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def scrape_store_specials(store):\n    store_urls = {\n        \"shoprite\": \"https://example.com/shoprite-specials\",\n        \"picknpay\": \"https://example.com/picknpay-specials\",\n        \"checkers\": \"https://example.com/checkers-specials\",\n    }\n    store_locations = {\n        \"shoprite\": {\"lat\": -33.9249, \"lon\": 18.4241},  # Cape Town example\n        \"picknpay\": {\"lat\": -33.9321, \"lon\": 18.4523},\n        \"checkers\": {\"lat\": -33.9180, \"lon\": 18.4380},",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "API_KEYS",
+        "kind": 5,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "API_KEYS = {\n    \"openweathermap\": os.getenv(\"OPENWEATHERMAP_API_KEY\"),\n    \"newsapi\": os.getenv(\"NEWSAPI_API_KEY\"),\n    \"deepl\": os.getenv(\"DEEPL_API_KEY\"),\n    \"unsplash\": os.getenv(\"UNSPLASH_API_KEY\"),\n    \"todoist\": os.getenv(\"TODOIST_API_KEY\"),\n    \"trello\": os.getenv(\"TRELLO_API_KEY\"),\n    \"trello_key\": os.getenv(\"TRELLO_API_KEY\"),\n    \"trello_token\": os.getenv(\"TRELLO_TOKEN\"),\n    \"slack\": os.getenv(\"SLACK_API_TOKEN\"),",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "calculate",
+        "kind": 2,
+        "importPath": "calculations",
+        "description": "calculations",
+        "peekOfCode": "def calculate(operation, num1, num2):\n    try:\n        num1, num2 = float(num1), float(num2)\n        if operation == \"add\" or operation == \"+\":\n            return f\"{num1} + {num2} = {num1 + num2}\"\n        elif operation == \"subtract\" or operation == \"-\":\n            return f\"{num1} - {num2} = {num1 - num2}\"\n        elif operation == \"multiply\" or operation == \"*\" or operation == \"times\":\n            return f\"{num1} * {num2} = {num1 * num2}\"\n        elif operation == \"divide\" or operation == \"/\":",
+        "detail": "calculations",
+        "documentation": {}
+    },
+    {
+        "label": "advanced_calculate",
+        "kind": 2,
+        "importPath": "calculations",
+        "description": "calculations",
+        "peekOfCode": "def advanced_calculate(equation):\n    return \"Advanced calculations not implemented yet.\"\ndef haversine_distance(lat1, lon1, lat2, lon2):\n    \"\"\"Calculate distance between two points in kilometers using Haversine formula.\"\"\"\n    try:\n        lat1, lon1, lat2, lon2 = map(float, [lat1, lon1, lat2, lon2])\n        R = 6371  # Earth's radius in km\n        dlat = math.radians(lat2 - lat1)\n        dlon = math.radians(lon2 - lon1)\n        a = (",
+        "detail": "calculations",
+        "documentation": {}
+    },
+    {
+        "label": "haversine_distance",
+        "kind": 2,
+        "importPath": "calculations",
+        "description": "calculations",
+        "peekOfCode": "def haversine_distance(lat1, lon1, lat2, lon2):\n    \"\"\"Calculate distance between two points in kilometers using Haversine formula.\"\"\"\n    try:\n        lat1, lon1, lat2, lon2 = map(float, [lat1, lon1, lat2, lon2])\n        R = 6371  # Earth's radius in km\n        dlat = math.radians(lat2 - lat1)\n        dlon = math.radians(lon2 - lon1)\n        a = (\n            math.sin(dlat / 2) ** 2\n            + math.cos(math.radians(lat1))",
+        "detail": "calculations",
+        "documentation": {}
+    },
+    {
+        "label": "generate_code",
+        "kind": 2,
+        "importPath": "coding",
+        "description": "coding",
+        "peekOfCode": "def generate_code(language, task):\n    if language not in ALLOWED_LANGUAGES:\n        return f\"Sorry, I only support {', '.join(ALLOWED_LANGUAGES)}.\"\n    prompt = f\"A helpful assistant writes a {language} script to {task} with detailed comments and error handling:\\n```python\\n\"\n    try:\n        inputs = tokenizer(prompt, return_tensors=\"pt\").to(\n            \"cuda\" if torch.cuda.is_available() else \"cpu\"\n        )\n        outputs = model.generate(\n            **inputs,",
+        "detail": "coding",
+        "documentation": {}
+    },
+    {
+        "label": "execute_code",
+        "kind": 2,
+        "importPath": "coding",
+        "description": "coding",
+        "peekOfCode": "def execute_code(language, code):\n    if language not in ALLOWED_LANGUAGES:\n        return f\"Unsupported language: {language}\"\n    extension = {\"cmd\": \".bat\", \"ps1\": \".ps1\", \"python\": \".py\"}[language]\n    filename = f\"temp_script{extension}\"\n    try:\n        with open(filename, \"w\") as f:\n            f.write(code)\n        if language == \"cmd\":\n            result = subprocess.run(",
+        "detail": "coding",
+        "documentation": {}
+    },
+    {
+        "label": "explain_concept",
+        "kind": 2,
+        "importPath": "coding",
+        "description": "coding",
+        "peekOfCode": "def explain_concept(language, concept):\n    if language not in ALLOWED_LANGUAGES:\n        return f\"Sorry, I only explain {', '.join(ALLOWED_LANGUAGES)}.\"\n    prompt = f\"A flirty assistant explains {concept} in {language} with a simple example:\\n```python\\n\"\n    try:\n        inputs = tokenizer(prompt, return_tensors=\"pt\").to(\n            \"cuda\" if torch.cuda.is_available() else \"cpu\"\n        )\n        outputs = model.generate(\n            **inputs,",
+        "detail": "coding",
+        "documentation": {}
+    },
+    {
+        "label": "save_command",
+        "kind": 2,
+        "importPath": "coding",
+        "description": "coding",
+        "peekOfCode": "def save_command(name, language=None, code=None):\n    if language and code:\n        save_command_to_db(name, language, code)\n        return f\"Command '{name}' saved!\"\n    return \"No code to save yet.\"",
+        "detail": "coding",
+        "documentation": {}
+    },
+    {
+        "label": "ALLOWED_LANGUAGES",
+        "kind": 5,
+        "importPath": "coding",
+        "description": "coding",
+        "peekOfCode": "ALLOWED_LANGUAGES = [\"cmd\", \"ps1\", \"python\"]\ndef generate_code(language, task):\n    if language not in ALLOWED_LANGUAGES:\n        return f\"Sorry, I only support {', '.join(ALLOWED_LANGUAGES)}.\"\n    prompt = f\"A helpful assistant writes a {language} script to {task} with detailed comments and error handling:\\n```python\\n\"\n    try:\n        inputs = tokenizer(prompt, return_tensors=\"pt\").to(\n            \"cuda\" if torch.cuda.is_available() else \"cpu\"\n        )\n        outputs = model.generate(",
+        "detail": "coding",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "kind": 6,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "class Config:\n    DEBUG = os.getenv(\"DEBUG\", \"false\").lower() == \"true\"\n    API_TIMEOUT = int(os.getenv(\"API_TIMEOUT\", 10))\n    LOG_FILE = os.getenv(\"LOG_FILE\", \"assistant.log\")",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "recognize_intent",
+        "kind": 2,
+        "importPath": "conversation",
+        "description": "conversation",
+        "peekOfCode": "def recognize_intent(command):\n    doc = nlp(command.lower())\n    entities = {ent.label_: ent.text for ent in doc.ents}\n    command_lower = command.lower()\n    if \"switch to better model\" in command_lower:\n        return \"switch_to_better_model\", {}\n    if \" and \" in command_lower or \" then \" in command_lower or \" if \" in command_lower:\n        return parse_complex_command(command_lower, entities)\n    # Code generation intent\n    if \"code\" in command_lower and (",
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "parse_complex_command",
+        "kind": 2,
+        "importPath": "conversation",
+        "description": "conversation",
+        "peekOfCode": "def parse_complex_command(command, entities):\n    if \" if \" in command:\n        condition, action = command.split(\" if \", 1)\n        return \"complex_if\", {\"condition\": condition.strip(), \"action\": action.strip()}\n    parts = re.split(r\" and | then \", command)\n    return \"complex_chain\", {\"commands\": [part.strip() for part in parts]}\ndef generate_response(prompt):\n    \"\"\"Generate a flirty and helpful response using Mistral 7B.\"\"\"\n    try:\n        full_prompt = f\"A flirty and helpful assistant says: {prompt}\"",
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "generate_response",
+        "kind": 2,
+        "importPath": "conversation",
+        "description": "conversation",
+        "peekOfCode": "def generate_response(prompt):\n    \"\"\"Generate a flirty and helpful response using Mistral 7B.\"\"\"\n    try:\n        full_prompt = f\"A flirty and helpful assistant says: {prompt}\"\n        inputs = tokenizer(full_prompt, return_tensors=\"pt\").to(\n            \"cuda\" if torch.cuda.is_available() else \"cpu\"\n        )\n        outputs = model.generate(\n            **inputs,\n            max_length=200,",
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "switch_to_better_model",
+        "kind": 2,
+        "importPath": "conversation",
+        "description": "conversation",
+        "peekOfCode": "def switch_to_better_model():\n    \"\"\"Placeholder for future upgrades.\"\"\"\n    speak_response(\n        \"You're already on Mistral 7B—pretty spicy already! Need a bigger flirt?\"\n    )\n    return \"Currently on Mistral 7B—no better model available yet for your hardware.\"",
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "model_name",
+        "kind": 5,
+        "importPath": "conversation",
+        "description": "conversation",
+        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"  # Corrected model name\nhf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\"Hugging Face token is missing. Please set it in the .env file.\")\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    load_in_4bit=True,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,",
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "hf_token",
+        "kind": 5,
+        "importPath": "conversation",
+        "description": "conversation",
+        "peekOfCode": "hf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\"Hugging Face token is missing. Please set it in the .env file.\")\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    load_in_4bit=True,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)",
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer",
+        "kind": 5,
+        "importPath": "conversation",
+        "description": "conversation",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    load_in_4bit=True,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\ndef recognize_intent(command):",
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "conversation",
+        "description": "conversation",
+        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    load_in_4bit=True,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\ndef recognize_intent(command):\n    doc = nlp(command.lower())",
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "handle_ai_response",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def handle_ai_response():\n    while True:\n        try:\n            user_input = input_queue.get()\n            if user_input == \"voice_command\":\n                response = listen_for_command()\n            else:\n                response = generate_response(user_input)\n            output_queue.put(response)\n        except Exception as e:",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "FONT_SIZE",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "FONT_SIZE = 24\n# Colors\nWHITE = (255, 255, 255)\nBLACK = (0, 0, 0)\nGRAY = (200, 200, 200)\nBLUE = (0, 120, 215)\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant GUI\")\n# Fonts",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "WHITE",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "WHITE = (255, 255, 255)\nBLACK = (0, 0, 0)\nGRAY = (200, 200, 200)\nBLUE = (0, 120, 215)\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant GUI\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\n# Input and output queues",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "BLACK",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "BLACK = (0, 0, 0)\nGRAY = (200, 200, 200)\nBLUE = (0, 120, 215)\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant GUI\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\n# Input and output queues\ninput_queue = queue.Queue()",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "GRAY",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "GRAY = (200, 200, 200)\nBLUE = (0, 120, 215)\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant GUI\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "BLUE",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "BLUE = (0, 120, 215)\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant GUI\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "screen",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant GUI\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 100, 700, 40)\ninput_text = \"\"",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "font",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "font = pygame.font.Font(None, FONT_SIZE)\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 100, 700, 40)\ninput_text = \"\"\ninput_active = False\n# Chat history\nchat_history = []",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "input_queue",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "input_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 100, 700, 40)\ninput_text = \"\"\ninput_active = False\n# Chat history\nchat_history = []\n# Function to handle AI responses\ndef handle_ai_response():",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "output_queue",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "output_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 100, 700, 40)\ninput_text = \"\"\ninput_active = False\n# Chat history\nchat_history = []\n# Function to handle AI responses\ndef handle_ai_response():\n    while True:",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "input_box",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "input_box = pygame.Rect(50, SCREEN_HEIGHT - 100, 700, 40)\ninput_text = \"\"\ninput_active = False\n# Chat history\nchat_history = []\n# Function to handle AI responses\ndef handle_ai_response():\n    while True:\n        try:\n            user_input = input_queue.get()",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "input_text",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "input_text = \"\"\ninput_active = False\n# Chat history\nchat_history = []\n# Function to handle AI responses\ndef handle_ai_response():\n    while True:\n        try:\n            user_input = input_queue.get()\n            if user_input == \"voice_command\":",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "input_active",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "input_active = False\n# Chat history\nchat_history = []\n# Function to handle AI responses\ndef handle_ai_response():\n    while True:\n        try:\n            user_input = input_queue.get()\n            if user_input == \"voice_command\":\n                response = listen_for_command()",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "chat_history",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "chat_history = []\n# Function to handle AI responses\ndef handle_ai_response():\n    while True:\n        try:\n            user_input = input_queue.get()\n            if user_input == \"voice_command\":\n                response = listen_for_command()\n            else:\n                response = generate_response(user_input)",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "running",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "running = True\nwhile running:\n    screen.fill(WHITE)\n    # Draw chat history\n    y_offset = 20\n    for message in chat_history[-20:]:  # Show the last 20 messages\n        text_surface = font.render(message, True, BLACK)\n        screen.blit(text_surface, (50, y_offset))\n        y_offset += FONT_SIZE + 10\n    # Draw input box",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "research_and_save",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def research_and_save(topic):\n    result = query_wolfram(topic)\n    if \"No answer\" not in result:\n        return save_research(topic, result, \"Wolfram Alpha\")\n    url = f\"https://en.wikipedia.org/wiki/{topic.replace(' ', '_')}\"\n    result = fetch_web_content(url)\n    return save_research(topic, result, url)\ndef scrape_and_save_specials(store):\n    specials = scrape_store_specials(store)\n    if isinstance(specials, str):  # Error message",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "scrape_and_save_specials",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def scrape_and_save_specials(store):\n    specials = scrape_store_specials(store)\n    if isinstance(specials, str):  # Error message\n        return specials\n    db = get_db(\"specials\")\n    timestamp = datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")\n    for special in specials:\n        db[\"cursor\"].execute(\n            \"INSERT INTO specials (item, price, store, latitude, longitude, timestamp) VALUES (?, ?, ?, ?, ?, ?)\",\n            (",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "handle_complex_if",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def handle_complex_if(condition, action):\n    if \"raining in\" in condition:\n        city = condition.split(\"raining in\")[-1].strip()\n        weather = tools[\"get_weather\"](city=city)\n        if \"rain\" in weather.lower():\n            intent, params = recognize_intent(action)\n            return tools[intent](**params)\n        return \"Condition not met, no action taken.\"\n    return \"Complex condition not supported yet.\"\ndef handle_complex_chain(commands):",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "handle_complex_chain",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def handle_complex_chain(commands):\n    responses = []\n    for cmd in commands:\n        intent, params = recognize_intent(cmd)\n        response = process_single_command(intent, params)\n        responses.append(response)\n    return \"\\n\".join(responses)\ndef process_single_command(intent, params):\n    if intent in tools:\n        try:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "process_single_command",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def process_single_command(intent, params):\n    if intent in tools:\n        try:\n            response = tools[intent](**params)\n            if intent == \"generate_code\":\n                language = params[\"language\"]\n                last_generated_code[language] = response\n                response += \"\\nWould you like me to execute it or save it?\"\n            elif intent == \"execute_code\" and not params.get(\"code\"):\n                language = params[\"language\"]",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "process_command",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def process_command(command):\n    cached = get_cached_result(command)\n    if cached:\n        return f\"(Cached) {cached}\"\n    custom_cmd = get_command(command)\n    if custom_cmd:\n        language, code = custom_cmd\n        return tools[\"execute_code\"](language=language, code=code)\n    intent, params = recognize_intent(command)\n    topic = (",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "chat",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def chat(input_text):\n    intent, params = recognize_intent(input_text)\n    return process_single_command(intent, params)\nif __name__ == \"__main__\":\n    gr.Interface(fn=chat, inputs=\"text\", outputs=\"text\").launch()\n    asyncio.run(main())",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "tools",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "tools = {\n    \"get_weather\": lambda **kwargs: asyncio.run(get_weather(**kwargs)),\n    \"get_news\": get_news,\n    \"translate_text\": translate_text,\n    \"search_images\": search_images,\n    \"add_task\": add_task,\n    \"create_trello_card\": create_trello_card,\n    \"send_slack_message\": send_slack_message,\n    \"send_discord_message\": send_discord_message,\n    \"send_whatsapp_message\": send_whatsapp_message,",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "last_generated_code",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "last_generated_code = {}\ndef research_and_save(topic):\n    result = query_wolfram(topic)\n    if \"No answer\" not in result:\n        return save_research(topic, result, \"Wolfram Alpha\")\n    url = f\"https://en.wikipedia.org/wiki/{topic.replace(' ', '_')}\"\n    result = fetch_web_content(url)\n    return save_research(topic, result, url)\ndef scrape_and_save_specials(store):\n    specials = scrape_store_specials(store)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def get_db(db_name):\n    if db_name not in databases:\n        conn = sqlite3.connect(f\"{db_name}.db\")\n        databases[db_name] = {\"conn\": conn, \"cursor\": conn.cursor()}\n    return databases[db_name]\ncore_db = get_db(\"core\")\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)\"\n)\ncore_db[\"cursor\"].execute(",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "create_database",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def create_database(db_name):\n    db = get_db(db_name)\n    db[\"cursor\"].execute(\n        \"\"\"\n        CREATE TABLE IF NOT EXISTS items (\n            key TEXT PRIMARY KEY, \n            value TEXT, \n            timestamp TEXT, \n            tags TEXT, \n            priority INTEGER",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "cache_result",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def cache_result(key, value, db_name=\"core\"):\n    db = get_db(db_name)\n    db[\"cursor\"].execute(\n        \"INSERT OR REPLACE INTO cache (key, value) VALUES (?, ?)\", (key, value)\n    )\n    db[\"conn\"].commit()\ndef get_cached_result(key, db_name=\"core\"):\n    db = get_db(db_name)\n    db[\"cursor\"].execute(\"SELECT value FROM cache WHERE key = ?\", (key,))\n    result = db[\"cursor\"].fetchone()",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_cached_result",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def get_cached_result(key, db_name=\"core\"):\n    db = get_db(db_name)\n    db[\"cursor\"].execute(\"SELECT value FROM cache WHERE key = ?\", (key,))\n    result = db[\"cursor\"].fetchone()\n    return result[0] if result else None\ndef save_command(name, language, code, db_name=\"core\"):\n    db = get_db(db_name)\n    db[\"cursor\"].execute(\n        \"INSERT OR REPLACE INTO commands (name, language, code) VALUES (?, ?, ?)\",\n        (name, language, code),",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "save_command",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def save_command(name, language, code, db_name=\"core\"):\n    db = get_db(db_name)\n    db[\"cursor\"].execute(\n        \"INSERT OR REPLACE INTO commands (name, language, code) VALUES (?, ?, ?)\",\n        (name, language, code),\n    )\n    db[\"conn\"].commit()\ndef get_command(name, db_name=\"core\"):\n    db = get_db(db_name)\n    db[\"cursor\"].execute(\"SELECT language, code FROM commands WHERE name = ?\", (name,))",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_command",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def get_command(name, db_name=\"core\"):\n    db = get_db(db_name)\n    db[\"cursor\"].execute(\"SELECT language, code FROM commands WHERE name = ?\", (name,))\n    result = db[\"cursor\"].fetchone()\n    return result if result else None\ndef add_contact(\n    name,\n    phone=None,\n    email=None,\n    address=None,",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "add_contact",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def add_contact(\n    name,\n    phone=None,\n    email=None,\n    address=None,\n    birthday=None,\n    notes=None,\n    category=None,\n    db_name=\"addressbook\",\n):",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_contact",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def get_contact(name, db_name=\"addressbook\"):\n    db = get_db(db_name)\n    db[\"cursor\"].execute(\n        \"SELECT phone, email, address, birthday, notes, category FROM contacts WHERE name = ?\",\n        (name,),\n    )\n    result = db[\"cursor\"].fetchone()\n    if result:\n        phone, email, address, birthday, notes, category = result\n        return (",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "add_to_database",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def add_to_database(db_name, key, value, tags=None, priority=None):\n    db = get_db(db_name)\n    timestamp = datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")\n    db[\"cursor\"].execute(\n        \"\"\"\n        INSERT OR REPLACE INTO items (key, value, timestamp, tags, priority) \n        VALUES (?, ?, ?, ?, ?)\n    \"\"\",\n        (key, value, timestamp, tags, priority),\n    )",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_from_database",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def get_from_database(db_name, key):\n    db = get_db(db_name)\n    db[\"cursor\"].execute(\n        \"SELECT value, timestamp, tags, priority FROM items WHERE key = ?\", (key,)\n    )\n    result = db[\"cursor\"].fetchone()\n    if result:\n        value, timestamp, tags, priority = result\n        return (\n            f\"Value: {value}, Added: {timestamp}, Tags: {tags or 'None'}, \"",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "create_file",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def create_file(filename):\n    try:\n        with open(filename, \"w\") as f:\n            f.write(\"\")\n        return f\"File '{filename}' created.\"\n    except Exception as e:\n        return f\"File creation error: {str(e)}\"\ndef delete_file(filename):\n    try:\n        if os.path.isdir(filename):",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "delete_file",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def delete_file(filename):\n    try:\n        if os.path.isdir(filename):\n            shutil.rmtree(filename)\n            return f\"Folder '{filename}' deleted.\"\n        else:\n            os.remove(filename)\n            return f\"File '{filename}' deleted.\"\n    except Exception as e:\n        return f\"Deletion error: {str(e)}\"",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "move_file",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def move_file(src, dest):\n    try:\n        shutil.move(src, dest)\n        return f\"Moved '{src}' to '{dest}'.\"\n    except Exception as e:\n        return f\"Move error: {str(e)}\"\ndef get_cpu_usage():\n    try:\n        return f\"CPU Usage: {psutil.cpu_percent(interval=1)}%\"\n    except Exception as e:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_cpu_usage",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def get_cpu_usage():\n    try:\n        return f\"CPU Usage: {psutil.cpu_percent(interval=1)}%\"\n    except Exception as e:\n        return f\"CPU usage error: {str(e)}\"\ndef get_memory_usage():\n    try:\n        mem = psutil.virtual_memory()\n        return f\"Memory Usage: {mem.percent}% ({mem.used / 1024**3:.2f} GB used of {mem.total / 1024**3:.2f} GB)\"\n    except Exception as e:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_memory_usage",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def get_memory_usage():\n    try:\n        mem = psutil.virtual_memory()\n        return f\"Memory Usage: {mem.percent}% ({mem.used / 1024**3:.2f} GB used of {mem.total / 1024**3:.2f} GB)\"\n    except Exception as e:\n        return f\"Memory usage error: {str(e)}\"\ndef get_disk_space(drive):\n    try:\n        disk = psutil.disk_usage(drive)\n        return f\"Disk Space on {drive}: {disk.percent}% used ({disk.free / 1024**3:.2f} GB free of {disk.total / 1024**3:.2f} GB)\"",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_disk_space",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def get_disk_space(drive):\n    try:\n        disk = psutil.disk_usage(drive)\n        return f\"Disk Space on {drive}: {disk.percent}% used ({disk.free / 1024**3:.2f} GB free of {disk.total / 1024**3:.2f} GB)\"\n    except Exception as e:\n        return f\"Disk space error: {str(e)}\"\ndef click_at(x, y):\n    try:\n        pyautogui.click(int(x), int(y))\n        return f\"Clicked at ({x}, {y}).\"",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "click_at",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def click_at(x, y):\n    try:\n        pyautogui.click(int(x), int(y))\n        return f\"Clicked at ({x}, {y}).\"\n    except Exception as e:\n        return f\"Click error: {str(e)}\"\ndef find_and_click(button_name):\n    try:\n        location = pyautogui.locateCenterOnScreen(f\"{button_name}.png\")\n        if location:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "find_and_click",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def find_and_click(button_name):\n    try:\n        location = pyautogui.locateCenterOnScreen(f\"{button_name}.png\")\n        if location:\n            pyautogui.click(location)\n            return f\"Clicked '{button_name}' button.\"\n        return f\"Button '{button_name}' not found.\"\n    except Exception as e:\n        return f\"Button click error: {str(e)}\"\ndef set_volume(level):",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "set_volume",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def set_volume(level):\n    try:\n        devices = AudioUtilities.GetSpeakers()\n        interface = devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)\n        volume = interface.QueryInterface(IAudioEndpointVolume)\n        if level == \"mute\":\n            volume.SetMute(1, None)\n            return \"Volume muted.\"\n        elif level == \"unmute\":\n            volume.SetMute(0, None)",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "open_app",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def open_app(app_name):\n    try:\n        subprocess.Popen(app_name)\n        return f\"Opened {app_name}.\"\n    except Exception as e:\n        return f\"App opening error: {str(e)}\"\ndef type_text(text):\n    try:\n        pyautogui.typewrite(text)\n        pyautogui.press(\"enter\")",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "type_text",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def type_text(text):\n    try:\n        pyautogui.typewrite(text)\n        pyautogui.press(\"enter\")\n        return f\"Typed '{text}'.\"\n    except Exception as e:\n        return f\"Typing error: {str(e)}\"\ndef log_query(command, topic):\n    db = get_db(\"personality\")\n    timestamp = datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "log_query",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def log_query(command, topic):\n    db = get_db(\"personality\")\n    timestamp = datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")\n    db[\"cursor\"].execute(\n        \"INSERT INTO queries (command, topic, timestamp) VALUES (?, ?, ?)\",\n        (command, topic, timestamp),\n    )\n    db[\"conn\"].commit()\ndef save_research(topic, data, source):\n    db = get_db(\"personality\")",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "save_research",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def save_research(topic, data, source):\n    db = get_db(\"personality\")\n    timestamp = datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")\n    db[\"cursor\"].execute(\n        \"INSERT OR REPLACE INTO research (topic, data, source, timestamp) VALUES (?, ?, ?, ?)\",\n        (topic, data, source, timestamp),\n    )\n    db[\"conn\"].commit()\n    return f\"Research on '{topic}' saved from {source}.\"\ndef get_research(topic):",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_research",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def get_research(topic):\n    db = get_db(\"personality\")\n    db[\"cursor\"].execute(\n        \"SELECT data, source, timestamp FROM research WHERE topic = ?\", (topic,)\n    )\n    result = db[\"cursor\"].fetchone()\n    if result:\n        data, source, timestamp = result\n        return f\"Research on '{topic}': {data} (Source: {source}, Saved: {timestamp})\"\n    return f\"No research found for '{topic}'.\"",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "analyze_personality",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def analyze_personality():\n    db = get_db(\"personality\")\n    db[\"cursor\"].execute(\"SELECT command, topic FROM queries\")\n    queries = db[\"cursor\"].fetchall()\n    if not queries:\n        return \"I don’t have enough data about you yet!\"\n    topics = [q[1] for q in queries if q[1]]\n    topic_counts = {}\n    for topic in topics:\n        topic_counts[topic] = topic_counts.get(topic, 0) + 1",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "feed_data_from_file",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def feed_data_from_file(filename):\n    try:\n        if filename.endswith(\".txt\"):\n            with open(filename, \"r\") as f:\n                data = f.read()\n            topic = os.path.splitext(filename)[0]\n            return save_research(topic, data, f\"file: {filename}\")\n        elif filename.endswith(\".pdf\"):\n            with open(filename, \"rb\") as f:\n                pdf = PyPDF2.PdfReader(f)",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "feed_specials_from_file",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def feed_specials_from_file(filename):\n    try:\n        db = get_db(\"specials\")\n        timestamp = datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")\n        if filename.endswith(\".txt\"):\n            with open(filename, \"r\") as f:\n                lines = f.readlines()\n            for line in lines:\n                # Format: \"item:price:store:lat:lon\" (e.g., \"milk:15.99:Shoprite:-33.9249:18.4241\")\n                parts = line.strip().split(\":\")",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_specials",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def get_specials(item):\n    db = get_db(\"specials\")\n    db[\"cursor\"].execute(\n        \"SELECT store, price, latitude, longitude FROM specials WHERE item = ?\",\n        (item.lower(),),\n    )\n    results = db[\"cursor\"].fetchall()\n    if results:\n        return \"\\n\".join(\n            [",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "find_nearest_special",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def find_nearest_special(item, user_lat, user_lon):\n    db = get_db(\"specials\")\n    db[\"cursor\"].execute(\n        \"SELECT store, price, latitude, longitude FROM specials WHERE item = ?\",\n        (item.lower(),),\n    )\n    results = db[\"cursor\"].fetchall()\n    if not results:\n        return f\"No specials found for '{item}'.\"\n    nearest = None",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "find_items_within_budget",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def find_items_within_budget(budget, items):\n    db = get_db(\"specials\")\n    item_prices = {}\n    for item in items:\n        db[\"cursor\"].execute(\n            \"SELECT store, price, latitude, longitude FROM specials WHERE item = ?\",\n            (item.lower(),),\n        )\n        results = db[\"cursor\"].fetchall()\n        if results:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "listen_for_command",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def listen_for_command():\n    try:\n        for phrase in LiveSpeech():\n            return str(phrase)\n    except Exception as e:\n        return f\"Speech recognition error: {str(e)}\"\nengine = pyttsx3.init()\ndef speak_response(text):\n    try:\n        engine.say(text)",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "speak_response",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def speak_response(text):\n    try:\n        engine.say(text)\n        engine.runAndWait()\n    except Exception as e:\n        print(f\"Text-to-speech error: {str(e)}\")",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "nlp",
+        "kind": 5,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "nlp = spacy.load(\"en_core_web_sm\")\ndatabases = {}\ndef get_db(db_name):\n    if db_name not in databases:\n        conn = sqlite3.connect(f\"{db_name}.db\")\n        databases[db_name] = {\"conn\": conn, \"cursor\": conn.cursor()}\n    return databases[db_name]\ncore_db = get_db(\"core\")\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)\"",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "databases",
+        "kind": 5,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "databases = {}\ndef get_db(db_name):\n    if db_name not in databases:\n        conn = sqlite3.connect(f\"{db_name}.db\")\n        databases[db_name] = {\"conn\": conn, \"cursor\": conn.cursor()}\n    return databases[db_name]\ncore_db = get_db(\"core\")\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)\"\n)",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "core_db",
+        "kind": 5,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "core_db = get_db(\"core\")\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)\"\n)\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS commands (name TEXT PRIMARY KEY, language TEXT, code TEXT)\"\n)\naddress_db = get_db(\"addressbook\")\naddress_db[\"cursor\"].execute(\n    \"\"\"",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "address_db",
+        "kind": 5,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "address_db = get_db(\"addressbook\")\naddress_db[\"cursor\"].execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS contacts (\n        name TEXT PRIMARY KEY, \n        phone TEXT, \n        email TEXT, \n        address TEXT, \n        birthday TEXT, \n        notes TEXT, ",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "personality_db",
+        "kind": 5,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "personality_db = get_db(\"personality\")\npersonality_db[\"cursor\"].execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS queries (\n        id INTEGER PRIMARY KEY AUTOINCREMENT,\n        command TEXT,\n        topic TEXT,\n        timestamp TEXT\n    )\n\"\"\"",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "specials_db",
+        "kind": 5,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "specials_db = get_db(\"specials\")\nspecials_db[\"cursor\"].execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS specials (\n        item TEXT,\n        price REAL,\n        store TEXT,\n        latitude REAL,\n        longitude REAL,\n        timestamp TEXT",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 5,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "engine = pyttsx3.init()\ndef speak_response(text):\n    try:\n        engine.say(text)\n        engine.runAndWait()\n    except Exception as e:\n        print(f\"Text-to-speech error: {str(e)}\")",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "CustomDataset",
+        "kind": 6,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "class CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n    def __len__(self):\n        return len(self.labels)\n    def __getitem__(self, idx):\n        item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}\n        item[\"labels\"] = torch.tensor(self.labels[idx])\n        return item",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "model_name",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\"))\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(load_in_4bit=True),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)\n# Configure LoRA",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\"))\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(load_in_4bit=True),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)\n# Configure LoRA\nlora_config = LoraConfig(",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(load_in_4bit=True),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)\n# Configure LoRA\nlora_config = LoraConfig(\n    r=16, lora_alpha=32, target_modules=[\"q_proj\", \"v_proj\"], lora_dropout=0.05, bias=\"none\"",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "lora_config",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "lora_config = LoraConfig(\n    r=16, lora_alpha=32, target_modules=[\"q_proj\", \"v_proj\"], lora_dropout=0.05, bias=\"none\"\n)\nmodel = get_peft_model(model, lora_config)\n# Load dataset\nwith open(\"dataset.txt\", \"r\") as f:\n    data = f.read().split(\"###\")[1:]  # Skip empty first split\nexamples = [entry.strip().split(\"\\nOutput: \") for entry in data]\ninputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "model = get_peft_model(model, lora_config)\n# Load dataset\nwith open(\"dataset.txt\", \"r\") as f:\n    data = f.read().split(\"###\")[1:]  # Skip empty first split\nexamples = [entry.strip().split(\"\\nOutput: \") for entry in data]\ninputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Tokenize dataset\ntrain_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)\nlabels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "examples",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "examples = [entry.strip().split(\"\\nOutput: \") for entry in data]\ninputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Tokenize dataset\ntrain_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)\nlabels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]\n# Prepare dataset\nclass CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "inputs",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "inputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Tokenize dataset\ntrain_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)\nlabels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]\n# Prepare dataset\nclass CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "outputs",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "outputs = [e[1] for e in examples]\n# Tokenize dataset\ntrain_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)\nlabels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]\n# Prepare dataset\nclass CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n    def __len__(self):",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "train_encodings",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "train_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)\nlabels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]\n# Prepare dataset\nclass CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n    def __len__(self):\n        return len(self.labels)\n    def __getitem__(self, idx):",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "labels",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "labels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]\n# Prepare dataset\nclass CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n    def __len__(self):\n        return len(self.labels)\n    def __getitem__(self, idx):\n        item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "train_dataset",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "train_dataset = CustomDataset(train_encodings, labels)\n# Training arguments\ntraining_args = TrainingArguments(\n    output_dir=\"./results\",\n    num_train_epochs=3,\n    per_device_train_batch_size=4,\n    save_steps=10,\n    save_total_limit=2,\n    logging_dir=\"./logs\",\n    logging_steps=10,",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "training_args",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "training_args = TrainingArguments(\n    output_dir=\"./results\",\n    num_train_epochs=3,\n    per_device_train_batch_size=4,\n    save_steps=10,\n    save_total_limit=2,\n    logging_dir=\"./logs\",\n    logging_steps=10,\n    fp16=True,\n)",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "trainer",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "trainer = Trainer(\n    model=model,\n    args=training_args,\n    train_dataset=train_dataset,\n)\n# Train and save\ntrainer.train()\nmodel.save_pretrained(\"./fine_tuned_model\")\ntokenizer.save_pretrained(\"./fine_tuned_model\")",
+        "detail": "train_lora",
+        "documentation": {}
+    }
+]

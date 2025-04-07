@@ -1,4 +1,4 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer, Trainer, TrainingArguments
+from transformers import AutoModelForCausalLM, AutoTokenizer, Trainer, TrainingArguments, BitsAndBytesConfig
 from peft import LoraConfig, get_peft_model
 import torch
 import os
@@ -8,7 +8,7 @@ model_name = "mistralai/Mistral-7B-Instruct-v0.1"
 tokenizer = AutoTokenizer.from_pretrained(model_name, token=os.getenv("HUGGINGFACE_TOKEN"))
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
-    load_in_4bit=True,
+    quantization_config=BitsAndBytesConfig(load_in_4bit=True),
     device_map="auto",
     torch_dtype=torch.float16,
     token=os.getenv("HUGGINGFACE_TOKEN"),
