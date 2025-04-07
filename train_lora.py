@@ -52,8 +52,11 @@ def clean_text(text):
         "weâ€™ll": "we'll",  # Adding just in case
         "theyâ€™ll": "they'll",  # Adding just in case
     }
+    with open("dataset.txt", "r") as f:
+        data = f.read()
     for old, new in contractions.items():
-        text = text.replace(old, new)
+        if old in data:
+            print(f"Found {old} -> {new}")
 
     # Optional: Convert "you're" to "your" before nouns (uncomment if needed)
     # import re
