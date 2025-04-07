@@ -5,35 +5,39 @@ import re
 import torch
 import os
 
-# Load tokenizer and model
-model_name = "mistralai/Mistral-7B-Instruct-v0.1"
+# Load tokenizer and model from fine-tuned checkpoint
 hf_token = API_KEYS.get("huggingface") or os.getenv("HUGGINGFACE_TOKEN")
 if not hf_token:
     raise EnvironmentError(
         "Hugging Face token is missing. Please set it in the .env file."
     )
-tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)
 
-# Add the same special tokens as in training
-special_tokens = {"additional_special_tokens": ["[INST]", "[/INST]"]}
-tokenizer.add_special_tokens(special_tokens)
+# Load the fine-tuned tokenizer directly (it already has [INST] and [/INST])
+tokenizer = AutoTokenizer.from_pretrained("./fine_tuned_model", token=hf_token)
 if tokenizer.pad_token_id is None:
     tokenizer.pad_token_id = tokenizer.eos_token_id
 
-# Load fine-tuned model with 4-bit quantization
+# Load the base model with quantization
+model_name = "mistralai/Mistral-7B-Instruct-v0.1"
 quantization_config = BitsAndBytesConfig(
     load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16
 )
 model = AutoModelForCausalLM.from_pretrained(
-    "./fine_tuned_model",
+    model_name,
     quantization_config=quantization_config,
     device_map="auto",
     torch_dtype=torch.float16,
+    token=hf_token,
 )
-# Resize model embeddings to match tokenizer (should already match, but safety first)
+
+# Resize embeddings to match the fine-tuned tokenizer *before* loading LoRA weights
 model.resize_token_embeddings(len(tokenizer))
 
+# Load the fine-tuned LoRA adapter
+model.load_adapter("./fine_tuned_model")
 
+
+# Rest of your code (recognize_intent, generate_response, etc.) remains unchanged
 def recognize_intent(command):
     doc = nlp(command.lower())
     entities = {ent.label_: ent.text for ent in doc.ents}
@@ -323,7 +327,6 @@ def parse_complex_command(command, entities):
 
 
 def generate_response(prompt):
-    """Generate a flirty and helpful response using Mistral 7B."""
     try:
         full_prompt = f"A flirty and helpful assistant says: {prompt}"
         inputs = tokenizer(full_prompt, return_tensors="pt").to(
@@ -339,15 +342,22 @@ def generate_response(prompt):
         )
         response = tokenizer.decode(outputs[0], skip_special_tokens=True)
         if response.startswith(full_prompt):
-            response = response[len(full_prompt) :].strip()
+            response = response[len(full_prompt):].strip()
         return response
     except Exception as e:
         return f"Response generation error: {str(e)}"
 
 
 def switch_to_better_model():
-    """Placeholder for future upgrades."""
     speak_response(
         "You're already on Mistral 7B—pretty spicy already! Need a bigger flirt?"
     )
     return "Currently on Mistral 7B—no better model available yet for your hardware."
+
+
+# Add switch_to_better_conversational_model if defined elsewhere
+def switch_to_better_conversational_model():
+    speak_response(
+        "Switching to a better conversational model—hold tight!"
+    )
+    return "Switching conversational models not implemented yet."

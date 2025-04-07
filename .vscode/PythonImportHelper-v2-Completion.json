@@ -1508,7 +1508,7 @@
         "kind": 2,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "def parse_complex_command(command, entities):\n    if \" if \" in command:\n        condition, action = command.split(\" if \", 1)\n        return \"complex_if\", {\"condition\": condition.strip(), \"action\": action.strip()}\n    parts = re.split(r\" and | then \", command)\n    return \"complex_chain\", {\"commands\": [part.strip() for part in parts]}\ndef generate_response(prompt):\n    \"\"\"Generate a flirty and helpful response using Mistral 7B.\"\"\"\n    try:\n        full_prompt = f\"A flirty and helpful assistant says: {prompt}\"",
+        "peekOfCode": "def parse_complex_command(command, entities):\n    if \" if \" in command:\n        condition, action = command.split(\" if \", 1)\n        return \"complex_if\", {\"condition\": condition.strip(), \"action\": action.strip()}\n    parts = re.split(r\" and | then \", command)\n    return \"complex_chain\", {\"commands\": [part.strip() for part in parts]}\ndef generate_response(prompt):\n    try:\n        full_prompt = f\"A flirty and helpful assistant says: {prompt}\"\n        inputs = tokenizer(full_prompt, return_tensors=\"pt\").to(",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1517,7 +1517,7 @@
         "kind": 2,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "def generate_response(prompt):\n    \"\"\"Generate a flirty and helpful response using Mistral 7B.\"\"\"\n    try:\n        full_prompt = f\"A flirty and helpful assistant says: {prompt}\"\n        inputs = tokenizer(full_prompt, return_tensors=\"pt\").to(\n            \"cuda\" if torch.cuda.is_available() else \"cpu\"\n        )\n        outputs = model.generate(\n            **inputs,\n            max_length=200,",
+        "peekOfCode": "def generate_response(prompt):\n    try:\n        full_prompt = f\"A flirty and helpful assistant says: {prompt}\"\n        inputs = tokenizer(full_prompt, return_tensors=\"pt\").to(\n            \"cuda\" if torch.cuda.is_available() else \"cpu\"\n        )\n        outputs = model.generate(\n            **inputs,\n            max_length=200,\n            do_sample=True,",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1526,16 +1526,16 @@
         "kind": 2,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "def switch_to_better_model():\n    \"\"\"Placeholder for future upgrades.\"\"\"\n    speak_response(\n        \"You're already on Mistral 7B—pretty spicy already! Need a bigger flirt?\"\n    )\n    return \"Currently on Mistral 7B—no better model available yet for your hardware.\"",
+        "peekOfCode": "def switch_to_better_model():\n    speak_response(\n        \"You're already on Mistral 7B—pretty spicy already! Need a bigger flirt?\"\n    )\n    return \"Currently on Mistral 7B—no better model available yet for your hardware.\"\n# Add switch_to_better_conversational_model if defined elsewhere\ndef switch_to_better_conversational_model():\n    speak_response(\n        \"Switching to a better conversational model—hold tight!\"\n    )",
         "detail": "conversation",
         "documentation": {}
     },
     {
-        "label": "model_name",
-        "kind": 5,
+        "label": "switch_to_better_conversational_model",
+        "kind": 2,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\nhf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\n        \"Hugging Face token is missing. Please set it in the .env file.\"\n    )\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\n# Add the same special tokens as in training\nspecial_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\ntokenizer.add_special_tokens(special_tokens)",
+        "peekOfCode": "def switch_to_better_conversational_model():\n    speak_response(\n        \"Switching to a better conversational model—hold tight!\"\n    )\n    return \"Switching conversational models not implemented yet.\"",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1544,7 +1544,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "hf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\n        \"Hugging Face token is missing. Please set it in the .env file.\"\n    )\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\n# Add the same special tokens as in training\nspecial_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\ntokenizer.add_special_tokens(special_tokens)\nif tokenizer.pad_token_id is None:",
+        "peekOfCode": "hf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\n        \"Hugging Face token is missing. Please set it in the .env file.\"\n    )\n# Load the fine-tuned tokenizer directly (it already has [INST] and [/INST])\ntokenizer = AutoTokenizer.from_pretrained(\"./fine_tuned_model\", token=hf_token)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\n# Load the base model with quantization",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1553,16 +1553,16 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\n# Add the same special tokens as in training\nspecial_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\ntokenizer.add_special_tokens(special_tokens)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\n# Load fine-tuned model with 4-bit quantization\nquantization_config = BitsAndBytesConfig(\n    load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n)",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(\"./fine_tuned_model\", token=hf_token)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\n# Load the base model with quantization\nmodel_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\nquantization_config = BitsAndBytesConfig(\n    load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,",
         "detail": "conversation",
         "documentation": {}
     },
     {
-        "label": "special_tokens",
+        "label": "model_name",
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "special_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\ntokenizer.add_special_tokens(special_tokens)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\n# Load fine-tuned model with 4-bit quantization\nquantization_config = BitsAndBytesConfig(\n    load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",",
+        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\nquantization_config = BitsAndBytesConfig(\n    load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=hf_token,",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1571,7 +1571,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "quantization_config = BitsAndBytesConfig(\n    load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\n# Resize model embeddings to match tokenizer (should already match, but safety first)",
+        "peekOfCode": "quantization_config = BitsAndBytesConfig(\n    load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=hf_token,\n)",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1580,7 +1580,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\n# Resize model embeddings to match tokenizer (should already match, but safety first)\nmodel.resize_token_embeddings(len(tokenizer))\ndef recognize_intent(command):\n    doc = nlp(command.lower())",
+        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=hf_token,\n)\n# Resize embeddings to match the fine-tuned tokenizer *before* loading LoRA weights\nmodel.resize_token_embeddings(len(tokenizer))\n# Load the fine-tuned LoRA adapter",
         "detail": "conversation",
         "documentation": {}
     },
