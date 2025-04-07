@@ -2,6 +2,7 @@ from datetime import datetime
 import os  # Remove this if still unused after fixes  # noqa: F401
 import logging
 from dotenv import load_dotenv
+from config import Config
 from apis import (
     get_weather,
     get_news,
@@ -60,9 +61,9 @@ from calculations import calculate
 load_dotenv()
 
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG if Config.DEBUG else logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[logging.FileHandler("assistant.log"), logging.StreamHandler()],
+    handlers=[logging.FileHandler(Config.LOG_FILE), logging.StreamHandler()],
 )
 
 tools = {
@@ -230,23 +231,26 @@ def main():
     use_voice = False  # Set to False for testing with input
     while True:
         if use_voice:
-            logging.info("Listening...")
-            command = listen_for_command()
+            logging.info("Listening...")")
+            command = listen_for_command()   command = listen_for_command()
         else:
-            command = input("Enter command: ")
+            command = input("Enter command: ")                command = input("Enter command: ")
 
-        if command.lower() in ["exit", "quit"]:
-            logging.info("Shutting down...")
+        if command.lower() in ["exit", "quit"]:quit"]:
+            logging.info("Shutting down...")wn...")
             for db in databases.values():
                 db["conn"].close()
-            break
-
-        logging.info(f"Command: {command}")
+            break            logging.info(f"Command: {command}")
+and)
+        logging.info(f"Command: {command}")nse}")
         response = process_command(command)
-        logging.info(f"Response: {response}")
+        logging.info(f"Response: {response}")_response(response)
         if use_voice:
-            speak_response(response)
-
+            speak_response(response)        for db in databases.values():
+            db["conn"].close()
+urces released. Goodbye!")
+if __name__ == "__main__":
+    main()
 
 if __name__ == "__main__":
     main()
