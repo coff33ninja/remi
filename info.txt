@@ -1,0 +1,110 @@
+Setup Instructions
+
+    Install Dependencies:
+        Existing requirements:
+        bash
+
+    pip install requests spacy pocketsphinx pyttsx3 sqlite3 pywhatkit python-dotenv pycaw pyautogui beautifulsoup4 psutil pytesseract PyPDF2 pillow torch hf_xet transformers==4.41.2
+    python -m spacy download en_core_web_sm
+
+    If you have a GPU and want to leverage it, visit PyTorch's official site to get the correct command for your CUDA version. For example, with CUDA 11.8:
+    pip install torch --index-url https://download.pytorch.org/whl/cu118
+    Ensure Tesseract OCR is installed (for PDF parsing).
+
+Set API Keys: Same .env file as before.
+Prepare Specials File:
+
+    Text File: item:price:store:lat:lon (e.g., milk:15.99:Shoprite:-33.9249:18.4241).
+    PDF: Text like "milk R15.99 at Shoprite lat -33.9249 lon 18.4241" (NLP parses this).
+
+Web Scraping:
+
+    Replace store_urls in apis.py with real URLs (e.g., Shoprite’s specials page).
+    Adjust .select() calls to match the site’s HTML structure.
+    Update store_locations with real coordinates.
+
+
+The error you're encountering indicates that the transformers library, which you're using to load the distilgpt2 model for text generation in conversation.py, requires either PyTorch or TensorFlow 2.0+ to be installed in your environment. These frameworks are necessary for model inference, and without them, the pipeline function cannot proceed.
+
+Here's how to resolve this issue step-by-step:
+Step 1: Install a Framework (PyTorch or TensorFlow)
+
+You need to install at least one of these frameworks in your virtual environment (.venv). I recommend starting with PyTorch as it’s widely used with the transformers library and has good compatibility with distilgpt2.
+Option 1: Install PyTorch
+
+    Activate your virtual environment (already done in your case):
+    powershell
+
+.\.venv\Scripts\activate
+
+Install PyTorch. The exact command depends on your system (Windows, CPU/GPU, etc.). For a CPU-only installation on Windows:
+powershell
+pip install torch
+
+If you have a GPU and want to leverage it, visit PyTorch's official site to get the correct command for your CUDA version. For example, with CUDA 11.8:
+powershell
+
+    pip install torch --index-url https://download.pytorch.org/whl/cu118
+
+Option 2: Install TensorFlow
+
+Alternatively, you can install TensorFlow:
+powershell
+pip install tensorflow
+
+For simplicity, I’ll proceed with PyTorch as it’s lighter for this use case unless you specifically need TensorFlow.
+Step 2: Verify Installation
+
+After installing, verify that PyTorch (or TensorFlow) is available:
+powershell
+python -c "import torch; print(torch.__version__)"
+
+This should output a version number (e.g., 2.4.0). If you installed TensorFlow instead:
+powershell
+python -c "import tensorflow as tf; print(tf.__version__)"
+Step 3: Test Your Code Again
+
+Once PyTorch or TensorFlow is installed, try running your script again:
+powershell
+python main.py
+
+The RuntimeError should no longer occur, and the distilgpt2 model should load successfully.
+Additional Considerations
+
+    Dependencies: Ensure all other dependencies (e.g., transformers, spacy, etc.) are installed. You can check your requirements.txt or run:
+    powershell
+
+pip install transformers spacy
+For Spacy, you’ll also need a language model:
+powershell
+python -m spacy download en_core_web_sm
+Environment Check: If you’re unsure about your current environment’s packages, list them:
+powershell
+pip list
+Model Download: The first run of pipeline("text-generation", model="distilgpt2") will download the model files (~353 MB). Ensure you have an internet connection and enough disk space.
+GPU Support: If you’re using a GPU, confirm it’s detected:
+powershell
+
+    python -c "import torch; print(torch.cuda.is_available())"
+    If True, PyTorch will use your GPU; if False, it defaults to CPU.
+
+Updated Workflow
+
+Here’s what your terminal session might look like after fixing this:
+powershell
+(.venv) PS C:\Users\DRAGOHN\Documents\GitHub\remi> pip install torch
+Collecting torch
+  Downloading torch-2.4.0-cp311-cp311-win_amd64.whl (269.9 MB)
+  ...
+Successfully installed torch-2.4.0
+(.venv) PS C:\Users\DRAGOHN\Documents\GitHub\remi> python main.py
+Starting personal assistant...
+Enter command:
+If Issues Persist
+
+If you encounter further errors after installing PyTorch or TensorFlow:
+
+    Share the new error message.
+    Provide the output of pip list so I can check your environment.
+
+Let me know once you’ve installed one of these frameworks, and I’ll assist with any follow-up steps!
