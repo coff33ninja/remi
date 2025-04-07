@@ -2,6 +2,7 @@ requests
 spacy
 pocketsphinx
 pyttsx3
+sqlite3
 pywhatkit
 python-dotenv
 pycaw
@@ -14,5 +15,10 @@ PyPDF2
 pillow
 torch
 hf_xet
-transformers==4.48.0
+# transformers==4.48.0
 pygame
+transformers
+bitsandbytes
+accelerate
+peft
+gradio
