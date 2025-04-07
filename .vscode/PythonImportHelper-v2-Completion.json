@@ -2130,7 +2130,7 @@
         "kind": 6,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "class CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n    def __len__(self):\n        return len(self.labels)\n    def __getitem__(self, idx):\n        item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}\n        item[\"labels\"] = torch.tensor(self.labels[idx])  # Ensure alignment\n        return item",
+        "peekOfCode": "class CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, input_ids, attention_mask, labels):\n        self.input_ids = input_ids\n        self.attention_mask = attention_mask\n        self.labels = labels\n    def __len__(self):\n        return len(self.labels)\n    def __getitem__(self, idx):\n        return {\n            \"input_ids\": self.input_ids[idx],",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2139,7 +2139,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\"))\ntokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(load_in_4bit=True),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)",
+        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\"))\ntokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(\n        load_in_4bit=True,\n        bnb_4bit_compute_dtype=torch.float16  # Match compute dtype with model dtype\n    ),\n    device_map=\"auto\",",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2148,7 +2148,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\"))\ntokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(load_in_4bit=True),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)\n# Configure LoRA",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\"))\ntokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(\n        load_in_4bit=True,\n        bnb_4bit_compute_dtype=torch.float16  # Match compute dtype with model dtype\n    ),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2157,7 +2157,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(load_in_4bit=True),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)\n# Configure LoRA\nlora_config = LoraConfig(",
+        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(\n        load_in_4bit=True,\n        bnb_4bit_compute_dtype=torch.float16  # Match compute dtype with model dtype\n    ),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2166,7 +2166,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(load_in_4bit=True),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)\n# Configure LoRA\nlora_config = LoraConfig(\n    r=16, lora_alpha=32, target_modules=[\"q_proj\", \"v_proj\"], lora_dropout=0.05, bias=\"none\"",
+        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(\n        load_in_4bit=True,\n        bnb_4bit_compute_dtype=torch.float16  # Match compute dtype with model dtype\n    ),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2193,7 +2193,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "examples = [entry.strip().split(\"\\nOutput: \") for entry in data]\ninputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Print inputs and outputs for debugging\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\n# Check lengths of inputs and outputs\nif len(inputs) != len(outputs):\n    raise ValueError(f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\")\n# Tokenize dataset",
+        "peekOfCode": "examples = [entry.strip().split(\"\\nOutput: \") for entry in data]\ninputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Print inputs and outputs for debugging\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\n# Check lengths of inputs and outputs\nif len(inputs) != len(outputs):\n    raise ValueError(f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\")\n# Combine inputs and outputs using Mistral's instruction format",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2202,7 +2202,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "inputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Print inputs and outputs for debugging\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\n# Check lengths of inputs and outputs\nif len(inputs) != len(outputs):\n    raise ValueError(f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\")\n# Tokenize dataset\ntrain_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)",
+        "peekOfCode": "inputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Print inputs and outputs for debugging\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\n# Check lengths of inputs and outputs\nif len(inputs) != len(outputs):\n    raise ValueError(f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\")\n# Combine inputs and outputs using Mistral's instruction format\ncombined_texts = []",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2211,16 +2211,43 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "outputs = [e[1] for e in examples]\n# Print inputs and outputs for debugging\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\n# Check lengths of inputs and outputs\nif len(inputs) != len(outputs):\n    raise ValueError(f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\")\n# Tokenize dataset\ntrain_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)\nlabels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]",
+        "peekOfCode": "outputs = [e[1] for e in examples]\n# Print inputs and outputs for debugging\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\n# Check lengths of inputs and outputs\nif len(inputs) != len(outputs):\n    raise ValueError(f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\")\n# Combine inputs and outputs using Mistral's instruction format\ncombined_texts = []\nfor inp, out in zip(inputs, outputs):",
         "detail": "train_lora",
         "documentation": {}
     },
     {
-        "label": "train_encodings",
+        "label": "combined_texts",
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "train_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)\nlabels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]\n# Debug: Print lengths of encodings and labels\nprint(f\"Tokenized input length: {len(train_encodings['input_ids'])}, Tokenized labels length: {len(labels)}\")\n# Prepare dataset\nclass CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n    def __len__(self):",
+        "peekOfCode": "combined_texts = []\nfor inp, out in zip(inputs, outputs):\n    # Format following Mistral's instruction format\n    prompt = f\"<s>[INST] {inp} [/INST] {out}</s>\"\n    combined_texts.append(prompt)\n# Tokenize the combined texts\nencodings = tokenizer(combined_texts, truncation=True, padding=True, max_length=512, return_tensors=\"pt\")\ninput_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\n# For causal language modeling, labels are the same as input_ids",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "encodings",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "encodings = tokenizer(combined_texts, truncation=True, padding=True, max_length=512, return_tensors=\"pt\")\ninput_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\n# For causal language modeling, labels are the same as input_ids\n# But we set -100 for tokens we don't want to predict (the input part)\nlabels = input_ids.clone()\n# Find positions of [/INST] tokens to separate input from output\nfor i, ids in enumerate(input_ids):\n    # Convert to list for easier debugging\n    tokens = ids.tolist()",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "input_ids",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "input_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\n# For causal language modeling, labels are the same as input_ids\n# But we set -100 for tokens we don't want to predict (the input part)\nlabels = input_ids.clone()\n# Find positions of [/INST] tokens to separate input from output\nfor i, ids in enumerate(input_ids):\n    # Convert to list for easier debugging\n    tokens = ids.tolist()\n    # Find the position of [/INST] token or its ID",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "attention_mask",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "attention_mask = encodings[\"attention_mask\"]\n# For causal language modeling, labels are the same as input_ids\n# But we set -100 for tokens we don't want to predict (the input part)\nlabels = input_ids.clone()\n# Find positions of [/INST] tokens to separate input from output\nfor i, ids in enumerate(input_ids):\n    # Convert to list for easier debugging\n    tokens = ids.tolist()\n    # Find the position of [/INST] token or its ID\n    inst_token_id = tokenizer.encode(\" [/INST]\", add_special_tokens=False)[-1]  # Get the last token ID",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2229,7 +2256,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "labels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]\n# Debug: Print lengths of encodings and labels\nprint(f\"Tokenized input length: {len(train_encodings['input_ids'])}, Tokenized labels length: {len(labels)}\")\n# Prepare dataset\nclass CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n    def __len__(self):\n        return len(self.labels)",
+        "peekOfCode": "labels = input_ids.clone()\n# Find positions of [/INST] tokens to separate input from output\nfor i, ids in enumerate(input_ids):\n    # Convert to list for easier debugging\n    tokens = ids.tolist()\n    # Find the position of [/INST] token or its ID\n    inst_token_id = tokenizer.encode(\" [/INST]\", add_special_tokens=False)[-1]  # Get the last token ID\n    inst_positions = [pos for pos, token_id in enumerate(tokens) if token_id == inst_token_id]\n    if inst_positions:\n        # Set all tokens before [/INST] to -100 (don't predict these)",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2238,7 +2265,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "train_dataset = CustomDataset(train_encodings, labels)\n# Training arguments\ntraining_args = TrainingArguments(\n    output_dir=\"./results\",\n    num_train_epochs=3,\n    per_device_train_batch_size=4,\n    save_steps=10,\n    save_total_limit=2,\n    logging_dir=\"./logs\",\n    logging_steps=10,",
+        "peekOfCode": "train_dataset = CustomDataset(input_ids, attention_mask, labels)\n# Training arguments\ntraining_args = TrainingArguments(\n    output_dir=\"./results\",\n    num_train_epochs=3,\n    per_device_train_batch_size=2,  # Reduced batch size for GTX 1060 6GB\n    gradient_accumulation_steps=2,  # Accumulate gradients to simulate larger batch\n    save_steps=10,\n    save_total_limit=2,\n    logging_dir=\"./logs\",",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2247,7 +2274,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "training_args = TrainingArguments(\n    output_dir=\"./results\",\n    num_train_epochs=3,\n    per_device_train_batch_size=4,\n    save_steps=10,\n    save_total_limit=2,\n    logging_dir=\"./logs\",\n    logging_steps=10,\n    fp16=True,\n)",
+        "peekOfCode": "training_args = TrainingArguments(\n    output_dir=\"./results\",\n    num_train_epochs=3,\n    per_device_train_batch_size=2,  # Reduced batch size for GTX 1060 6GB\n    gradient_accumulation_steps=2,  # Accumulate gradients to simulate larger batch\n    save_steps=10,\n    save_total_limit=2,\n    logging_dir=\"./logs\",\n    logging_steps=10,\n    fp16=True,",
         "detail": "train_lora",
         "documentation": {}
     },

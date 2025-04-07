@@ -9,7 +9,10 @@ tokenizer = AutoTokenizer.from_pretrained(model_name, token=os.getenv("HUGGINGFA
 tokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
-    quantization_config=BitsAndBytesConfig(load_in_4bit=True),
+    quantization_config=BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_compute_dtype=torch.float16  # Match compute dtype with model dtype
+    ),
     device_map="auto",
     torch_dtype=torch.float16,
     token=os.getenv("HUGGINGFACE_TOKEN"),
@@ -36,34 +39,69 @@ print("Outputs:", outputs)
 if len(inputs) != len(outputs):
     raise ValueError(f"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.")
 
-# Tokenize dataset
-train_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)
-labels = tokenizer(outputs, truncation=True, padding=True, max_length=512)["input_ids"]
+# Combine inputs and outputs using Mistral's instruction format
+combined_texts = []
+for inp, out in zip(inputs, outputs):
+    # Format following Mistral's instruction format
+    prompt = f"<s>[INST] {inp} [/INST] {out}</s>"
+    combined_texts.append(prompt)
 
-# Debug: Print lengths of encodings and labels
-print(f"Tokenized input length: {len(train_encodings['input_ids'])}, Tokenized labels length: {len(labels)}")
+# Tokenize the combined texts
+encodings = tokenizer(combined_texts, truncation=True, padding=True, max_length=512, return_tensors="pt")
+input_ids = encodings["input_ids"]
+attention_mask = encodings["attention_mask"]
+
+# For causal language modeling, labels are the same as input_ids
+# But we set -100 for tokens we don't want to predict (the input part)
+labels = input_ids.clone()
+
+# Find positions of [/INST] tokens to separate input from output
+for i, ids in enumerate(input_ids):
+    # Convert to list for easier debugging
+    tokens = ids.tolist()
+    # Find the position of [/INST] token or its ID
+    inst_token_id = tokenizer.encode(" [/INST]", add_special_tokens=False)[-1]  # Get the last token ID
+    inst_positions = [pos for pos, token_id in enumerate(tokens) if token_id == inst_token_id]
+    
+    if inst_positions:
+        # Set all tokens before [/INST] to -100 (don't predict these)
+        inst_pos = inst_positions[-1]  # Take the last occurrence if multiple
+        labels[i, :inst_pos+1] = -100  # +1 to include the [/INST] token itself
+    
+    # Print for debugging (first example only)
+    if i == 0:
+        print(f"Example input: {tokenizer.decode(tokens)}")
+        print(f"[/INST] token found at position: {inst_positions if inst_positions else 'Not found'}")
+
+# Debug: Print shapes to verify alignment
+print(f"Input IDs shape: {input_ids.shape}")
+print(f"Labels shape: {labels.shape}")
 
 # Prepare dataset
 class CustomDataset(torch.utils.data.Dataset):
-    def __init__(self, encodings, labels):
-        self.encodings = encodings
+    def __init__(self, input_ids, attention_mask, labels):
+        self.input_ids = input_ids
+        self.attention_mask = attention_mask
         self.labels = labels
 
     def __len__(self):
         return len(self.labels)
 
     def __getitem__(self, idx):
-        item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}
-        item["labels"] = torch.tensor(self.labels[idx])  # Ensure alignment
-        return item
+        return {
+            "input_ids": self.input_ids[idx],
+            "attention_mask": self.attention_mask[idx],
+            "labels": self.labels[idx]
+        }
 
-train_dataset = CustomDataset(train_encodings, labels)
+train_dataset = CustomDataset(input_ids, attention_mask, labels)
 
 # Training arguments
 training_args = TrainingArguments(
     output_dir="./results",
     num_train_epochs=3,
-    per_device_train_batch_size=4,
+    per_device_train_batch_size=2,  # Reduced batch size for GTX 1060 6GB
+    gradient_accumulation_steps=2,  # Accumulate gradients to simulate larger batch
     save_steps=10,
     save_total_limit=2,
     logging_dir="./logs",
