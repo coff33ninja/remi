@@ -9,15 +9,62 @@ from peft import LoraConfig, get_peft_model
 import torch
 import os
 
+
+# Comprehensive text cleaning function
+def clean_text(text):
+    # Replace common encoding artifacts
+    replacements = {
+        "â€™": "'",  # Apostrophe
+        "â€”": "—",  # Em dash
+        "â€¦": "…",  # Ellipsis
+    }
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+
+    # Fix all common contractions
+    contractions = {
+        "Whatâ€™s": "What's",
+        "Howâ€™s": "How's",
+        "donâ€™t": "don't",
+        "itâ€™s": "it's",
+        "youâ€™re": "you're",
+        "Iâ€™ll": "I'll",
+        "wonâ€™t": "won't",
+        "wouldnâ€™t": "wouldn't",
+        "youâ€™ve": "you've",
+        "Iâ€™m": "I'm",
+        "heâ€™s": "he's",
+        "sheâ€™s": "she's",
+        "theyâ€™re": "they're",
+        "weâ€™re": "we're",
+        "canâ€™t": "can't",
+        "isnâ€™t": "isn't",
+        "arenâ€™t": "aren't",
+        "havenâ€™t": "haven't",
+        "hasnâ€™t": "hasn't",
+        "letâ€™s": "let's",
+        "thatâ€™s": "that's",
+        "thereâ€™s": "there's",
+    }
+    for old, new in contractions.items():
+        text = text.replace(old, new)
+
+    # Optional: Convert "you're" to "your" before nouns (uncomment if needed)
+    # import re
+    # text = re.sub(r"you're\s+(\w+)", r"your \1", text)  # e.g., "you're day" -> "your day"
+
+    return text
+
+
 # Load tokenizer and model
 model_name = "mistralai/Mistral-7B-Instruct-v0.1"
 tokenizer = AutoTokenizer.from_pretrained(
     model_name, token=os.getenv("HUGGINGFACE_TOKEN")
 )
-tokenizer.pad_token = tokenizer.eos_token  # Set padding token to EOS
-tokenizer.padding_side = "right"  # Ensure padding goes to the end
+tokenizer.pad_token = tokenizer.eos_token
+tokenizer.padding_side = "right"
 
-# Add special tokens since [INST] isn't in vocab
+# Add special tokens
 print("Tokenizing [INST]:", tokenizer.encode("[INST]"))
 if len(tokenizer.encode("[INST]", add_special_tokens=False)) > 1:
     special_tokens = {"additional_special_tokens": ["[INST]", "[/INST]"]}
@@ -45,12 +92,12 @@ lora_config = LoraConfig(
 )
 model = get_peft_model(model, lora_config)
 
-# Load dataset
+# Load and clean dataset
 with open("dataset.txt", "r") as f:
-    data = f.read().split("###")[1:]  # Skip empty first split
+    data = f.read().split("###")[1:]
 examples = [entry.strip().split("\nOutput: ") for entry in data]
-inputs = [e[0].replace("Input: ", "") for e in examples]
-outputs = [e[1] for e in examples]
+inputs = [clean_text(e[0].replace("Input: ", "")) for e in examples]
+outputs = [clean_text(e[1]) for e in examples]
 
 print("Inputs:", inputs)
 print("Outputs:", outputs)
@@ -65,7 +112,7 @@ combined_texts = [
     f"[INST] {inp} [/INST] {out}</s>" for inp, out in zip(inputs, outputs)
 ]
 
-# Tokenize with right-side padding
+# Tokenize
 encodings = tokenizer(
     combined_texts, truncation=True, padding=True, max_length=512, return_tensors="pt"
 )
@@ -73,7 +120,7 @@ input_ids = encodings["input_ids"]
 attention_mask = encodings["attention_mask"]
 labels = input_ids.clone()
 
-# Trim any leading </s> tokens (just in case)
+# Trim leading </s> tokens (safety net)
 eos_token_id = tokenizer.eos_token_id
 for i in range(len(input_ids)):
     tokens = input_ids[i].tolist()
