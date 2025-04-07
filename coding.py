@@ -1,9 +1,18 @@
 import subprocess
 import os
+import logging
 from conversation import tokenizer, model  # Use CodeGen from conversation.py
 from offline_tools import save_command as save_command_to_db
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[logging.StreamHandler()],
+)
+
 ALLOWED_LANGUAGES = ["cmd", "ps1", "python"]
+
 
 def generate_code(language, task):
     if language not in ALLOWED_LANGUAGES:
@@ -20,13 +29,27 @@ def generate_code(language, task):
             pad_token_id=tokenizer.pad_token_id,
         )
         code = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        logging.info(f"Raw generated code:\n{code}")
+
+        # Preserve comments that follow the initial prompt lines
         code_lines = code.split("\n")
-        cleaned_code = "\n".join(
-            line for line in code_lines if not line.strip().startswith("#") and len(line.strip()) > 0
-        )
-        return cleaned_code.strip()
+        cleaned_code = []
+        skip_initial_prompt = True
+        for line in code_lines:
+            stripped_line = line.strip()
+            if skip_initial_prompt and stripped_line.startswith("#"):
+                if stripped_line in prompt.split("\n"):
+                    continue
+                skip_initial_prompt = False
+            if len(stripped_line) > 0:  # Keep non-empty lines, including comments
+                cleaned_code.append(line)
+        final_code = "\n".join(cleaned_code).strip()
+        logging.info(f"Cleaned code:\n{final_code}")
+        return final_code
     except Exception as e:
+        logging.error(f"Code generation error: {str(e)}")
         return f"Code generation error: {str(e)}"
+
 
 def execute_code(language, code):
     if language not in ALLOWED_LANGUAGES:
@@ -61,6 +84,7 @@ def execute_code(language, code):
             os.remove(filename)
         return f"Execution failed: {str(e)}"
 
+
 def explain_concept(language, concept):
     if language not in ALLOWED_LANGUAGES:
         return f"Sorry, I only explain {', '.join(ALLOWED_LANGUAGES)}."
@@ -76,13 +100,27 @@ def explain_concept(language, concept):
             pad_token_id=tokenizer.pad_token_id,
         )
         explanation = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        logging.info(f"Raw explanation:\n{explanation}")
+
+        # Similar cleaning logic as generate_code
         explanation_lines = explanation.split("\n")
-        cleaned_explanation = "\n".join(
-            line for line in explanation_lines if not line.strip().startswith("#") and len(line.strip()) > 0
-        )
-        return cleaned_explanation.strip()
+        cleaned_explanation = []
+        skip_initial_prompt = True
+        for line in explanation_lines:
+            stripped_line = line.strip()
+            if skip_initial_prompt and stripped_line.startswith("#"):
+                if stripped_line in prompt.split("\n"):
+                    continue
+                skip_initial_prompt = False
+            if len(stripped_line) > 0:
+                cleaned_explanation.append(line)
+        final_explanation = "\n".join(cleaned_explanation).strip()
+        logging.info(f"Cleaned explanation:\n{final_explanation}")
+        return final_explanation
     except Exception as e:
+        logging.error(f"Explanation error: {str(e)}")
         return f"Explanation error: {str(e)}"
+
 
 def save_command(name, language=None, code=None):
     if language and code:
