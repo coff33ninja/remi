@@ -1,6 +1,7 @@
 import asyncio
 from datetime import datetime
 import logging
+import gradio as gr
 from dotenv import load_dotenv
 from config import Config
 from apis import (
@@ -252,5 +253,11 @@ async def main():
         logging.info("Resources released. Goodbye!")
 
 
+def chat(input_text):
+    intent, params = recognize_intent(input_text)
+    return process_single_command(intent, params)
+
+
 if __name__ == "__main__":
+    gr.Interface(fn=chat, inputs="text", outputs="text").launch()
     asyncio.run(main())

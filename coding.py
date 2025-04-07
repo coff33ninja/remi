@@ -1,10 +1,9 @@
 import subprocess
 import os
 import logging
-from conversation import tokenizer, model  # Use CodeGen from conversation.py
+from conversation import tokenizer, model  # Use Mistral 7B from conversation.py
 from offline_tools import save_command as save_command_to_db
 
-# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
@@ -17,12 +16,14 @@ ALLOWED_LANGUAGES = ["cmd", "ps1", "python"]
 def generate_code(language, task):
     if language not in ALLOWED_LANGUAGES:
         return f"Sorry, I only support {', '.join(ALLOWED_LANGUAGES)}."
-    prompt = f"# {language} script to {task}\n# Include error handling and comments\n"
+    prompt = f"A helpful assistant writes a {language} script to {task} with detailed comments and error handling:\n```python\n"
     try:
-        inputs = tokenizer(prompt, return_tensors="pt", truncation=True)  # Explicit truncation
+        inputs = tokenizer(prompt, return_tensors="pt").to(
+            "cuda" if torch.cuda.is_available() else "cpu"
+        )
         outputs = model.generate(
             **inputs,
-            max_length=300,
+            max_length=400,  # Increased for more complete scripts
             do_sample=True,
             top_p=0.95,
             temperature=0.7,
@@ -31,25 +32,20 @@ def generate_code(language, task):
         code = tokenizer.decode(outputs[0], skip_special_tokens=True)
         logging.info(f"Raw generated code:\n{code}")
 
-        # Preserve comments that follow the initial prompt lines
-        code_lines = code.split("\n")
-        cleaned_code = []
-        skip_initial_prompt = True
-        for line in code_lines:
-            stripped_line = line.strip()
-            if skip_initial_prompt and stripped_line.startswith("#"):
-                if stripped_line in prompt.split("\n"):
-                    continue
-                skip_initial_prompt = False
-            if len(stripped_line) > 0:  # Keep non-empty lines, including comments
-                cleaned_code.append(line)
-        final_code = "\n".join(cleaned_code).strip()
+        # Extract code block and clean
+        code_block = (
+            code.split("```python")[-1].split("```")[0].strip()
+            if "```python" in code
+            else code
+        )
+        final_code = "\n".join(
+            line for line in code_block.split("\n") if len(line.strip()) > 0
+        )
         logging.info(f"Cleaned code:\n{final_code}")
         return final_code
     except Exception as e:
         logging.error(f"Code generation error: {str(e)}")
         return f"Code generation error: {str(e)}"
-
 
 def execute_code(language, code):
     if language not in ALLOWED_LANGUAGES:
@@ -88,12 +84,14 @@ def execute_code(language, code):
 def explain_concept(language, concept):
     if language not in ALLOWED_LANGUAGES:
         return f"Sorry, I only explain {', '.join(ALLOWED_LANGUAGES)}."
-    prompt = f"# Explain {concept} in {language} with an example\n"
+    prompt = f"A flirty assistant explains {concept} in {language} with a simple example:\n```python\n"
     try:
-        inputs = tokenizer(prompt, return_tensors="pt", truncation=True)  # Explicit truncation
+        inputs = tokenizer(prompt, return_tensors="pt").to(
+            "cuda" if torch.cuda.is_available() else "cpu"
+        )
         outputs = model.generate(
             **inputs,
-            max_length=300,
+            max_length=400,
             do_sample=True,
             top_p=0.95,
             temperature=0.7,
@@ -102,19 +100,15 @@ def explain_concept(language, concept):
         explanation = tokenizer.decode(outputs[0], skip_special_tokens=True)
         logging.info(f"Raw explanation:\n{explanation}")
 
-        # Similar cleaning logic as generate_code
-        explanation_lines = explanation.split("\n")
-        cleaned_explanation = []
-        skip_initial_prompt = True
-        for line in explanation_lines:
-            stripped_line = line.strip()
-            if skip_initial_prompt and stripped_line.startswith("#"):
-                if stripped_line in prompt.split("\n"):
-                    continue
-                skip_initial_prompt = False
-            if len(stripped_line) > 0:
-                cleaned_explanation.append(line)
-        final_explanation = "\n".join(cleaned_explanation).strip()
+        # Extract and clean
+        explanation_block = (
+            explanation.split("```python")[-1].split("```")[0].strip()
+            if "```python" in explanation
+            else explanation
+        )
+        final_explanation = "\n".join(
+            line for line in explanation_block.split("\n") if len(line.strip()) > 0
+        )
         logging.info(f"Cleaned explanation:\n{final_explanation}")
         return final_explanation
     except Exception as e:

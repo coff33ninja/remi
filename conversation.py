@@ -1,13 +1,20 @@
-from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM
 from offline_tools import nlp, speak_response
+from apis import API_KEYS  # Import API_KEYS from apis.py
 import re
+import torch
 
-# Load DistilGPT2 for conversational AI by default
-conversation_generator = pipeline("text-generation", model="distilgpt2")
-
-# Load CodeGen 350M model for coding tasks
-tokenizer = AutoTokenizer.from_pretrained("Salesforce/codegen-350M-mono")
-model = AutoModelForCausalLM.from_pretrained("Salesforce/codegen-350M-mono")
+# Load Mistral 7B with 4-bit quantization
+model_name = "mistralai/Mistral-7B-Instruct-v0.1"  # Corrected model name
+hf_token = API_KEYS.get("huggingface")  # Get token from apis.py
+tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    load_in_4bit=True,  # 4-bit quantization to fit 6GB VRAM
+    device_map="auto",  # Auto-split between GPU and CPU
+    torch_dtype=torch.float16,  # Half-precision for efficiency
+    token=hf_token,  # Pass Hugging Face token
+)
 if tokenizer.pad_token_id is None:
     tokenizer.pad_token_id = tokenizer.eos_token_id
 
@@ -15,29 +22,33 @@ if tokenizer.pad_token_id is None:
 def recognize_intent(command):
     doc = nlp(command.lower())
     entities = {ent.label_: ent.text for ent in doc.ents}
-    verbs = [token.lemma_ for token in doc if token.pos_ == "VERB"]
     command_lower = command.lower()
 
-    if "switch to better conversational model" in command_lower:
-        return "switch_to_better_conversational_model", {}
-    elif "switch to better model" in command_lower:
+    if "switch to better model" in command_lower:
         return "switch_to_better_model", {}
 
     if " and " in command_lower or " then " in command_lower or " if " in command_lower:
         return parse_complex_command(command_lower, entities)
 
-    topic = None
-    if "error code" in command_lower or "problem" in command_lower:
-        topic = (
-            command_lower.split("about")[-1].strip()
-            if "about" in command_lower
-            else command_lower
+    # Code generation intent
+    if "code" in command_lower and (
+        "write" in command_lower or "code a script" in command_lower
+    ):
+        lang = next(
+            (
+                language
+                for language in ["cmd", "ps1", "python"]
+                if language in command_lower
+            ),
+            "python",
         )
-
-    # Consolidated code generation intent
-    if "code" in command_lower and ("write" in command_lower or "code a script" in command_lower):
-        lang = next((language for language in ["cmd", "ps1", "python"] if language in command_lower), "python")
-        task = command_lower.split(f"{lang} to")[-1].strip() if f"{lang} to" in command_lower else command_lower.replace("code a script for", "").replace("write", "").strip()
+        task = (
+            command_lower.split(f"{lang} to")[-1].strip()
+            if f"{lang} to" in command_lower
+            else command_lower.replace("code a script for", "")
+            .replace("write", "")
+            .strip()
+        )
         return "generate_code", {"language": lang, "task": task}
 
     if "feed specials from" in command_lower:
@@ -297,62 +308,31 @@ def parse_complex_command(command, entities):
 
 
 def generate_response(prompt):
-    """Generate a conversational response using the current conversational model."""
+    """Generate a flirty and helpful response using Mistral 7B."""
     try:
-        inputs = conversation_generator.tokenizer(prompt, return_tensors="pt", truncation=True)  # Explicit truncation
-        outputs = conversation_generator.model.generate(
+        full_prompt = f"A flirty and helpful assistant says: {prompt}"
+        inputs = tokenizer(full_prompt, return_tensors="pt").to(
+            "cuda" if torch.cuda.is_available() else "cpu"
+        )
+        outputs = model.generate(
             **inputs,
             max_length=200,
             do_sample=True,
             top_p=0.95,
-            temperature=0.7,
-            pad_token_id=conversation_generator.tokenizer.eos_token_id,  # Explicit pad_token_id
+            temperature=0.9,
+            pad_token_id=tokenizer.pad_token_id,
         )
-        return conversation_generator.tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
+        response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        if response.startswith(full_prompt):
+            response = response[len(full_prompt) :].strip()
+        return response
     except Exception as e:
         return f"Response generation error: {str(e)}"
 
 
-def switch_to_better_conversational_model():
-    """Switch to a larger conversational model if needed."""
-    try:
-        speak_response(
-            "Switching to a larger conversational model. This may use more resources."
-        )
-        import torch
-        if not torch.cuda.is_available():
-            speak_response("No GPU detected. Staying with the current model.")
-            return "No GPU available. Cannot switch to a larger conversational model."
-
-        # Load a larger conversational model (e.g., GPT-2)
-        global conversation_generator
-        conversation_generator = pipeline("text-generation", model="gpt2")
-        speak_response("Switched to a better conversational model successfully.")
-        return "Switched to a better conversational model successfully."
-    except Exception as e:
-        speak_response("Failed to switch conversational models.")
-        return f"Error switching conversational model: {str(e)}"
-
-
 def switch_to_better_model():
-    """Switch to a larger coding model if needed."""
-    try:
-        speak_response(
-            "Switching to a larger coding model. This may use more resources."
-        )
-        import torch
-        if not torch.cuda.is_available():
-            speak_response("No GPU detected. Staying with the current model.")
-            return "No GPU available. Cannot switch to a larger coding model."
-
-        # Load the larger coding model
-        global tokenizer, model
-        tokenizer = AutoTokenizer.from_pretrained("Salesforce/codegen-2B-mono")
-        model = AutoModelForCausalLM.from_pretrained("Salesforce/codegen-2B-mono")
-        if tokenizer.pad_token_id is None:
-            tokenizer.pad_token_id = tokenizer.eos_token_id
-        speak_response("Switched to CodeGen 2B model.")
-        return "Switched to CodeGen 2B model."
-    except Exception as e:
-        speak_response("Failed to switch coding models.")
-        return f"Error switching coding model: {str(e)}"
+    """Placeholder for future upgrades."""
+    speak_response(
+        "You're already on Mistral 7B—pretty spicy already! Need a bigger flirt?"
+    )
+    return "Currently on Mistral 7B—no better model available yet for your hardware."

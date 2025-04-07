@@ -18,6 +18,7 @@ API_KEYS = {
     "discord": os.getenv("DISCORD_BOT_TOKEN"),
     "wolframalpha": os.getenv("WOLFRAM_ALPHA_APP_ID"),
     "googlemaps": os.getenv("GOOGLE_MAPS_API_KEY"),
+    "huggingface": os.getenv("HUGGINGFACE_TOKEN"),
 }
 
 
