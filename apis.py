@@ -21,7 +21,6 @@ API_KEYS = {
     "huggingface": os.getenv("HUGGINGFACE_TOKEN"),
 }
 
-
 def validate_api_keys():
     missing_keys = [key for key, value in API_KEYS.items() if not value]
     if missing_keys:
@@ -30,7 +29,6 @@ def validate_api_keys():
         # raise EnvironmentError(f"Missing API keys: {', '.join(missing_keys)}")
 
 validate_api_keys()
-
 
 async def get_weather(city, api_key=API_KEYS["openweathermap"]):
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
@@ -46,7 +44,6 @@ async def get_weather(city, api_key=API_KEYS["openweathermap"]):
     except Exception as e:
         return f"Weather API error: {str(e)}"
 
-
 def get_news(topic, api_key=API_KEYS["newsapi"]):
     url = f"https://newsapi.org/v2/everything?q={topic}&apiKey={api_key}"
     try:
@@ -61,7 +58,6 @@ def get_news(topic, api_key=API_KEYS["newsapi"]):
     except requests.exceptions.RequestException as e:
         return f"News API error: {str(e)}"
 
-
 def translate_text(text, target_lang, api_key=API_KEYS["deepl"]):
     url = "https://api-free.deepl.com/v2/translate"
     params = {"auth_key": api_key, "text": text, "target_lang": target_lang.upper()}
@@ -70,7 +66,6 @@ def translate_text(text, target_lang, api_key=API_KEYS["deepl"]):
         return response["translations"][0]["text"]
     except Exception as e:
         return f"Translation error: {str(e)}"
-
 
 def search_images(query, api_key=API_KEYS["unsplash"]):
     url = f"https://api.unsplash.com/search/photos?query={query}&client_id={api_key}"
@@ -81,7 +76,6 @@ def search_images(query, api_key=API_KEYS["unsplash"]):
         return "No images found."
     except Exception as e:
         return f"Image search error: {str(e)}"
-
 
 def add_task(task, due=None, api_key=API_KEYS["todoist"]):
     url = "https://api.todoist.com/rest/v2/tasks"
@@ -94,7 +88,6 @@ def add_task(task, due=None, api_key=API_KEYS["todoist"]):
         return f"Task '{task}' added with ID: {response['id']}"
     except Exception as e:
         return f"Todoist error: {str(e)}"
-
 
 def create_trello_card(
     title, desc, api_key=API_KEYS["trello_key"], token=API_KEYS["trello_token"]
@@ -113,7 +106,6 @@ def create_trello_card(
     except Exception as e:
         return f"Trello error: {str(e)}"
 
-
 def send_slack_message(channel, text, api_key=API_KEYS["slack"]):
     url = "https://slack.com/api/chat.postMessage"
     headers = {"Authorization": f"Bearer {api_key}"}
@@ -123,7 +115,6 @@ def send_slack_message(channel, text, api_key=API_KEYS["slack"]):
         return "Message sent to Slack." if response["ok"] else response["error"]
     except Exception as e:
         return f"Slack error: {str(e)}"
-
 
 def send_discord_message(channel_id, text, api_key=API_KEYS["discord"]):
     url = f"https://discord.com/api/v10/channels/{channel_id}/messages"
@@ -137,14 +128,12 @@ def send_discord_message(channel_id, text, api_key=API_KEYS["discord"]):
     except Exception as e:
         return f"Discord error: {str(e)}"
 
-
 def send_whatsapp_message(phone, message):
     try:
         pywhatkit.sendwhatmsg_instantly(phone, message, wait_time=10, tab_close=True)
         return "WhatsApp message sent!"
     except Exception as e:
         return f"WhatsApp error: {str(e)}"
-
 
 def query_wolfram(query, api_key=API_KEYS["wolframalpha"]):
     url = f"http://api.wolframalpha.com/v2/query?input={query}&appid={api_key}&output=json"
@@ -157,7 +146,6 @@ def query_wolfram(query, api_key=API_KEYS["wolframalpha"]):
     except Exception as e:
         return f"Wolfram Alpha error: {str(e)}"
 
-
 def get_directions(origin, destination, api_key=API_KEYS["googlemaps"]):
     url = f"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&key={api_key}"
     try:
@@ -169,7 +157,6 @@ def get_directions(origin, destination, api_key=API_KEYS["googlemaps"]):
     except Exception as e:
         return f"Google Maps error: {str(e)}"
 
-
 def get_game_info(game):
     url = f"https://en.wikipedia.org/wiki/{game.replace(' ', '_')}"
     try:
@@ -180,10 +167,8 @@ def get_game_info(game):
     except Exception as e:
         return f"Game info error: {str(e)}"
 
-
 def get_game_news(game, api_key=API_KEYS["newsapi"]):
     return get_news(f"{game} gaming", api_key)
-
 
 def fetch_web_content(url):
     try:
@@ -193,7 +178,6 @@ def fetch_web_content(url):
         return text[:500] + "..." if len(text) > 500 else text
     except Exception as e:
         return f"Web fetch error: {str(e)}"
-
 
 def scrape_store_specials(store):
     store_urls = {

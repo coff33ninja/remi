@@ -151,6 +151,11 @@ GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 
 - SQLite databases are automatically created in the project directory.
 
+### Steps to train the model
+1. Install the required packages if not done so prior: `pip install peft transformers torch'
+2. Run the training script: `python train_lora.py`
+3. The model will be saved in the `./fine_tuned_model` directory.
+
 ---
 
 ## System Requirements

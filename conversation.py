@@ -3,17 +3,19 @@ from offline_tools import nlp, speak_response
 from apis import API_KEYS  # Import API_KEYS from apis.py
 import re
 import torch
+import os
 
 # Load Mistral 7B with 4-bit quantization
 model_name = "mistralai/Mistral-7B-Instruct-v0.1"  # Corrected model name
-hf_token = API_KEYS.get("huggingface")  # Get token from apis.py
+hf_token = API_KEYS.get("huggingface") or os.getenv("HUGGINGFACE_TOKEN")
+if not hf_token:
+    raise EnvironmentError("Hugging Face token is missing. Please set it in the .env file.")
 tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)
 model = AutoModelForCausalLM.from_pretrained(
-    model_name,
-    load_in_4bit=True,  # 4-bit quantization to fit 6GB VRAM
-    device_map="auto",  # Auto-split between GPU and CPU
-    torch_dtype=torch.float16,  # Half-precision for efficiency
-    token=hf_token,  # Pass Hugging Face token
+    "./fine_tuned_model",
+    load_in_4bit=True,
+    device_map="auto",
+    torch_dtype=torch.float16,
 )
 if tokenizer.pad_token_id is None:
     tokenizer.pad_token_id = tokenizer.eos_token_id
