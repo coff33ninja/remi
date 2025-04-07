@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from offline_tools import nlp, speak_response
 from apis import API_KEYS  # Import API_KEYS from apis.py
 import re
@@ -11,9 +11,13 @@ hf_token = API_KEYS.get("huggingface") or os.getenv("HUGGINGFACE_TOKEN")
 if not hf_token:
     raise EnvironmentError("Hugging Face token is missing. Please set it in the .env file.")
 tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)
+
+# Load Mistral 7B with 4-bit quantization
+quantization_config = BitsAndBytesConfig(load_in_4bit=True)
+
 model = AutoModelForCausalLM.from_pretrained(
     "./fine_tuned_model",
-    load_in_4bit=True,
+    quantization_config=quantization_config,
     device_map="auto",
     torch_dtype=torch.float16,
 )

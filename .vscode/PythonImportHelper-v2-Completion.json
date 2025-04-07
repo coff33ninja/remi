@@ -689,6 +689,14 @@
         "documentation": {}
     },
     {
+        "label": "BitsAndBytesConfig",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
         "label": "AutoModelForCausalLM",
         "importPath": "transformers",
         "description": "transformers",
@@ -1527,7 +1535,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"  # Corrected model name\nhf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\"Hugging Face token is missing. Please set it in the .env file.\")\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    load_in_4bit=True,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,",
+        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"  # Corrected model name\nhf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\"Hugging Face token is missing. Please set it in the .env file.\")\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\n# Load Mistral 7B with 4-bit quantization\nquantization_config = BitsAndBytesConfig(load_in_4bit=True)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1536,7 +1544,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "hf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\"Hugging Face token is missing. Please set it in the .env file.\")\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    load_in_4bit=True,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)",
+        "peekOfCode": "hf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\"Hugging Face token is missing. Please set it in the .env file.\")\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\n# Load Mistral 7B with 4-bit quantization\nquantization_config = BitsAndBytesConfig(load_in_4bit=True)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1545,7 +1553,16 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    load_in_4bit=True,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\ndef recognize_intent(command):",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\n# Load Mistral 7B with 4-bit quantization\nquantization_config = BitsAndBytesConfig(load_in_4bit=True)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\nif tokenizer.pad_token_id is None:",
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "quantization_config",
+        "kind": 5,
+        "importPath": "conversation",
+        "description": "conversation",
+        "peekOfCode": "quantization_config = BitsAndBytesConfig(load_in_4bit=True)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\ndef recognize_intent(command):",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1554,7 +1571,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    load_in_4bit=True,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\ndef recognize_intent(command):\n    doc = nlp(command.lower())",
+        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\ndef recognize_intent(command):\n    doc = nlp(command.lower())",
         "detail": "conversation",
         "documentation": {}
     },
