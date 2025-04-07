@@ -20,6 +20,8 @@ def recognize_intent(command):
 
     if "switch to better conversational model" in command_lower:
         return "switch_to_better_conversational_model", {}
+    elif "switch to better model" in command_lower:
+        return "switch_to_better_model", {}
 
     if " and " in command_lower or " then " in command_lower or " if " in command_lower:
         return parse_complex_command(command_lower, entities)
@@ -31,6 +33,12 @@ def recognize_intent(command):
             if "about" in command_lower
             else command_lower
         )
+
+    # Consolidated code generation intent
+    if "code" in command_lower and ("write" in command_lower or "code a script" in command_lower):
+        lang = next((language for language in ["cmd", "ps1", "python"] if language in command_lower), "python")
+        task = command_lower.split(f"{lang} to")[-1].strip() if f"{lang} to" in command_lower else command_lower.replace("code a script for", "").replace("write", "").strip()
+        return "generate_code", {"language": lang, "task": task}
 
     if "feed specials from" in command_lower:
         filename = command_lower.split("from")[-1].strip()
@@ -133,21 +141,6 @@ def recognize_intent(command):
         parts = command_lower.split("from")[-1].split("to")
         origin, destination = parts[0].strip(), parts[1].strip()
         return "get_directions", {"origin": origin, "destination": destination}
-    elif "code" in command_lower and "write" in command_lower:
-        lang = next(
-            (
-                language
-                for language in ["cmd", "ps1", "python"]
-                if language in command_lower
-            ),
-            "python",
-        )
-        task = command_lower.split(f"{lang} to")[-1].strip()
-        return "generate_code", {"language": lang, "task": task}
-    elif "code" in command_lower and ("write" in command_lower or "code a script" in command_lower):
-        lang = next((language for language in ["cmd", "ps1", "python"] if language in command_lower), "python")
-        task = command_lower.split(f"{lang} to")[-1].strip() if f"{lang} to" in command_lower else command_lower.replace("code a script for", "").strip()
-        return "generate_code", {"language": lang, "task": task}
     elif "run" in command_lower or "execute" in command_lower:
         lang = next(
             (
@@ -291,8 +284,6 @@ def recognize_intent(command):
         return "get_research", {"topic": topic}
     elif "tell me about myself" in command_lower or "analyze me" in command_lower:
         return "analyze_personality", {}
-    elif "switch to better model" in command_lower:
-        return "switch_to_better_model", {}
     else:
         return "generate_response", {"prompt": command}
 

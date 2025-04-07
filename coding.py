@@ -8,7 +8,7 @@ ALLOWED_LANGUAGES = ["cmd", "ps1", "python"]
 def generate_code(language, task):
     if language not in ALLOWED_LANGUAGES:
         return f"Sorry, I only support {', '.join(ALLOWED_LANGUAGES)}."
-    prompt = f"# {language} script to {task}\n"
+    prompt = f"# {language} script to {task}\n# Include error handling and comments\n"
     try:
         inputs = tokenizer(prompt, return_tensors="pt", truncation=True)
         outputs = model.generate(
@@ -64,12 +64,23 @@ def execute_code(language, code):
 def explain_concept(language, concept):
     if language not in ALLOWED_LANGUAGES:
         return f"Sorry, I only explain {', '.join(ALLOWED_LANGUAGES)}."
-    prompt = f"Explain {concept} in {language} with an example"
+    prompt = f"# Explain {concept} in {language} with an example\n"
     try:
-        explanation = generator(prompt, max_length=150, num_return_sequences=1)[0][
-            "generated_text"
-        ]
-        return explanation.strip()
+        inputs = tokenizer(prompt, return_tensors="pt", truncation=True)
+        outputs = model.generate(
+            **inputs,
+            max_length=300,
+            do_sample=True,
+            top_p=0.95,
+            temperature=0.7,
+            pad_token_id=tokenizer.pad_token_id,
+        )
+        explanation = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        explanation_lines = explanation.split("\n")
+        cleaned_explanation = "\n".join(
+            line for line in explanation_lines if not line.strip().startswith("#") and len(line.strip()) > 0
+        )
+        return cleaned_explanation.strip()
     except Exception as e:
         return f"Explanation error: {str(e)}"
 
