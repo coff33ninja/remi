@@ -1446,7 +1446,7 @@
         "kind": 2,
         "importPath": "coding",
         "description": "coding",
-        "peekOfCode": "def execute_code(language, code):\n    if language not in ALLOWED_LANGUAGES:\n        return f\"Unsupported language: {language}\"\n    extension = {\"cmd\": \".bat\", \"ps1\": \".ps1\", \"python\": \".py\"}[language]\n    filename = f\"temp_script{extension}\"\n    try:\n        with open(filename, \"w\") as f:\n            f.write(code)\n        if language == \"cmd\":\n            result = subprocess.run(",
+        "peekOfCode": "def execute_code(language, code):\n    \"\"\"\n    Execute the provided code in the specified language.\n    Args:\n        language (str): Programming language of the code\n        code (str): Code to execute\n    Returns:\n        str: Execution output or error message\n    \"\"\"\n    if language not in ALLOWED_LANGUAGES:",
         "detail": "coding",
         "documentation": {}
     },
@@ -1455,7 +1455,7 @@
         "kind": 2,
         "importPath": "coding",
         "description": "coding",
-        "peekOfCode": "def explain_concept(language, concept):\n    if language not in ALLOWED_LANGUAGES:\n        return f\"Sorry, I only explain {', '.join(ALLOWED_LANGUAGES)}.\"\n    prompt = f\"A flirty assistant explains {concept} in {language} with a simple example:\\n```python\\n\"\n    try:\n        inputs = tokenizer(prompt, return_tensors=\"pt\").to(\n            \"cuda\" if torch.cuda.is_available() else \"cpu\"\n        )\n        outputs = model.generate(\n            **inputs,",
+        "peekOfCode": "def explain_concept(language, concept):\n    \"\"\"\n    Explain a programming concept in the specified language with an example.\n    Args:\n        language (str): Programming language to use\n        concept (str): Concept to explain\n    Returns:\n        str: Explanation or error message\n    \"\"\"\n    if language not in ALLOWED_LANGUAGES:",
         "detail": "coding",
         "documentation": {}
     },
@@ -1464,7 +1464,7 @@
         "kind": 2,
         "importPath": "coding",
         "description": "coding",
-        "peekOfCode": "def save_command(name, language=None, code=None):\n    if language and code:\n        save_command_to_db(name, language, code)\n        return f\"Command '{name}' saved!\"\n    return \"No code to save yet.\"",
+        "peekOfCode": "def save_command(name, language=None, code=None):\n    \"\"\"\n    Save a generated code snippet to the database.\n    Args:\n        name (str): Name to save the command under\n        language (str, optional): Programming language of the code\n        code (str, optional): Code to save\n    Returns:\n        str: Success or error message\n    \"\"\"",
         "detail": "coding",
         "documentation": {}
     },
@@ -1473,7 +1473,7 @@
         "kind": 5,
         "importPath": "coding",
         "description": "coding",
-        "peekOfCode": "ALLOWED_LANGUAGES = [\"cmd\", \"ps1\", \"python\"]\ndef generate_code(language, task):\n    \"\"\"\n    Generate code in the specified language based on the task description.\n    Args:\n        language (str): Programming language to generate code in (must be in ALLOWED_LANGUAGES)\n        task (str): Description of what the code should do\n    Returns:\n        str: Generated code or error message\n    \"\"\"",
+        "peekOfCode": "ALLOWED_LANGUAGES = [\"cmd\", \"ps1\", \"python\"]\nif model is None or tokenizer is None:\n    raise RuntimeError(\"Model or tokenizer not loaded from conversation.py\")\ndef generate_code(language, task):\n    \"\"\"\n    Generate code in the specified language based on the task description.\n    Args:\n        language (str): Programming language to generate code in (must be in ALLOWED_LANGUAGES)\n        task (str): Description of what the code should do\n    Returns:",
         "detail": "coding",
         "documentation": {}
     },
