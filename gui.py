@@ -10,6 +10,7 @@ pygame.init()
 # Screen dimensions
 SCREEN_WIDTH, SCREEN_HEIGHT = 900, 700
 FONT_SIZE = 24
+CODE_FONT_SIZE = 20
 
 # Modern Colors
 BG_COLOR = (245, 245, 247)  # Light gray
@@ -17,6 +18,9 @@ TEXT_COLOR = (33, 33, 33)  # Dark gray
 ACCENT_COLOR = (52, 152, 219)  # Blue
 SECONDARY_COLOR = (149, 165, 166)  # Muted teal
 CARD_COLOR = (255, 255, 255)  # White
+USER_COLOR = (52, 152, 219)  # Blue for user messages
+AI_COLOR = (44, 62, 80)  # Darker gray for AI messages
+CODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks
 
 # Initialize screen
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -25,6 +29,7 @@ pygame.display.set_caption("AI Assistant")
 # Fonts
 font = pygame.font.Font(None, FONT_SIZE)
 title_font = pygame.font.Font(None, 36)
+code_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code
 
 # Input and output queues
 input_queue = queue.Queue()
@@ -34,10 +39,12 @@ output_queue = queue.Queue()
 input_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)
 input_text = ""
 input_active = False
-max_input_lines = 2  # Limit to 2 lines for simplicity
+max_input_lines = 2
+placeholder_text = "Type your command..."
 
 # Chat history
 chat_history = []
+chat_scroll_offset = 0  # For scrolling
 
 # Toggle switches
 tts_enabled = False
@@ -118,13 +125,15 @@ def draw_hints(surface):
 
 
 # Split text into lines based on width
-def wrap_text(text, font, max_width):
+def wrap_text(text, font, max_width, is_code=False):
+    if not text:
+        return [""]
     words = text.split(" ")
     lines = []
     current_line = ""
     for word in words:
         test_line = current_line + (" " if current_line else "") + word
-        if font.size(test_line)[0] <= max_width:
+        if (code_font if is_code else font).size(test_line)[0] <= max_width:
             current_line = test_line
         else:
             if current_line:
@@ -132,7 +141,7 @@ def wrap_text(text, font, max_width):
             current_line = word
     if current_line:
         lines.append(current_line)
-    return lines[:max_input_lines]  # Limit to max lines
+    return lines
 
 
 # Main loop
@@ -150,17 +159,42 @@ while running:
     pygame.draw.rect(screen, CARD_COLOR, chat_rect, border_radius=10)
     pygame.draw.rect(screen, SECONDARY_COLOR, chat_rect, 1, border_radius=10)
 
-    # Draw chat history
-    y_offset = 90
-    for message in chat_history[-15:]:
-        if y_offset + FONT_SIZE + 10 < chat_rect.bottom:
-            text_surface = font.render(message, True, TEXT_COLOR)
-            text_rect = text_surface.get_rect(topleft=(chat_rect.x + 10, y_offset))
-            pygame.draw.rect(
-                screen, CARD_COLOR, text_rect.inflate(10, 5), border_radius=5
-            )
-            screen.blit(text_surface, text_rect.topleft)
-            y_offset += FONT_SIZE + 15
+    # Draw chat history with scrolling
+    y_offset = chat_rect.y + 10 + chat_scroll_offset
+    for message in chat_history:
+        is_user = message.startswith("You:")
+        is_code = "\n" in message and "AI:" in message  # Simple heuristic for code
+        text = message[4:] if is_user else message[3:]  # Remove "You:" or "AI:"
+        color = USER_COLOR if is_user else AI_COLOR
+        font_to_use = code_font if is_code else font
+        wrapped_lines = wrap_text(text, font_to_use, chat_rect.width - 20, is_code)
+
+        # Calculate total height of message
+        line_height = CODE_FONT_SIZE + 5 if is_code else FONT_SIZE + 5
+        message_height = len(wrapped_lines) * line_height
+
+        if y_offset + message_height >= chat_rect.y and y_offset <= chat_rect.bottom:
+            for i, line in enumerate(wrapped_lines):
+                text_surface = font_to_use.render(line, True, color)
+                x_pos = (
+                    chat_rect.x + 10
+                    if is_user
+                    else chat_rect.x + chat_rect.width - text_surface.get_width() - 10
+                )
+                if is_code:
+                    pygame.draw.rect(
+                        screen,
+                        CODE_BG_COLOR,
+                        (
+                            x_pos - 5,
+                            y_offset + i * line_height - 2,
+                            text_surface.get_width() + 10,
+                            line_height,
+                        ),
+                        border_radius=5,
+                    )
+                screen.blit(text_surface, (x_pos, y_offset + i * line_height))
+        y_offset += message_height
 
     # Draw input box
     pygame.draw.rect(screen, CARD_COLOR, input_box, border_radius=10)
@@ -172,19 +206,23 @@ while running:
         border_radius=10,
     )
 
-    # Wrap and render input text
-    wrapped_lines = wrap_text(input_text, font, input_box.width - 20)  # 20 for padding
-    for i, line in enumerate(wrapped_lines):
-        text_surface = font.render(line, True, TEXT_COLOR)
-        screen.blit(
-            text_surface, (input_box.x + 10, input_box.y + 5 + i * (FONT_SIZE + 5))
-        )
+    # Draw input text or placeholder
+    if input_text:
+        wrapped_lines = wrap_text(input_text, font, input_box.width - 20)
+        for i, line in enumerate(wrapped_lines[:max_input_lines]):
+            text_surface = font.render(line, True, TEXT_COLOR)
+            screen.blit(
+                text_surface, (input_box.x + 10, input_box.y + 5 + i * (FONT_SIZE + 5))
+            )
+    else:
+        placeholder_surface = font.render(placeholder_text, True, SECONDARY_COLOR)
+        screen.blit(placeholder_surface, (input_box.x + 10, input_box.y + 5))
 
     # Draw toggle switches
     draw_switch(screen, tts_switch, tts_enabled, "Text-to-Speech")
     draw_switch(screen, stt_switch, stt_enabled, "Speech-to-Text")
 
-    # Draw hints button (question mark)
+    # Draw hints button
     pygame.draw.circle(screen, ACCENT_COLOR, hints_button.center, 15)
     question_mark = font.render("?", True, CARD_COLOR)
     screen.blit(question_mark, question_mark.get_rect(center=hints_button.center))
@@ -230,7 +268,6 @@ while running:
                     if input_text:
                         input_text = input_text[:-1]
                 else:
-                    # Only add character if it fits within max lines
                     test_text = input_text + event.unicode
                     if (
                         len(wrap_text(test_text, font, input_box.width - 20))
@@ -240,6 +277,23 @@ while running:
             elif event.key == pygame.K_v and stt_enabled and not input_active:
                 chat_history.append("Listening for voice command...")
                 input_queue.put("voice_command")
+        elif event.type == pygame.MOUSEWHEEL:
+            chat_scroll_offset += event.y * 20  # Scroll speed
+            chat_scroll_offset = min(chat_scroll_offset, 0)  # Don't scroll above top
+            # Limit scrolling down based on content height
+            total_height = sum(
+                len(
+                    wrap_text(
+                        msg[4:] if msg.startswith("You:") else msg[3:],
+                        code_font if "\n" in msg else font,
+                        chat_rect.width - 20,
+                    )
+                )
+                * (CODE_FONT_SIZE + 5 if "\n" in msg else FONT_SIZE + 5)
+                for msg in chat_history
+            )
+            max_offset = max(0, chat_rect.height - total_height - 20)
+            chat_scroll_offset = max(chat_scroll_offset, max_offset)
 
     # Update display
     pygame.display.flip()

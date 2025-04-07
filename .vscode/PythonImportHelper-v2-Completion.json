@@ -1616,7 +1616,7 @@
         "kind": 2,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "def wrap_text(text, font, max_width):\n    words = text.split(\" \")\n    lines = []\n    current_line = \"\"\n    for word in words:\n        test_line = current_line + (\" \" if current_line else \"\") + word\n        if font.size(test_line)[0] <= max_width:\n            current_line = test_line\n        else:\n            if current_line:",
+        "peekOfCode": "def wrap_text(text, font, max_width, is_code=False):\n    if not text:\n        return [\"\"]\n    words = text.split(\" \")\n    lines = []\n    current_line = \"\"\n    for word in words:\n        test_line = current_line + (\" \" if current_line else \"\") + word\n        if (code_font if is_code else font).size(test_line)[0] <= max_width:\n            current_line = test_line",
         "detail": "gui",
         "documentation": {}
     },
@@ -1625,7 +1625,16 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "FONT_SIZE = 24\n# Modern Colors\nBG_COLOR = (245, 245, 247)  # Light gray\nTEXT_COLOR = (33, 33, 33)  # Dark gray\nACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")",
+        "peekOfCode": "FONT_SIZE = 24\nCODE_FONT_SIZE = 20\n# Modern Colors\nBG_COLOR = (245, 245, 247)  # Light gray\nTEXT_COLOR = (33, 33, 33)  # Dark gray\nACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "CODE_FONT_SIZE",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "CODE_FONT_SIZE = 20\n# Modern Colors\nBG_COLOR = (245, 245, 247)  # Light gray\nTEXT_COLOR = (33, 33, 33)  # Dark gray\nACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks",
         "detail": "gui",
         "documentation": {}
     },
@@ -1634,7 +1643,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "BG_COLOR = (245, 245, 247)  # Light gray\nTEXT_COLOR = (33, 33, 33)  # Dark gray\nACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)",
+        "peekOfCode": "BG_COLOR = (245, 245, 247)  # Light gray\nTEXT_COLOR = (33, 33, 33)  # Dark gray\nACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))",
         "detail": "gui",
         "documentation": {}
     },
@@ -1643,7 +1652,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "TEXT_COLOR = (33, 33, 33)  # Dark gray\nACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)",
+        "peekOfCode": "TEXT_COLOR = (33, 33, 33)  # Dark gray\nACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")",
         "detail": "gui",
         "documentation": {}
     },
@@ -1652,7 +1661,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "ACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\n# Input and output queues",
+        "peekOfCode": "ACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts",
         "detail": "gui",
         "documentation": {}
     },
@@ -1661,7 +1670,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "SECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\n# Input and output queues\ninput_queue = queue.Queue()",
+        "peekOfCode": "SECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)",
         "detail": "gui",
         "documentation": {}
     },
@@ -1670,7 +1679,34 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "CARD_COLOR = (255, 255, 255)  # White\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()",
+        "peekOfCode": "CARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "USER_COLOR",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "USER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\ncode_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "AI_COLOR",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "AI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\ncode_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code\n# Input and output queues",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "CODE_BG_COLOR",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "CODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\ncode_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code\n# Input and output queues\ninput_queue = queue.Queue()",
         "detail": "gui",
         "documentation": {}
     },
@@ -1679,7 +1715,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)",
+        "peekOfCode": "screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\ncode_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box",
         "detail": "gui",
         "documentation": {}
     },
@@ -1688,7 +1724,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "font = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2  # Limit to 2 lines for simplicity",
+        "peekOfCode": "font = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\ncode_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False",
         "detail": "gui",
         "documentation": {}
     },
@@ -1697,7 +1733,16 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "title_font = pygame.font.Font(None, 36)\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2  # Limit to 2 lines for simplicity\n# Chat history",
+        "peekOfCode": "title_font = pygame.font.Font(None, 36)\ncode_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "code_font",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "code_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"",
         "detail": "gui",
         "documentation": {}
     },
@@ -1706,7 +1751,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "input_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2  # Limit to 2 lines for simplicity\n# Chat history\nchat_history = []\n# Toggle switches",
+        "peekOfCode": "input_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history\nchat_history = []",
         "detail": "gui",
         "documentation": {}
     },
@@ -1715,7 +1760,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "output_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2  # Limit to 2 lines for simplicity\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False",
+        "peekOfCode": "output_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history\nchat_history = []\nchat_scroll_offset = 0  # For scrolling",
         "detail": "gui",
         "documentation": {}
     },
@@ -1724,7 +1769,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "input_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2  # Limit to 2 lines for simplicity\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40",
+        "peekOfCode": "input_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\n# Toggle switches\ntts_enabled = False",
         "detail": "gui",
         "documentation": {}
     },
@@ -1733,7 +1778,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "input_text = \"\"\ninput_active = False\nmax_input_lines = 2  # Limit to 2 lines for simplicity\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)",
+        "peekOfCode": "input_text = \"\"\ninput_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\n# Toggle switches\ntts_enabled = False\nstt_enabled = False",
         "detail": "gui",
         "documentation": {}
     },
@@ -1742,7 +1787,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "input_active = False\nmax_input_lines = 2  # Limit to 2 lines for simplicity\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)",
+        "peekOfCode": "input_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40",
         "detail": "gui",
         "documentation": {}
     },
@@ -1751,7 +1796,16 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "max_input_lines = 2  # Limit to 2 lines for simplicity\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)\n# Hints section",
+        "peekOfCode": "max_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "placeholder_text",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "placeholder_text = \"Type your command...\"\n# Chat history\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)",
         "detail": "gui",
         "documentation": {}
     },
@@ -1760,7 +1814,16 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "chat_history = []\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)\n# Hints section\nhints_button = pygame.Rect(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50, 30, 30)\nhints_visible = False",
+        "peekOfCode": "chat_history = []\nchat_scroll_offset = 0  # For scrolling\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)\n# Hints section\nhints_button = pygame.Rect(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50, 30, 30)",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "chat_scroll_offset",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "chat_scroll_offset = 0  # For scrolling\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)\n# Hints section\nhints_button = pygame.Rect(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50, 30, 30)\nhints_visible = False",
         "detail": "gui",
         "documentation": {}
     },
