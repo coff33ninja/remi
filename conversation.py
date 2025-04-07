@@ -2,7 +2,10 @@ from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
 from offline_tools import nlp, speak_response
 import re
 
-# Load CodeGen 350M model by default
+# Load DistilGPT2 for conversational AI by default
+conversation_generator = pipeline("text-generation", model="distilgpt2")
+
+# Load CodeGen 350M model for coding tasks
 tokenizer = AutoTokenizer.from_pretrained("Salesforce/codegen-350M-mono")
 model = AutoModelForCausalLM.from_pretrained("Salesforce/codegen-350M-mono")
 if tokenizer.pad_token_id is None:
@@ -14,6 +17,9 @@ def recognize_intent(command):
     entities = {ent.label_: ent.text for ent in doc.ents}
     verbs = [token.lemma_ for token in doc if token.pos_ == "VERB"]
     command_lower = command.lower()
+
+    if "switch to better conversational model" in command_lower:
+        return "switch_to_better_conversational_model", {}
 
     if " and " in command_lower or " then " in command_lower or " if " in command_lower:
         return parse_complex_command(command_lower, entities)
@@ -300,33 +306,47 @@ def parse_complex_command(command, entities):
 
 
 def generate_response(prompt):
+    """Generate a conversational response using the current conversational model."""
     try:
-        inputs = tokenizer(prompt, return_tensors="pt", truncation=True)
-        outputs = model.generate(
-            **inputs,
-            max_length=200,  # Adjust as needed
-            do_sample=True,  # Enable sampling for varied output
-            top_p=0.95,  # Nucleus sampling for better coherence
-            temperature=0.7,  # Control randomness
-            pad_token_id=tokenizer.pad_token_id,
-        )
-        return tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
+        response = conversation_generator(prompt, max_length=200, do_sample=True, top_p=0.95, temperature=0.7)
+        return response[0]["generated_text"].strip()
     except Exception as e:
         return f"Response generation error: {str(e)}"
 
 
-def switch_to_better_model():
-    """Switch to a larger model if needed."""
+def switch_to_better_conversational_model():
+    """Switch to a larger conversational model if needed."""
     try:
         speak_response(
-            "Switching to a larger model. This may use more resources."
+            "Switching to a larger conversational model. This may use more resources."
         )
         import torch
         if not torch.cuda.is_available():
             speak_response("No GPU detected. Staying with the current model.")
-            return "No GPU available. Cannot switch to a larger model."
+            return "No GPU available. Cannot switch to a larger conversational model."
 
-        # Load the larger model
+        # Load a larger conversational model (e.g., GPT-2)
+        global conversation_generator
+        conversation_generator = pipeline("text-generation", model="gpt2")
+        speak_response("Switched to a better conversational model successfully.")
+        return "Switched to a better conversational model successfully."
+    except Exception as e:
+        speak_response("Failed to switch conversational models.")
+        return f"Error switching conversational model: {str(e)}"
+
+
+def switch_to_better_model():
+    """Switch to a larger coding model if needed."""
+    try:
+        speak_response(
+            "Switching to a larger coding model. This may use more resources."
+        )
+        import torch
+        if not torch.cuda.is_available():
+            speak_response("No GPU detected. Staying with the current model.")
+            return "No GPU available. Cannot switch to a larger coding model."
+
+        # Load the larger coding model
         global tokenizer, model
         tokenizer = AutoTokenizer.from_pretrained("Salesforce/codegen-2B-mono")
         model = AutoModelForCausalLM.from_pretrained("Salesforce/codegen-2B-mono")
@@ -335,5 +355,5 @@ def switch_to_better_model():
         speak_response("Switched to CodeGen 2B model.")
         return "Switched to CodeGen 2B model."
     except Exception as e:
-        speak_response("Failed to switch models.")
-        return f"Error switching model: {str(e)}"
+        speak_response("Failed to switch coding models.")
+        return f"Error switching coding model: {str(e)}"

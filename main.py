@@ -54,7 +54,7 @@ from offline_tools import (
     get_db,
     databases,
 )
-from conversation import recognize_intent, generate_response, switch_to_better_model
+from conversation import recognize_intent, generate_response, switch_to_better_model, switch_to_better_conversational_model
 from coding import generate_code, execute_code, explain_concept, save_command
 from calculations import calculate
 
@@ -114,6 +114,7 @@ tools = {
     "complex_if": lambda condition, action: handle_complex_if(condition, action),
     "complex_chain": lambda commands: handle_complex_chain(commands),
     "switch_to_better_model": switch_to_better_model,
+    "switch_to_better_conversational_model": switch_to_better_conversational_model,
 }
 
 last_generated_code = {}
