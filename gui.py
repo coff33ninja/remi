@@ -34,6 +34,7 @@ output_queue = queue.Queue()
 input_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)
 input_text = ""
 input_active = False
+max_input_lines = 2  # Limit to 2 lines for simplicity
 
 # Chat history
 chat_history = []
@@ -59,7 +60,7 @@ hints_text = [
     "- Search images",
     "- Manage tasks/contacts",
     "- System controls (volume, apps)",
-    "- Ask 'V' for voice input (STT on)",
+    "- Press 'V' for voice input (STT on, not in text area)",
 ]
 
 
@@ -116,6 +117,24 @@ def draw_hints(surface):
             y_offset += FONT_SIZE + 5
 
 
+# Split text into lines based on width
+def wrap_text(text, font, max_width):
+    words = text.split(" ")
+    lines = []
+    current_line = ""
+    for word in words:
+        test_line = current_line + (" " if current_line else "") + word
+        if font.size(test_line)[0] <= max_width:
+            current_line = test_line
+        else:
+            if current_line:
+                lines.append(current_line)
+            current_line = word
+    if current_line:
+        lines.append(current_line)
+    return lines[:max_input_lines]  # Limit to max lines
+
+
 # Main loop
 clock = pygame.time.Clock()
 running = True
@@ -152,8 +171,14 @@ while running:
         2,
         border_radius=10,
     )
-    text_surface = font.render(input_text, True, TEXT_COLOR)
-    screen.blit(text_surface, (input_box.x + 10, input_box.y + 15))
+
+    # Wrap and render input text
+    wrapped_lines = wrap_text(input_text, font, input_box.width - 20)  # 20 for padding
+    for i, line in enumerate(wrapped_lines):
+        text_surface = font.render(line, True, TEXT_COLOR)
+        screen.blit(
+            text_surface, (input_box.x + 10, input_box.y + 5 + i * (FONT_SIZE + 5))
+        )
 
     # Draw toggle switches
     draw_switch(screen, tts_switch, tts_enabled, "Text-to-Speech")
@@ -202,10 +227,17 @@ while running:
                         input_queue.put(input_text)
                         input_text = ""
                 elif event.key == pygame.K_BACKSPACE:
-                    input_text = input_text[:-1]
+                    if input_text:
+                        input_text = input_text[:-1]
                 else:
-                    input_text += event.unicode
-            elif event.key == pygame.K_v and stt_enabled:
+                    # Only add character if it fits within max lines
+                    test_text = input_text + event.unicode
+                    if (
+                        len(wrap_text(test_text, font, input_box.width - 20))
+                        <= max_input_lines
+                    ):
+                        input_text = test_text
+            elif event.key == pygame.K_v and stt_enabled and not input_active:
                 chat_history.append("Listening for voice command...")
                 input_queue.put("voice_command")
 

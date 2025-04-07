@@ -1607,7 +1607,16 @@
         "kind": 2,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "def draw_hints(surface):\n    if hints_visible:\n        pygame.draw.rect(surface, CARD_COLOR, hints_rect, border_radius=10)\n        pygame.draw.rect(surface, SECONDARY_COLOR, hints_rect, 1, border_radius=10)\n        y_offset = hints_rect.y + 10\n        for line in hints_text:\n            text_surface = font.render(line, True, TEXT_COLOR)\n            surface.blit(text_surface, (hints_rect.x + 10, y_offset))\n            y_offset += FONT_SIZE + 5\n# Main loop",
+        "peekOfCode": "def draw_hints(surface):\n    if hints_visible:\n        pygame.draw.rect(surface, CARD_COLOR, hints_rect, border_radius=10)\n        pygame.draw.rect(surface, SECONDARY_COLOR, hints_rect, 1, border_radius=10)\n        y_offset = hints_rect.y + 10\n        for line in hints_text:\n            text_surface = font.render(line, True, TEXT_COLOR)\n            surface.blit(text_surface, (hints_rect.x + 10, y_offset))\n            y_offset += FONT_SIZE + 5\n# Split text into lines based on width",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "wrap_text",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def wrap_text(text, font, max_width):\n    words = text.split(\" \")\n    lines = []\n    current_line = \"\"\n    for word in words:\n        test_line = current_line + (\" \" if current_line else \"\") + word\n        if font.size(test_line)[0] <= max_width:\n            current_line = test_line\n        else:\n            if current_line:",
         "detail": "gui",
         "documentation": {}
     },
@@ -1679,7 +1688,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "font = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\n# Chat history",
+        "peekOfCode": "font = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2  # Limit to 2 lines for simplicity",
         "detail": "gui",
         "documentation": {}
     },
@@ -1688,7 +1697,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "title_font = pygame.font.Font(None, 36)\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\n# Chat history\nchat_history = []",
+        "peekOfCode": "title_font = pygame.font.Font(None, 36)\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2  # Limit to 2 lines for simplicity\n# Chat history",
         "detail": "gui",
         "documentation": {}
     },
@@ -1697,7 +1706,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "input_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False",
+        "peekOfCode": "input_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2  # Limit to 2 lines for simplicity\n# Chat history\nchat_history = []\n# Toggle switches",
         "detail": "gui",
         "documentation": {}
     },
@@ -1706,7 +1715,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "output_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False\nstt_enabled = False",
+        "peekOfCode": "output_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2  # Limit to 2 lines for simplicity\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False",
         "detail": "gui",
         "documentation": {}
     },
@@ -1715,7 +1724,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "input_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)",
+        "peekOfCode": "input_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2  # Limit to 2 lines for simplicity\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40",
         "detail": "gui",
         "documentation": {}
     },
@@ -1724,7 +1733,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "input_text = \"\"\ninput_active = False\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)",
+        "peekOfCode": "input_text = \"\"\ninput_active = False\nmax_input_lines = 2  # Limit to 2 lines for simplicity\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)",
         "detail": "gui",
         "documentation": {}
     },
@@ -1733,7 +1742,16 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "input_active = False\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)\n# Hints section",
+        "peekOfCode": "input_active = False\nmax_input_lines = 2  # Limit to 2 lines for simplicity\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "max_input_lines",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "max_input_lines = 2  # Limit to 2 lines for simplicity\n# Chat history\nchat_history = []\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)\n# Hints section",
         "detail": "gui",
         "documentation": {}
     },
