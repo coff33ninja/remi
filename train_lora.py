@@ -8,6 +8,8 @@ from transformers import (
 from peft import LoraConfig, get_peft_model
 import torch
 import os
+import re
+
 
 
 # Comprehensive text cleaning function
@@ -48,47 +50,40 @@ def clean_text(text):
         "Iâ€™d": "I'd",
         "Iâ€™ve": "I've",
         "sheâ€™ll": "she'll",
-        "heâ€™ll": "he'll",  # Adding just in case
-        "weâ€™ll": "we'll",  # Adding just in case
-        "theyâ€™ll": "they'll",  # Adding just in case
+        "heâ€™ll": "he'll",
+        "weâ€™ll": "we'll",
+        "theyâ€™ll": "they'll",
+        "shouldnâ€™t": "shouldn't",
+        "couldnâ€™t": "couldn't",
+        "didnâ€™t": "didn't",
+        "doesnâ€™t": "doesn't",
+        "youâ€™d": "you'd",
+        "youâ€™ll": "you'll",
     }
+    # Apply contractions to the full dataset first
     with open("dataset.txt", "r") as f:
         data = f.read()
     for old, new in contractions.items():
         if old in data:
             print(f"Found {old} -> {new}")
-            data = data.replace(old, new)
-    text = data
-    # Remove extra spaces
-    text = " ".join(text.split())
-    # Remove leading/trailing spaces
-    text = text.strip()
-    # Remove newlines
-    text = text.replace("\n", " ")
-    # Remove multiple spaces
-    text = " ".join(text.split())
-    # Remove non-ASCII characters
-    text = "".join(c for c in text if ord(c) < 128)
-    # Remove URLs
-    text = text.replace("http://", "").replace("https://", "")
-    # Remove email addresses
-    text = text.replace("@", "")
-    # Remove special characters
-    text = "".join(c for c in text if c.isalnum() or c.isspace())
-    # Remove extra punctuation
-    text = " ".join(text.split())
-    # Remove leading/trailing spaces
-    text = text.strip()
-    # Remove extra spaces
-    text = " ".join(text.split())
-    # Remove multiple spaces
-    text = " ".join(text.split())
-    # Remove newlines
-    text = text.replace("\n", " ")
+        text = text.replace(old, new)
 
-    # Optional: Convert "you're" to "your" before nouns (uncomment if needed)
+    # Additional cleanup (keep this, but apply to text directly)
+    text = " ".join(text.split())  # Normalize spaces
+    text = text.strip()  # Remove leading/trailing spaces
+    text = text.replace("\n", " ")  # Replace newlines
+    text = "".join(c for c in text if ord(c) < 128)  # Remove non-ASCII
+    text = re.sub(r"http[s]?://\S+", "", text)  # Remove URLs properly
+    text = re.sub(r"\S+@\S+", "", text)  # Remove emails properly
+    text = "".join(
+        c for c in text if c.isalnum() or c.isspace() or c in "'-"
+    )  # Keep apostrophes and dashes
+    text = " ".join(text.split())  # Final space normalization
+
+    # Optional: Fix "you're" to "your" before nouns
     import re
-    text = re.sub(r"you're\s+(\w+)", r"your \1", text)  # e.g., "you're day" -> "your day"
+
+    text = re.sub(r"you're\s+(\w+)", r"your \1", text)
 
     return text
 
