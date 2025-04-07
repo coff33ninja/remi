@@ -2220,7 +2220,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "outputs = [e[1] for e in examples]\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\nif len(inputs) != len(outputs):\n    raise ValueError(\n        f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\"\n    )\n# Combine inputs and outputs\ncombined_texts = [\n    f\"<s>[INST] {inp} [/INST] {out}</s>\" for inp, out in zip(inputs, outputs)",
+        "peekOfCode": "outputs = [e[1] for e in examples]\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\nif len(inputs) != len(outputs):\n    raise ValueError(\n        f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\"\n    )\n# Combine inputs and outputs\ncombined_texts = [\n    f\"[INST] {inp} [/INST] {out}</s>\" for inp, out in zip(inputs, outputs)",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2229,7 +2229,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "combined_texts = [\n    f\"<s>[INST] {inp} [/INST] {out}</s>\" for inp, out in zip(inputs, outputs)\n]\n# Tokenize with right-side padding\nencodings = tokenizer(\n    combined_texts, truncation=True, padding=True, max_length=512, return_tensors=\"pt\"\n)\ninput_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()",
+        "peekOfCode": "combined_texts = [\n    f\"[INST] {inp} [/INST] {out}</s>\" for inp, out in zip(inputs, outputs)\n]\n# Tokenize with right-side padding\nencodings = tokenizer(\n    combined_texts, truncation=True, padding=True, max_length=512, return_tensors=\"pt\"\n)\ninput_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()",
         "detail": "train_lora",
         "documentation": {}
     },

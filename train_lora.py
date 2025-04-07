@@ -62,7 +62,7 @@ if len(inputs) != len(outputs):
 
 # Combine inputs and outputs
 combined_texts = [
-    f"<s>[INST] {inp} [/INST] {out}</s>" for inp, out in zip(inputs, outputs)
+    f"[INST] {inp} [/INST] {out}</s>" for inp, out in zip(inputs, outputs)
 ]
 
 # Tokenize with right-side padding
