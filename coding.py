@@ -16,6 +16,16 @@ ALLOWED_LANGUAGES = ["cmd", "ps1", "python"]
 
 
 def generate_code(language, task):
+    """
+    Generate code in the specified language based on the task description.
+    
+    Args:
+        language (str): Programming language to generate code in (must be in ALLOWED_LANGUAGES)
+        task (str): Description of what the code should do
+        
+    Returns:
+        str: Generated code or error message
+    """
     if language not in ALLOWED_LANGUAGES:
         return f"Sorry, I only support {', '.join(ALLOWED_LANGUAGES)}."
     prompt = f"A helpful assistant writes a {language} script to {task} with detailed comments and error handling:\n```python\n"

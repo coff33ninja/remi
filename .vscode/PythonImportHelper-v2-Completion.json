@@ -1437,7 +1437,7 @@
         "kind": 2,
         "importPath": "coding",
         "description": "coding",
-        "peekOfCode": "def generate_code(language, task):\n    if language not in ALLOWED_LANGUAGES:\n        return f\"Sorry, I only support {', '.join(ALLOWED_LANGUAGES)}.\"\n    prompt = f\"A helpful assistant writes a {language} script to {task} with detailed comments and error handling:\\n```python\\n\"\n    try:\n        inputs = tokenizer(prompt, return_tensors=\"pt\").to(\n            \"cuda\" if torch.cuda.is_available() else \"cpu\"\n        )\n        outputs = model.generate(\n            **inputs,",
+        "peekOfCode": "def generate_code(language, task):\n    \"\"\"\n    Generate code in the specified language based on the task description.\n    Args:\n        language (str): Programming language to generate code in (must be in ALLOWED_LANGUAGES)\n        task (str): Description of what the code should do\n    Returns:\n        str: Generated code or error message\n    \"\"\"\n    if language not in ALLOWED_LANGUAGES:",
         "detail": "coding",
         "documentation": {}
     },
@@ -1473,7 +1473,7 @@
         "kind": 5,
         "importPath": "coding",
         "description": "coding",
-        "peekOfCode": "ALLOWED_LANGUAGES = [\"cmd\", \"ps1\", \"python\"]\ndef generate_code(language, task):\n    if language not in ALLOWED_LANGUAGES:\n        return f\"Sorry, I only support {', '.join(ALLOWED_LANGUAGES)}.\"\n    prompt = f\"A helpful assistant writes a {language} script to {task} with detailed comments and error handling:\\n```python\\n\"\n    try:\n        inputs = tokenizer(prompt, return_tensors=\"pt\").to(\n            \"cuda\" if torch.cuda.is_available() else \"cpu\"\n        )\n        outputs = model.generate(",
+        "peekOfCode": "ALLOWED_LANGUAGES = [\"cmd\", \"ps1\", \"python\"]\ndef generate_code(language, task):\n    \"\"\"\n    Generate code in the specified language based on the task description.\n    Args:\n        language (str): Programming language to generate code in (must be in ALLOWED_LANGUAGES)\n        task (str): Description of what the code should do\n    Returns:\n        str: Generated code or error message\n    \"\"\"",
         "detail": "coding",
         "documentation": {}
     },
