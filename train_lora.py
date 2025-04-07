@@ -15,8 +15,9 @@ tokenizer = AutoTokenizer.from_pretrained(
     model_name, token=os.getenv("HUGGINGFACE_TOKEN")
 )
 tokenizer.pad_token = tokenizer.eos_token  # Set padding token to EOS
+tokenizer.padding_side = "right"  # Ensure padding goes to the end
 
-# Check if [INST] is already a token
+# Add special tokens since [INST] isn't in vocab
 print("Tokenizing [INST]:", tokenizer.encode("[INST]"))
 if len(tokenizer.encode("[INST]", add_special_tokens=False)) > 1:
     special_tokens = {"additional_special_tokens": ["[INST]", "[/INST]"]}
@@ -64,7 +65,7 @@ combined_texts = [
     f"<s>[INST] {inp} [/INST] {out}</s>" for inp, out in zip(inputs, outputs)
 ]
 
-# Tokenize
+# Tokenize with right-side padding
 encodings = tokenizer(
     combined_texts, truncation=True, padding=True, max_length=512, return_tensors="pt"
 )
@@ -72,15 +73,17 @@ input_ids = encodings["input_ids"]
 attention_mask = encodings["attention_mask"]
 labels = input_ids.clone()
 
-# Trim leading </s> tokens and adjust masks
+# Trim any leading </s> tokens (just in case)
+eos_token_id = tokenizer.eos_token_id
 for i in range(len(input_ids)):
     tokens = input_ids[i].tolist()
     start_idx = 0
-    while start_idx < len(tokens) and tokens[start_idx] == tokenizer.eos_token_id:
+    while start_idx < len(tokens) and tokens[start_idx] == eos_token_id:
         start_idx += 1
-    input_ids[i, :start_idx] = tokenizer.pad_token_id
-    attention_mask[i, :start_idx] = 0
-    labels[i, :start_idx] = -100
+    if start_idx > 0:
+        input_ids[i, :start_idx] = tokenizer.pad_token_id
+        attention_mask[i, :start_idx] = 0
+        labels[i, :start_idx] = -100
 
 # Mask input tokens in labels
 inst_end_seq = tokenizer.encode("[/INST]", add_special_tokens=False)

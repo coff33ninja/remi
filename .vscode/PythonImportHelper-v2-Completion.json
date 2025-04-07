@@ -2139,7 +2139,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\ntokenizer = AutoTokenizer.from_pretrained(\n    model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\")\n)\ntokenizer.pad_token = tokenizer.eos_token  # Set padding token to EOS\n# Check if [INST] is already a token\nprint(\"Tokenizing [INST]:\", tokenizer.encode(\"[INST]\"))\nif len(tokenizer.encode(\"[INST]\", add_special_tokens=False)) > 1:\n    special_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\n    tokenizer.add_special_tokens(special_tokens)",
+        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\ntokenizer = AutoTokenizer.from_pretrained(\n    model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\")\n)\ntokenizer.pad_token = tokenizer.eos_token  # Set padding token to EOS\ntokenizer.padding_side = \"right\"  # Ensure padding goes to the end\n# Add special tokens since [INST] isn't in vocab\nprint(\"Tokenizing [INST]:\", tokenizer.encode(\"[INST]\"))\nif len(tokenizer.encode(\"[INST]\", add_special_tokens=False)) > 1:\n    special_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2148,7 +2148,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(\n    model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\")\n)\ntokenizer.pad_token = tokenizer.eos_token  # Set padding token to EOS\n# Check if [INST] is already a token\nprint(\"Tokenizing [INST]:\", tokenizer.encode(\"[INST]\"))\nif len(tokenizer.encode(\"[INST]\", add_special_tokens=False)) > 1:\n    special_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\n    tokenizer.add_special_tokens(special_tokens)\nmodel = AutoModelForCausalLM.from_pretrained(",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(\n    model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\")\n)\ntokenizer.pad_token = tokenizer.eos_token  # Set padding token to EOS\ntokenizer.padding_side = \"right\"  # Ensure padding goes to the end\n# Add special tokens since [INST] isn't in vocab\nprint(\"Tokenizing [INST]:\", tokenizer.encode(\"[INST]\"))\nif len(tokenizer.encode(\"[INST]\", add_special_tokens=False)) > 1:\n    special_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\n    tokenizer.add_special_tokens(special_tokens)",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2157,7 +2157,16 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token  # Set padding token to EOS\n# Check if [INST] is already a token\nprint(\"Tokenizing [INST]:\", tokenizer.encode(\"[INST]\"))\nif len(tokenizer.encode(\"[INST]\", add_special_tokens=False)) > 1:\n    special_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\n    tokenizer.add_special_tokens(special_tokens)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(\n        load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16",
+        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token  # Set padding token to EOS\ntokenizer.padding_side = \"right\"  # Ensure padding goes to the end\n# Add special tokens since [INST] isn't in vocab\nprint(\"Tokenizing [INST]:\", tokenizer.encode(\"[INST]\"))\nif len(tokenizer.encode(\"[INST]\", add_special_tokens=False)) > 1:\n    special_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\n    tokenizer.add_special_tokens(special_tokens)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer.padding_side",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "tokenizer.padding_side = \"right\"  # Ensure padding goes to the end\n# Add special tokens since [INST] isn't in vocab\nprint(\"Tokenizing [INST]:\", tokenizer.encode(\"[INST]\"))\nif len(tokenizer.encode(\"[INST]\", add_special_tokens=False)) > 1:\n    special_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\n    tokenizer.add_special_tokens(special_tokens)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(\n        load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2220,7 +2229,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "combined_texts = [\n    f\"<s>[INST] {inp} [/INST] {out}</s>\" for inp, out in zip(inputs, outputs)\n]\n# Tokenize\nencodings = tokenizer(\n    combined_texts, truncation=True, padding=True, max_length=512, return_tensors=\"pt\"\n)\ninput_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()",
+        "peekOfCode": "combined_texts = [\n    f\"<s>[INST] {inp} [/INST] {out}</s>\" for inp, out in zip(inputs, outputs)\n]\n# Tokenize with right-side padding\nencodings = tokenizer(\n    combined_texts, truncation=True, padding=True, max_length=512, return_tensors=\"pt\"\n)\ninput_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2229,7 +2238,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "encodings = tokenizer(\n    combined_texts, truncation=True, padding=True, max_length=512, return_tensors=\"pt\"\n)\ninput_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()\n# Trim leading </s> tokens and adjust masks\nfor i in range(len(input_ids)):\n    tokens = input_ids[i].tolist()\n    start_idx = 0",
+        "peekOfCode": "encodings = tokenizer(\n    combined_texts, truncation=True, padding=True, max_length=512, return_tensors=\"pt\"\n)\ninput_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()\n# Trim any leading </s> tokens (just in case)\neos_token_id = tokenizer.eos_token_id\nfor i in range(len(input_ids)):\n    tokens = input_ids[i].tolist()",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2238,7 +2247,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "input_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()\n# Trim leading </s> tokens and adjust masks\nfor i in range(len(input_ids)):\n    tokens = input_ids[i].tolist()\n    start_idx = 0\n    while start_idx < len(tokens) and tokens[start_idx] == tokenizer.eos_token_id:\n        start_idx += 1\n    input_ids[i, :start_idx] = tokenizer.pad_token_id",
+        "peekOfCode": "input_ids = encodings[\"input_ids\"]\nattention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()\n# Trim any leading </s> tokens (just in case)\neos_token_id = tokenizer.eos_token_id\nfor i in range(len(input_ids)):\n    tokens = input_ids[i].tolist()\n    start_idx = 0\n    while start_idx < len(tokens) and tokens[start_idx] == eos_token_id:\n        start_idx += 1",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2247,7 +2256,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "attention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()\n# Trim leading </s> tokens and adjust masks\nfor i in range(len(input_ids)):\n    tokens = input_ids[i].tolist()\n    start_idx = 0\n    while start_idx < len(tokens) and tokens[start_idx] == tokenizer.eos_token_id:\n        start_idx += 1\n    input_ids[i, :start_idx] = tokenizer.pad_token_id\n    attention_mask[i, :start_idx] = 0",
+        "peekOfCode": "attention_mask = encodings[\"attention_mask\"]\nlabels = input_ids.clone()\n# Trim any leading </s> tokens (just in case)\neos_token_id = tokenizer.eos_token_id\nfor i in range(len(input_ids)):\n    tokens = input_ids[i].tolist()\n    start_idx = 0\n    while start_idx < len(tokens) and tokens[start_idx] == eos_token_id:\n        start_idx += 1\n    if start_idx > 0:",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2256,7 +2265,16 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "labels = input_ids.clone()\n# Trim leading </s> tokens and adjust masks\nfor i in range(len(input_ids)):\n    tokens = input_ids[i].tolist()\n    start_idx = 0\n    while start_idx < len(tokens) and tokens[start_idx] == tokenizer.eos_token_id:\n        start_idx += 1\n    input_ids[i, :start_idx] = tokenizer.pad_token_id\n    attention_mask[i, :start_idx] = 0\n    labels[i, :start_idx] = -100",
+        "peekOfCode": "labels = input_ids.clone()\n# Trim any leading </s> tokens (just in case)\neos_token_id = tokenizer.eos_token_id\nfor i in range(len(input_ids)):\n    tokens = input_ids[i].tolist()\n    start_idx = 0\n    while start_idx < len(tokens) and tokens[start_idx] == eos_token_id:\n        start_idx += 1\n    if start_idx > 0:\n        input_ids[i, :start_idx] = tokenizer.pad_token_id",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "eos_token_id",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "eos_token_id = tokenizer.eos_token_id\nfor i in range(len(input_ids)):\n    tokens = input_ids[i].tolist()\n    start_idx = 0\n    while start_idx < len(tokens) and tokens[start_idx] == eos_token_id:\n        start_idx += 1\n    if start_idx > 0:\n        input_ids[i, :start_idx] = tokenizer.pad_token_id\n        attention_mask[i, :start_idx] = 0\n        labels[i, :start_idx] = -100",
         "detail": "train_lora",
         "documentation": {}
     },
