@@ -1,5 +1,4 @@
 from datetime import datetime
-import os  # Remove this if still unused after fixes  # noqa: F401
 import logging
 from dotenv import load_dotenv
 from config import Config
@@ -202,8 +201,6 @@ def process_single_command(intent, params):
 
 
 def process_command(command):
-    global last_generated_code
-
     cached = get_cached_result(command)
     if cached:
         return f"(Cached) {cached}"
@@ -229,25 +226,27 @@ def process_command(command):
 def main():
     logging.info("Starting personal assistant...")
     use_voice = False  # Set to False for testing with input
-    while True:
-        if use_voice:
-            logging.info("Listening...")
-            command = listen_for_command()
-        else:
-            command = input("Enter command: ")
+    try:
+        while True:
+            if use_voice:
+                logging.info("Listening...")
+                command = listen_for_command()
+            else:
+                command = input("Enter command: ")
 
-        if command.lower() in ["exit", "quit"]:
-            logging.info("Shutting down...")
-            for db in databases.values():
-                db["conn"].close()
-            logging.info("Resources released. Goodbye!")
-            break
+            if command.lower() in ["exit", "quit"]:
+                logging.info("Shutting down...")
+                break
 
-        logging.info(f"Command: {command}")
-        response = process_command(command)
-        logging.info(f"Response: {response}")
-        if use_voice:
-            speak_response(response)
+            logging.info(f"Command received: {command}")
+            response = process_command(command)
+            logging.info(f"Response generated: {response}")
+            if use_voice:
+                speak_response(response)
+    finally:
+        for db in databases.values():
+            db["conn"].close()
+        logging.info("Resources released. Goodbye!")
 
 
 if __name__ == "__main__":

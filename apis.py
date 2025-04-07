@@ -1,4 +1,5 @@
 import httpx  # Replace requests with httpx for async support
+import requests  # Added missing import
 import os
 import pywhatkit
 from bs4 import BeautifulSoup
@@ -45,14 +46,15 @@ async def get_weather(city, api_key=API_KEYS["openweathermap"]):
 def get_news(topic, api_key=API_KEYS["newsapi"]):
     url = f"https://newsapi.org/v2/everything?q={topic}&apiKey={api_key}"
     try:
-        response = requests.get(url).json()
-        articles = response.get("articles", [])[:3]
+        response = requests.get(url)
+        response.raise_for_status()  # Raise HTTPError for bad responses
+        articles = response.json().get("articles", [])[:3]
         if articles:
             return "\n".join(
                 [f"{i+1}. {article['title']}" for i, article in enumerate(articles)]
             )
         return "No news found."
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         return f"News API error: {str(e)}"
 
 

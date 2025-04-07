@@ -1,5 +1,5 @@
-from transformers import pipeline
-from offline_tools import nlp
+from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
+from offline_tools import nlp, speak_response  # Added speak_response import
 import re
 
 generator = pipeline("text-generation", model="distilgpt2")
@@ -314,3 +314,28 @@ def generate_response(prompt):
         return tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
     except Exception as e:
         return f"Response generation error: {str(e)}"
+
+def switch_to_better_model():
+    """Switch to a larger model if the smaller one fails."""
+    try:
+        speak_response(
+            "Sure, just keep in mind this model will use more VRAM, "
+            "and I will only allow it if your system supports it."
+        )
+        # Check system compatibility (e.g., GPU availability)
+        import torch
+        if not torch.cuda.is_available():
+            speak_response("It seems your system does not support GPU acceleration. Switching is not possible.")
+            return "System does not support GPU acceleration. Cannot switch to a larger model."
+
+        # Load the larger model
+        global tokenizer, model
+        tokenizer = AutoTokenizer.from_pretrained("Salesforce/codegen-6B-mono")
+        model = AutoModelForCausalLM.from_pretrained("Salesforce/codegen-6B-mono")
+        if tokenizer.pad_token_id is None:
+            tokenizer.pad_token_id = tokenizer.eos_token_id
+        speak_response("Switched to a better model successfully.")
+        return "Switched to a better model successfully."
+    except Exception as e:
+        speak_response("Failed to switch to a better model due to an error.")
+        return f"Error switching to a better model: {str(e)}"
