@@ -1,16 +1,13 @@
 from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
-from offline_tools import nlp, speak_response  # Added speak_response import
+from offline_tools import nlp, speak_response
 import re
 
-generator = pipeline("text-generation", model="distilgpt2")
-# Load CodeGen model and tokenizer
+# Load CodeGen 350M model by default
 tokenizer = AutoTokenizer.from_pretrained("Salesforce/codegen-350M-mono")
 model = AutoModelForCausalLM.from_pretrained("Salesforce/codegen-350M-mono")
-tokenizer = AutoTokenizer.from_pretrained("Salesforce/codegen-2B-mono")
-model = AutoModelForCausalLM.from_pretrained("Salesforce/codegen-2B-mono")
-# Set pad_token_id if not already set
 if tokenizer.pad_token_id is None:
     tokenizer.pad_token_id = tokenizer.eos_token_id
+
 
 def recognize_intent(command):
     doc = nlp(command.lower())
@@ -288,6 +285,8 @@ def recognize_intent(command):
         return "get_research", {"topic": topic}
     elif "tell me about myself" in command_lower or "analyze me" in command_lower:
         return "analyze_personality", {}
+    elif "switch to better model" in command_lower:
+        return "switch_to_better_model", {}
     else:
         return "generate_response", {"prompt": command}
 
@@ -315,27 +314,26 @@ def generate_response(prompt):
     except Exception as e:
         return f"Response generation error: {str(e)}"
 
+
 def switch_to_better_model():
-    """Switch to a larger model if the smaller one fails."""
+    """Switch to a larger model if needed."""
     try:
         speak_response(
-            "Sure, just keep in mind this model will use more VRAM, "
-            "and I will only allow it if your system supports it."
+            "Switching to a larger model. This may use more resources."
         )
-        # Check system compatibility (e.g., GPU availability)
         import torch
         if not torch.cuda.is_available():
-            speak_response("It seems your system does not support GPU acceleration. Switching is not possible.")
-            return "System does not support GPU acceleration. Cannot switch to a larger model."
+            speak_response("No GPU detected. Staying with the current model.")
+            return "No GPU available. Cannot switch to a larger model."
 
         # Load the larger model
         global tokenizer, model
-        tokenizer = AutoTokenizer.from_pretrained("Salesforce/codegen-6B-mono")
-        model = AutoModelForCausalLM.from_pretrained("Salesforce/codegen-6B-mono")
+        tokenizer = AutoTokenizer.from_pretrained("Salesforce/codegen-2B-mono")
+        model = AutoModelForCausalLM.from_pretrained("Salesforce/codegen-2B-mono")
         if tokenizer.pad_token_id is None:
             tokenizer.pad_token_id = tokenizer.eos_token_id
-        speak_response("Switched to a better model successfully.")
-        return "Switched to a better model successfully."
+        speak_response("Switched to CodeGen 2B model.")
+        return "Switched to CodeGen 2B model."
     except Exception as e:
-        speak_response("Failed to switch to a better model due to an error.")
-        return f"Error switching to a better model: {str(e)}"
+        speak_response("Failed to switch models.")
+        return f"Error switching model: {str(e)}"

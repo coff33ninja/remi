@@ -1,10 +1,9 @@
 import subprocess
 import os
-from conversation import tokenizer, model  # Import from conversation.py
+from conversation import tokenizer, model  # Use CodeGen from conversation.py
 from offline_tools import save_command as save_command_to_db
 
 ALLOWED_LANGUAGES = ["cmd", "ps1", "python"]
-
 
 def generate_code(language, task):
     if language not in ALLOWED_LANGUAGES:
@@ -14,24 +13,20 @@ def generate_code(language, task):
         inputs = tokenizer(prompt, return_tensors="pt", truncation=True)
         outputs = model.generate(
             **inputs,
-            max_length=300,  # Longer for complete scripts
+            max_length=300,
             do_sample=True,
             top_p=0.95,
             temperature=0.7,
             pad_token_id=tokenizer.pad_token_id,
         )
         code = tokenizer.decode(outputs[0], skip_special_tokens=True)
-        # Clean up: Remove prompt and extraneous text
         code_lines = code.split("\n")
         cleaned_code = "\n".join(
-            line
-            for line in code_lines
-            if not line.strip().startswith("#") and len(line.strip()) > 0
+            line for line in code_lines if not line.strip().startswith("#") and len(line.strip()) > 0
         )
         return cleaned_code.strip()
     except Exception as e:
         return f"Code generation error: {str(e)}"
-
 
 def execute_code(language, code):
     if language not in ALLOWED_LANGUAGES:
@@ -66,7 +61,6 @@ def execute_code(language, code):
             os.remove(filename)
         return f"Execution failed: {str(e)}"
 
-
 def explain_concept(language, concept):
     if language not in ALLOWED_LANGUAGES:
         return f"Sorry, I only explain {', '.join(ALLOWED_LANGUAGES)}."
@@ -78,7 +72,6 @@ def explain_concept(language, concept):
         return explanation.strip()
     except Exception as e:
         return f"Explanation error: {str(e)}"
-
 
 def save_command(name, language=None, code=None):
     if language and code:

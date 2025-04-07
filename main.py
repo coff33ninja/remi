@@ -1,3 +1,4 @@
+import asyncio
 from datetime import datetime
 import logging
 from dotenv import load_dotenv
@@ -51,9 +52,9 @@ from offline_tools import (
     find_items_within_budget,
     find_nearest_special,
     get_db,
-    databases,  # Added imports
+    databases,
 )
-from conversation import recognize_intent, generate_response
+from conversation import recognize_intent, generate_response, switch_to_better_model
 from coding import generate_code, execute_code, explain_concept, save_command
 from calculations import calculate
 
@@ -66,7 +67,7 @@ logging.basicConfig(
 )
 
 tools = {
-    "get_weather": get_weather,
+    "get_weather": lambda **kwargs: asyncio.run(get_weather(**kwargs)),
     "get_news": get_news,
     "translate_text": translate_text,
     "search_images": search_images,
@@ -112,6 +113,7 @@ tools = {
     "calculate": calculate,
     "complex_if": lambda condition, action: handle_complex_if(condition, action),
     "complex_chain": lambda commands: handle_complex_chain(commands),
+    "switch_to_better_model": switch_to_better_model,
 }
 
 last_generated_code = {}
@@ -223,9 +225,9 @@ def process_command(command):
     return response
 
 
-def main():
+async def main():
     logging.info("Starting personal assistant...")
-    use_voice = False  # Set to False for testing with input
+    use_voice = False
     try:
         while True:
             if use_voice:
@@ -250,4 +252,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
