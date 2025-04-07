@@ -90,18 +90,18 @@ GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 
 ### Required API Keys
 
-| Service            | API Key Name               | Purpose                          |
-|--------------------|---------------------------|----------------------------------|
-| OpenWeatherMap     | `OPENWEATHERMAP_API_KEY`  | Fetch weather updates           |
-| NewsAPI            | `NEWSAPI_API_KEY`         | Retrieve news articles          |
-| DeepL              | `DEEPL_API_KEY`           | Translate text                  |
-| Unsplash           | `UNSPLASH_API_KEY`        | Search for images               |
-| Todoist            | `TODOIST_API_KEY`         | Manage tasks                    |
-| Trello             | `TRELLO_API_KEY`, `TRELLO_TOKEN` | Manage Trello cards      |
-| Slack              | `SLACK_API_TOKEN`         | Send Slack messages             |
-| Discord            | `DISCORD_BOT_TOKEN`       | Send Discord messages           |
-| Wolfram Alpha      | `WOLFRAM_ALPHA_APP_ID`    | Query Wolfram Alpha             |
-| Google Maps        | `GOOGLE_MAPS_API_KEY`     | Get directions                  |
+| Service            | API Key Name               | Purpose                          | Link to Obtain API Key |
+|--------------------|----------------------------|----------------------------------|------------------------|
+| OpenWeatherMap     | `OPENWEATHERMAP_API_KEY`   | Fetch weather updates            | [OpenWeatherMap](https://home.openweathermap.org/users/sign_up) |
+| NewsAPI            | `NEWSAPI_API_KEY`          | Retrieve news articles           | [NewsAPI](https://newsapi.org/register) |
+| DeepL              | `DEEPL_API_KEY`            | Translate text                   | [DeepL](https://www.deepl.com/pro#developer) |
+| Unsplash           | `UNSPLASH_API_KEY`         | Search for images                | [Unsplash](https://unsplash.com/developers) |
+| Todoist            | `TODOIST_API_KEY`          | Manage tasks                     | [Todoist](https://developer.todoist.com/appconsole.html) |
+| Trello             | `TRELLO_API_KEY`, `TRELLO_TOKEN` | Manage Trello cards      | [Trello](https://trello.com/app-key) |
+| Slack              | `SLACK_API_TOKEN`          | Send Slack messages              | [Slack](https://api.slack.com/apps) |
+| Discord            | `DISCORD_BOT_TOKEN`        | Send Discord messages            | [Discord](https://discord.com/developers/applications) |
+| Wolfram Alpha      | `WOLFRAM_ALPHA_APP_ID`     | Query Wolfram Alpha              | [Wolfram Alpha](https://developer.wolframalpha.com/portal/myapps/) |
+| Google Maps        | `GOOGLE_MAPS_API_KEY`      | Get directions                   | [Google Maps](https://developers.google.com/maps/documentation/javascript/get-api-key) |
 
 ---
 
