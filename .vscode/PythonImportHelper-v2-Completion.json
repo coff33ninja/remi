@@ -1553,7 +1553,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\n# Load Mistral 7B with 4-bit quantization\nquantization_config = BitsAndBytesConfig(load_in_4bit=True)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    strict=False,  # Allow loading with size mismatches\n)",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\n# Load Mistral 7B with 4-bit quantization\nquantization_config = BitsAndBytesConfig(load_in_4bit=True)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\nif tokenizer.pad_token_id is None:",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1562,7 +1562,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "quantization_config = BitsAndBytesConfig(load_in_4bit=True)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    strict=False,  # Allow loading with size mismatches\n)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id",
+        "peekOfCode": "quantization_config = BitsAndBytesConfig(load_in_4bit=True)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\ndef recognize_intent(command):",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1571,7 +1571,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    strict=False,  # Allow loading with size mismatches\n)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\ndef recognize_intent(command):",
+        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\ndef recognize_intent(command):\n    doc = nlp(command.lower())",
         "detail": "conversation",
         "documentation": {}
     },

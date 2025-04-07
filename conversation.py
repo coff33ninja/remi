@@ -20,7 +20,6 @@ model = AutoModelForCausalLM.from_pretrained(
     quantization_config=quantization_config,
     device_map="auto",
     torch_dtype=torch.float16,
-    strict=False,  # Allow loading with size mismatches
 )
 if tokenizer.pad_token_id is None:
     tokenizer.pad_token_id = tokenizer.eos_token_id
