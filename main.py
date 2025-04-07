@@ -231,26 +231,24 @@ def main():
     use_voice = False  # Set to False for testing with input
     while True:
         if use_voice:
-            logging.info("Listening...")")
-            command = listen_for_command()   command = listen_for_command()
+            logging.info("Listening...")
+            command = listen_for_command()
         else:
-            command = input("Enter command: ")                command = input("Enter command: ")
+            command = input("Enter command: ")
 
-        if command.lower() in ["exit", "quit"]:quit"]:
-            logging.info("Shutting down...")wn...")
+        if command.lower() in ["exit", "quit"]:
+            logging.info("Shutting down...")
             for db in databases.values():
                 db["conn"].close()
-            break            logging.info(f"Command: {command}")
-and)
-        logging.info(f"Command: {command}")nse}")
+            logging.info("Resources released. Goodbye!")
+            break
+
+        logging.info(f"Command: {command}")
         response = process_command(command)
-        logging.info(f"Response: {response}")_response(response)
+        logging.info(f"Response: {response}")
         if use_voice:
-            speak_response(response)        for db in databases.values():
-            db["conn"].close()
-urces released. Goodbye!")
-if __name__ == "__main__":
-    main()
+            speak_response(response)
+
 
 if __name__ == "__main__":
     main()
