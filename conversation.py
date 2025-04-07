@@ -299,8 +299,16 @@ def parse_complex_command(command, entities):
 def generate_response(prompt):
     """Generate a conversational response using the current conversational model."""
     try:
-        response = conversation_generator(prompt, max_length=200, do_sample=True, top_p=0.95, temperature=0.7)
-        return response[0]["generated_text"].strip()
+        inputs = conversation_generator.tokenizer(prompt, return_tensors="pt", truncation=True)  # Explicit truncation
+        outputs = conversation_generator.model.generate(
+            **inputs,
+            max_length=200,
+            do_sample=True,
+            top_p=0.95,
+            temperature=0.7,
+            pad_token_id=conversation_generator.tokenizer.eos_token_id,  # Explicit pad_token_id
+        )
+        return conversation_generator.tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
     except Exception as e:
         return f"Response generation error: {str(e)}"
 

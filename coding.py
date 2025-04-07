@@ -19,7 +19,7 @@ def generate_code(language, task):
         return f"Sorry, I only support {', '.join(ALLOWED_LANGUAGES)}."
     prompt = f"# {language} script to {task}\n# Include error handling and comments\n"
     try:
-        inputs = tokenizer(prompt, return_tensors="pt", truncation=True)
+        inputs = tokenizer(prompt, return_tensors="pt", truncation=True)  # Explicit truncation
         outputs = model.generate(
             **inputs,
             max_length=300,
@@ -90,7 +90,7 @@ def explain_concept(language, concept):
         return f"Sorry, I only explain {', '.join(ALLOWED_LANGUAGES)}."
     prompt = f"# Explain {concept} in {language} with an example\n"
     try:
-        inputs = tokenizer(prompt, return_tensors="pt", truncation=True)
+        inputs = tokenizer(prompt, return_tensors="pt", truncation=True)  # Explicit truncation
         outputs = model.generate(
             **inputs,
             max_length=300,
