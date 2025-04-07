@@ -2,7 +2,6 @@ requests
 spacy
 pocketsphinx
 pyttsx3
-sqlite3
 pywhatkit
 python-dotenv
 pycaw
