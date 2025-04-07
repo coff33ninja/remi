@@ -45,6 +45,12 @@ def clean_text(text):
         "letâ€™s": "let's",
         "thatâ€™s": "that's",
         "thereâ€™s": "there's",
+        "Iâ€™d": "I'd",
+        "Iâ€™ve": "I've",
+        "sheâ€™ll": "she'll",
+        "heâ€™ll": "he'll",  # Adding just in case
+        "weâ€™ll": "we'll",  # Adding just in case
+        "theyâ€™ll": "they'll",  # Adding just in case
     }
     for old, new in contractions.items():
         text = text.replace(old, new)
