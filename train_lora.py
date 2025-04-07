@@ -6,6 +6,7 @@ import os
 # Load model and tokenizer
 model_name = "mistralai/Mistral-7B-Instruct-v0.1"
 tokenizer = AutoTokenizer.from_pretrained(model_name, token=os.getenv("HUGGINGFACE_TOKEN"))
+tokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     quantization_config=BitsAndBytesConfig(load_in_4bit=True),
@@ -27,9 +28,20 @@ examples = [entry.strip().split("\nOutput: ") for entry in data]
 inputs = [e[0].replace("Input: ", "") for e in examples]
 outputs = [e[1] for e in examples]
 
+# Print inputs and outputs for debugging
+print("Inputs:", inputs)
+print("Outputs:", outputs)
+
+# Check lengths of inputs and outputs
+if len(inputs) != len(outputs):
+    raise ValueError(f"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.")
+
 # Tokenize dataset
 train_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)
 labels = tokenizer(outputs, truncation=True, padding=True, max_length=512)["input_ids"]
+
+# Debug: Print lengths of encodings and labels
+print(f"Tokenized input length: {len(train_encodings['input_ids'])}, Tokenized labels length: {len(labels)}")
 
 # Prepare dataset
 class CustomDataset(torch.utils.data.Dataset):
@@ -42,7 +54,7 @@ class CustomDataset(torch.utils.data.Dataset):
 
     def __getitem__(self, idx):
         item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}
-        item["labels"] = torch.tensor(self.labels[idx])
+        item["labels"] = torch.tensor(self.labels[idx])  # Ensure alignment
         return item
 
 train_dataset = CustomDataset(train_encodings, labels)

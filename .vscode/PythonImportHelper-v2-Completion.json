@@ -2130,7 +2130,7 @@
         "kind": 6,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "class CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n    def __len__(self):\n        return len(self.labels)\n    def __getitem__(self, idx):\n        item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}\n        item[\"labels\"] = torch.tensor(self.labels[idx])\n        return item",
+        "peekOfCode": "class CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n    def __len__(self):\n        return len(self.labels)\n    def __getitem__(self, idx):\n        item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}\n        item[\"labels\"] = torch.tensor(self.labels[idx])  # Ensure alignment\n        return item",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2139,7 +2139,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\"))\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(load_in_4bit=True),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)\n# Configure LoRA",
+        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\"))\ntokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(load_in_4bit=True),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2148,7 +2148,16 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\"))\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(load_in_4bit=True),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)\n# Configure LoRA\nlora_config = LoraConfig(",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(model_name, token=os.getenv(\"HUGGINGFACE_TOKEN\"))\ntokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(load_in_4bit=True),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)\n# Configure LoRA",
+        "detail": "train_lora",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer.pad_token",
+        "kind": 5,
+        "importPath": "train_lora",
+        "description": "train_lora",
+        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token  # Set padding token to eos token\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=BitsAndBytesConfig(load_in_4bit=True),\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=os.getenv(\"HUGGINGFACE_TOKEN\"),\n)\n# Configure LoRA\nlora_config = LoraConfig(",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2175,7 +2184,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "model = get_peft_model(model, lora_config)\n# Load dataset\nwith open(\"dataset.txt\", \"r\") as f:\n    data = f.read().split(\"###\")[1:]  # Skip empty first split\nexamples = [entry.strip().split(\"\\nOutput: \") for entry in data]\ninputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Tokenize dataset\ntrain_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)\nlabels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]",
+        "peekOfCode": "model = get_peft_model(model, lora_config)\n# Load dataset\nwith open(\"dataset.txt\", \"r\") as f:\n    data = f.read().split(\"###\")[1:]  # Skip empty first split\nexamples = [entry.strip().split(\"\\nOutput: \") for entry in data]\ninputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Print inputs and outputs for debugging\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2184,7 +2193,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "examples = [entry.strip().split(\"\\nOutput: \") for entry in data]\ninputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Tokenize dataset\ntrain_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)\nlabels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]\n# Prepare dataset\nclass CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings",
+        "peekOfCode": "examples = [entry.strip().split(\"\\nOutput: \") for entry in data]\ninputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Print inputs and outputs for debugging\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\n# Check lengths of inputs and outputs\nif len(inputs) != len(outputs):\n    raise ValueError(f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\")\n# Tokenize dataset",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2193,7 +2202,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "inputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Tokenize dataset\ntrain_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)\nlabels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]\n# Prepare dataset\nclass CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels",
+        "peekOfCode": "inputs = [e[0].replace(\"Input: \", \"\") for e in examples]\noutputs = [e[1] for e in examples]\n# Print inputs and outputs for debugging\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\n# Check lengths of inputs and outputs\nif len(inputs) != len(outputs):\n    raise ValueError(f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\")\n# Tokenize dataset\ntrain_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2202,7 +2211,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "outputs = [e[1] for e in examples]\n# Tokenize dataset\ntrain_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)\nlabels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]\n# Prepare dataset\nclass CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n    def __len__(self):",
+        "peekOfCode": "outputs = [e[1] for e in examples]\n# Print inputs and outputs for debugging\nprint(\"Inputs:\", inputs)\nprint(\"Outputs:\", outputs)\n# Check lengths of inputs and outputs\nif len(inputs) != len(outputs):\n    raise ValueError(f\"Length mismatch: {len(inputs)} inputs and {len(outputs)} outputs.\")\n# Tokenize dataset\ntrain_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)\nlabels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2211,7 +2220,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "train_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)\nlabels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]\n# Prepare dataset\nclass CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n    def __len__(self):\n        return len(self.labels)\n    def __getitem__(self, idx):",
+        "peekOfCode": "train_encodings = tokenizer(inputs, truncation=True, padding=True, max_length=512)\nlabels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]\n# Debug: Print lengths of encodings and labels\nprint(f\"Tokenized input length: {len(train_encodings['input_ids'])}, Tokenized labels length: {len(labels)}\")\n# Prepare dataset\nclass CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n    def __len__(self):",
         "detail": "train_lora",
         "documentation": {}
     },
@@ -2220,7 +2229,7 @@
         "kind": 5,
         "importPath": "train_lora",
         "description": "train_lora",
-        "peekOfCode": "labels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]\n# Prepare dataset\nclass CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n    def __len__(self):\n        return len(self.labels)\n    def __getitem__(self, idx):\n        item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}",
+        "peekOfCode": "labels = tokenizer(outputs, truncation=True, padding=True, max_length=512)[\"input_ids\"]\n# Debug: Print lengths of encodings and labels\nprint(f\"Tokenized input length: {len(train_encodings['input_ids'])}, Tokenized labels length: {len(labels)}\")\n# Prepare dataset\nclass CustomDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n    def __len__(self):\n        return len(self.labels)",
         "detail": "train_lora",
         "documentation": {}
     },
