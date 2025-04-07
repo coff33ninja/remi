@@ -1,9 +1,13 @@
 import httpx  # Replace requests with httpx for async support
 import requests  # Added missing import
 import os
+from dotenv import load_dotenv  # Add this import
 import pywhatkit
 from bs4 import BeautifulSoup
 import logging
+
+# Load environment variables from .env file
+load_dotenv()  # Add this line before accessing env vars
 
 API_KEYS = {
     "openweathermap": os.getenv("OPENWEATHERMAP_API_KEY"),
