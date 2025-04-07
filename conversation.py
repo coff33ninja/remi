@@ -1,28 +1,37 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from offline_tools import nlp, speak_response
-from apis import API_KEYS  # Import API_KEYS from apis.py
+from apis import API_KEYS
 import re
 import torch
 import os
 
-# Load Mistral 7B with 4-bit quantization
-model_name = "mistralai/Mistral-7B-Instruct-v0.1"  # Corrected model name
+# Load tokenizer and model
+model_name = "mistralai/Mistral-7B-Instruct-v0.1"
 hf_token = API_KEYS.get("huggingface") or os.getenv("HUGGINGFACE_TOKEN")
 if not hf_token:
-    raise EnvironmentError("Hugging Face token is missing. Please set it in the .env file.")
+    raise EnvironmentError(
+        "Hugging Face token is missing. Please set it in the .env file."
+    )
 tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)
 
-# Load Mistral 7B with 4-bit quantization
-quantization_config = BitsAndBytesConfig(load_in_4bit=True)
+# Add the same special tokens as in training
+special_tokens = {"additional_special_tokens": ["[INST]", "[/INST]"]}
+tokenizer.add_special_tokens(special_tokens)
+if tokenizer.pad_token_id is None:
+    tokenizer.pad_token_id = tokenizer.eos_token_id
 
+# Load fine-tuned model with 4-bit quantization
+quantization_config = BitsAndBytesConfig(
+    load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16
+)
 model = AutoModelForCausalLM.from_pretrained(
     "./fine_tuned_model",
     quantization_config=quantization_config,
     device_map="auto",
     torch_dtype=torch.float16,
 )
-if tokenizer.pad_token_id is None:
-    tokenizer.pad_token_id = tokenizer.eos_token_id
+# Resize model embeddings to match tokenizer (should already match, but safety first)
+model.resize_token_embeddings(len(tokenizer))
 
 
 def recognize_intent(command):

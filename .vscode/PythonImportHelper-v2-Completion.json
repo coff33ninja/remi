@@ -1535,7 +1535,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"  # Corrected model name\nhf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\"Hugging Face token is missing. Please set it in the .env file.\")\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\n# Load Mistral 7B with 4-bit quantization\nquantization_config = BitsAndBytesConfig(load_in_4bit=True)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,",
+        "peekOfCode": "model_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\nhf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\n        \"Hugging Face token is missing. Please set it in the .env file.\"\n    )\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\n# Add the same special tokens as in training\nspecial_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\ntokenizer.add_special_tokens(special_tokens)",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1544,7 +1544,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "hf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\"Hugging Face token is missing. Please set it in the .env file.\")\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\n# Load Mistral 7B with 4-bit quantization\nquantization_config = BitsAndBytesConfig(load_in_4bit=True)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",",
+        "peekOfCode": "hf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\n        \"Hugging Face token is missing. Please set it in the .env file.\"\n    )\ntokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\n# Add the same special tokens as in training\nspecial_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\ntokenizer.add_special_tokens(special_tokens)\nif tokenizer.pad_token_id is None:",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1553,7 +1553,16 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\n# Load Mistral 7B with 4-bit quantization\nquantization_config = BitsAndBytesConfig(load_in_4bit=True)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\nif tokenizer.pad_token_id is None:",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)\n# Add the same special tokens as in training\nspecial_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\ntokenizer.add_special_tokens(special_tokens)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\n# Load fine-tuned model with 4-bit quantization\nquantization_config = BitsAndBytesConfig(\n    load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n)",
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "special_tokens",
+        "kind": 5,
+        "importPath": "conversation",
+        "description": "conversation",
+        "peekOfCode": "special_tokens = {\"additional_special_tokens\": [\"[INST]\", \"[/INST]\"]}\ntokenizer.add_special_tokens(special_tokens)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\n# Load fine-tuned model with 4-bit quantization\nquantization_config = BitsAndBytesConfig(\n    load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1562,7 +1571,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "quantization_config = BitsAndBytesConfig(load_in_4bit=True)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\ndef recognize_intent(command):",
+        "peekOfCode": "quantization_config = BitsAndBytesConfig(\n    load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n)\nmodel = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\n# Resize model embeddings to match tokenizer (should already match, but safety first)",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1571,7 +1580,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\ndef recognize_intent(command):\n    doc = nlp(command.lower())",
+        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    \"./fine_tuned_model\",\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n)\n# Resize model embeddings to match tokenizer (should already match, but safety first)\nmodel.resize_token_embeddings(len(tokenizer))\ndef recognize_intent(command):\n    doc = nlp(command.lower())",
         "detail": "conversation",
         "documentation": {}
     },
