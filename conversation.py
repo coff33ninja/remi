@@ -3,7 +3,14 @@ from offline_tools import nlp
 import re
 
 generator = pipeline("text-generation", model="distilgpt2")
-
+# Load CodeGen model and tokenizer
+tokenizer = AutoTokenizer.from_pretrained("Salesforce/codegen-350M-mono")
+model = AutoModelForCausalLM.from_pretrained("Salesforce/codegen-350M-mono")
+tokenizer = AutoTokenizer.from_pretrained("Salesforce/codegen-2B-mono")
+model = AutoModelForCausalLM.from_pretrained("Salesforce/codegen-2B-mono")
+# Set pad_token_id if not already set
+if tokenizer.pad_token_id is None:
+    tokenizer.pad_token_id = tokenizer.eos_token_id
 
 def recognize_intent(command):
     doc = nlp(command.lower())
@@ -133,7 +140,7 @@ def recognize_intent(command):
         )
         task = command_lower.split(f"{lang} to")[-1].strip()
         return "generate_code", {"language": lang, "task": task}
-    elif "code" in command_lower and "write" in command_lower or "code a    script" in command_lower:
+    elif "code" in command_lower and ("write" in command_lower or "code a script" in command_lower):
         lang = next((language for language in ["cmd", "ps1", "python"] if language in command_lower), "python")
         task = command_lower.split(f"{lang} to")[-1].strip() if f"{lang} to" in command_lower else command_lower.replace("code a script for", "").strip()
         return "generate_code", {"language": lang, "task": task}
@@ -294,9 +301,15 @@ def parse_complex_command(command, entities):
 
 def generate_response(prompt):
     try:
-        response = generator(prompt, max_length=50, num_return_sequences=1)[0][
-            "generated_text"
-        ]
-        return response.strip()
+        inputs = tokenizer(prompt, return_tensors="pt", truncation=True)
+        outputs = model.generate(
+            **inputs,
+            max_length=200,  # Adjust as needed
+            do_sample=True,  # Enable sampling for varied output
+            top_p=0.95,  # Nucleus sampling for better coherence
+            temperature=0.7,  # Control randomness
+            pad_token_id=tokenizer.pad_token_id,
+        )
+        return tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
     except Exception as e:
         return f"Response generation error: {str(e)}"

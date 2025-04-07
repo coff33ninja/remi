@@ -1,7 +1,7 @@
 import subprocess
 import os
-from conversation import generator
-from offline_tools import save_command as save_command_to_db  # Renamed import
+from conversation import tokenizer, model  # Import from conversation.py
+from offline_tools import save_command as save_command_to_db
 
 ALLOWED_LANGUAGES = ["cmd", "ps1", "python"]
 
@@ -9,12 +9,24 @@ ALLOWED_LANGUAGES = ["cmd", "ps1", "python"]
 def generate_code(language, task):
     if language not in ALLOWED_LANGUAGES:
         return f"Sorry, I only support {', '.join(ALLOWED_LANGUAGES)}."
-    prompt = f"Write a {language} script to {task}"
+    prompt = f"# {language} script to {task}\n"
     try:
-        code = generator(prompt, max_length=200, num_return_sequences=1, truncation=True)[0]["generated_text"]
+        inputs = tokenizer(prompt, return_tensors="pt", truncation=True)
+        outputs = model.generate(
+            **inputs,
+            max_length=300,  # Longer for complete scripts
+            do_sample=True,
+            top_p=0.95,
+            temperature=0.7,
+            pad_token_id=tokenizer.pad_token_id,
+        )
+        code = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        # Clean up: Remove prompt and extraneous text
         code_lines = code.split("\n")
         cleaned_code = "\n".join(
-            line for line in code_lines if "Write" not in line and len(line.strip()) > 0 and not line.strip().startswith(prompt)
+            line
+            for line in code_lines
+            if not line.strip().startswith("#") and len(line.strip()) > 0
         )
         return cleaned_code.strip()
     except Exception as e:
