@@ -3,6 +3,7 @@ import requests  # Added missing import
 import os
 import pywhatkit
 from bs4 import BeautifulSoup
+import logging
 
 API_KEYS = {
     "openweathermap": os.getenv("OPENWEATHERMAP_API_KEY"),
@@ -23,7 +24,9 @@ API_KEYS = {
 def validate_api_keys():
     missing_keys = [key for key, value in API_KEYS.items() if not value]
     if missing_keys:
-        raise EnvironmentError(f"Missing API keys: {', '.join(missing_keys)}")
+        logging.warning(f"Missing API keys: {', '.join(missing_keys)}")
+        # Uncomment the next line to enforce validation
+        # raise EnvironmentError(f"Missing API keys: {', '.join(missing_keys)}")
 
 validate_api_keys()
 
