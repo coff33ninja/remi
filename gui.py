@@ -1,3 +1,4 @@
+# gui.py
 import pygame
 import threading
 import queue
@@ -48,9 +49,10 @@ input_active = False
 max_input_lines = 2
 placeholder_text = "Type your command..."
 
-# Chat history
+# Chat history (limit to 50 messages to prevent overflow)
 chat_history = []
 chat_scroll_offset = 0  # For scrolling
+MAX_CHAT_HISTORY = 50
 
 # Toggle switches
 tts_enabled = False
@@ -169,12 +171,13 @@ while running:
     pygame.draw.rect(screen, SECONDARY_COLOR, chat_rect, 1, border_radius=10)
 
     # Draw chat history with scrolling
-    y_offset = chat_rect.y + 10 + chat_scroll_offset
+    y_offset = chat_rect.y + 10
+    total_height = 0
     for message in chat_history:
         is_user = message.startswith("You:")
-        is_code = "\n" in message and "AI:" in message  # Simple heuristic for code
+        is_code = "\n" in message and "AI:" in message
         prefix = "You: " if is_user else "AI: "
-        text = message[5:] if is_user else message[4:]  # Remove "You:" or "AI:"
+        text = message[5:] if is_user else message[4:]
         color = USER_COLOR if is_user else AI_COLOR
         font_to_use = code_font if is_code else font
 
@@ -190,8 +193,14 @@ while running:
         # Calculate total height of message
         line_height = CODE_FONT_SIZE + 5 if is_code else FONT_SIZE + 5
         message_height = len(wrapped_lines) * line_height
+        total_height += message_height
 
-        if y_offset + message_height >= chat_rect.y and y_offset <= chat_rect.bottom:
+        # Adjust y_offset with scroll offset
+        adjusted_y = y_offset + chat_scroll_offset
+        if (
+            adjusted_y + message_height >= chat_rect.y
+            and adjusted_y <= chat_rect.bottom
+        ):
             for i, line in enumerate(wrapped_lines):
                 text_surface = font_to_use.render(line, True, color)
                 x_pos = (
@@ -200,32 +209,31 @@ while running:
                     else chat_rect.x + chat_rect.width - text_surface.get_width() - 10
                 )
                 if is_user:
-                    # Draw prefix and message on the same line for the first line
                     if i == 0:
-                        screen.blit(prefix_surface, (chat_rect.x + 10, y_offset))
+                        screen.blit(prefix_surface, (chat_rect.x + 10, adjusted_y))
                         screen.blit(
-                            text_surface, (chat_rect.x + 10 + prefix_width, y_offset)
+                            text_surface, (chat_rect.x + 10 + prefix_width, adjusted_y)
                         )
                     else:
                         screen.blit(
                             text_surface,
                             (
                                 chat_rect.x + 10 + prefix_width,
-                                y_offset + i * line_height,
+                                adjusted_y + i * line_height,
                             ),
                         )
                 else:
                     if i == 0:
-                        screen.blit(prefix_surface, (chat_rect.x + 10, y_offset))
+                        screen.blit(prefix_surface, (chat_rect.x + 10, adjusted_y))
                         screen.blit(
-                            text_surface, (chat_rect.x + 10 + prefix_width, y_offset)
+                            text_surface, (chat_rect.x + 10 + prefix_width, adjusted_y)
                         )
                     else:
                         screen.blit(
                             text_surface,
                             (
                                 chat_rect.x + 10 + prefix_width,
-                                y_offset + i * line_height,
+                                adjusted_y + i * line_height,
                             ),
                         )
                     if is_code:
@@ -234,13 +242,19 @@ while running:
                             CODE_BG_COLOR,
                             (
                                 chat_rect.x + 10 + prefix_width - 5,
-                                y_offset + i * line_height - 2,
+                                adjusted_y + i * line_height - 2,
                                 text_surface.get_width() + 10,
                                 line_height,
                             ),
                             border_radius=5,
                         )
         y_offset += message_height
+
+    # Auto-scroll to the bottom by default
+    if total_height > chat_rect.height:
+        chat_scroll_offset = -(total_height - chat_rect.height + 20)
+    else:
+        chat_scroll_offset = 0
 
     # Draw input box
     pygame.draw.rect(screen, CARD_COLOR, input_box, border_radius=10)
@@ -282,11 +296,15 @@ while running:
             response = output_queue.get()
             logging.info(f"Received response from queue: {response}")
             chat_history.append(f"AI: {response}")
+            if len(chat_history) > MAX_CHAT_HISTORY:
+                chat_history.pop(0)
             if tts_enabled:
                 speak_response(response)
     except Exception as e:
         logging.error(f"Error in output queue: {str(e)}")
         chat_history.append(f"Error: {str(e)}")
+        if len(chat_history) > MAX_CHAT_HISTORY:
+            chat_history.pop(0)
 
     # Event handling
     for event in pygame.event.get():
@@ -310,6 +328,8 @@ while running:
                 if event.key == pygame.K_RETURN:
                     if input_text.strip():
                         chat_history.append(f"You: {input_text}")
+                        if len(chat_history) > MAX_CHAT_HISTORY:
+                            chat_history.pop(0)
                         input_queue.put(input_text)
                         input_text = ""
                 elif event.key == pygame.K_BACKSPACE:
@@ -324,23 +344,15 @@ while running:
                         input_text = test_text
             elif event.key == pygame.K_v and stt_enabled and not input_active:
                 chat_history.append("Listening for voice command...")
+                if len(chat_history) > MAX_CHAT_HISTORY:
+                    chat_history.pop(0)
                 input_queue.put("voice_command")
         elif event.type == pygame.MOUSEWHEEL:
             chat_scroll_offset += event.y * 20
             chat_scroll_offset = min(chat_scroll_offset, 0)
-            total_height = sum(
-                len(
-                    wrap_text(
-                        msg[5:] if msg.startswith("You:") else msg[4:],
-                        code_font if "\n" in msg else font,
-                        chat_rect.width - 20 - font.size("You: ")[0],
-                    )
-                )
-                * (CODE_FONT_SIZE + 5 if "\n" in msg else FONT_SIZE + 5)
-                for msg in chat_history
-            )
-            max_offset = max(0, chat_rect.height - total_height - 20)
-            chat_scroll_offset = max(chat_scroll_offset, max_offset)
+            if total_height > chat_rect.height:
+                max_offset = -(total_height - chat_rect.height + 20)
+                chat_scroll_offset = max(chat_scroll_offset, max_offset)
 
     # Update display
     pygame.display.flip()

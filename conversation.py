@@ -1,9 +1,10 @@
+# conversation.py
+import os
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from offline_tools import nlp, speak_response
 from apis import API_KEYS
 import re
 import torch
-import os
 
 # Load tokenizer and model from fine-tuned checkpoint
 hf_token = API_KEYS.get("huggingface") or os.getenv("HUGGINGFACE_TOKEN")
@@ -12,12 +13,10 @@ if not hf_token:
         "Hugging Face token is missing. Please set it in the .env file."
     )
 
-# Load the fine-tuned tokenizer directly (it already has [INST] and [/INST])
 tokenizer = AutoTokenizer.from_pretrained("./fine_tuned_model", token=hf_token)
 if tokenizer.pad_token_id is None:
     tokenizer.pad_token_id = tokenizer.eos_token_id
 
-# Load the base model with quantization
 model_name = "mistralai/Mistral-7B-Instruct-v0.1"
 quantization_config = BitsAndBytesConfig(
     load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16
@@ -30,14 +29,10 @@ model = AutoModelForCausalLM.from_pretrained(
     token=hf_token,
 )
 
-# Resize embeddings to match the fine-tuned tokenizer *before* loading LoRA weights
 model.resize_token_embeddings(len(tokenizer))
-
-# Load the fine-tuned LoRA adapter
 model.load_adapter("./fine_tuned_model")
 
 
-# Rest of your code (recognize_intent, generate_response, etc.) remains unchanged
 def recognize_intent(command):
     doc = nlp(command.lower())
     entities = {ent.label_: ent.text for ent in doc.ents}
@@ -49,9 +44,10 @@ def recognize_intent(command):
     if " and " in command_lower or " then " in command_lower or " if " in command_lower:
         return parse_complex_command(command_lower, entities)
 
-    # Code generation intent
     if "code" in command_lower and (
-        "write" in command_lower or "code a script" in command_lower
+        "write" in command_lower
+        or "code a script" in command_lower
+        or "create a code" in command_lower
     ):
         lang = next(
             (
@@ -66,6 +62,7 @@ def recognize_intent(command):
             if f"{lang} to" in command_lower
             else command_lower.replace("code a script for", "")
             .replace("write", "")
+            .replace("create a code", "")
             .strip()
         )
         return "generate_code", {"language": lang, "task": task}
@@ -81,7 +78,6 @@ def recognize_intent(command):
         return "get_specials", {"item": item}
     elif "nearest" in command_lower and "buy" in command_lower:
         item = command_lower.split("buy")[-1].strip()
-        # Assume user location for demo; replace with real input later
         user_lat, user_lon = -33.9249, 18.4241  # Cape Town
         return "find_nearest_special", {
             "item": item,
@@ -162,8 +158,20 @@ def recognize_intent(command):
         }
     elif "whatsapp" in command_lower:
         parts = command_lower.split("to")
-        phone = parts[1].split("say")[0].strip() if len(parts) > 1 else "+1234567890"
-        message = parts[-1].strip()
+        if len(parts) > 1:
+            phone_part = parts[1]
+            if "say" in phone_part:
+                phone = phone_part.split("say")[0].strip()
+                message = phone_part.split("say")[-1].strip()
+            elif "tell" in phone_part:
+                phone = phone_part.split("tell")[0].strip()
+                message = phone_part.split("tell")[-1].strip()
+            else:
+                phone = "+1234567890"
+                message = parts[-1].strip()
+        else:
+            phone = "+1234567890"
+            message = parts[-1].strip()
         return "send_whatsapp_message", {"phone": phone, "message": message}
     elif "what" in command_lower or "how" in command_lower:
         return "query_wolfram", {"query": command}
@@ -342,7 +350,7 @@ def generate_response(prompt):
         )
         response = tokenizer.decode(outputs[0], skip_special_tokens=True)
         if response.startswith(full_prompt):
-            response = response[len(full_prompt):].strip()
+            response = response[len(full_prompt) :].strip()
         return response
     except Exception as e:
         return f"Response generation error: {str(e)}"
@@ -355,9 +363,6 @@ def switch_to_better_model():
     return "Currently on Mistral 7B—no better model available yet for your hardware."
 
 
-# Add switch_to_better_conversational_model if defined elsewhere
 def switch_to_better_conversational_model():
-    speak_response(
-        "Switching to a better conversational model—hold tight!"
-    )
+    speak_response("Switching to a better conversational model—hold tight!")
     return "Switching conversational models not implemented yet."

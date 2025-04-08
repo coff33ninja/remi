@@ -1499,7 +1499,7 @@
         "kind": 2,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "def recognize_intent(command):\n    doc = nlp(command.lower())\n    entities = {ent.label_: ent.text for ent in doc.ents}\n    command_lower = command.lower()\n    if \"switch to better model\" in command_lower:\n        return \"switch_to_better_model\", {}\n    if \" and \" in command_lower or \" then \" in command_lower or \" if \" in command_lower:\n        return parse_complex_command(command_lower, entities)\n    # Code generation intent\n    if \"code\" in command_lower and (",
+        "peekOfCode": "def recognize_intent(command):\n    doc = nlp(command.lower())\n    entities = {ent.label_: ent.text for ent in doc.ents}\n    command_lower = command.lower()\n    if \"switch to better model\" in command_lower:\n        return \"switch_to_better_model\", {}\n    if \" and \" in command_lower or \" then \" in command_lower or \" if \" in command_lower:\n        return parse_complex_command(command_lower, entities)\n    if \"code\" in command_lower and (\n        \"write\" in command_lower",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1526,7 +1526,7 @@
         "kind": 2,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "def switch_to_better_model():\n    speak_response(\n        \"You're already on Mistral 7B—pretty spicy already! Need a bigger flirt?\"\n    )\n    return \"Currently on Mistral 7B—no better model available yet for your hardware.\"\n# Add switch_to_better_conversational_model if defined elsewhere\ndef switch_to_better_conversational_model():\n    speak_response(\n        \"Switching to a better conversational model—hold tight!\"\n    )",
+        "peekOfCode": "def switch_to_better_model():\n    speak_response(\n        \"You're already on Mistral 7B—pretty spicy already! Need a bigger flirt?\"\n    )\n    return \"Currently on Mistral 7B—no better model available yet for your hardware.\"\ndef switch_to_better_conversational_model():\n    speak_response(\"Switching to a better conversational model—hold tight!\")\n    return \"Switching conversational models not implemented yet.\"",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1535,7 +1535,7 @@
         "kind": 2,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "def switch_to_better_conversational_model():\n    speak_response(\n        \"Switching to a better conversational model—hold tight!\"\n    )\n    return \"Switching conversational models not implemented yet.\"",
+        "peekOfCode": "def switch_to_better_conversational_model():\n    speak_response(\"Switching to a better conversational model—hold tight!\")\n    return \"Switching conversational models not implemented yet.\"",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1544,7 +1544,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "hf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\n        \"Hugging Face token is missing. Please set it in the .env file.\"\n    )\n# Load the fine-tuned tokenizer directly (it already has [INST] and [/INST])\ntokenizer = AutoTokenizer.from_pretrained(\"./fine_tuned_model\", token=hf_token)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\n# Load the base model with quantization",
+        "peekOfCode": "hf_token = API_KEYS.get(\"huggingface\") or os.getenv(\"HUGGINGFACE_TOKEN\")\nif not hf_token:\n    raise EnvironmentError(\n        \"Hugging Face token is missing. Please set it in the .env file.\"\n    )\ntokenizer = AutoTokenizer.from_pretrained(\"./fine_tuned_model\", token=hf_token)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\nmodel_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\nquantization_config = BitsAndBytesConfig(",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1553,7 +1553,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(\"./fine_tuned_model\", token=hf_token)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\n# Load the base model with quantization\nmodel_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\nquantization_config = BitsAndBytesConfig(\n    load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(\"./fine_tuned_model\", token=hf_token)\nif tokenizer.pad_token_id is None:\n    tokenizer.pad_token_id = tokenizer.eos_token_id\nmodel_name = \"mistralai/Mistral-7B-Instruct-v0.1\"\nquantization_config = BitsAndBytesConfig(\n    load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16\n)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=quantization_config,",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1580,7 +1580,7 @@
         "kind": 5,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=hf_token,\n)\n# Resize embeddings to match the fine-tuned tokenizer *before* loading LoRA weights\nmodel.resize_token_embeddings(len(tokenizer))\n# Load the fine-tuned LoRA adapter",
+        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    quantization_config=quantization_config,\n    device_map=\"auto\",\n    torch_dtype=torch.float16,\n    token=hf_token,\n)\nmodel.resize_token_embeddings(len(tokenizer))\nmodel.load_adapter(\"./fine_tuned_model\")\ndef recognize_intent(command):",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1751,7 +1751,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "input_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history\nchat_history = []",
+        "peekOfCode": "input_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history (limit to 50 messages to prevent overflow)\nchat_history = []",
         "detail": "gui",
         "documentation": {}
     },
@@ -1760,7 +1760,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "output_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history\nchat_history = []\nchat_scroll_offset = 0  # For scrolling",
+        "peekOfCode": "output_queue = queue.Queue()\n# Input box\ninput_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history (limit to 50 messages to prevent overflow)\nchat_history = []\nchat_scroll_offset = 0  # For scrolling",
         "detail": "gui",
         "documentation": {}
     },
@@ -1769,7 +1769,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "input_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\n# Toggle switches\ntts_enabled = False",
+        "peekOfCode": "input_box = pygame.Rect(50, SCREEN_HEIGHT - 80, 800, 50)\ninput_text = \"\"\ninput_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history (limit to 50 messages to prevent overflow)\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\nMAX_CHAT_HISTORY = 50\n# Toggle switches",
         "detail": "gui",
         "documentation": {}
     },
@@ -1778,7 +1778,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "input_text = \"\"\ninput_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\n# Toggle switches\ntts_enabled = False\nstt_enabled = False",
+        "peekOfCode": "input_text = \"\"\ninput_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history (limit to 50 messages to prevent overflow)\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\nMAX_CHAT_HISTORY = 50\n# Toggle switches\ntts_enabled = False",
         "detail": "gui",
         "documentation": {}
     },
@@ -1787,7 +1787,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "input_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40",
+        "peekOfCode": "input_active = False\nmax_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history (limit to 50 messages to prevent overflow)\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\nMAX_CHAT_HISTORY = 50\n# Toggle switches\ntts_enabled = False\nstt_enabled = False",
         "detail": "gui",
         "documentation": {}
     },
@@ -1796,7 +1796,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "max_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)",
+        "peekOfCode": "max_input_lines = 2\nplaceholder_text = \"Type your command...\"\n# Chat history (limit to 50 messages to prevent overflow)\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\nMAX_CHAT_HISTORY = 50\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40",
         "detail": "gui",
         "documentation": {}
     },
@@ -1805,7 +1805,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "placeholder_text = \"Type your command...\"\n# Chat history\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)",
+        "peekOfCode": "placeholder_text = \"Type your command...\"\n# Chat history (limit to 50 messages to prevent overflow)\nchat_history = []\nchat_scroll_offset = 0  # For scrolling\nMAX_CHAT_HISTORY = 50\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)",
         "detail": "gui",
         "documentation": {}
     },
@@ -1814,7 +1814,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "chat_history = []\nchat_scroll_offset = 0  # For scrolling\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)\n# Hints section\nhints_button = pygame.Rect(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50, 30, 30)",
+        "peekOfCode": "chat_history = []\nchat_scroll_offset = 0  # For scrolling\nMAX_CHAT_HISTORY = 50\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)\n# Hints section",
         "detail": "gui",
         "documentation": {}
     },
@@ -1823,7 +1823,16 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "chat_scroll_offset = 0  # For scrolling\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)\n# Hints section\nhints_button = pygame.Rect(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50, 30, 30)\nhints_visible = False",
+        "peekOfCode": "chat_scroll_offset = 0  # For scrolling\nMAX_CHAT_HISTORY = 50\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)\n# Hints section\nhints_button = pygame.Rect(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50, 30, 30)",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "MAX_CHAT_HISTORY",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "MAX_CHAT_HISTORY = 50\n# Toggle switches\ntts_enabled = False\nstt_enabled = False\nswitch_size = 40\ntts_switch = pygame.Rect(SCREEN_WIDTH - 200, 40, switch_size * 2, switch_size)\nstt_switch = pygame.Rect(SCREEN_WIDTH - 200, 100, switch_size * 2, switch_size)\n# Hints section\nhints_button = pygame.Rect(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50, 30, 30)\nhints_visible = False",
         "detail": "gui",
         "documentation": {}
     },
