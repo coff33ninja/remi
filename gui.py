@@ -1,8 +1,14 @@
 import pygame
 import threading
 import queue
+import logging
 from conversation import generate_response
 from offline_tools import listen_for_command, speak_response
+
+# Set up logging to debug response issues
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 # Initialize PyGame
 pygame.init()
@@ -76,14 +82,17 @@ def handle_ai_response():
     while True:
         try:
             user_input = input_queue.get()
+            logging.info(f"Processing user input: {user_input}")
             if user_input == "voice_command" and stt_enabled:
                 response = listen_for_command()
                 if response.startswith("Speech recognition error"):
                     response = "Sorry, I couldn't hear you clearly."
             else:
                 response = generate_response(user_input)
+            logging.info(f"Generated response: {response}")
             output_queue.put(response)
         except Exception as e:
+            logging.error(f"Error in handle_ai_response: {str(e)}")
             output_queue.put(f"Error: {str(e)}")
 
 
@@ -164,10 +173,19 @@ while running:
     for message in chat_history:
         is_user = message.startswith("You:")
         is_code = "\n" in message and "AI:" in message  # Simple heuristic for code
-        text = message[4:] if is_user else message[3:]  # Remove "You:" or "AI:"
+        prefix = "You: " if is_user else "AI: "
+        text = message[5:] if is_user else message[4:]  # Remove "You:" or "AI:"
         color = USER_COLOR if is_user else AI_COLOR
         font_to_use = code_font if is_code else font
-        wrapped_lines = wrap_text(text, font_to_use, chat_rect.width - 20, is_code)
+
+        # Render prefix
+        prefix_surface = font.render(prefix, True, color)
+        prefix_width = prefix_surface.get_width()
+
+        # Wrap the message content
+        wrapped_lines = wrap_text(
+            text, font_to_use, chat_rect.width - 20 - prefix_width, is_code
+        )
 
         # Calculate total height of message
         line_height = CODE_FONT_SIZE + 5 if is_code else FONT_SIZE + 5
@@ -181,19 +199,47 @@ while running:
                     if is_user
                     else chat_rect.x + chat_rect.width - text_surface.get_width() - 10
                 )
-                if is_code:
-                    pygame.draw.rect(
-                        screen,
-                        CODE_BG_COLOR,
-                        (
-                            x_pos - 5,
-                            y_offset + i * line_height - 2,
-                            text_surface.get_width() + 10,
-                            line_height,
-                        ),
-                        border_radius=5,
-                    )
-                screen.blit(text_surface, (x_pos, y_offset + i * line_height))
+                if is_user:
+                    # Draw prefix and message on the same line for the first line
+                    if i == 0:
+                        screen.blit(prefix_surface, (chat_rect.x + 10, y_offset))
+                        screen.blit(
+                            text_surface, (chat_rect.x + 10 + prefix_width, y_offset)
+                        )
+                    else:
+                        screen.blit(
+                            text_surface,
+                            (
+                                chat_rect.x + 10 + prefix_width,
+                                y_offset + i * line_height,
+                            ),
+                        )
+                else:
+                    if i == 0:
+                        screen.blit(prefix_surface, (chat_rect.x + 10, y_offset))
+                        screen.blit(
+                            text_surface, (chat_rect.x + 10 + prefix_width, y_offset)
+                        )
+                    else:
+                        screen.blit(
+                            text_surface,
+                            (
+                                chat_rect.x + 10 + prefix_width,
+                                y_offset + i * line_height,
+                            ),
+                        )
+                    if is_code:
+                        pygame.draw.rect(
+                            screen,
+                            CODE_BG_COLOR,
+                            (
+                                chat_rect.x + 10 + prefix_width - 5,
+                                y_offset + i * line_height - 2,
+                                text_surface.get_width() + 10,
+                                line_height,
+                            ),
+                            border_radius=5,
+                        )
         y_offset += message_height
 
     # Draw input box
@@ -234,10 +280,12 @@ while running:
     try:
         while not output_queue.empty():
             response = output_queue.get()
+            logging.info(f"Received response from queue: {response}")
             chat_history.append(f"AI: {response}")
             if tts_enabled:
                 speak_response(response)
     except Exception as e:
+        logging.error(f"Error in output queue: {str(e)}")
         chat_history.append(f"Error: {str(e)}")
 
     # Event handling
@@ -278,15 +326,14 @@ while running:
                 chat_history.append("Listening for voice command...")
                 input_queue.put("voice_command")
         elif event.type == pygame.MOUSEWHEEL:
-            chat_scroll_offset += event.y * 20  # Scroll speed
-            chat_scroll_offset = min(chat_scroll_offset, 0)  # Don't scroll above top
-            # Limit scrolling down based on content height
+            chat_scroll_offset += event.y * 20
+            chat_scroll_offset = min(chat_scroll_offset, 0)
             total_height = sum(
                 len(
                     wrap_text(
-                        msg[4:] if msg.startswith("You:") else msg[3:],
+                        msg[5:] if msg.startswith("You:") else msg[4:],
                         code_font if "\n" in msg else font,
-                        chat_rect.width - 20,
+                        chat_rect.width - 20 - font.size("You: ")[0],
                     )
                 )
                 * (CODE_FONT_SIZE + 5 if "\n" in msg else FONT_SIZE + 5)

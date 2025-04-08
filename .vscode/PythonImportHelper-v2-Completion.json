@@ -1589,7 +1589,7 @@
         "kind": 2,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "def handle_ai_response():\n    while True:\n        try:\n            user_input = input_queue.get()\n            if user_input == \"voice_command\" and stt_enabled:\n                response = listen_for_command()\n                if response.startswith(\"Speech recognition error\"):\n                    response = \"Sorry, I couldn't hear you clearly.\"\n            else:\n                response = generate_response(user_input)",
+        "peekOfCode": "def handle_ai_response():\n    while True:\n        try:\n            user_input = input_queue.get()\n            logging.info(f\"Processing user input: {user_input}\")\n            if user_input == \"voice_command\" and stt_enabled:\n                response = listen_for_command()\n                if response.startswith(\"Speech recognition error\"):\n                    response = \"Sorry, I couldn't hear you clearly.\"\n            else:",
         "detail": "gui",
         "documentation": {}
     },
