@@ -17,6 +17,19 @@ import re
 from calculations import haversine_distance
 import snowboydecoder
 import logging
+import time
+import hashlib
+from cryptography.fernet import Fernet
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+import win10toast
+import schedule
+import threading
+import socket
+import pyshark
+import pyperclip
+from PIL import ImageGrab
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -993,3 +1006,499 @@ def search_command_history(keyword):
         return "No matching history found."
     except Exception as e:
         return f"Error searching command history: {str(e)}"
+
+# Function to monitor system resources in real-time
+def monitor_resources(interval=1):
+    """
+    Monitor CPU, memory, and disk usage in real-time.
+
+    Args:
+        interval (int): Time interval (in seconds) between updates.
+
+    Returns:
+        None
+    """
+    try:
+        while True:
+            cpu_usage = psutil.cpu_percent(interval=interval)
+            memory = psutil.virtual_memory()
+            disk = psutil.disk_usage('/')
+
+            print(f"CPU Usage: {cpu_usage}%")
+            print(f"Memory Usage: {memory.percent}%")
+            print(f"Disk Usage: {disk.percent}%")
+            print("-" * 30)
+
+            time.sleep(interval)
+    except KeyboardInterrupt:
+        print("Monitoring stopped.")
+
+# Function to list running processes
+def list_processes():
+    """
+    List all running processes and their resource usage.
+
+    Returns:
+        list: A list of dictionaries containing process details.
+    """
+    processes = []
+    for proc in psutil.process_iter(['pid', 'name', 'cpu_percent', 'memory_percent']):
+        try:
+            processes.append(proc.info)
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+            pass
+    return processes
+
+# Function to terminate a process by PID
+def terminate_process(pid):
+    """
+    Terminate a process by its PID.
+
+    Args:
+        pid (int): Process ID of the process to terminate.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        proc = psutil.Process(pid)
+        proc.terminate()
+        return f"Process {pid} terminated successfully."
+    except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess) as e:
+        return f"Error terminating process {pid}: {str(e)}"
+
+# Function to search for files by name or content
+def search_files(directory, search_term):
+    """
+    Search for files by name or content within a directory.
+
+    Args:
+        directory (str): Path to the directory.
+        search_term (str): Term to search for in file names or content.
+
+    Returns:
+        list: List of matching file paths.
+    """
+    import os
+
+    matching_files = []
+    for root, _, files in os.walk(directory):
+        for file in files:
+            if search_term.lower() in file.lower():
+                matching_files.append(os.path.join(root, file))
+            else:
+                try:
+                    with open(os.path.join(root, file), 'r', errors='ignore') as f:
+                        if search_term.lower() in f.read().lower():
+                            matching_files.append(os.path.join(root, file))
+                except Exception:
+                    pass
+    return matching_files
+
+# Function to generate a key for encryption/ decryption
+def generate_key():
+    """
+    Generate a key for encryption and decryption.
+
+    Returns:
+        bytes: Encryption key.
+    """
+    return Fernet.generate_key()
+
+# Function to encrypt a file
+def encrypt_file(file_path, key):
+    """
+    Encrypt a file using the provided key.
+
+    Args:
+        file_path (str): Path to the file to encrypt.
+        key (bytes): Encryption key.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        with open(file_path, 'rb') as file:
+            data = file.read()
+        fernet = Fernet(key)
+        encrypted_data = fernet.encrypt(data)
+        with open(file_path, 'wb') as file:
+            file.write(encrypted_data)
+        return f"File '{file_path}' encrypted successfully."
+    except Exception as e:
+        return f"Error encrypting file: {str(e)}"
+
+# Function to decrypt a file
+def decrypt_file(file_path, key):
+    """
+    Decrypt a file using the provided key.
+
+    Args:
+        file_path (str): Path to the file to decrypt.
+        key (bytes): Encryption key.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        with open(file_path, 'rb') as file:
+            encrypted_data = file.read()
+        fernet = Fernet(key)
+        decrypted_data = fernet.decrypt(encrypted_data)
+        with open(file_path, 'wb') as file:
+            file.write(decrypted_data)
+        return f"File '{file_path}' decrypted successfully."
+    except Exception as e:
+        return f"Error decrypting file: {str(e)}"
+
+# Function to create a backup of a file or directory
+def create_backup(source_path, backup_path):
+    """
+    Create a backup of a file or directory.
+
+    Args:
+        source_path (str): Path to the file or directory to back up.
+        backup_path (str): Path to save the backup.
+
+    Returns:
+        str: Success or error message.
+    """
+    import shutil
+
+    try:
+        if os.path.isdir(source_path):
+            shutil.copytree(source_path, backup_path)
+        else:
+            shutil.copy2(source_path, backup_path)
+        return f"Backup created at '{backup_path}'."
+    except Exception as e:
+        return f"Error creating backup: {str(e)}"
+
+# Function to restore a backup
+def restore_backup(backup_path, restore_path):
+    """
+    Restore a backup to the specified location.
+
+    Args:
+        backup_path (str): Path to the backup file or directory.
+        restore_path (str): Path to restore the backup.
+
+    Returns:
+        str: Success or error message.
+    """
+    import shutil
+
+    try:
+        if os.path.isdir(backup_path):
+            shutil.copytree(backup_path, restore_path)
+        else:
+            shutil.copy2(backup_path, restore_path)
+        return f"Backup restored to '{restore_path}'."
+    except Exception as e:
+        return f"Error restoring backup: {str(e)}"
+
+# Function to send email notifications
+def send_email_notification(subject, body, recipient_email, sender_email, sender_password):
+    """
+    Send an email notification.
+
+    Args:
+        subject (str): Subject of the email.
+        body (str): Body of the email.
+        recipient_email (str): Recipient's email address.
+        sender_email (str): Sender's email address.
+        sender_password (str): Sender's email password.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        msg = MIMEMultipart()
+        msg['From'] = sender_email
+        msg['To'] = recipient_email
+        msg['Subject'] = subject
+
+        msg.attach(MIMEText(body, 'plain'))
+
+        with smtplib.SMTP('smtp.gmail.com', 587) as server:
+            server.starttls()
+            server.login(sender_email, sender_password)
+            server.send_message(msg)
+
+        return "Email sent successfully."
+    except Exception as e:
+        return f"Error sending email: {str(e)}"
+
+# Function to display desktop notifications
+def show_desktop_notification(title, message):
+    """
+    Display a desktop notification.
+
+    Args:
+        title (str): Title of the notification.
+        message (str): Message of the notification.
+
+    Returns:
+        None
+    """
+    try:
+        toaster = win10toast.ToastNotifier()
+        toaster.show_toast(title, message, duration=10)
+    except Exception as e:
+        print(f"Error displaying notification: {str(e)}")
+
+# Function to send weekly logs via email
+def send_weekly_logs(recipient_email, sender_email, sender_password):
+    """
+    Send weekly logs via email.
+
+    Args:
+        recipient_email (str): Recipient's email address.
+        sender_email (str): Sender's email address.
+        sender_password (str): Sender's email password.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        with open('assistant.log', 'r') as log_file:
+            logs = log_file.read()
+
+        subject = "Weekly Logs"
+        body = f"Here are the weekly logs:\n\n{logs}"
+
+        return send_email_notification(subject, body, recipient_email, sender_email, sender_password)
+    except FileNotFoundError:
+        return "Log file not found."
+    except Exception as e:
+        return f"Error sending weekly logs: {str(e)}"
+
+# Function to schedule a task
+def schedule_task(task_name, task_function, time_string):
+    """
+    Schedule a task to run at a specific time.
+
+    Args:
+        task_name (str): Name of the task.
+        task_function (function): The function to execute.
+        time_string (str): Time to run the task (e.g., '14:30').
+
+    Returns:
+        str: Success message.
+    """
+    try:
+        schedule.every().day.at(time_string).do(task_function).tag(task_name)
+        return f"Task '{task_name}' scheduled at {time_string}."
+    except Exception as e:
+        return f"Error scheduling task '{task_name}': {str(e)}"
+
+# Function to cancel a scheduled task
+def cancel_task(task_name):
+    """
+    Cancel a scheduled task by its name.
+
+    Args:
+        task_name (str): Name of the task to cancel.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        schedule.clear(task_name)
+        return f"Task '{task_name}' canceled successfully."
+    except Exception as e:
+        return f"Error canceling task '{task_name}': {str(e)}"
+
+# Function to run the scheduler in a separate thread
+def run_scheduler():
+    """
+    Run the scheduler in a separate thread.
+
+    Returns:
+        None
+    """
+    def scheduler_thread():
+        while True:
+            schedule.run_pending()
+            time.sleep(1)
+
+    threading.Thread(target=scheduler_thread, daemon=True).start()
+
+# Example task function
+def example_task():
+    print("Example task executed.")
+
+# Function to execute a custom script
+def execute_script(script_path):
+    """
+    Execute a custom script or command.
+
+    Args:
+        script_path (str): Path to the script or command to execute.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        result = subprocess.run(script_path, shell=True, capture_output=True, text=True)
+        return result.stdout if result.returncode == 0 else result.stderr
+    except Exception as e:
+        return f"Error executing script '{script_path}': {str(e)}"
+
+# Function to scan open ports on a host
+def scan_ports(host, start_port=1, end_port=65535):
+    """
+    Scan open ports on a host.
+
+    Args:
+        host (str): Hostname or IP address to scan.
+        start_port (int): Starting port number.
+        end_port (int): Ending port number.
+
+    Returns:
+        list: List of open ports.
+    """
+    open_ports = []
+    for port in range(start_port, end_port + 1):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(0.5)
+            if s.connect_ex((host, port)) == 0:
+                open_ports.append(port)
+    return open_ports
+
+# Function to monitor network traffic
+def monitor_network_traffic(interface):
+    """
+    Monitor incoming and outgoing network traffic.
+
+    Args:
+        interface (str): Network interface to monitor.
+
+    Returns:
+        None
+    """
+    try:
+        capture = pyshark.LiveCapture(interface=interface)
+        print("Monitoring network traffic. Press Ctrl+C to stop.")
+        for packet in capture.sniff_continuously():
+            print(packet)
+    except Exception as e:
+        print(f"Error monitoring network traffic: {str(e)}")
+
+# Function to connect to a VPN
+def connect_vpn(config_path):
+    """
+    Connect to a VPN using a configuration file.
+
+    Args:
+        config_path (str): Path to the VPN configuration file.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        result = subprocess.run(["openvpn", "--config", config_path], capture_output=True, text=True)
+        return result.stdout if result.returncode == 0 else result.stderr
+    except Exception as e:
+        return f"Error connecting to VPN: {str(e)}"
+
+# Function to disconnect from a VPN
+def disconnect_vpn():
+    """
+    Disconnect from the VPN.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        result = subprocess.run(["taskkill", "/IM", "openvpn.exe", "/F"], capture_output=True, text=True)
+        return "VPN disconnected successfully." if result.returncode == 0 else result.stderr
+    except Exception as e:
+        return f"Error disconnecting from VPN: {str(e)}"
+
+# Function to access and modify the clipboard
+def get_clipboard_content():
+    """
+    Get the current content of the clipboard.
+
+    Returns:
+        str: Clipboard content.
+    """
+    try:
+        return pyperclip.paste()
+    except Exception as e:
+        return f"Error accessing clipboard: {str(e)}"
+
+def set_clipboard_content(content):
+    """
+    Set the clipboard content.
+
+    Args:
+        content (str): Content to set in the clipboard.
+
+    Returns:
+        str: Success message.
+    """
+    try:
+        pyperclip.copy(content)
+        return "Clipboard content updated."
+    except Exception as e:
+        return f"Error setting clipboard content: {str(e)}"
+
+# Function to take a screenshot
+def take_screenshot(save_path):
+    """
+    Capture a screenshot of the entire screen.
+
+    Args:
+        save_path (str): Path to save the screenshot.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        screenshot = ImageGrab.grab()
+        screenshot.save(save_path)
+        return f"Screenshot saved at {save_path}."
+    except Exception as e:
+        return f"Error taking screenshot: {str(e)}"
+
+# Function for power management
+def shutdown_system():
+    """
+    Shutdown the system.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        subprocess.run("shutdown /s /t 0", shell=True)
+        return "System is shutting down."
+    except Exception as e:
+        return f"Error shutting down system: {str(e)}"
+
+def restart_system():
+    """
+    Restart the system.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        subprocess.run("shutdown /r /t 0", shell=True)
+        return "System is restarting."
+    except Exception as e:
+        return f"Error restarting system: {str(e)}"
+
+def sleep_system():
+    """
+    Put the system to sleep.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        subprocess.run("rundll32.exe powrprof.dll,SetSuspendState 0,1,0", shell=True)
+        return "System is going to sleep."
+    except Exception as e:
+        return f"Error putting system to sleep: {str(e)}"

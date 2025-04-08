@@ -11,6 +11,11 @@ import base64
 from apis import translate_text
 import argparse
 import json
+import socket
+import subprocess
+import sqlite3
+from speedtest import Speedtest
+from offline_tools import send_weekly_logs, show_desktop_notification
 
 # Set up logging to debug response issues
 logging.basicConfig(
@@ -118,6 +123,34 @@ hints_text = [
     "- Press 'V' for voice input (STT on, not in text area)",
 ]
 
+# Update the question menu popout to include new options
+menu_options = [
+    "Send Weekly Logs",
+    "Schedule Tasks",
+    "Scan Ports",
+    "Monitor Traffic",
+    "Clipboard Management",
+    "Screenshot Capture",
+    "Power Management",
+    "List Contacts",
+    "List Tasks",
+    "Add Task",
+    "Add Note",
+    "Search Notes",
+    "Encrypt File",
+    "Decrypt File",
+    "Create Backup",
+    "Restore Backup",
+    "Monitor Resources",
+    "List Processes",
+    "Terminate Process",
+    "Connect VPN",
+    "Disconnect VPN",
+    "Find Specials",
+    "Find Items Within Budget",
+    "Analyze Personality",
+    "Feed Data from File"
+]
 
 # Function to handle AI responses
 def handle_ai_response():
@@ -406,6 +439,119 @@ settings_button = pygame.Rect(SCREEN_WIDTH - 300, 220, 200, 40)
 # Modify the main loop to include a button for displaying the task chart
 task_chart_button = pygame.Rect(SCREEN_WIDTH - 300, 100, 200, 40)
 
+# GUI for managing remote access and network utilities
+def draw_remote_access_gui(surface):
+    gui_rect = pygame.Rect(100, 100, 700, 500)
+    pygame.draw.rect(surface, CARD_COLOR, gui_rect, border_radius=10)
+    pygame.draw.rect(surface, SECONDARY_COLOR, gui_rect, 2, border_radius=10)
+
+    y_offset = gui_rect.y + 20
+    labels = ["Anydesk ID", "RustDesk ID", "RDP IP Address"]
+    field_values = {label: "" for label in labels}
+    field_rects = {}
+
+    for label in labels:
+        label_surface = font.render(label + ":", True, TEXT_COLOR)
+        surface.blit(label_surface, (gui_rect.x + 20, y_offset))
+        input_rect = pygame.Rect(gui_rect.x + 200, y_offset, 400, 30)
+        pygame.draw.rect(surface, CARD_COLOR, input_rect, border_radius=5)
+        pygame.draw.rect(surface, SECONDARY_COLOR, input_rect, 2, border_radius=5)
+        field_rects[label] = input_rect
+        value_surface = font.render(field_values[label], True, TEXT_COLOR)
+        surface.blit(value_surface, (input_rect.x + 5, input_rect.y + 5))
+        y_offset += 40
+
+    # Save button
+    save_button = pygame.Rect(gui_rect.x + 300, gui_rect.y + 450, 100, 40)
+    pygame.draw.rect(surface, ACCENT_COLOR, save_button, border_radius=5)
+    save_text = font.render("Save", True, CARD_COLOR)
+    surface.blit(save_text, save_text.get_rect(center=save_button.center))
+
+    return field_rects, save_button, field_values
+
+# Event handling for remote access GUI
+def handle_remote_access_events(event, field_rects, field_values, save_button):
+    global input_active
+    if event.type == pygame.MOUSEBUTTONDOWN:
+        for field, rect in field_rects.items():
+            if rect.collidepoint(event.pos):
+                input_active = field
+                break
+        else:
+            input_active = None
+
+        if save_button.collidepoint(event.pos):
+            # Save updated remote access details to the database
+            db = sqlite3.connect("core.db")
+            cursor = db.cursor()
+            cursor.execute(
+                "CREATE TABLE IF NOT EXISTS remote_access (id INTEGER PRIMARY KEY, anydesk_id TEXT, rustdesk_id TEXT, rdp_ip TEXT)"
+            )
+            cursor.execute(
+                "INSERT INTO remote_access (anydesk_id, rustdesk_id, rdp_ip) VALUES (?, ?, ?)",
+                (field_values["Anydesk ID"], field_values["RustDesk ID"], field_values["RDP IP Address"]),
+            )
+            db.commit()
+            db.close()
+            return "Remote access details saved successfully!"
+
+    elif event.type == pygame.KEYDOWN and input_active:
+        if event.key == pygame.K_BACKSPACE:
+            field_values[input_active] = field_values[input_active][:-1]
+        else:
+            field_values[input_active] += event.unicode
+
+    return None
+
+# Launch remote access tools
+def launch_remote_tool(tool, identifier):
+    if tool == "anydesk":
+        subprocess.Popen(["anydesk", identifier])
+    elif tool == "rustdesk":
+        subprocess.Popen(["rustdesk", identifier])
+    elif tool == "rdp":
+        subprocess.Popen(["mstsc", f"/v:{identifier}"])
+
+# Fetch and save IP/MAC addresses
+def save_network_info():
+    hostname = socket.gethostname()
+    ip_address = socket.gethostbyname(hostname)
+    mac_address = ":".join(
+        ["{:02x}".format((socket.gethostbyname(hostname).encode()[i])) for i in range(6)]
+    )
+
+    db = sqlite3.connect("core.db")
+    cursor = db.cursor()
+    cursor.execute(
+        "CREATE TABLE IF NOT EXISTS network_info (id INTEGER PRIMARY KEY, ip_address TEXT, mac_address TEXT)"
+    )
+    cursor.execute(
+        "INSERT INTO network_info (ip_address, mac_address) VALUES (?, ?)",
+        (ip_address, mac_address),
+    )
+    db.commit()
+    db.close()
+
+# Ping utility
+def ping_host(host):
+    try:
+        response = subprocess.run(["ping", "-n", "4", host], capture_output=True, text=True)
+        return response.stdout
+    except Exception as e:
+        return f"Error pinging host: {str(e)}"
+
+# Speed test utility
+def run_speed_test():
+    try:
+        st = Speedtest()
+        st.get_best_server()
+        download_speed = st.download() / 1_000_000  # Convert to Mbps
+        upload_speed = st.upload() / 1_000_000  # Convert to Mbps
+        ping = st.results.ping
+        return f"Download: {download_speed:.2f} Mbps, Upload: {upload_speed:.2f} Mbps, Ping: {ping:.2f} ms"
+    except Exception as e:
+        return f"Error running speed test: {str(e)}"
+
 def offline_mode_gui():
     """
     Run the GUI in offline mode using local databases and pre-downloaded datasets.
@@ -498,6 +644,16 @@ def offline_mode_gui():
         clock.tick(60)
 
     pygame.quit()
+
+# Add a help bar to list available scenarios
+def draw_help_bar(surface):
+    help_bar = pygame.Rect(10, SCREEN_HEIGHT - 50, SCREEN_WIDTH - 20, 40)
+    pygame.draw.rect(surface, ACCENT_COLOR, help_bar, border_radius=5)
+    help_text = font.render(
+        "Available Scenarios: Send Weekly Logs, Schedule Tasks, Scan Ports, Monitor Traffic, Clipboard Management, Screenshot Capture, Power Management",
+        True, CARD_COLOR
+    )
+    surface.blit(help_text, help_text.get_rect(center=help_bar.center))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="AI Assistant GUI")
@@ -672,6 +828,38 @@ if __name__ == "__main__":
             if settings_visible:
                 field_rects, save_button, field_values = draw_settings_panel(screen)
 
+            # Draw remote access button
+            remote_access_button = pygame.Rect(SCREEN_WIDTH - 300, 280, 200, 40)
+            pygame.draw.rect(screen, ACCENT_COLOR, remote_access_button, border_radius=5)
+            remote_access_text = font.render("Remote Access", True, CARD_COLOR)
+            screen.blit(remote_access_text, remote_access_text.get_rect(center=remote_access_button.center))
+
+            if remote_access_button.collidepoint(pygame.mouse.get_pos()):
+                field_rects, save_button, field_values = draw_remote_access_gui(screen)
+
+            # Add a button for sending weekly logs
+            def draw_weekly_logs_button(surface):
+                logs_button = pygame.Rect(SCREEN_WIDTH - 300, 340, 200, 40)
+                pygame.draw.rect(surface, ACCENT_COLOR, logs_button, border_radius=5)
+                logs_text = font.render("Send Weekly Logs", True, CARD_COLOR)
+                surface.blit(logs_text, logs_text.get_rect(center=logs_button.center))
+                return logs_button
+
+            # Add event handling for the weekly logs button
+            def handle_weekly_logs_event(event, logs_button):
+                if event.type == pygame.MOUSEBUTTONDOWN and logs_button.collidepoint(event.pos):
+                    threading.Thread(
+                        target=send_weekly_logs,
+                        args=("recipient@example.com", "sender@example.com", "password"),
+                        daemon=True
+                    ).start()
+                    show_desktop_notification("Weekly Logs", "Weekly logs are being sent via email.")
+                    return "Weekly logs are being sent."
+                return None
+
+            # Modify the main loop to include the weekly logs button
+            weekly_logs_button = draw_weekly_logs_button(screen)
+
             # Check for AI responses
             try:
                 while not output_queue.empty():
@@ -723,6 +911,10 @@ if __name__ == "__main__":
                         message = handle_settings_events(event, field_rects, field_values, save_button)
                         if message:
                             chat_history.append(f"AI: {message}")
+                    elif remote_access_button.collidepoint(event.pos):
+                        message = handle_remote_access_events(event, field_rects, field_values, save_button)
+                        if message:
+                            chat_history.append(f"AI: {message}")
                     else:
                         input_active = False
                         hints_visible = False
@@ -760,6 +952,14 @@ if __name__ == "__main__":
                     if total_height > chat_rect.height:
                         max_offset = -(total_height - chat_rect.height + 20)
                         chat_scroll_offset = max(chat_scroll_offset, max_offset)
+
+                # Inside the event handling loop
+                message = handle_weekly_logs_event(event, weekly_logs_button)
+                if message:
+                    chat_history.append(f"AI: {message}")
+
+            # Draw help bar
+            draw_help_bar(screen)
 
             # Update display
             pygame.display.flip()

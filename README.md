@@ -14,6 +14,9 @@ REMI is your multi-talented personal assistant designed to fetch weather updates
 6. [System Requirements](#system-requirements)
 7. [Usage](#usage)
 8. [Troubleshooting](#troubleshooting)
+9. [Recent Additions and Improvements](#recent-additions-and-improvements)
+10. [Getting Started](#getting-started)
+11. [Available Commands in Offline Mode](#available-commands-in-offline-mode)
 
 ---
 
@@ -323,3 +326,58 @@ If you run into errors about GPU support or issues with 4-bit quantization using
 - **GPU Memory:** A GTX 1060 (6GB VRAM) should suffice for Mistral 7B with 4-bit quantization. Close unnecessary applications to free up memory.
 - **Driver Update:** If problems persist, consider updating your NVIDIA driver from the [official site](https://www.nvidia.com/Download/index.aspx).
 - **CUDA Compatibility:** Verify your CUDA version is compatible with the version of `bitsandbytes` in use. Consult [GitHub issues](https://github.com/TimDettmers/bitsandbytes/issues) for guidance.
+
+---
+
+## Recent Additions and Improvements
+
+### 1. Weekly Logs Feature
+- Added a button in the GUI to send weekly logs via email.
+- Displays a desktop notification when logs are being sent.
+
+### 2. Task Automation and Scheduling
+- Introduced task scheduling using the `schedule` library.
+- Users can schedule tasks like backups, reminders, or system scans.
+- Added functionality to execute custom scripts at specified times.
+
+### 3. Advanced Networking
+- **Port Scanning**: Scan open ports on a system or remote host.
+- **Network Traffic Analysis**: Monitor incoming and outgoing network traffic using `pyshark`.
+- **VPN Control**: Connect to or disconnect from a VPN using configuration files.
+
+### 4. System Utilities
+- **Clipboard Management**: Access and modify the system clipboard.
+- **Screenshot Capture**: Take screenshots of the entire screen and save them to a specified path.
+- **Power Management**: Shutdown, restart, or put the system to sleep programmatically.
+
+### 5. General Enhancements
+- Improved modularity and added threading support for non-blocking operations.
+- Enhanced error handling and user feedback for all new features.
+
+### Available Commands in Offline Mode
+
+- **Send Weekly Logs**: Automate sending weekly logs via email.
+- **Schedule Tasks**: Add tasks with deadlines.
+- **Scan Ports**: Scan open ports on a host.
+- **Monitor Traffic**: Monitor network traffic.
+- **Clipboard Management**: Get or set clipboard content.
+- **Screenshot Capture**: Take a screenshot of the screen.
+- **Power Management**: Shutdown, restart, or sleep the system.
+- **List Contacts**: Display all saved contacts.
+- **List Tasks**: Show all upcoming tasks.
+- **Add Task**: Add a new task with a deadline.
+- **Add Note**: Save a note under a specific category.
+- **Search Notes**: Search notes by category or keyword.
+- **Encrypt File**: Encrypt a file with a key.
+- **Decrypt File**: Decrypt a file with a key.
+- **Create Backup**: Create a backup of a file or directory.
+- **Restore Backup**: Restore a backup to a specified location.
+- **Monitor Resources**: Monitor CPU, memory, and disk usage.
+- **List Processes**: List all running processes.
+- **Terminate Process**: Terminate a process by its PID.
+- **Connect VPN**: Connect to a VPN using a configuration file.
+- **Disconnect VPN**: Disconnect from the VPN.
+- **Find Specials**: Search for specials in the database.
+- **Find Items Within Budget**: Find items within a specified budget.
+- **Analyze Personality**: Analyze user interests based on queries.
+- **Feed Data from File**: Feed data into the system from a file.

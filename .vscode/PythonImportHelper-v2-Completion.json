@@ -458,6 +458,22 @@
         "documentation": {}
     },
     {
+        "label": "send_weekly_logs",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "show_desktop_notification",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
         "label": "listen_for_command",
         "importPath": "offline_tools",
         "description": "offline_tools",
@@ -858,6 +874,32 @@
         "documentation": {}
     },
     {
+        "label": "socket",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "socket",
+        "description": "socket",
+        "detail": "socket",
+        "documentation": {}
+    },
+    {
+        "label": "sqlite3",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sqlite3",
+        "description": "sqlite3",
+        "detail": "sqlite3",
+        "documentation": {}
+    },
+    {
+        "label": "Speedtest",
+        "importPath": "speedtest",
+        "description": "speedtest",
+        "isExtraImport": true,
+        "detail": "speedtest",
+        "documentation": {}
+    },
+    {
         "label": "asyncio",
         "kind": 6,
         "isExtraImport": true,
@@ -950,15 +992,6 @@
         "documentation": {}
     },
     {
-        "label": "sqlite3",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "sqlite3",
-        "description": "sqlite3",
-        "detail": "sqlite3",
-        "documentation": {}
-    },
-    {
         "label": "LiveSpeech",
         "importPath": "pocketsphinx",
         "description": "pocketsphinx",
@@ -1035,6 +1068,14 @@
         "documentation": {}
     },
     {
+        "label": "ImageGrab",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
         "label": "PyPDF2",
         "kind": 6,
         "isExtraImport": true,
@@ -1050,6 +1091,84 @@
         "importPath": "snowboydecoder",
         "description": "snowboydecoder",
         "detail": "snowboydecoder",
+        "documentation": {}
+    },
+    {
+        "label": "hashlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "hashlib",
+        "description": "hashlib",
+        "detail": "hashlib",
+        "documentation": {}
+    },
+    {
+        "label": "Fernet",
+        "importPath": "cryptography.fernet",
+        "description": "cryptography.fernet",
+        "isExtraImport": true,
+        "detail": "cryptography.fernet",
+        "documentation": {}
+    },
+    {
+        "label": "smtplib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "smtplib",
+        "description": "smtplib",
+        "detail": "smtplib",
+        "documentation": {}
+    },
+    {
+        "label": "MIMEText",
+        "importPath": "email.mime.text",
+        "description": "email.mime.text",
+        "isExtraImport": true,
+        "detail": "email.mime.text",
+        "documentation": {}
+    },
+    {
+        "label": "MIMEMultipart",
+        "importPath": "email.mime.multipart",
+        "description": "email.mime.multipart",
+        "isExtraImport": true,
+        "detail": "email.mime.multipart",
+        "documentation": {}
+    },
+    {
+        "label": "win10toast",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "win10toast",
+        "description": "win10toast",
+        "detail": "win10toast",
+        "documentation": {}
+    },
+    {
+        "label": "schedule",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "schedule",
+        "description": "schedule",
+        "detail": "schedule",
+        "documentation": {}
+    },
+    {
+        "label": "pyshark",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pyshark",
+        "description": "pyshark",
+        "detail": "pyshark",
+        "documentation": {}
+    },
+    {
+        "label": "pyperclip",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pyperclip",
+        "description": "pyperclip",
+        "detail": "pyperclip",
         "documentation": {}
     },
     {
@@ -1730,7 +1849,7 @@
         "kind": 6,
         "importPath": "config",
         "description": "config",
-        "peekOfCode": "class Config:\n    DEBUG = os.getenv(\"DEBUG\", \"false\").lower() == \"true\"\n    API_TIMEOUT = int(os.getenv(\"API_TIMEOUT\", 10))\n    LOG_FILE = os.getenv(\"LOG_FILE\", \"assistant.log\")",
+        "peekOfCode": "class Config:\n    DEBUG = os.getenv(\"DEBUG\", \"false\").lower() == \"true\"\n    API_TIMEOUT = int(os.getenv(\"API_TIMEOUT\", 10))\n    LOG_FILE = os.getenv(\"LOG_FILE\", \"assistant.log\")\n    WAKE_WORD = \"hey remi\"  # Note: The wake word is hardcoded and cannot be changed.",
         "detail": "config",
         "documentation": {}
     },
@@ -1969,11 +2088,74 @@
         "documentation": {}
     },
     {
+        "label": "draw_remote_access_gui",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def draw_remote_access_gui(surface):\n    gui_rect = pygame.Rect(100, 100, 700, 500)\n    pygame.draw.rect(surface, CARD_COLOR, gui_rect, border_radius=10)\n    pygame.draw.rect(surface, SECONDARY_COLOR, gui_rect, 2, border_radius=10)\n    y_offset = gui_rect.y + 20\n    labels = [\"Anydesk ID\", \"RustDesk ID\", \"RDP IP Address\"]\n    field_values = {label: \"\" for label in labels}\n    field_rects = {}\n    for label in labels:\n        label_surface = font.render(label + \":\", True, TEXT_COLOR)",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "handle_remote_access_events",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def handle_remote_access_events(event, field_rects, field_values, save_button):\n    global input_active\n    if event.type == pygame.MOUSEBUTTONDOWN:\n        for field, rect in field_rects.items():\n            if rect.collidepoint(event.pos):\n                input_active = field\n                break\n        else:\n            input_active = None\n        if save_button.collidepoint(event.pos):",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "launch_remote_tool",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def launch_remote_tool(tool, identifier):\n    if tool == \"anydesk\":\n        subprocess.Popen([\"anydesk\", identifier])\n    elif tool == \"rustdesk\":\n        subprocess.Popen([\"rustdesk\", identifier])\n    elif tool == \"rdp\":\n        subprocess.Popen([\"mstsc\", f\"/v:{identifier}\"])\n# Fetch and save IP/MAC addresses\ndef save_network_info():\n    hostname = socket.gethostname()",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "save_network_info",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def save_network_info():\n    hostname = socket.gethostname()\n    ip_address = socket.gethostbyname(hostname)\n    mac_address = \":\".join(\n        [\"{:02x}\".format((socket.gethostbyname(hostname).encode()[i])) for i in range(6)]\n    )\n    db = sqlite3.connect(\"core.db\")\n    cursor = db.cursor()\n    cursor.execute(\n        \"CREATE TABLE IF NOT EXISTS network_info (id INTEGER PRIMARY KEY, ip_address TEXT, mac_address TEXT)\"",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "ping_host",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def ping_host(host):\n    try:\n        response = subprocess.run([\"ping\", \"-n\", \"4\", host], capture_output=True, text=True)\n        return response.stdout\n    except Exception as e:\n        return f\"Error pinging host: {str(e)}\"\n# Speed test utility\ndef run_speed_test():\n    try:\n        st = Speedtest()",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "run_speed_test",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def run_speed_test():\n    try:\n        st = Speedtest()\n        st.get_best_server()\n        download_speed = st.download() / 1_000_000  # Convert to Mbps\n        upload_speed = st.upload() / 1_000_000  # Convert to Mbps\n        ping = st.results.ping\n        return f\"Download: {download_speed:.2f} Mbps, Upload: {upload_speed:.2f} Mbps, Ping: {ping:.2f} ms\"\n    except Exception as e:\n        return f\"Error running speed test: {str(e)}\"",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
         "label": "offline_mode_gui",
         "kind": 2,
         "importPath": "gui",
         "description": "gui",
         "peekOfCode": "def offline_mode_gui():\n    \"\"\"\n    Run the GUI in offline mode using local databases and pre-downloaded datasets.\n    Returns:\n        None\n    \"\"\"\n    print(\"Running GUI in offline mode...\")\n    # Disable features requiring internet access\n    global tts_enabled, stt_enabled\n    tts_enabled = False",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "draw_help_bar",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def draw_help_bar(surface):\n    help_bar = pygame.Rect(10, SCREEN_HEIGHT - 50, SCREEN_WIDTH - 20, 40)\n    pygame.draw.rect(surface, ACCENT_COLOR, help_bar, border_radius=5)\n    help_text = font.render(\n        \"Available Scenarios: Send Weekly Logs, Schedule Tasks, Scan Ports, Monitor Traffic, Clipboard Management, Screenshot Capture, Power Management\",\n        True, CARD_COLOR\n    )\n    surface.blit(help_text, help_text.get_rect(center=help_bar.center))\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description=\"AI Assistant GUI\")",
         "detail": "gui",
         "documentation": {}
     },
@@ -2365,6 +2547,15 @@
         "documentation": {}
     },
     {
+        "label": "menu_options",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "menu_options = [\n    \"Send Weekly Logs\",\n    \"Schedule Tasks\",\n    \"Scan Ports\",\n    \"Monitor Traffic\",\n    \"Clipboard Management\",\n    \"Screenshot Capture\",\n    \"Power Management\",\n    \"List Contacts\",\n    \"List Tasks\",",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
         "label": "address_book_visible",
         "kind": 5,
         "importPath": "gui",
@@ -2414,7 +2605,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "settings_visible = False\nsettings_button = pygame.Rect(SCREEN_WIDTH - 300, 220, 200, 40)\n# Modify the main loop to include a button for displaying the task chart\ntask_chart_button = pygame.Rect(SCREEN_WIDTH - 300, 100, 200, 40)\ndef offline_mode_gui():\n    \"\"\"\n    Run the GUI in offline mode using local databases and pre-downloaded datasets.\n    Returns:\n        None\n    \"\"\"",
+        "peekOfCode": "settings_visible = False\nsettings_button = pygame.Rect(SCREEN_WIDTH - 300, 220, 200, 40)\n# Modify the main loop to include a button for displaying the task chart\ntask_chart_button = pygame.Rect(SCREEN_WIDTH - 300, 100, 200, 40)\n# GUI for managing remote access and network utilities\ndef draw_remote_access_gui(surface):\n    gui_rect = pygame.Rect(100, 100, 700, 500)\n    pygame.draw.rect(surface, CARD_COLOR, gui_rect, border_radius=10)\n    pygame.draw.rect(surface, SECONDARY_COLOR, gui_rect, 2, border_radius=10)\n    y_offset = gui_rect.y + 20",
         "detail": "gui",
         "documentation": {}
     },
@@ -2423,7 +2614,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "settings_button = pygame.Rect(SCREEN_WIDTH - 300, 220, 200, 40)\n# Modify the main loop to include a button for displaying the task chart\ntask_chart_button = pygame.Rect(SCREEN_WIDTH - 300, 100, 200, 40)\ndef offline_mode_gui():\n    \"\"\"\n    Run the GUI in offline mode using local databases and pre-downloaded datasets.\n    Returns:\n        None\n    \"\"\"\n    print(\"Running GUI in offline mode...\")",
+        "peekOfCode": "settings_button = pygame.Rect(SCREEN_WIDTH - 300, 220, 200, 40)\n# Modify the main loop to include a button for displaying the task chart\ntask_chart_button = pygame.Rect(SCREEN_WIDTH - 300, 100, 200, 40)\n# GUI for managing remote access and network utilities\ndef draw_remote_access_gui(surface):\n    gui_rect = pygame.Rect(100, 100, 700, 500)\n    pygame.draw.rect(surface, CARD_COLOR, gui_rect, border_radius=10)\n    pygame.draw.rect(surface, SECONDARY_COLOR, gui_rect, 2, border_radius=10)\n    y_offset = gui_rect.y + 20\n    labels = [\"Anydesk ID\", \"RustDesk ID\", \"RDP IP Address\"]",
         "detail": "gui",
         "documentation": {}
     },
@@ -2432,7 +2623,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "task_chart_button = pygame.Rect(SCREEN_WIDTH - 300, 100, 200, 40)\ndef offline_mode_gui():\n    \"\"\"\n    Run the GUI in offline mode using local databases and pre-downloaded datasets.\n    Returns:\n        None\n    \"\"\"\n    print(\"Running GUI in offline mode...\")\n    # Disable features requiring internet access\n    global tts_enabled, stt_enabled",
+        "peekOfCode": "task_chart_button = pygame.Rect(SCREEN_WIDTH - 300, 100, 200, 40)\n# GUI for managing remote access and network utilities\ndef draw_remote_access_gui(surface):\n    gui_rect = pygame.Rect(100, 100, 700, 500)\n    pygame.draw.rect(surface, CARD_COLOR, gui_rect, border_radius=10)\n    pygame.draw.rect(surface, SECONDARY_COLOR, gui_rect, 2, border_radius=10)\n    y_offset = gui_rect.y + 20\n    labels = [\"Anydesk ID\", \"RustDesk ID\", \"RDP IP Address\"]\n    field_values = {label: \"\" for label in labels}\n    field_rects = {}",
         "detail": "gui",
         "documentation": {}
     },
@@ -2982,6 +3173,249 @@
         "importPath": "offline_tools",
         "description": "offline_tools",
         "peekOfCode": "def search_command_history(keyword):\n    \"\"\"\n    Search for commands and responses in the history by keyword.\n    Args:\n        keyword (str): The keyword to search for.\n    Returns:\n        str: List of matching commands and responses or a message if no matches are found.\n    \"\"\"\n    try:\n        db = get_db(\"history\")",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "monitor_resources",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def monitor_resources(interval=1):\n    \"\"\"\n    Monitor CPU, memory, and disk usage in real-time.\n    Args:\n        interval (int): Time interval (in seconds) between updates.\n    Returns:\n        None\n    \"\"\"\n    try:\n        while True:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "list_processes",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def list_processes():\n    \"\"\"\n    List all running processes and their resource usage.\n    Returns:\n        list: A list of dictionaries containing process details.\n    \"\"\"\n    processes = []\n    for proc in psutil.process_iter(['pid', 'name', 'cpu_percent', 'memory_percent']):\n        try:\n            processes.append(proc.info)",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "terminate_process",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def terminate_process(pid):\n    \"\"\"\n    Terminate a process by its PID.\n    Args:\n        pid (int): Process ID of the process to terminate.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:\n        proc = psutil.Process(pid)",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "search_files",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def search_files(directory, search_term):\n    \"\"\"\n    Search for files by name or content within a directory.\n    Args:\n        directory (str): Path to the directory.\n        search_term (str): Term to search for in file names or content.\n    Returns:\n        list: List of matching file paths.\n    \"\"\"\n    import os",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "generate_key",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def generate_key():\n    \"\"\"\n    Generate a key for encryption and decryption.\n    Returns:\n        bytes: Encryption key.\n    \"\"\"\n    return Fernet.generate_key()\n# Function to encrypt a file\ndef encrypt_file(file_path, key):\n    \"\"\"",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "encrypt_file",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def encrypt_file(file_path, key):\n    \"\"\"\n    Encrypt a file using the provided key.\n    Args:\n        file_path (str): Path to the file to encrypt.\n        key (bytes): Encryption key.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "decrypt_file",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def decrypt_file(file_path, key):\n    \"\"\"\n    Decrypt a file using the provided key.\n    Args:\n        file_path (str): Path to the file to decrypt.\n        key (bytes): Encryption key.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "create_backup",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def create_backup(source_path, backup_path):\n    \"\"\"\n    Create a backup of a file or directory.\n    Args:\n        source_path (str): Path to the file or directory to back up.\n        backup_path (str): Path to save the backup.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    import shutil",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "restore_backup",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def restore_backup(backup_path, restore_path):\n    \"\"\"\n    Restore a backup to the specified location.\n    Args:\n        backup_path (str): Path to the backup file or directory.\n        restore_path (str): Path to restore the backup.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    import shutil",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "send_email_notification",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def send_email_notification(subject, body, recipient_email, sender_email, sender_password):\n    \"\"\"\n    Send an email notification.\n    Args:\n        subject (str): Subject of the email.\n        body (str): Body of the email.\n        recipient_email (str): Recipient's email address.\n        sender_email (str): Sender's email address.\n        sender_password (str): Sender's email password.\n    Returns:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "show_desktop_notification",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def show_desktop_notification(title, message):\n    \"\"\"\n    Display a desktop notification.\n    Args:\n        title (str): Title of the notification.\n        message (str): Message of the notification.\n    Returns:\n        None\n    \"\"\"\n    try:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "send_weekly_logs",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def send_weekly_logs(recipient_email, sender_email, sender_password):\n    \"\"\"\n    Send weekly logs via email.\n    Args:\n        recipient_email (str): Recipient's email address.\n        sender_email (str): Sender's email address.\n        sender_password (str): Sender's email password.\n    Returns:\n        str: Success or error message.\n    \"\"\"",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "schedule_task",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def schedule_task(task_name, task_function, time_string):\n    \"\"\"\n    Schedule a task to run at a specific time.\n    Args:\n        task_name (str): Name of the task.\n        task_function (function): The function to execute.\n        time_string (str): Time to run the task (e.g., '14:30').\n    Returns:\n        str: Success message.\n    \"\"\"",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "cancel_task",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def cancel_task(task_name):\n    \"\"\"\n    Cancel a scheduled task by its name.\n    Args:\n        task_name (str): Name of the task to cancel.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:\n        schedule.clear(task_name)",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "run_scheduler",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def run_scheduler():\n    \"\"\"\n    Run the scheduler in a separate thread.\n    Returns:\n        None\n    \"\"\"\n    def scheduler_thread():\n        while True:\n            schedule.run_pending()\n            time.sleep(1)",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "example_task",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def example_task():\n    print(\"Example task executed.\")\n# Function to execute a custom script\ndef execute_script(script_path):\n    \"\"\"\n    Execute a custom script or command.\n    Args:\n        script_path (str): Path to the script or command to execute.\n    Returns:\n        str: Success or error message.",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "execute_script",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def execute_script(script_path):\n    \"\"\"\n    Execute a custom script or command.\n    Args:\n        script_path (str): Path to the script or command to execute.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:\n        result = subprocess.run(script_path, shell=True, capture_output=True, text=True)",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "scan_ports",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def scan_ports(host, start_port=1, end_port=65535):\n    \"\"\"\n    Scan open ports on a host.\n    Args:\n        host (str): Hostname or IP address to scan.\n        start_port (int): Starting port number.\n        end_port (int): Ending port number.\n    Returns:\n        list: List of open ports.\n    \"\"\"",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "monitor_network_traffic",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def monitor_network_traffic(interface):\n    \"\"\"\n    Monitor incoming and outgoing network traffic.\n    Args:\n        interface (str): Network interface to monitor.\n    Returns:\n        None\n    \"\"\"\n    try:\n        capture = pyshark.LiveCapture(interface=interface)",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "connect_vpn",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def connect_vpn(config_path):\n    \"\"\"\n    Connect to a VPN using a configuration file.\n    Args:\n        config_path (str): Path to the VPN configuration file.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:\n        result = subprocess.run([\"openvpn\", \"--config\", config_path], capture_output=True, text=True)",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "disconnect_vpn",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def disconnect_vpn():\n    \"\"\"\n    Disconnect from the VPN.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:\n        result = subprocess.run([\"taskkill\", \"/IM\", \"openvpn.exe\", \"/F\"], capture_output=True, text=True)\n        return \"VPN disconnected successfully.\" if result.returncode == 0 else result.stderr\n    except Exception as e:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_clipboard_content",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def get_clipboard_content():\n    \"\"\"\n    Get the current content of the clipboard.\n    Returns:\n        str: Clipboard content.\n    \"\"\"\n    try:\n        return pyperclip.paste()\n    except Exception as e:\n        return f\"Error accessing clipboard: {str(e)}\"",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "set_clipboard_content",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def set_clipboard_content(content):\n    \"\"\"\n    Set the clipboard content.\n    Args:\n        content (str): Content to set in the clipboard.\n    Returns:\n        str: Success message.\n    \"\"\"\n    try:\n        pyperclip.copy(content)",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "take_screenshot",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def take_screenshot(save_path):\n    \"\"\"\n    Capture a screenshot of the entire screen.\n    Args:\n        save_path (str): Path to save the screenshot.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:\n        screenshot = ImageGrab.grab()",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "shutdown_system",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def shutdown_system():\n    \"\"\"\n    Shutdown the system.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:\n        subprocess.run(\"shutdown /s /t 0\", shell=True)\n        return \"System is shutting down.\"\n    except Exception as e:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "restart_system",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def restart_system():\n    \"\"\"\n    Restart the system.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:\n        subprocess.run(\"shutdown /r /t 0\", shell=True)\n        return \"System is restarting.\"\n    except Exception as e:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "sleep_system",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def sleep_system():\n    \"\"\"\n    Put the system to sleep.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:\n        subprocess.run(\"rundll32.exe powrprof.dll,SetSuspendState 0,1,0\", shell=True)\n        return \"System is going to sleep.\"\n    except Exception as e:",
         "detail": "offline_tools",
         "documentation": {}
     },
