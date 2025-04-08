@@ -15,7 +15,6 @@ from PIL import Image
 import PyPDF2
 import re
 from calculations import haversine_distance
-import snowboydecoder
 import logging
 import time
 import hashlib
@@ -30,6 +29,7 @@ import socket
 import pyshark
 import pyperclip
 from PIL import ImageGrab
+from openwakeword import WakeWordDetector
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -1502,3 +1502,19 @@ def sleep_system():
         return "System is going to sleep."
     except Exception as e:
         return f"Error putting system to sleep: {str(e)}"
+
+# Initialize the OpenWakeWord detector
+wake_word_detector = WakeWordDetector()
+
+# Function to listen for wake word
+def listen_for_wake_word():
+    try:
+        print("Listening for wake word...")
+        wake_word_detected = wake_word_detector.detect()
+        if wake_word_detected:
+            print("Wake word detected!")
+            return True
+        return False
+    except Exception as e:
+        print(f"Error in wake word detection: {e}")
+        return False

@@ -17,6 +17,7 @@ REMI is your multi-talented personal assistant designed to fetch weather updates
 9. [Recent Additions and Improvements](#recent-additions-and-improvements)
 10. [Getting Started](#getting-started)
 11. [Available Commands in Offline Mode](#available-commands-in-offline-mode)
+12. [Install Snowboy (Optional for Wake Word Detection)](#install-snowboy-optional-for-wake-word-detection)
 
 ---
 
@@ -381,3 +382,4 @@ If you run into errors about GPU support or issues with 4-bit quantization using
 - **Find Items Within Budget**: Find items within a specified budget.
 - **Analyze Personality**: Analyze user interests based on queries.
 - **Feed Data from File**: Feed data into the system from a file.
+- **Generate Report**: Generate a report based on user queries.

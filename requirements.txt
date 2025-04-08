@@ -21,3 +21,4 @@ bitsandbytes
 accelerate
 peft
 gradio
+openwakeword
