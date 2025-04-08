@@ -9,6 +9,7 @@ from peft import LoraConfig, get_peft_model
 import torch
 import os
 import re
+import config
 
 # Comprehensive text cleaning function
 def clean_text(text):
@@ -86,41 +87,45 @@ def clean_text(text):
     return text
 
 
-# Load tokenizer and model
-model_name = "mistralai/Mistral-7B-Instruct-v0.1"
-tokenizer = AutoTokenizer.from_pretrained(
-    model_name, token=os.getenv("HUGGINGFACE_TOKEN")
-)
-tokenizer.pad_token = tokenizer.eos_token
-tokenizer.padding_side = "right"
+# Check if offline mode is enabled
+if config.Config.DEBUG:
+    print("Offline mode enabled. Skipping Mistral AI loading.")
+else:
+    # Load tokenizer and model
+    model_name = "mistralai/Mistral-7B-Instruct-v0.1"
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_name, token=os.getenv("HUGGINGFACE_TOKEN")
+    )
+    tokenizer.pad_token = tokenizer.eos_token
+    tokenizer.padding_side = "right"
 
-# Add special tokens
-print("Tokenizing [INST]:", tokenizer.encode("[INST]"))
-if len(tokenizer.encode("[INST]", add_special_tokens=False)) > 1:
-    special_tokens = {"additional_special_tokens": ["[INST]", "[/INST]"]}
-    tokenizer.add_special_tokens(special_tokens)
+    # Add special tokens
+    print("Tokenizing [INST]:", tokenizer.encode("[INST]"))
+    if len(tokenizer.encode("[INST]", add_special_tokens=False)) > 1:
+        special_tokens = {"additional_special_tokens": ["[INST]", "[/INST]"]}
+        tokenizer.add_special_tokens(special_tokens)
 
-model = AutoModelForCausalLM.from_pretrained(
-    model_name,
-    quantization_config=BitsAndBytesConfig(
-        load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16
-    ),
-    device_map="auto",
-    torch_dtype=torch.float16,
-    token=os.getenv("HUGGINGFACE_TOKEN"),
-)
-if tokenizer.get_added_vocab():
-    model.resize_token_embeddings(len(tokenizer))
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+        quantization_config=BitsAndBytesConfig(
+            load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16
+        ),
+        device_map="auto",
+        torch_dtype=torch.float16,
+        token=os.getenv("HUGGINGFACE_TOKEN"),
+    )
+    if tokenizer.get_added_vocab():
+        model.resize_token_embeddings(len(tokenizer))
 
-# Configure LoRA
-lora_config = LoraConfig(
-    r=16,
-    lora_alpha=32,
-    target_modules=["q_proj", "v_proj"],
-    lora_dropout=0.05,
-    bias="none",
-)
-model = get_peft_model(model, lora_config)
+    # Configure LoRA
+    lora_config = LoraConfig(
+        r=16,
+        lora_alpha=32,
+        target_modules=["q_proj", "v_proj"],
+        lora_dropout=0.05,
+        bias="none",
+    )
+    model = get_peft_model(model, lora_config)
 
 # Load and clean dataset
 with open("dataset.txt", "r") as f:
