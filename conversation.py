@@ -322,6 +322,8 @@ def recognize_intent(command):
         return "get_research", {"topic": topic}
     elif "tell me about myself" in command_lower or "analyze me" in command_lower:
         return "analyze_personality", {}
+    elif "read my last saved note" in command_lower or "summarize the last" in command_lower or "list all saved contacts" in command_lower:
+        return "handle_stt_tts_commands", {"command": command}
     else:
         return "generate_response", {"prompt": command}
 
@@ -334,9 +336,21 @@ def parse_complex_command(command, entities):
     return "complex_chain", {"commands": [part.strip() for part in parts]}
 
 
+def set_tone(tone):
+    global current_tone
+    if tone not in ["professional", "casual", "flirty"]:
+        return "Invalid tone. Please choose from: professional, casual, flirty."
+    current_tone = tone
+    return f"Tone set to {tone}."
+
+current_tone = "professional"  # Default tone
+
 def generate_response(prompt):
     try:
-        full_prompt = f"A flirty and helpful assistant says: {prompt}"
+        dataset_file = f"dataset_{current_tone}.txt"
+        with open(dataset_file, "r") as f:
+            data = f.read()
+        full_prompt = f"A {current_tone} assistant says: {prompt}"
         inputs = tokenizer(full_prompt, return_tensors="pt").to(
             "cuda" if torch.cuda.is_available() else "cpu"
         )
@@ -353,7 +367,7 @@ def generate_response(prompt):
             response = response[len(full_prompt) :].strip()
         return response
     except Exception as e:
-        return f"Response generation error: {str(e)}"
+        return f"Error generating response: {str(e)}"
 
 
 def switch_to_better_model():
@@ -366,3 +380,24 @@ def switch_to_better_model():
 def switch_to_better_conversational_model():
     speak_response("Switching to a better conversational model—hold tight!")
     return "Switching conversational models not implemented yet."
+
+
+def handle_stt_tts_commands(command):
+    """
+    Handle natural language commands for STT and TTS functionality.
+
+    Args:
+        command (str): The user's command.
+
+    Returns:
+        str: The response to the command.
+    """
+    if "read my last saved note" in command.lower():
+        return read_last_saved_note()
+    elif "summarize the last" in command.lower() and "commands" in command.lower():
+        limit = int(re.search(r"\d+", command).group()) if re.search(r"\d+", command) else 5
+        return summarize_last_commands(limit=limit)
+    elif "list all saved contacts" in command.lower():
+        return list_all_contacts()
+    else:
+        return "Sorry, I didn't understand that STT/TTS command."

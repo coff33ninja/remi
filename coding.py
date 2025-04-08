@@ -1,6 +1,8 @@
 import subprocess
 import os
 import logging
+import tempfile  # Add this import
+from datetime import datetime  # Add this import
 
 import torch
 from conversation import tokenizer, model
@@ -56,6 +58,13 @@ def generate_code(language, task):
             line for line in code_block.split("\n") if len(line.strip()) > 0
         )
         logging.info(f"Cleaned code:\n{final_code}")
+
+        # Prompt user to save the code
+        save_prompt = input("Do you want to save this code? (yes/no): ").strip().lower()
+        if save_prompt == "yes":
+            description = input("Enter a description for the code: ").strip()
+            save_generated_code(language, final_code, description)
+
         return final_code
     except Exception as e:
         logging.error(f"Code generation error: {str(e)}")
@@ -76,34 +85,28 @@ def execute_code(language, code):
     if language not in ALLOWED_LANGUAGES:
         return f"Unsupported language: {language}"
     extension = {"cmd": ".bat", "ps1": ".ps1", "python": ".py"}[language]
-    filename = f"temp_script{extension}"
-    try:
-        with open(filename, "w") as f:
-            f.write(code)
-        if language == "cmd":
-            result = subprocess.run(
-                ["cmd.exe", "/c", filename], capture_output=True, text=True, timeout=10
-            )
-        elif language == "ps1":
-            result = subprocess.run(
-                ["powershell.exe", "-File", filename],
-                capture_output=True,
-                text=True,
-                timeout=10,
-            )
-        elif language == "python":
-            result = subprocess.run(
-                ["python", filename], capture_output=True, text=True, timeout=10
-            )
-        os.remove(filename)
-        return f"Output:\n{result.stdout}\nErrors (if any):\n{result.stderr}"
-    except subprocess.TimeoutExpired:
-        os.remove(filename)
-        return "Execution timed out."
-    except Exception as e:
-        if os.path.exists(filename):
-            os.remove(filename)
-        return f"Execution failed: {str(e)}"
+    with tempfile.NamedTemporaryFile(suffix=extension, delete=False) as temp_file:
+        temp_file.write(code.encode())
+        temp_file.close()
+        try:
+            if language == "cmd":
+                result = subprocess.run(
+                    ["cmd.exe", "/c", temp_file.name], capture_output=True, text=True, timeout=10
+                )
+            elif language == "ps1":
+                result = subprocess.run(
+                    ["powershell.exe", "-File", temp_file.name],
+                    capture_output=True,
+                    text=True,
+                    timeout=10,
+                )
+            elif language == "python":
+                result = subprocess.run(
+                    ["python", temp_file.name], capture_output=True, text=True, timeout=10
+                )
+            return f"Output:\n{result.stdout}\nErrors (if any):\n{result.stderr}"
+        finally:
+            os.remove(temp_file.name)
 
 
 def explain_concept(language, concept):
@@ -166,3 +169,20 @@ def save_command(name, language=None, code=None):
         save_command_to_db(name, language, code)
         return f"Command '{name}' saved!"
     return "No code to save yet."
+
+
+def save_generated_code(language, code, description):
+    """
+    Save generated code to the database with metadata.
+
+    Args:
+        language (str): Programming language of the code.
+        code (str): The generated code snippet.
+        description (str): Description of the code.
+
+    Returns:
+        str: Success or error message.
+    """
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    save_command_to_db(description, language, code)
+    return f"Code saved successfully with description: '{description}' at {timestamp}."

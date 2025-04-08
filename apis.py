@@ -5,6 +5,7 @@ from dotenv import load_dotenv  # Add this import
 import pywhatkit
 from bs4 import BeautifulSoup
 import logging
+import time  # Add this import for retries
 
 # Load environment variables from .env file
 load_dotenv()  # Add this line before accessing env vars
@@ -23,30 +24,49 @@ API_KEYS = {
     "wolframalpha": os.getenv("WOLFRAM_ALPHA_APP_ID"),
     "googlemaps": os.getenv("GOOGLE_MAPS_API_KEY"),
     "huggingface": os.getenv("HUGGINGFACE_TOKEN"),
+    "google_calendar": os.getenv("GOOGLE_CALENDAR_API_KEY"),
+    "alpha_vantage": os.getenv("ALPHA_VANTAGE_API_KEY"),
+    "coingecko": os.getenv("COINGECKO_API_KEY"),
+    "tmdb": os.getenv("TMDB_API_KEY"),
+    "nutritionix": os.getenv("NUTRITIONIX_API_KEY"),
+    "nutritionix_app_id": os.getenv("NUTRITIONIX_APP_ID"),
+    "spotify": os.getenv("SPOTIFY_API_KEY"),
+    "skyscanner": os.getenv("SKYSCANNER_API_KEY"),
+    "amadeus": os.getenv("AMADEUS_API_KEY"),
 }
 
 def validate_api_keys():
     missing_keys = [key for key, value in API_KEYS.items() if not value]
     if missing_keys:
-        logging.warning(f"Missing API keys: {', '.join(missing_keys)}")
-        # Uncomment the next line to enforce validation
-        # raise EnvironmentError(f"Missing API keys: {', '.join(missing_keys)}")
+        logging.error(f"Missing API keys: {', '.join(missing_keys)}")
+        raise EnvironmentError(f"Missing API keys: {', '.join(missing_keys)}")
 
 validate_api_keys()
 
-async def get_weather(city, api_key=API_KEYS["openweathermap"]):
+def retry_request(url, retries=3, backoff_factor=2):
+    for attempt in range(retries):
+        try:
+            response = httpx.get(url, timeout=10)
+            response.raise_for_status()
+            return response
+        except httpx.RequestError as e:
+            if attempt < retries - 1:
+                time.sleep(backoff_factor ** attempt)
+            else:
+                raise e
+
+def get_weather(city, api_key=API_KEYS["openweathermap"]):
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
     try:
-        async with httpx.AsyncClient() as client:
-            response = await client.get(url)
-            data = response.json()
-        if data.get("weather"):
+        response = retry_request(url)
+        data = response.json()
+        if "weather" in data:
             temp = data["main"]["temp"]
             desc = data["weather"][0]["description"]
             return f"The weather in {city} is {desc} with a temperature of {temp}°C."
         return "Could not retrieve weather data."
     except Exception as e:
-        return f"Weather API error: {str(e)}"
+        return f"Error fetching weather: {str(e)}"
 
 def get_news(topic, api_key=API_KEYS["newsapi"]):
     url = f"https://newsapi.org/v2/everything?q={topic}&apiKey={api_key}"
@@ -74,9 +94,11 @@ def translate_text(text, target_lang, api_key=API_KEYS["deepl"]):
 def search_images(query, api_key=API_KEYS["unsplash"]):
     url = f"https://api.unsplash.com/search/photos?query={query}&client_id={api_key}"
     try:
-        response = requests.get(url).json()
-        if response.get("results"):
-            return response["results"][0]["urls"]["small"]
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        if data["results"]:
+            return data["results"][0]["urls"]["regular"]
         return "No images found."
     except Exception as e:
         return f"Image search error: {str(e)}"
@@ -93,9 +115,7 @@ def add_task(task, due=None, api_key=API_KEYS["todoist"]):
     except Exception as e:
         return f"Todoist error: {str(e)}"
 
-def create_trello_card(
-    title, desc, api_key=API_KEYS["trello_key"], token=API_KEYS["trello_token"]
-):
+def create_trello_card(title, desc, api_key=API_KEYS["trello_key"], token=API_KEYS["trello_token"]):
     url = "https://api.trello.com/1/cards"
     params = {
         "key": api_key,
@@ -203,7 +223,7 @@ def scrape_store_specials(store):
         soup = BeautifulSoup(response.text, "html.parser")
         specials = []
         for item in soup.select(".special-item"):  # Hypothetical class
-            name = item.select_one(".item-name").text.lower()
+            name = item.select_one(".item-name").text
             price = float(item.select_one(".item-price").text.replace("R", ""))
             specials.append(
                 {
@@ -217,3 +237,208 @@ def scrape_store_specials(store):
         return specials
     except Exception as e:
         return f"Web scraping error for {store}: {str(e)}"
+
+def add_google_calendar_event(summary, start_time, end_time, description=None):
+    """
+    Add an event to Google Calendar.
+
+    Args:
+        summary (str): Title of the event.
+        start_time (str): Start time in ISO 8601 format (e.g., '2025-04-10T15:00:00Z').
+        end_time (str): End time in ISO 8601 format (e.g., '2025-04-10T16:00:00Z').
+        description (str, optional): Description of the event.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        url = "https://www.googleapis.com/calendar/v3/calendars/primary/events"
+        headers = {
+            "Authorization": f"Bearer {API_KEYS['google_calendar']}",
+            "Content-Type": "application/json",
+        }
+        event_data = {
+            "summary": summary,
+            "start": {"dateTime": start_time},
+            "end": {"dateTime": end_time},
+        }
+        if description:
+            event_data["description"] = description
+
+        response = requests.post(url, headers=headers, json=event_data)
+        response.raise_for_status()
+        return f"Event '{summary}' added to Google Calendar."
+    except requests.exceptions.RequestException as e:
+        return f"Error adding event to Google Calendar: {str(e)}"
+
+def get_upcoming_google_calendar_events():
+    """
+    Retrieve upcoming events from Google Calendar.
+
+    Returns:
+        str: List of upcoming events or an error message.
+    """
+    try:
+        url = "https://www.googleapis.com/calendar/v3/calendars/primary/events"
+        headers = {
+            "Authorization": f"Bearer {API_KEYS['google_calendar']}",
+        }
+        params = {"timeMin": datetime.now().isoformat() + "Z", "maxResults": 10, "singleEvents": True, "orderBy": "startTime"}
+
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        events = response.json().get("items", [])
+
+        if not events:
+            return "No upcoming events found."
+
+        event_list = []
+        for event in events:
+            start = event["start"].get("dateTime", event["start"].get("date"))
+            event_list.append(f"- {event['summary']} (Start: {start})")
+
+        return "\n".join(event_list)
+    except requests.exceptions.RequestException as e:
+        return f"Error retrieving events from Google Calendar: {str(e)}"
+
+# Finance API: Alpha Vantage
+ALPHA_VANTAGE_BASE_URL = "https://www.alphavantage.co/query"
+def get_stock_price(symbol, api_key=API_KEYS.get("alpha_vantage")):
+    """
+    Fetch the stock price for a given symbol using Alpha Vantage.
+
+    Args:
+        symbol (str): Stock symbol (e.g., "AAPL" for Apple).
+        api_key (str): API key for Alpha Vantage.
+
+    Returns:
+        str: Stock price or an error message.
+    """
+    try:
+        params = {
+            "function": "TIME_SERIES_INTRADAY",
+            "symbol": symbol,
+            "interval": "1min",
+            "apikey": api_key,
+        }
+        response = requests.get(ALPHA_VANTAGE_BASE_URL, params=params)
+        response.raise_for_status()
+        data = response.json()
+        time_series = data.get("Time Series (1min)")
+        if time_series:
+            latest_time = sorted(time_series.keys())[0]
+            price = time_series[latest_time]["1. open"]
+            return f"The latest price for {symbol} is ${price}."
+        return "Stock data not available."
+    except Exception as e:
+        return f"Error fetching stock price: {str(e)}"
+
+# Finance API: CoinGecko
+COINGECKO_BASE_URL = "https://api.coingecko.com/api/v3/simple/price"
+def get_crypto_price(crypto, currency="usd"):
+    """
+    Fetch the cryptocurrency price using CoinGecko.
+
+    Args:
+        crypto (str): Cryptocurrency symbol (e.g., "bitcoin").
+        currency (str): Currency to convert to (default: "usd").
+
+    Returns:
+        str: Cryptocurrency price or an error message.
+    """
+    try:
+        params = {"ids": crypto, "vs_currencies": currency}
+        response = requests.get(COINGECKO_BASE_URL, params=params)
+        response.raise_for_status()
+        data = response.json()
+        price = data.get(crypto, {}).get(currency)
+        if price:
+            return f"The current price of {crypto} is {price} {currency.upper()}."
+        return "Cryptocurrency data not available."
+    except Exception as e:
+        return f"Error fetching cryptocurrency price: {str(e)}"
+
+# Entertainment API: TMDb
+TMDB_BASE_URL = "https://api.themoviedb.org/3/search/movie"
+def search_movie(movie_name, api_key=API_KEYS.get("tmdb")):
+    """
+    Search for a movie using TMDb.
+
+    Args:
+        movie_name (str): Name of the movie to search for.
+        api_key (str): API key for TMDb.
+
+    Returns:
+        str: Movie details or an error message.
+    """
+    try:
+        params = {"query": movie_name, "api_key": api_key}
+        response = requests.get(TMDB_BASE_URL, params=params)
+        response.raise_for_status()
+        data = response.json()
+        results = data.get("results", [])
+        if results:
+            movie = results[0]
+            return f"{movie['title']} ({movie['release_date']}): {movie['overview']}"
+        return "Movie not found."
+    except Exception as e:
+        return f"Error searching for movie: {str(e)}"
+
+# Entertainment API: Spotify (Placeholder for OAuth setup)
+def get_spotify_recommendations():
+    """
+    Fetch music recommendations from Spotify.
+
+    Returns:
+        str: Recommendations or a placeholder message.
+    """
+    return "Spotify integration is under development."
+
+# Health and Fitness API: Nutritionix
+NUTRITIONIX_BASE_URL = "https://trackapi.nutritionix.com/v2/natural/nutrients"
+def get_nutritional_info(food_item, api_key=API_KEYS.get("nutritionix")):
+    """
+    Fetch nutritional information for a food item using Nutritionix.
+
+    Args:
+        food_item (str): Name of the food item.
+        api_key (str): API key for Nutritionix.
+
+    Returns:
+        str: Nutritional information or an error message.
+    """
+    try:
+        headers = {
+            "x-app-id": API_KEYS.get("nutritionix_app_id"),
+            "x-app-key": api_key,
+        }
+        data = {"query": food_item}
+        response = requests.post(NUTRITIONIX_BASE_URL, headers=headers, json=data)
+        response.raise_for_status()
+        data = response.json()
+        if data.get("foods"):
+            food = data["foods"][0]
+            return f"{food['food_name']}: {food['nf_calories']} calories, {food['nf_protein']}g protein."
+        return "Nutritional information not available."
+    except Exception as e:
+        return f"Error fetching nutritional information: {str(e)}"
+
+# Travel API: Skyscanner (Placeholder for API setup)
+def search_flights():
+    """
+    Search for flights using Skyscanner.
+
+    Returns:
+        str: Flight details or a placeholder message.
+    """
+    return "Skyscanner integration is under development."
+
+# Travel API: Amadeus (Placeholder for API setup)
+def search_hotels():
+    """
+    Search for hotels using Amadeus.
+
+    Returns:
+        str: Hotel details or a placeholder message.
+    """
+    return "Amadeus integration is under development."

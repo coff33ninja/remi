@@ -78,6 +78,14 @@ DISCORD_BOT_TOKEN=your_discord_bot_token
 WOLFRAM_ALPHA_APP_ID=your_wolfram_alpha_app_id
 GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 HUGGINGFACE_TOKEN=your_huggingface_token
+ALPHA_VANTAGE_API_KEY=your_alpha_vantage_api_key
+COINGECKO_API_KEY=your_coingecko_api_key
+TMDB_API_KEY=your_tmdb_api_key
+NUTRITIONIX_API_KEY=your_nutritionix_api_key
+NUTRITIONIX_APP_ID=your_nutritionix_app_id
+SPOTIFY_API_KEY=your_spotify_api_key
+SKYSCANNER_API_KEY=your_skyscanner_api_key
+AMADEUS_API_KEY=your_amadeus_api_key
 ```
 
 ---
@@ -107,6 +115,13 @@ For each service below, you'll need the corresponding API key or token:
 | Wolfram Alpha      | `WOLFRAM_ALPHA_APP_ID`       | Query Wolfram Alpha             | [Wolfram Alpha](https://developer.wolframalpha.com/portal/myapps/) |
 | Google Maps        | `GOOGLE_MAPS_API_KEY`        | Directions                      | [Google Maps](https://developers.google.com/maps/documentation/javascript/get-api-key) |
 | Hugging Face       | `HUGGINGFACE_TOKEN`          | Model downloads and API calls   | [Hugging Face](https://huggingface.co/settings/tokens) |
+| Alpha Vantage      | `ALPHA_VANTAGE_API_KEY`      | Stock prices                    | [Alpha Vantage](https://www.alphavantage.co/support/#api-key) |
+| CoinGecko          | `COINGECKO_API_KEY`          | Cryptocurrency rates            | [CoinGecko](https://www.coingecko.com/en/api) |
+| TMDb               | `TMDB_API_KEY`               | Movie details                   | [TMDb](https://www.themoviedb.org/documentation/api) |
+| Nutritionix        | `NUTRITIONIX_API_KEY`, `NUTRITIONIX_APP_ID` | Nutritional information | [Nutritionix](https://developer.nutritionix.com/) |
+| Spotify            | `SPOTIFY_API_KEY`            | Music recommendations           | [Spotify](https://developer.spotify.com/documentation/web-api/) |
+| Skyscanner         | `SKYSCANNER_API_KEY`         | Flight details                  | [Skyscanner](https://partners.skyscanner.net/affiliate-program) |
+| Amadeus            | `AMADEUS_API_KEY`            | Hotel details                   | [Amadeus](https://developers.amadeus.com/register) |
 
 ---
 
@@ -142,10 +157,10 @@ For each service below, you'll need the corresponding API key or token:
 ## Data Placement
 
 ### Specials File
-- **Text File Format:**  
-  `item:price:store:lat:lon`  
+- **Text File Format:**
+  `item:price:store:lat:lon`
   (Example: `milk:15.99:Shoprite:-33.9249:18.4241`)
-- **PDF Files:**  
+- **PDF Files:**
   Contain text like `milk R15.99 at Shoprite lat -33.9249 lon 18.4241`.
 
 ### Database Files
@@ -186,20 +201,20 @@ Then, enter commands in the terminal or use voice input if enabled.
 
 ### Common Issues
 
-1. **Missing API Keys**  
-   *Symptoms:* "API key not found" errors.  
+1. **Missing API Keys**
+   *Symptoms:* "API key not found" errors.
    *Fix:* Double-check your `.env` file against the [API Keys](#environment-variables-and-api-keys) section.
 
-2. **Dependency Issues**  
-   *Symptoms:* Errors during installation or `ModuleNotFoundError`.  
+2. **Dependency Issues**
+   *Symptoms:* Errors during installation or `ModuleNotFoundError`.
    *Fix:* Reinstall dependencies:
    ```bash
    pip install -r requirements.txt
    python -m spacy download en_core_web_sm
    ```
 
-3. **GPU Not Detected**  
-   *Symptoms:* "CUDA unavailable" warnings or slow CPU performance.  
+3. **GPU Not Detected**
+   *Symptoms:* "CUDA unavailable" warnings or slow CPU performance.
    *Fix:* Verify with:
    ```bash
    python -c "import torch; print(torch.cuda.is_available())"
@@ -210,8 +225,8 @@ Then, enter commands in the terminal or use voice input if enabled.
    pip install torch --index-url https://download.pytorch.org/whl/cu118
    ```
 
-4. **Model Loading Errors**  
-   *Symptoms:* Errors with `transformers` or model initialization.  
+4. **Model Loading Errors**
+   *Symptoms:* Errors with `transformers` or model initialization.
    *Fix:* Ensure your PyTorch or TensorFlow installation is CUDA-compatible.
 
 ---
@@ -234,7 +249,7 @@ If you run into errors about GPU support or issues with 4-bit quantization using
      print(torch.cuda.is_available())
      print(torch.version.cuda)
      ```
-   - **Expected Output:**  
+   - **Expected Output:**
      ```
      2.x.x+cu118  (or similar)
      True
@@ -247,7 +262,7 @@ If you run into errors about GPU support or issues with 4-bit quantization using
      ```
 
 2. **Fix `bitsandbytes` Installation**
-   - *Issue:* "bitsandbytes was compiled without GPU support."  
+   - *Issue:* "bitsandbytes was compiled without GPU support."
    - *Steps:*
      - Uninstall the current version:
        ```bash

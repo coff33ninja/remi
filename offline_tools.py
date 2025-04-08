@@ -15,6 +15,8 @@ from PIL import Image
 import PyPDF2
 import re
 from calculations import haversine_distance
+import snowboydecoder
+import logging
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -22,7 +24,7 @@ databases = {}
 
 
 def get_db(db_name):
-    if db_name not in databases:
+    if (db_name not in databases):
         conn = sqlite3.connect(f"{db_name}.db")
         databases[db_name] = {"conn": conn, "cursor": conn.cursor()}
     return databases[db_name]
@@ -35,17 +37,27 @@ core_db["cursor"].execute(
 core_db["cursor"].execute(
     "CREATE TABLE IF NOT EXISTS commands (name TEXT PRIMARY KEY, language TEXT, code TEXT)"
 )
+core_db["cursor"].execute(
+    """
+    CREATE TABLE IF NOT EXISTS images (
+        path TEXT PRIMARY KEY,
+        description TEXT,
+        timestamp TEXT
+    )
+    """
+)
+core_db["conn"].commit()
 
 address_db = get_db("addressbook")
 address_db["cursor"].execute(
     """
     CREATE TABLE IF NOT EXISTS contacts (
-        name TEXT PRIMARY KEY, 
-        phone TEXT, 
-        email TEXT, 
-        address TEXT, 
-        birthday TEXT, 
-        notes TEXT, 
+        name TEXT PRIMARY KEY,
+        phone TEXT,
+        email TEXT,
+        address TEXT,
+        birthday TEXT,
+        notes TEXT,
         category TEXT
     )
 """
@@ -86,6 +98,7 @@ specials_db["cursor"].execute(
     )
 """
 )
+specials_db["cursor"].execute("CREATE INDEX IF NOT EXISTS idx_item ON specials (item)")
 
 
 def create_database(db_name):
@@ -93,10 +106,10 @@ def create_database(db_name):
     db["cursor"].execute(
         """
         CREATE TABLE IF NOT EXISTS items (
-            key TEXT PRIMARY KEY, 
-            value TEXT, 
-            timestamp TEXT, 
-            tags TEXT, 
+            key TEXT PRIMARY KEY,
+            value TEXT,
+            timestamp TEXT,
+            tags TEXT,
             priority INTEGER
         )
     """
@@ -149,7 +162,7 @@ def add_contact(
     db = get_db(db_name)
     db["cursor"].execute(
         """
-        INSERT OR REPLACE INTO contacts (name, phone, email, address, birthday, notes, category) 
+        INSERT OR REPLACE INTO contacts (name, phone, email, address, birthday, notes, category)
         VALUES (?, ?, ?, ?, ?, ?, ?)
     """,
         (name, phone, email, address, birthday, notes, category),
@@ -180,7 +193,7 @@ def add_to_database(db_name, key, value, tags=None, priority=None):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     db["cursor"].execute(
         """
-        INSERT OR REPLACE INTO items (key, value, timestamp, tags, priority) 
+        INSERT OR REPLACE INTO items (key, value, timestamp, tags, priority)
         VALUES (?, ?, ?, ?, ?)
     """,
         (key, value, timestamp, tags, priority),
@@ -566,3 +579,417 @@ def speak_response(text):
         engine.runAndWait()
     except Exception as e:
         print(f"Text-to-speech error: {str(e)}")
+
+
+def save_image(image_path, description):
+    """
+    Save an image to the local directory with metadata.
+
+    Args:
+        image_path (str): Path to the image file.
+        description (str): Description of the image.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        db = get_db("core")
+        db["cursor"].execute(
+            "INSERT INTO images (path, description, timestamp) VALUES (?, ?, ?)",
+            (image_path, description, timestamp),
+        )
+        db["conn"].commit()
+        return f"Image saved successfully with description: '{description}' at {timestamp}."
+    except Exception as e:
+        return f"Error saving image: {str(e)}"
+
+
+def read_last_saved_note():
+    """
+    Retrieve and read the last saved note from the database.
+
+    Returns:
+        str: The content of the last saved note or an error message.
+    """
+    db = get_db("personality")
+    db["cursor"].execute("SELECT data FROM research ORDER BY timestamp DESC LIMIT 1")
+    result = db["cursor"].fetchone()
+    if result:
+        note = result[0]
+        speak_response(note)
+        return f"Last saved note: {note}"
+    return "No notes found."
+
+def summarize_last_commands(limit=5):
+    """
+    Summarize the last few commands issued by the user.
+
+    Args:
+        limit (int): Number of commands to summarize.
+
+    Returns:
+        str: Summary of the last commands.
+    """
+    db = get_db("personality")
+    db["cursor"].execute("SELECT command FROM queries ORDER BY timestamp DESC LIMIT ?", (limit,))
+    results = db["cursor"].fetchall()
+    if results:
+        summary = "\n".join([f"- {row[0]}" for row in results])
+        speak_response(f"Here are your last {limit} commands:\n{summary}")
+        return summary
+    return "No recent commands found."
+
+def list_all_contacts():
+    """
+    List all saved contacts from the address book.
+
+    Returns:
+        str: A list of all contacts or an error message.
+    """
+    db = get_db("addressbook")
+    db["cursor"].execute("SELECT name, phone, email, category FROM contacts")
+    results = db["cursor"].fetchall()
+    if results:
+        contacts = "\n".join(
+            [
+                f"Name: {row[0]}, Phone: {row[1] or 'N/A'}, Email: {row[2] or 'N/A'}, Relation: {row[3] or 'N/A'}"
+                for row in results
+            ]
+        )
+        speak_response(f"Here are your saved contacts:\n{contacts}")
+        return contacts
+    return "No contacts found."
+
+def start_wake_word_detection(wake_word_model="resources/wake_word.pmdl", sensitivity=0.5):
+    """
+    Start listening for the wake word using Snowboy.
+
+    Args:
+        wake_word_model (str): Path to the wake word model file.
+        sensitivity (float): Sensitivity for wake word detection.
+
+    Returns:
+        None
+    """
+    if not os.path.exists(wake_word_model):
+        logging.error(f"Wake word model file not found: {wake_word_model}")
+        raise FileNotFoundError(f"Wake word model file not found: {wake_word_model}")
+
+    def detected_callback():
+        logging.info("Wake word detected!")
+        speak_response("I'm listening.")
+
+    try:
+        detector = snowboydecoder.HotwordDetector(wake_word_model, sensitivity=sensitivity)
+        logging.info("Listening for wake word...")
+        detector.start(detected_callback)
+    except Exception as e:
+        logging.error(f"Error during wake word detection: {str(e)}")
+    finally:
+        if 'detector' in locals():
+            detector.terminate()
+            logging.info("Wake word detection terminated.")
+
+# Ensure Snowboy resources are available
+if not os.path.exists("resources/wake_word.pmdl"):
+    raise FileNotFoundError("Wake word model file not found in resources folder.")
+
+def list_files_in_directory(directory="."):
+    """
+    List all files in the specified directory.
+
+    Args:
+        directory (str): Path to the directory.
+
+    Returns:
+        list: List of file names in the directory.
+    """
+    try:
+        files = os.listdir(directory)
+        return [f for f in files if os.path.isfile(os.path.join(directory, f))]
+    except Exception as e:
+        return f"Error listing files: {str(e)}"
+
+def search_file_by_name(directory=".", filename=""):
+    """
+    Search for a file by name in the specified directory.
+
+    Args:
+        directory (str): Path to the directory.
+        filename (str): Name of the file to search for.
+
+    Returns:
+        str: Path to the file if found, or an error message.
+    """
+    try:
+        for root, dirs, files in os.walk(directory):
+            if filename in files:
+                return os.path.join(root, filename)
+        return f"File '{filename}' not found in directory '{directory}'."
+    except Exception as e:
+        return f"Error searching for file: {str(e)}"
+
+def copy_file(src, dest):
+    """
+    Copy a file from source to destination.
+
+    Args:
+        src (str): Path to the source file.
+        dest (str): Path to the destination directory.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        shutil.copy(src, dest)
+        return f"File '{src}' copied to '{dest}'."
+    except Exception as e:
+        return f"Error copying file: {str(e)}"
+
+def add_task_with_deadline(task, deadline):
+    """
+    Add a task with a deadline to the database.
+
+    Args:
+        task (str): The task description.
+        deadline (str): The deadline for the task (e.g., '2025-04-10 15:00').
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        db = get_db("tasks")
+        db["cursor"].execute(
+            "CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, task TEXT, deadline TEXT, completed INTEGER)"
+        )
+        db["cursor"].execute(
+            "INSERT INTO tasks (task, deadline, completed) VALUES (?, ?, 0)",
+            (task, deadline),
+        )
+        db["conn"].commit()
+        return f"Task '{task}' added with deadline {deadline}."
+    except Exception as e:
+        return f"Error adding task: {str(e)}"
+
+def get_upcoming_tasks():
+    """
+    Retrieve all upcoming tasks from the database.
+
+    Returns:
+        str: List of upcoming tasks or a message if no tasks are found.
+    """
+    try:
+        db = get_db("tasks")
+        db["cursor"].execute(
+            "SELECT task, deadline FROM tasks WHERE completed = 0 ORDER BY deadline ASC"
+        )
+        tasks = db["cursor"].fetchall()
+        if tasks:
+            return "\n".join([f"- {task} (Deadline: {deadline})" for task, deadline in tasks])
+        return "No upcoming tasks found."
+    except Exception as e:
+        return f"Error retrieving tasks: {str(e)}"
+
+def mark_task_as_completed(task_id):
+    """
+    Mark a task as completed in the database.
+
+    Args:
+        task_id (int): The ID of the task to mark as completed.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        db = get_db("tasks")
+        db["cursor"].execute(
+            "UPDATE tasks SET completed = 1 WHERE id = ?",
+            (task_id,),
+        )
+        db["conn"].commit()
+        return f"Task ID {task_id} marked as completed."
+    except Exception as e:
+        return f"Error marking task as completed: {str(e)}"
+
+def remind_upcoming_tasks():
+    """
+    Use TTS to remind the user of upcoming tasks with deadlines.
+
+    Returns:
+        None
+    """
+    try:
+        tasks = get_upcoming_tasks()
+        if tasks != "No upcoming tasks found.":
+            speak_response(f"Here are your upcoming tasks:\n{tasks}")
+        else:
+            speak_response("You have no upcoming tasks.")
+    except Exception as e:
+        speak_response(f"Error reminding tasks: {str(e)}")
+
+def add_note(note, category):
+    """
+    Add a note with a category to the database.
+
+    Args:
+        note (str): The content of the note.
+        category (str): The category of the note.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        db = get_db("notes")
+        db["cursor"].execute(
+            "CREATE TABLE IF NOT EXISTS notes (id INTEGER PRIMARY KEY AUTOINCREMENT, note TEXT, category TEXT, timestamp TEXT)"
+        )
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        db["cursor"].execute(
+            "INSERT INTO notes (note, category, timestamp) VALUES (?, ?, ?)",
+            (note, category, timestamp),
+        )
+        db["conn"].commit()
+        return f"Note added under category '{category}'."
+    except Exception as e:
+        return f"Error adding note: {str(e)}"
+
+def search_notes_by_category(category):
+    """
+    Search for notes by category in the database.
+
+    Args:
+        category (str): The category to search for.
+
+    Returns:
+        str: List of notes in the category or a message if no notes are found.
+    """
+    try:
+        db = get_db("notes")
+        db["cursor"].execute(
+            "SELECT note, timestamp FROM notes WHERE category = ? ORDER BY timestamp DESC",
+            (category,),
+        )
+        notes = db["cursor"].fetchall()
+        if notes:
+            return "\n".join([f"- {note} (Added: {timestamp})" for note, timestamp in notes])
+        return f"No notes found under category '{category}'."
+    except Exception as e:
+        return f"Error searching notes: {str(e)}"
+
+def search_notes_by_keyword(keyword):
+    """
+    Search for notes by keyword in the database.
+
+    Args:
+        keyword (str): The keyword to search for.
+
+    Returns:
+        str: List of notes containing the keyword or a message if no notes are found.
+    """
+    try:
+        db = get_db("notes")
+        db["cursor"].execute(
+            "SELECT note, category, timestamp FROM notes WHERE note LIKE ? ORDER BY timestamp DESC",
+            (f"%{keyword}%",),
+        )
+        notes = db["cursor"].fetchall()
+        if notes:
+            return "\n".join(
+                [
+                    f"- {note} (Category: {category}, Added: {timestamp})"
+                    for note, category, timestamp in notes
+                ]
+            )
+        return f"No notes found containing keyword '{keyword}'."
+    except Exception as e:
+        return f"Error searching notes: {str(e)}"
+
+def extract_text_from_image(image_path):
+    """
+    Extract text from an image using OCR.
+
+    Args:
+        image_path (str): Path to the image file.
+
+    Returns:
+        str: Extracted text or an error message.
+    """
+    try:
+        text = pytesseract.image_to_string(Image.open(image_path))
+        return text.strip()
+    except Exception as e:
+        return f"Error extracting text from image: {str(e)}"
+
+def save_extracted_text_as_document(image_path, category):
+    """
+    Extract text from an image and save it as a note in the database.
+
+    Args:
+        image_path (str): Path to the image file.
+        category (str): Category under which the extracted text will be saved.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        text = extract_text_from_image(image_path)
+        if not text:
+            return "No text found in the image."
+        return add_note(text, category)
+    except Exception as e:
+        return f"Error saving extracted text: {str(e)}"
+
+def save_command_history(command, response):
+    """
+    Save a command and its response to the database.
+
+    Args:
+        command (str): The user's command.
+        response (str): The assistant's response.
+
+    Returns:
+        str: Success or error message.
+    """
+    try:
+        db = get_db("history")
+        db["cursor"].execute(
+            "CREATE TABLE IF NOT EXISTS command_history (id INTEGER PRIMARY KEY AUTOINCREMENT, command TEXT, response TEXT, timestamp TEXT)"
+        )
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        db["cursor"].execute(
+            "INSERT INTO command_history (command, response, timestamp) VALUES (?, ?, ?)",
+            (command, response, timestamp),
+        )
+        db["conn"].commit()
+        return "Command history saved."
+    except Exception as e:
+        return f"Error saving command history: {str(e)}"
+
+def search_command_history(keyword):
+    """
+    Search for commands and responses in the history by keyword.
+
+    Args:
+        keyword (str): The keyword to search for.
+
+    Returns:
+        str: List of matching commands and responses or a message if no matches are found.
+    """
+    try:
+        db = get_db("history")
+        db["cursor"].execute(
+            "SELECT command, response, timestamp FROM command_history WHERE command LIKE ? OR response LIKE ? ORDER BY timestamp DESC",
+            (f"%{keyword}%", f"%{keyword}%"),
+        )
+        results = db["cursor"].fetchall()
+        if results:
+            return "\n".join(
+                [
+                    f"[{timestamp}] Command: {command}\nResponse: {response}"
+                    for command, response, timestamp in results
+                ]
+            )
+        return "No matching history found."
+    except Exception as e:
+        return f"Error searching command history: {str(e)}"

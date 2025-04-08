@@ -54,6 +54,7 @@ from offline_tools import (
     find_nearest_special,
     get_db,
     databases,
+    start_wake_word_detection,
 )
 from conversation import recognize_intent, generate_response, switch_to_better_model, switch_to_better_conversational_model
 from coding import generate_code, execute_code, explain_concept, save_command
@@ -258,6 +259,60 @@ def chat(input_text):
     return process_single_command(intent, params)
 
 
+def offline_mode():
+    """
+    Run the assistant in offline mode using local databases and pre-downloaded datasets.
+
+    Returns:
+        None
+    """
+    print("Running in offline mode...")
+    while True:
+        command = input("Enter command (or 'exit' to quit): ")
+        if command.lower() == "exit":
+            print("Exiting offline mode.")
+            break
+        elif command.lower() == "list contacts":
+            print(list_all_contacts())
+        elif command.lower() == "list tasks":
+            print(get_upcoming_tasks())
+        elif command.lower().startswith("add task"):
+            task_details = command[9:].strip()
+            task, _, deadline = task_details.partition(" by ")
+            print(add_task_with_deadline(task, deadline))
+        elif command.lower().startswith("add note"):
+            note_details = command[9:].strip()
+            note, _, category = note_details.partition(" in ")
+            print(add_note(note, category))
+        else:
+            print("Command not recognized in offline mode.")
+
+
 if __name__ == "__main__":
-    gr.Interface(fn=chat, inputs="text", outputs="text").launch()
-    asyncio.run(main())
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Personal Assistant")
+    parser.add_argument(
+        "--wake-word", action="store_true", help="Enable wake word detection"
+    )
+    parser.add_argument(
+        "--wake-word-model", type=str, default="resources/wake_word.pmdl",
+        help="Path to the custom wake word model file"
+    )
+    parser.add_argument(
+        "--sensitivity", type=float, default=0.5,
+        help="Sensitivity for wake word detection (0.0 to 1.0)"
+    )
+    parser.add_argument(
+        "--offline", action="store_true", help="Run the assistant in offline mode"
+    )
+    args = parser.parse_args()
+
+    if args.offline:
+        offline_mode()
+    else:
+        if args.wake_word:
+            start_wake_word_detection(wake_word_model=args.wake_word_model, sensitivity=args.sensitivity)
+        else:
+            gr.Interface(fn=chat, inputs="text", outputs="text").launch()
+            asyncio.run(main())

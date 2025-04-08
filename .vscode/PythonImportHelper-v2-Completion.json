@@ -123,6 +123,14 @@
         "documentation": {}
     },
     {
+        "label": "translate_text",
+        "importPath": "apis",
+        "description": "apis",
+        "isExtraImport": true,
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
         "label": "get_weather",
         "importPath": "apis",
         "description": "apis",
@@ -303,12 +311,45 @@
         "documentation": {}
     },
     {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
         "label": "math",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "math",
         "description": "math",
         "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -673,6 +714,14 @@
         "documentation": {}
     },
     {
+        "label": "start_wake_word_detection",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
         "label": "AutoTokenizer",
         "importPath": "transformers",
         "description": "transformers",
@@ -773,28 +822,48 @@
         "documentation": {}
     },
     {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "io",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "io",
+        "description": "io",
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "base64",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "base64",
+        "description": "base64",
+        "detail": "base64",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
         "label": "asyncio",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "asyncio",
         "description": "asyncio",
         "detail": "asyncio",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -963,6 +1032,15 @@
         "importPath": "PyPDF2",
         "description": "PyPDF2",
         "detail": "PyPDF2",
+        "documentation": {}
+    },
+    {
+        "label": "snowboydecoder",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "snowboydecoder",
+        "description": "snowboydecoder",
+        "detail": "snowboydecoder",
         "documentation": {}
     },
     {
@@ -1265,7 +1343,16 @@
         "kind": 2,
         "importPath": "tests.test_apis",
         "description": "tests.test_apis",
-        "peekOfCode": "def test_get_news():\n    result = get_news(\"technology\")\n    assert \"No news found.\" in result or \"1.\" in result",
+        "peekOfCode": "def test_get_news():\n    result = get_news(\"technology\")\n    assert \"No news found.\" in result or \"1.\" in result\ndef test_get_news_invalid_topic():\n    result = get_news(\"invalid_topic_12345\")\n    assert \"No news found.\" in result",
+        "detail": "tests.test_apis",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_news_invalid_topic",
+        "kind": 2,
+        "importPath": "tests.test_apis",
+        "description": "tests.test_apis",
+        "peekOfCode": "def test_get_news_invalid_topic():\n    result = get_news(\"invalid_topic_12345\")\n    assert \"No news found.\" in result",
         "detail": "tests.test_apis",
         "documentation": {}
     },
@@ -1274,7 +1361,25 @@
         "kind": 2,
         "importPath": "apis",
         "description": "apis",
-        "peekOfCode": "def validate_api_keys():\n    missing_keys = [key for key, value in API_KEYS.items() if not value]\n    if missing_keys:\n        logging.warning(f\"Missing API keys: {', '.join(missing_keys)}\")\n        # Uncomment the next line to enforce validation\n        # raise EnvironmentError(f\"Missing API keys: {', '.join(missing_keys)}\")\nvalidate_api_keys()\nasync def get_weather(city, api_key=API_KEYS[\"openweathermap\"]):\n    url = f\"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric\"\n    try:",
+        "peekOfCode": "def validate_api_keys():\n    missing_keys = [key for key, value in API_KEYS.items() if not value]\n    if missing_keys:\n        logging.error(f\"Missing API keys: {', '.join(missing_keys)}\")\n        raise EnvironmentError(f\"Missing API keys: {', '.join(missing_keys)}\")\nvalidate_api_keys()\ndef retry_request(url, retries=3, backoff_factor=2):\n    for attempt in range(retries):\n        try:\n            response = httpx.get(url, timeout=10)",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "retry_request",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def retry_request(url, retries=3, backoff_factor=2):\n    for attempt in range(retries):\n        try:\n            response = httpx.get(url, timeout=10)\n            response.raise_for_status()\n            return response\n        except httpx.RequestError as e:\n            if attempt < retries - 1:\n                time.sleep(backoff_factor ** attempt)\n            else:",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_weather",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def get_weather(city, api_key=API_KEYS[\"openweathermap\"]):\n    url = f\"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric\"\n    try:\n        response = retry_request(url)\n        data = response.json()\n        if \"weather\" in data:\n            temp = data[\"main\"][\"temp\"]\n            desc = data[\"weather\"][0][\"description\"]\n            return f\"The weather in {city} is {desc} with a temperature of {temp}°C.\"\n        return \"Could not retrieve weather data.\"",
         "detail": "apis",
         "documentation": {}
     },
@@ -1301,7 +1406,7 @@
         "kind": 2,
         "importPath": "apis",
         "description": "apis",
-        "peekOfCode": "def search_images(query, api_key=API_KEYS[\"unsplash\"]):\n    url = f\"https://api.unsplash.com/search/photos?query={query}&client_id={api_key}\"\n    try:\n        response = requests.get(url).json()\n        if response.get(\"results\"):\n            return response[\"results\"][0][\"urls\"][\"small\"]\n        return \"No images found.\"\n    except Exception as e:\n        return f\"Image search error: {str(e)}\"\ndef add_task(task, due=None, api_key=API_KEYS[\"todoist\"]):",
+        "peekOfCode": "def search_images(query, api_key=API_KEYS[\"unsplash\"]):\n    url = f\"https://api.unsplash.com/search/photos?query={query}&client_id={api_key}\"\n    try:\n        response = requests.get(url)\n        response.raise_for_status()\n        data = response.json()\n        if data[\"results\"]:\n            return data[\"results\"][0][\"urls\"][\"regular\"]\n        return \"No images found.\"\n    except Exception as e:",
         "detail": "apis",
         "documentation": {}
     },
@@ -1319,7 +1424,7 @@
         "kind": 2,
         "importPath": "apis",
         "description": "apis",
-        "peekOfCode": "def create_trello_card(\n    title, desc, api_key=API_KEYS[\"trello_key\"], token=API_KEYS[\"trello_token\"]\n):\n    url = \"https://api.trello.com/1/cards\"\n    params = {\n        \"key\": api_key,\n        \"token\": token,\n        \"idList\": \"your_list_id_here\",\n        \"name\": title,\n        \"desc\": desc,",
+        "peekOfCode": "def create_trello_card(title, desc, api_key=API_KEYS[\"trello_key\"], token=API_KEYS[\"trello_token\"]):\n    url = \"https://api.trello.com/1/cards\"\n    params = {\n        \"key\": api_key,\n        \"token\": token,\n        \"idList\": \"your_list_id_here\",\n        \"name\": title,\n        \"desc\": desc,\n    }\n    try:",
         "detail": "apis",
         "documentation": {}
     },
@@ -1405,6 +1510,87 @@
         "documentation": {}
     },
     {
+        "label": "add_google_calendar_event",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def add_google_calendar_event(summary, start_time, end_time, description=None):\n    \"\"\"\n    Add an event to Google Calendar.\n    Args:\n        summary (str): Title of the event.\n        start_time (str): Start time in ISO 8601 format (e.g., '2025-04-10T15:00:00Z').\n        end_time (str): End time in ISO 8601 format (e.g., '2025-04-10T16:00:00Z').\n        description (str, optional): Description of the event.\n    Returns:\n        str: Success or error message.",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_upcoming_google_calendar_events",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def get_upcoming_google_calendar_events():\n    \"\"\"\n    Retrieve upcoming events from Google Calendar.\n    Returns:\n        str: List of upcoming events or an error message.\n    \"\"\"\n    try:\n        url = \"https://www.googleapis.com/calendar/v3/calendars/primary/events\"\n        headers = {\n            \"Authorization\": f\"Bearer {API_KEYS['google_calendar']}\",",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_stock_price",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def get_stock_price(symbol, api_key=API_KEYS.get(\"alpha_vantage\")):\n    \"\"\"\n    Fetch the stock price for a given symbol using Alpha Vantage.\n    Args:\n        symbol (str): Stock symbol (e.g., \"AAPL\" for Apple).\n        api_key (str): API key for Alpha Vantage.\n    Returns:\n        str: Stock price or an error message.\n    \"\"\"\n    try:",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_crypto_price",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def get_crypto_price(crypto, currency=\"usd\"):\n    \"\"\"\n    Fetch the cryptocurrency price using CoinGecko.\n    Args:\n        crypto (str): Cryptocurrency symbol (e.g., \"bitcoin\").\n        currency (str): Currency to convert to (default: \"usd\").\n    Returns:\n        str: Cryptocurrency price or an error message.\n    \"\"\"\n    try:",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "search_movie",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def search_movie(movie_name, api_key=API_KEYS.get(\"tmdb\")):\n    \"\"\"\n    Search for a movie using TMDb.\n    Args:\n        movie_name (str): Name of the movie to search for.\n        api_key (str): API key for TMDb.\n    Returns:\n        str: Movie details or an error message.\n    \"\"\"\n    try:",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_spotify_recommendations",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def get_spotify_recommendations():\n    \"\"\"\n    Fetch music recommendations from Spotify.\n    Returns:\n        str: Recommendations or a placeholder message.\n    \"\"\"\n    return \"Spotify integration is under development.\"\n# Health and Fitness API: Nutritionix\nNUTRITIONIX_BASE_URL = \"https://trackapi.nutritionix.com/v2/natural/nutrients\"\ndef get_nutritional_info(food_item, api_key=API_KEYS.get(\"nutritionix\")):",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "get_nutritional_info",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def get_nutritional_info(food_item, api_key=API_KEYS.get(\"nutritionix\")):\n    \"\"\"\n    Fetch nutritional information for a food item using Nutritionix.\n    Args:\n        food_item (str): Name of the food item.\n        api_key (str): API key for Nutritionix.\n    Returns:\n        str: Nutritional information or an error message.\n    \"\"\"\n    try:",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "search_flights",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def search_flights():\n    \"\"\"\n    Search for flights using Skyscanner.\n    Returns:\n        str: Flight details or a placeholder message.\n    \"\"\"\n    return \"Skyscanner integration is under development.\"\n# Travel API: Amadeus (Placeholder for API setup)\ndef search_hotels():\n    \"\"\"",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "search_hotels",
+        "kind": 2,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "def search_hotels():\n    \"\"\"\n    Search for hotels using Amadeus.\n    Returns:\n        str: Hotel details or a placeholder message.\n    \"\"\"\n    return \"Amadeus integration is under development.\"",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
         "label": "API_KEYS",
         "kind": 5,
         "importPath": "apis",
@@ -1414,11 +1600,47 @@
         "documentation": {}
     },
     {
+        "label": "ALPHA_VANTAGE_BASE_URL",
+        "kind": 5,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "ALPHA_VANTAGE_BASE_URL = \"https://www.alphavantage.co/query\"\ndef get_stock_price(symbol, api_key=API_KEYS.get(\"alpha_vantage\")):\n    \"\"\"\n    Fetch the stock price for a given symbol using Alpha Vantage.\n    Args:\n        symbol (str): Stock symbol (e.g., \"AAPL\" for Apple).\n        api_key (str): API key for Alpha Vantage.\n    Returns:\n        str: Stock price or an error message.\n    \"\"\"",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "COINGECKO_BASE_URL",
+        "kind": 5,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "COINGECKO_BASE_URL = \"https://api.coingecko.com/api/v3/simple/price\"\ndef get_crypto_price(crypto, currency=\"usd\"):\n    \"\"\"\n    Fetch the cryptocurrency price using CoinGecko.\n    Args:\n        crypto (str): Cryptocurrency symbol (e.g., \"bitcoin\").\n        currency (str): Currency to convert to (default: \"usd\").\n    Returns:\n        str: Cryptocurrency price or an error message.\n    \"\"\"",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "TMDB_BASE_URL",
+        "kind": 5,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "TMDB_BASE_URL = \"https://api.themoviedb.org/3/search/movie\"\ndef search_movie(movie_name, api_key=API_KEYS.get(\"tmdb\")):\n    \"\"\"\n    Search for a movie using TMDb.\n    Args:\n        movie_name (str): Name of the movie to search for.\n        api_key (str): API key for TMDb.\n    Returns:\n        str: Movie details or an error message.\n    \"\"\"",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
+        "label": "NUTRITIONIX_BASE_URL",
+        "kind": 5,
+        "importPath": "apis",
+        "description": "apis",
+        "peekOfCode": "NUTRITIONIX_BASE_URL = \"https://trackapi.nutritionix.com/v2/natural/nutrients\"\ndef get_nutritional_info(food_item, api_key=API_KEYS.get(\"nutritionix\")):\n    \"\"\"\n    Fetch nutritional information for a food item using Nutritionix.\n    Args:\n        food_item (str): Name of the food item.\n        api_key (str): API key for Nutritionix.\n    Returns:\n        str: Nutritional information or an error message.\n    \"\"\"",
+        "detail": "apis",
+        "documentation": {}
+    },
+    {
         "label": "calculate",
         "kind": 2,
         "importPath": "calculations",
         "description": "calculations",
-        "peekOfCode": "def calculate(operation, num1, num2):\n    try:\n        num1, num2 = float(num1), float(num2)\n        if operation == \"add\" or operation == \"+\":\n            return f\"{num1} + {num2} = {num1 + num2}\"\n        elif operation == \"subtract\" or operation == \"-\":\n            return f\"{num1} - {num2} = {num1 - num2}\"\n        elif operation == \"multiply\" or operation == \"*\" or operation == \"times\":\n            return f\"{num1} * {num2} = {num1 * num2}\"\n        elif operation == \"divide\" or operation == \"/\":",
+        "peekOfCode": "def calculate(operation, num1, num2):\n    try:\n        num1, num2 = float(num1), float(num2)\n        if operation == \"add\":\n            return num1 + num2\n        elif operation == \"subtract\":\n            return num1 - num2\n        elif operation == \"multiply\":\n            return num1 * num2\n        elif operation == \"divide\":",
         "detail": "calculations",
         "documentation": {}
     },
@@ -1427,7 +1649,7 @@
         "kind": 2,
         "importPath": "calculations",
         "description": "calculations",
-        "peekOfCode": "def advanced_calculate(equation):\n    return \"Advanced calculations not implemented yet.\"\ndef haversine_distance(lat1, lon1, lat2, lon2):\n    \"\"\"Calculate distance between two points in kilometers using Haversine formula.\"\"\"\n    try:\n        lat1, lon1, lat2, lon2 = map(float, [lat1, lon1, lat2, lon2])\n        R = 6371  # Earth's radius in km\n        dlat = math.radians(lat2 - lat1)\n        dlon = math.radians(lon2 - lon1)\n        a = (",
+        "peekOfCode": "def advanced_calculate(equation):\n    return \"Advanced calculations not implemented yet.\"\ndef haversine_distance(lat1, lon1, lat2, lon2):\n    from math import radians, sin, cos, sqrt, atan2\n    try:\n        R = 6371  # Radius of Earth in kilometers\n        lat1, lon1, lat2, lon2 = map(radians, [lat1, lon1, lat2, lon2])\n        dlat = lat2 - lat1\n        dlon = lon2 - lon1\n        a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2",
         "detail": "calculations",
         "documentation": {}
     },
@@ -1436,7 +1658,7 @@
         "kind": 2,
         "importPath": "calculations",
         "description": "calculations",
-        "peekOfCode": "def haversine_distance(lat1, lon1, lat2, lon2):\n    \"\"\"Calculate distance between two points in kilometers using Haversine formula.\"\"\"\n    try:\n        lat1, lon1, lat2, lon2 = map(float, [lat1, lon1, lat2, lon2])\n        R = 6371  # Earth's radius in km\n        dlat = math.radians(lat2 - lat1)\n        dlon = math.radians(lon2 - lon1)\n        a = (\n            math.sin(dlat / 2) ** 2\n            + math.cos(math.radians(lat1))",
+        "peekOfCode": "def haversine_distance(lat1, lon1, lat2, lon2):\n    from math import radians, sin, cos, sqrt, atan2\n    try:\n        R = 6371  # Radius of Earth in kilometers\n        lat1, lon1, lat2, lon2 = map(radians, [lat1, lon1, lat2, lon2])\n        dlat = lat2 - lat1\n        dlon = lon2 - lon1\n        a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2\n        c = 2 * atan2(sqrt(a), sqrt(1 - a))\n        return R * c",
         "detail": "calculations",
         "documentation": {}
     },
@@ -1477,6 +1699,15 @@
         "documentation": {}
     },
     {
+        "label": "save_generated_code",
+        "kind": 2,
+        "importPath": "coding",
+        "description": "coding",
+        "peekOfCode": "def save_generated_code(language, code, description):\n    \"\"\"\n    Save generated code to the database with metadata.\n    Args:\n        language (str): Programming language of the code.\n        code (str): The generated code snippet.\n        description (str): Description of the code.\n    Returns:\n        str: Success or error message.\n    \"\"\"",
+        "detail": "coding",
+        "documentation": {}
+    },
+    {
         "label": "ALLOWED_LANGUAGES",
         "kind": 5,
         "importPath": "coding",
@@ -1508,7 +1739,16 @@
         "kind": 2,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "def parse_complex_command(command, entities):\n    if \" if \" in command:\n        condition, action = command.split(\" if \", 1)\n        return \"complex_if\", {\"condition\": condition.strip(), \"action\": action.strip()}\n    parts = re.split(r\" and | then \", command)\n    return \"complex_chain\", {\"commands\": [part.strip() for part in parts]}\ndef generate_response(prompt):\n    try:\n        full_prompt = f\"A flirty and helpful assistant says: {prompt}\"\n        inputs = tokenizer(full_prompt, return_tensors=\"pt\").to(",
+        "peekOfCode": "def parse_complex_command(command, entities):\n    if \" if \" in command:\n        condition, action = command.split(\" if \", 1)\n        return \"complex_if\", {\"condition\": condition.strip(), \"action\": action.strip()}\n    parts = re.split(r\" and | then \", command)\n    return \"complex_chain\", {\"commands\": [part.strip() for part in parts]}\ndef set_tone(tone):\n    global current_tone\n    if tone not in [\"professional\", \"casual\", \"flirty\"]:\n        return \"Invalid tone. Please choose from: professional, casual, flirty.\"",
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "set_tone",
+        "kind": 2,
+        "importPath": "conversation",
+        "description": "conversation",
+        "peekOfCode": "def set_tone(tone):\n    global current_tone\n    if tone not in [\"professional\", \"casual\", \"flirty\"]:\n        return \"Invalid tone. Please choose from: professional, casual, flirty.\"\n    current_tone = tone\n    return f\"Tone set to {tone}.\"\ncurrent_tone = \"professional\"  # Default tone\ndef generate_response(prompt):\n    try:\n        dataset_file = f\"dataset_{current_tone}.txt\"",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1517,7 +1757,7 @@
         "kind": 2,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "def generate_response(prompt):\n    try:\n        full_prompt = f\"A flirty and helpful assistant says: {prompt}\"\n        inputs = tokenizer(full_prompt, return_tensors=\"pt\").to(\n            \"cuda\" if torch.cuda.is_available() else \"cpu\"\n        )\n        outputs = model.generate(\n            **inputs,\n            max_length=200,\n            do_sample=True,",
+        "peekOfCode": "def generate_response(prompt):\n    try:\n        dataset_file = f\"dataset_{current_tone}.txt\"\n        with open(dataset_file, \"r\") as f:\n            data = f.read()\n        full_prompt = f\"A {current_tone} assistant says: {prompt}\"\n        inputs = tokenizer(full_prompt, return_tensors=\"pt\").to(\n            \"cuda\" if torch.cuda.is_available() else \"cpu\"\n        )\n        outputs = model.generate(",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1526,7 +1766,7 @@
         "kind": 2,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "def switch_to_better_model():\n    speak_response(\n        \"You're already on Mistral 7B—pretty spicy already! Need a bigger flirt?\"\n    )\n    return \"Currently on Mistral 7B—no better model available yet for your hardware.\"\ndef switch_to_better_conversational_model():\n    speak_response(\"Switching to a better conversational model—hold tight!\")\n    return \"Switching conversational models not implemented yet.\"",
+        "peekOfCode": "def switch_to_better_model():\n    speak_response(\n        \"You're already on Mistral 7B—pretty spicy already! Need a bigger flirt?\"\n    )\n    return \"Currently on Mistral 7B—no better model available yet for your hardware.\"\ndef switch_to_better_conversational_model():\n    speak_response(\"Switching to a better conversational model—hold tight!\")\n    return \"Switching conversational models not implemented yet.\"\ndef handle_stt_tts_commands(command):\n    \"\"\"",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1535,7 +1775,16 @@
         "kind": 2,
         "importPath": "conversation",
         "description": "conversation",
-        "peekOfCode": "def switch_to_better_conversational_model():\n    speak_response(\"Switching to a better conversational model—hold tight!\")\n    return \"Switching conversational models not implemented yet.\"",
+        "peekOfCode": "def switch_to_better_conversational_model():\n    speak_response(\"Switching to a better conversational model—hold tight!\")\n    return \"Switching conversational models not implemented yet.\"\ndef handle_stt_tts_commands(command):\n    \"\"\"\n    Handle natural language commands for STT and TTS functionality.\n    Args:\n        command (str): The user's command.\n    Returns:\n        str: The response to the command.",
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "handle_stt_tts_commands",
+        "kind": 2,
+        "importPath": "conversation",
+        "description": "conversation",
+        "peekOfCode": "def handle_stt_tts_commands(command):\n    \"\"\"\n    Handle natural language commands for STT and TTS functionality.\n    Args:\n        command (str): The user's command.\n    Returns:\n        str: The response to the command.\n    \"\"\"\n    if \"read my last saved note\" in command.lower():\n        return read_last_saved_note()",
         "detail": "conversation",
         "documentation": {}
     },
@@ -1585,6 +1834,33 @@
         "documentation": {}
     },
     {
+        "label": "current_tone",
+        "kind": 5,
+        "importPath": "conversation",
+        "description": "conversation",
+        "peekOfCode": "current_tone = \"professional\"  # Default tone\ndef generate_response(prompt):\n    try:\n        dataset_file = f\"dataset_{current_tone}.txt\"\n        with open(dataset_file, \"r\") as f:\n            data = f.read()\n        full_prompt = f\"A {current_tone} assistant says: {prompt}\"\n        inputs = tokenizer(full_prompt, return_tensors=\"pt\").to(\n            \"cuda\" if torch.cuda.is_available() else \"cpu\"\n        )",
+        "detail": "conversation",
+        "documentation": {}
+    },
+    {
+        "label": "load_theme_settings",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def load_theme_settings():\n    try:\n        with open(\"theme_settings.json\", \"r\") as f:\n            return json.load(f)\n    except FileNotFoundError:\n        return {\n            \"BG_COLOR\": [245, 245, 247],\n            \"TEXT_COLOR\": [33, 33, 33],\n            \"ACCENT_COLOR\": [52, 152, 219],\n            \"SECONDARY_COLOR\": [149, 165, 166],",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "save_theme_settings",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def save_theme_settings(settings):\n    with open(\"theme_settings.json\", \"w\") as f:\n        json.dump(settings, f, indent=4)\n# Load initial settings\ntheme_settings = load_theme_settings()\nBG_COLOR = tuple(theme_settings[\"BG_COLOR\"])\nTEXT_COLOR = tuple(theme_settings[\"TEXT_COLOR\"])\nACCENT_COLOR = tuple(theme_settings[\"ACCENT_COLOR\"])\nSECONDARY_COLOR = tuple(theme_settings[\"SECONDARY_COLOR\"])\nCARD_COLOR = tuple(theme_settings[\"CARD_COLOR\"])",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
         "label": "handle_ai_response",
         "kind": 2,
         "importPath": "gui",
@@ -1621,6 +1897,168 @@
         "documentation": {}
     },
     {
+        "label": "draw_address_book_form",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def draw_address_book_form(surface):\n    form_rect = pygame.Rect(100, 100, 700, 500)\n    pygame.draw.rect(surface, CARD_COLOR, form_rect, border_radius=10)\n    pygame.draw.rect(surface, SECONDARY_COLOR, form_rect, 2, border_radius=10)\n    # Form fields\n    fields = [\"Name\", \"Surname\", \"Phone\", \"Email\", \"Relation\"]\n    field_values = {field: \"\" for field in fields}\n    field_rects = {}\n    y_offset = form_rect.y + 50\n    for field in fields:",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "handle_address_book_events",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def handle_address_book_events(event, field_rects, field_values, save_button):\n    global input_active\n    if event.type == pygame.MOUSEBUTTONDOWN:\n        for field, rect in field_rects.items():\n            if rect.collidepoint(event.pos):\n                input_active = field\n                break\n        else:\n            input_active = None\n        if save_button.collidepoint(event.pos):",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "generate_task_chart",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def generate_task_chart():\n    \"\"\"\n    Generate a bar chart for tasks based on their deadlines.\n    Returns:\n        str: Base64-encoded image of the chart.\n    \"\"\"\n    try:\n        db = get_db(\"tasks\")\n        db[\"cursor\"].execute(\n            \"SELECT task, deadline FROM tasks WHERE completed = 0 ORDER BY deadline ASC\"",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "display_task_chart",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def display_task_chart(surface):\n    \"\"\"\n    Display the task chart in the GUI.\n    Args:\n        surface: The PyGame surface to draw on.\n    Returns:\n        None\n    \"\"\"\n    chart_data = generate_task_chart()\n    if \"Error\" in chart_data or \"No tasks\" in chart_data:",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "draw_language_dropdown",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def draw_language_dropdown(surface):\n    \"\"\"\n    Draw the language selection dropdown in the GUI.\n    Args:\n        surface: The PyGame surface to draw on.\n    Returns:\n        None\n    \"\"\"\n    pygame.draw.rect(surface, ACCENT_COLOR, language_dropdown, border_radius=5)\n    language_text = font.render(",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "draw_settings_panel",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def draw_settings_panel(surface):\n    settings_rect = pygame.Rect(100, 100, 700, 500)\n    pygame.draw.rect(surface, CARD_COLOR, settings_rect, border_radius=10)\n    pygame.draw.rect(surface, SECONDARY_COLOR, settings_rect, 2, border_radius=10)\n    y_offset = settings_rect.y + 20\n    settings_fields = [\n        \"BG_COLOR\", \"TEXT_COLOR\", \"ACCENT_COLOR\", \"SECONDARY_COLOR\", \"CARD_COLOR\",\n        \"FONT_SIZE\", \"CODE_FONT_SIZE\", \"SCREEN_WIDTH\", \"SCREEN_HEIGHT\"\n    ]\n    field_values = {field: str(theme_settings[field]) for field in settings_fields}",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "handle_settings_events",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def handle_settings_events(event, field_rects, field_values, save_button):\n    global input_active\n    if event.type == pygame.MOUSEBUTTONDOWN:\n        for field, rect in field_rects.items():\n            if rect.collidepoint(event.pos):\n                input_active = field\n                break\n        else:\n            input_active = None\n        if save_button.collidepoint(event.pos):",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "offline_mode_gui",
+        "kind": 2,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "def offline_mode_gui():\n    \"\"\"\n    Run the GUI in offline mode using local databases and pre-downloaded datasets.\n    Returns:\n        None\n    \"\"\"\n    print(\"Running GUI in offline mode...\")\n    # Disable features requiring internet access\n    global tts_enabled, stt_enabled\n    tts_enabled = False",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "theme_settings",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "theme_settings = load_theme_settings()\nBG_COLOR = tuple(theme_settings[\"BG_COLOR\"])\nTEXT_COLOR = tuple(theme_settings[\"TEXT_COLOR\"])\nACCENT_COLOR = tuple(theme_settings[\"ACCENT_COLOR\"])\nSECONDARY_COLOR = tuple(theme_settings[\"SECONDARY_COLOR\"])\nCARD_COLOR = tuple(theme_settings[\"CARD_COLOR\"])\nFONT_SIZE = theme_settings[\"FONT_SIZE\"]\nCODE_FONT_SIZE = theme_settings[\"CODE_FONT_SIZE\"]\nSCREEN_WIDTH = theme_settings[\"SCREEN_WIDTH\"]\nSCREEN_HEIGHT = theme_settings[\"SCREEN_HEIGHT\"]",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "BG_COLOR",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "BG_COLOR = tuple(theme_settings[\"BG_COLOR\"])\nTEXT_COLOR = tuple(theme_settings[\"TEXT_COLOR\"])\nACCENT_COLOR = tuple(theme_settings[\"ACCENT_COLOR\"])\nSECONDARY_COLOR = tuple(theme_settings[\"SECONDARY_COLOR\"])\nCARD_COLOR = tuple(theme_settings[\"CARD_COLOR\"])\nFONT_SIZE = theme_settings[\"FONT_SIZE\"]\nCODE_FONT_SIZE = theme_settings[\"CODE_FONT_SIZE\"]\nSCREEN_WIDTH = theme_settings[\"SCREEN_WIDTH\"]\nSCREEN_HEIGHT = theme_settings[\"SCREEN_HEIGHT\"]\n# Screen dimensions",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "TEXT_COLOR",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "TEXT_COLOR = tuple(theme_settings[\"TEXT_COLOR\"])\nACCENT_COLOR = tuple(theme_settings[\"ACCENT_COLOR\"])\nSECONDARY_COLOR = tuple(theme_settings[\"SECONDARY_COLOR\"])\nCARD_COLOR = tuple(theme_settings[\"CARD_COLOR\"])\nFONT_SIZE = theme_settings[\"FONT_SIZE\"]\nCODE_FONT_SIZE = theme_settings[\"CODE_FONT_SIZE\"]\nSCREEN_WIDTH = theme_settings[\"SCREEN_WIDTH\"]\nSCREEN_HEIGHT = theme_settings[\"SCREEN_HEIGHT\"]\n# Screen dimensions\nFONT_SIZE = 24",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "ACCENT_COLOR",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "ACCENT_COLOR = tuple(theme_settings[\"ACCENT_COLOR\"])\nSECONDARY_COLOR = tuple(theme_settings[\"SECONDARY_COLOR\"])\nCARD_COLOR = tuple(theme_settings[\"CARD_COLOR\"])\nFONT_SIZE = theme_settings[\"FONT_SIZE\"]\nCODE_FONT_SIZE = theme_settings[\"CODE_FONT_SIZE\"]\nSCREEN_WIDTH = theme_settings[\"SCREEN_WIDTH\"]\nSCREEN_HEIGHT = theme_settings[\"SCREEN_HEIGHT\"]\n# Screen dimensions\nFONT_SIZE = 24\nCODE_FONT_SIZE = 20",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "SECONDARY_COLOR",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "SECONDARY_COLOR = tuple(theme_settings[\"SECONDARY_COLOR\"])\nCARD_COLOR = tuple(theme_settings[\"CARD_COLOR\"])\nFONT_SIZE = theme_settings[\"FONT_SIZE\"]\nCODE_FONT_SIZE = theme_settings[\"CODE_FONT_SIZE\"]\nSCREEN_WIDTH = theme_settings[\"SCREEN_WIDTH\"]\nSCREEN_HEIGHT = theme_settings[\"SCREEN_HEIGHT\"]\n# Screen dimensions\nFONT_SIZE = 24\nCODE_FONT_SIZE = 20\n# Modern Colors",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "CARD_COLOR",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "CARD_COLOR = tuple(theme_settings[\"CARD_COLOR\"])\nFONT_SIZE = theme_settings[\"FONT_SIZE\"]\nCODE_FONT_SIZE = theme_settings[\"CODE_FONT_SIZE\"]\nSCREEN_WIDTH = theme_settings[\"SCREEN_WIDTH\"]\nSCREEN_HEIGHT = theme_settings[\"SCREEN_HEIGHT\"]\n# Screen dimensions\nFONT_SIZE = 24\nCODE_FONT_SIZE = 20\n# Modern Colors\nBG_COLOR = (245, 245, 247)  # Light gray",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "FONT_SIZE",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "FONT_SIZE = theme_settings[\"FONT_SIZE\"]\nCODE_FONT_SIZE = theme_settings[\"CODE_FONT_SIZE\"]\nSCREEN_WIDTH = theme_settings[\"SCREEN_WIDTH\"]\nSCREEN_HEIGHT = theme_settings[\"SCREEN_HEIGHT\"]\n# Screen dimensions\nFONT_SIZE = 24\nCODE_FONT_SIZE = 20\n# Modern Colors\nBG_COLOR = (245, 245, 247)  # Light gray\nTEXT_COLOR = (33, 33, 33)  # Dark gray",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "CODE_FONT_SIZE",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "CODE_FONT_SIZE = theme_settings[\"CODE_FONT_SIZE\"]\nSCREEN_WIDTH = theme_settings[\"SCREEN_WIDTH\"]\nSCREEN_HEIGHT = theme_settings[\"SCREEN_HEIGHT\"]\n# Screen dimensions\nFONT_SIZE = 24\nCODE_FONT_SIZE = 20\n# Modern Colors\nBG_COLOR = (245, 245, 247)  # Light gray\nTEXT_COLOR = (33, 33, 33)  # Dark gray\nACCENT_COLOR = (52, 152, 219)  # Blue",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "SCREEN_WIDTH",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "SCREEN_WIDTH = theme_settings[\"SCREEN_WIDTH\"]\nSCREEN_HEIGHT = theme_settings[\"SCREEN_HEIGHT\"]\n# Screen dimensions\nFONT_SIZE = 24\nCODE_FONT_SIZE = 20\n# Modern Colors\nBG_COLOR = (245, 245, 247)  # Light gray\nTEXT_COLOR = (33, 33, 33)  # Dark gray\nACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "SCREEN_HEIGHT",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "SCREEN_HEIGHT = theme_settings[\"SCREEN_HEIGHT\"]\n# Screen dimensions\nFONT_SIZE = 24\nCODE_FONT_SIZE = 20\n# Modern Colors\nBG_COLOR = (245, 245, 247)  # Light gray\nTEXT_COLOR = (33, 33, 33)  # Dark gray\nACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
         "label": "FONT_SIZE",
         "kind": 5,
         "importPath": "gui",
@@ -1643,7 +2081,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "BG_COLOR = (245, 245, 247)  # Light gray\nTEXT_COLOR = (33, 33, 33)  # Dark gray\nACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))",
+        "peekOfCode": "BG_COLOR = (245, 245, 247)  # Light gray\nTEXT_COLOR = (33, 33, 33)  # Dark gray\nACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)",
         "detail": "gui",
         "documentation": {}
     },
@@ -1652,7 +2090,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "TEXT_COLOR = (33, 33, 33)  # Dark gray\nACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")",
+        "peekOfCode": "TEXT_COLOR = (33, 33, 33)  # Dark gray\nACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)\npygame.display.set_caption(\"AI Assistant\")",
         "detail": "gui",
         "documentation": {}
     },
@@ -1661,7 +2099,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "ACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts",
+        "peekOfCode": "ACCENT_COLOR = (52, 152, 219)  # Blue\nSECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)\npygame.display.set_caption(\"AI Assistant\")\n# Fonts",
         "detail": "gui",
         "documentation": {}
     },
@@ -1670,7 +2108,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "SECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)",
+        "peekOfCode": "SECONDARY_COLOR = (149, 165, 166)  # Muted teal\nCARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)",
         "detail": "gui",
         "documentation": {}
     },
@@ -1679,7 +2117,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "CARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)",
+        "peekOfCode": "CARD_COLOR = (255, 255, 255)  # White\nUSER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)",
         "detail": "gui",
         "documentation": {}
     },
@@ -1688,7 +2126,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "USER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\ncode_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code",
+        "peekOfCode": "USER_COLOR = (52, 152, 219)  # Blue for user messages\nAI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\ncode_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code",
         "detail": "gui",
         "documentation": {}
     },
@@ -1697,7 +2135,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "AI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\ncode_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code\n# Input and output queues",
+        "peekOfCode": "AI_COLOR = (44, 62, 80)  # Darker gray for AI messages\nCODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\ncode_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code\n# Input and output queues",
         "detail": "gui",
         "documentation": {}
     },
@@ -1706,7 +2144,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "CODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\ncode_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code\n# Input and output queues\ninput_queue = queue.Queue()",
+        "peekOfCode": "CODE_BG_COLOR = (230, 230, 230)  # Light gray for code blocks\n# Initialize screen\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\ncode_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code\n# Input and output queues\ninput_queue = queue.Queue()",
         "detail": "gui",
         "documentation": {}
     },
@@ -1715,7 +2153,7 @@
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\ncode_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box",
+        "peekOfCode": "screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)\npygame.display.set_caption(\"AI Assistant\")\n# Fonts\nfont = pygame.font.Font(None, FONT_SIZE)\ntitle_font = pygame.font.Font(None, 36)\ncode_font = pygame.font.Font(None, CODE_FONT_SIZE)  # Monospaced font for code\n# Input and output queues\ninput_queue = queue.Queue()\noutput_queue = queue.Queue()\n# Input box",
         "detail": "gui",
         "documentation": {}
     },
@@ -1918,20 +2356,74 @@
         "documentation": {}
     },
     {
-        "label": "clock",
+        "label": "address_book_visible",
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "clock = pygame.time.Clock()\nrunning = True\nwhile running:\n    screen.fill(BG_COLOR)\n    # Draw title\n    title = title_font.render(\"AI Assistant\", True, TEXT_COLOR)\n    screen.blit(title, (50, 20))\n    # Draw chat area\n    chat_rect = pygame.Rect(50, 80, 600, 500)\n    pygame.draw.rect(screen, CARD_COLOR, chat_rect, border_radius=10)",
+        "peekOfCode": "address_book_visible = False\naddress_book_button = pygame.Rect(SCREEN_WIDTH - 300, 40, 200, 40)\ndef generate_task_chart():\n    \"\"\"\n    Generate a bar chart for tasks based on their deadlines.\n    Returns:\n        str: Base64-encoded image of the chart.\n    \"\"\"\n    try:\n        db = get_db(\"tasks\")",
         "detail": "gui",
         "documentation": {}
     },
     {
-        "label": "running",
+        "label": "address_book_button",
         "kind": 5,
         "importPath": "gui",
         "description": "gui",
-        "peekOfCode": "running = True\nwhile running:\n    screen.fill(BG_COLOR)\n    # Draw title\n    title = title_font.render(\"AI Assistant\", True, TEXT_COLOR)\n    screen.blit(title, (50, 20))\n    # Draw chat area\n    chat_rect = pygame.Rect(50, 80, 600, 500)\n    pygame.draw.rect(screen, CARD_COLOR, chat_rect, border_radius=10)\n    pygame.draw.rect(screen, SECONDARY_COLOR, chat_rect, 1, border_radius=10)",
+        "peekOfCode": "address_book_button = pygame.Rect(SCREEN_WIDTH - 300, 40, 200, 40)\ndef generate_task_chart():\n    \"\"\"\n    Generate a bar chart for tasks based on their deadlines.\n    Returns:\n        str: Base64-encoded image of the chart.\n    \"\"\"\n    try:\n        db = get_db(\"tasks\")\n        db[\"cursor\"].execute(",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "language_dropdown",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "language_dropdown = pygame.Rect(SCREEN_WIDTH - 300, 160, 200, 40)\nselected_language = \"en\"  # Default language\navailable_languages = {\"en\": \"English\", \"es\": \"Spanish\", \"fr\": \"French\", \"de\": \"German\"}\ndef draw_language_dropdown(surface):\n    \"\"\"\n    Draw the language selection dropdown in the GUI.\n    Args:\n        surface: The PyGame surface to draw on.\n    Returns:\n        None",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "selected_language",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "selected_language = \"en\"  # Default language\navailable_languages = {\"en\": \"English\", \"es\": \"Spanish\", \"fr\": \"French\", \"de\": \"German\"}\ndef draw_language_dropdown(surface):\n    \"\"\"\n    Draw the language selection dropdown in the GUI.\n    Args:\n        surface: The PyGame surface to draw on.\n    Returns:\n        None\n    \"\"\"",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "available_languages",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "available_languages = {\"en\": \"English\", \"es\": \"Spanish\", \"fr\": \"French\", \"de\": \"German\"}\ndef draw_language_dropdown(surface):\n    \"\"\"\n    Draw the language selection dropdown in the GUI.\n    Args:\n        surface: The PyGame surface to draw on.\n    Returns:\n        None\n    \"\"\"\n    pygame.draw.rect(surface, ACCENT_COLOR, language_dropdown, border_radius=5)",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "settings_visible",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "settings_visible = False\nsettings_button = pygame.Rect(SCREEN_WIDTH - 300, 220, 200, 40)\n# Modify the main loop to include a button for displaying the task chart\ntask_chart_button = pygame.Rect(SCREEN_WIDTH - 300, 100, 200, 40)\ndef offline_mode_gui():\n    \"\"\"\n    Run the GUI in offline mode using local databases and pre-downloaded datasets.\n    Returns:\n        None\n    \"\"\"",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "settings_button",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "settings_button = pygame.Rect(SCREEN_WIDTH - 300, 220, 200, 40)\n# Modify the main loop to include a button for displaying the task chart\ntask_chart_button = pygame.Rect(SCREEN_WIDTH - 300, 100, 200, 40)\ndef offline_mode_gui():\n    \"\"\"\n    Run the GUI in offline mode using local databases and pre-downloaded datasets.\n    Returns:\n        None\n    \"\"\"\n    print(\"Running GUI in offline mode...\")",
+        "detail": "gui",
+        "documentation": {}
+    },
+    {
+        "label": "task_chart_button",
+        "kind": 5,
+        "importPath": "gui",
+        "description": "gui",
+        "peekOfCode": "task_chart_button = pygame.Rect(SCREEN_WIDTH - 300, 100, 200, 40)\ndef offline_mode_gui():\n    \"\"\"\n    Run the GUI in offline mode using local databases and pre-downloaded datasets.\n    Returns:\n        None\n    \"\"\"\n    print(\"Running GUI in offline mode...\")\n    # Disable features requiring internet access\n    global tts_enabled, stt_enabled",
         "detail": "gui",
         "documentation": {}
     },
@@ -1994,7 +2486,16 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def chat(input_text):\n    intent, params = recognize_intent(input_text)\n    return process_single_command(intent, params)\nif __name__ == \"__main__\":\n    gr.Interface(fn=chat, inputs=\"text\", outputs=\"text\").launch()\n    asyncio.run(main())",
+        "peekOfCode": "def chat(input_text):\n    intent, params = recognize_intent(input_text)\n    return process_single_command(intent, params)\ndef offline_mode():\n    \"\"\"\n    Run the assistant in offline mode using local databases and pre-downloaded datasets.\n    Returns:\n        None\n    \"\"\"\n    print(\"Running in offline mode...\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "offline_mode",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def offline_mode():\n    \"\"\"\n    Run the assistant in offline mode using local databases and pre-downloaded datasets.\n    Returns:\n        None\n    \"\"\"\n    print(\"Running in offline mode...\")\n    while True:\n        command = input(\"Enter command (or 'exit' to quit): \")\n        if command.lower() == \"exit\":",
         "detail": "main",
         "documentation": {}
     },
@@ -2021,7 +2522,7 @@
         "kind": 2,
         "importPath": "offline_tools",
         "description": "offline_tools",
-        "peekOfCode": "def get_db(db_name):\n    if db_name not in databases:\n        conn = sqlite3.connect(f\"{db_name}.db\")\n        databases[db_name] = {\"conn\": conn, \"cursor\": conn.cursor()}\n    return databases[db_name]\ncore_db = get_db(\"core\")\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)\"\n)\ncore_db[\"cursor\"].execute(",
+        "peekOfCode": "def get_db(db_name):\n    if (db_name not in databases):\n        conn = sqlite3.connect(f\"{db_name}.db\")\n        databases[db_name] = {\"conn\": conn, \"cursor\": conn.cursor()}\n    return databases[db_name]\ncore_db = get_db(\"core\")\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)\"\n)\ncore_db[\"cursor\"].execute(",
         "detail": "offline_tools",
         "documentation": {}
     },
@@ -2030,7 +2531,7 @@
         "kind": 2,
         "importPath": "offline_tools",
         "description": "offline_tools",
-        "peekOfCode": "def create_database(db_name):\n    db = get_db(db_name)\n    db[\"cursor\"].execute(\n        \"\"\"\n        CREATE TABLE IF NOT EXISTS items (\n            key TEXT PRIMARY KEY, \n            value TEXT, \n            timestamp TEXT, \n            tags TEXT, \n            priority INTEGER",
+        "peekOfCode": "def create_database(db_name):\n    db = get_db(db_name)\n    db[\"cursor\"].execute(\n        \"\"\"\n        CREATE TABLE IF NOT EXISTS items (\n            key TEXT PRIMARY KEY,\n            value TEXT,\n            timestamp TEXT,\n            tags TEXT,\n            priority INTEGER",
         "detail": "offline_tools",
         "documentation": {}
     },
@@ -2093,7 +2594,7 @@
         "kind": 2,
         "importPath": "offline_tools",
         "description": "offline_tools",
-        "peekOfCode": "def add_to_database(db_name, key, value, tags=None, priority=None):\n    db = get_db(db_name)\n    timestamp = datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")\n    db[\"cursor\"].execute(\n        \"\"\"\n        INSERT OR REPLACE INTO items (key, value, timestamp, tags, priority) \n        VALUES (?, ?, ?, ?, ?)\n    \"\"\",\n        (key, value, timestamp, tags, priority),\n    )",
+        "peekOfCode": "def add_to_database(db_name, key, value, tags=None, priority=None):\n    db = get_db(db_name)\n    timestamp = datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")\n    db[\"cursor\"].execute(\n        \"\"\"\n        INSERT OR REPLACE INTO items (key, value, timestamp, tags, priority)\n        VALUES (?, ?, ?, ?, ?)\n    \"\"\",\n        (key, value, timestamp, tags, priority),\n    )",
         "detail": "offline_tools",
         "documentation": {}
     },
@@ -2300,7 +2801,178 @@
         "kind": 2,
         "importPath": "offline_tools",
         "description": "offline_tools",
-        "peekOfCode": "def speak_response(text):\n    try:\n        engine.say(text)\n        engine.runAndWait()\n    except Exception as e:\n        print(f\"Text-to-speech error: {str(e)}\")",
+        "peekOfCode": "def speak_response(text):\n    try:\n        engine.say(text)\n        engine.runAndWait()\n    except Exception as e:\n        print(f\"Text-to-speech error: {str(e)}\")\ndef save_image(image_path, description):\n    \"\"\"\n    Save an image to the local directory with metadata.\n    Args:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "save_image",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def save_image(image_path, description):\n    \"\"\"\n    Save an image to the local directory with metadata.\n    Args:\n        image_path (str): Path to the image file.\n        description (str): Description of the image.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "read_last_saved_note",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def read_last_saved_note():\n    \"\"\"\n    Retrieve and read the last saved note from the database.\n    Returns:\n        str: The content of the last saved note or an error message.\n    \"\"\"\n    db = get_db(\"personality\")\n    db[\"cursor\"].execute(\"SELECT data FROM research ORDER BY timestamp DESC LIMIT 1\")\n    result = db[\"cursor\"].fetchone()\n    if result:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "summarize_last_commands",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def summarize_last_commands(limit=5):\n    \"\"\"\n    Summarize the last few commands issued by the user.\n    Args:\n        limit (int): Number of commands to summarize.\n    Returns:\n        str: Summary of the last commands.\n    \"\"\"\n    db = get_db(\"personality\")\n    db[\"cursor\"].execute(\"SELECT command FROM queries ORDER BY timestamp DESC LIMIT ?\", (limit,))",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "list_all_contacts",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def list_all_contacts():\n    \"\"\"\n    List all saved contacts from the address book.\n    Returns:\n        str: A list of all contacts or an error message.\n    \"\"\"\n    db = get_db(\"addressbook\")\n    db[\"cursor\"].execute(\"SELECT name, phone, email, category FROM contacts\")\n    results = db[\"cursor\"].fetchall()\n    if results:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "start_wake_word_detection",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def start_wake_word_detection(wake_word_model=\"resources/wake_word.pmdl\", sensitivity=0.5):\n    \"\"\"\n    Start listening for the wake word using Snowboy.\n    Args:\n        wake_word_model (str): Path to the wake word model file.\n        sensitivity (float): Sensitivity for wake word detection.\n    Returns:\n        None\n    \"\"\"\n    if not os.path.exists(wake_word_model):",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "list_files_in_directory",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def list_files_in_directory(directory=\".\"):\n    \"\"\"\n    List all files in the specified directory.\n    Args:\n        directory (str): Path to the directory.\n    Returns:\n        list: List of file names in the directory.\n    \"\"\"\n    try:\n        files = os.listdir(directory)",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "search_file_by_name",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def search_file_by_name(directory=\".\", filename=\"\"):\n    \"\"\"\n    Search for a file by name in the specified directory.\n    Args:\n        directory (str): Path to the directory.\n        filename (str): Name of the file to search for.\n    Returns:\n        str: Path to the file if found, or an error message.\n    \"\"\"\n    try:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "copy_file",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def copy_file(src, dest):\n    \"\"\"\n    Copy a file from source to destination.\n    Args:\n        src (str): Path to the source file.\n        dest (str): Path to the destination directory.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "add_task_with_deadline",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def add_task_with_deadline(task, deadline):\n    \"\"\"\n    Add a task with a deadline to the database.\n    Args:\n        task (str): The task description.\n        deadline (str): The deadline for the task (e.g., '2025-04-10 15:00').\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "get_upcoming_tasks",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def get_upcoming_tasks():\n    \"\"\"\n    Retrieve all upcoming tasks from the database.\n    Returns:\n        str: List of upcoming tasks or a message if no tasks are found.\n    \"\"\"\n    try:\n        db = get_db(\"tasks\")\n        db[\"cursor\"].execute(\n            \"SELECT task, deadline FROM tasks WHERE completed = 0 ORDER BY deadline ASC\"",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "mark_task_as_completed",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def mark_task_as_completed(task_id):\n    \"\"\"\n    Mark a task as completed in the database.\n    Args:\n        task_id (int): The ID of the task to mark as completed.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:\n        db = get_db(\"tasks\")",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "remind_upcoming_tasks",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def remind_upcoming_tasks():\n    \"\"\"\n    Use TTS to remind the user of upcoming tasks with deadlines.\n    Returns:\n        None\n    \"\"\"\n    try:\n        tasks = get_upcoming_tasks()\n        if tasks != \"No upcoming tasks found.\":\n            speak_response(f\"Here are your upcoming tasks:\\n{tasks}\")",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "add_note",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def add_note(note, category):\n    \"\"\"\n    Add a note with a category to the database.\n    Args:\n        note (str): The content of the note.\n        category (str): The category of the note.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "search_notes_by_category",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def search_notes_by_category(category):\n    \"\"\"\n    Search for notes by category in the database.\n    Args:\n        category (str): The category to search for.\n    Returns:\n        str: List of notes in the category or a message if no notes are found.\n    \"\"\"\n    try:\n        db = get_db(\"notes\")",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "search_notes_by_keyword",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def search_notes_by_keyword(keyword):\n    \"\"\"\n    Search for notes by keyword in the database.\n    Args:\n        keyword (str): The keyword to search for.\n    Returns:\n        str: List of notes containing the keyword or a message if no notes are found.\n    \"\"\"\n    try:\n        db = get_db(\"notes\")",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "extract_text_from_image",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def extract_text_from_image(image_path):\n    \"\"\"\n    Extract text from an image using OCR.\n    Args:\n        image_path (str): Path to the image file.\n    Returns:\n        str: Extracted text or an error message.\n    \"\"\"\n    try:\n        text = pytesseract.image_to_string(Image.open(image_path))",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "save_extracted_text_as_document",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def save_extracted_text_as_document(image_path, category):\n    \"\"\"\n    Extract text from an image and save it as a note in the database.\n    Args:\n        image_path (str): Path to the image file.\n        category (str): Category under which the extracted text will be saved.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "save_command_history",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def save_command_history(command, response):\n    \"\"\"\n    Save a command and its response to the database.\n    Args:\n        command (str): The user's command.\n        response (str): The assistant's response.\n    Returns:\n        str: Success or error message.\n    \"\"\"\n    try:",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "search_command_history",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def search_command_history(keyword):\n    \"\"\"\n    Search for commands and responses in the history by keyword.\n    Args:\n        keyword (str): The keyword to search for.\n    Returns:\n        str: List of matching commands and responses or a message if no matches are found.\n    \"\"\"\n    try:\n        db = get_db(\"history\")",
         "detail": "offline_tools",
         "documentation": {}
     },
@@ -2309,7 +2981,7 @@
         "kind": 5,
         "importPath": "offline_tools",
         "description": "offline_tools",
-        "peekOfCode": "nlp = spacy.load(\"en_core_web_sm\")\ndatabases = {}\ndef get_db(db_name):\n    if db_name not in databases:\n        conn = sqlite3.connect(f\"{db_name}.db\")\n        databases[db_name] = {\"conn\": conn, \"cursor\": conn.cursor()}\n    return databases[db_name]\ncore_db = get_db(\"core\")\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)\"",
+        "peekOfCode": "nlp = spacy.load(\"en_core_web_sm\")\ndatabases = {}\ndef get_db(db_name):\n    if (db_name not in databases):\n        conn = sqlite3.connect(f\"{db_name}.db\")\n        databases[db_name] = {\"conn\": conn, \"cursor\": conn.cursor()}\n    return databases[db_name]\ncore_db = get_db(\"core\")\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)\"",
         "detail": "offline_tools",
         "documentation": {}
     },
@@ -2318,7 +2990,7 @@
         "kind": 5,
         "importPath": "offline_tools",
         "description": "offline_tools",
-        "peekOfCode": "databases = {}\ndef get_db(db_name):\n    if db_name not in databases:\n        conn = sqlite3.connect(f\"{db_name}.db\")\n        databases[db_name] = {\"conn\": conn, \"cursor\": conn.cursor()}\n    return databases[db_name]\ncore_db = get_db(\"core\")\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)\"\n)",
+        "peekOfCode": "databases = {}\ndef get_db(db_name):\n    if (db_name not in databases):\n        conn = sqlite3.connect(f\"{db_name}.db\")\n        databases[db_name] = {\"conn\": conn, \"cursor\": conn.cursor()}\n    return databases[db_name]\ncore_db = get_db(\"core\")\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)\"\n)",
         "detail": "offline_tools",
         "documentation": {}
     },
@@ -2327,7 +2999,7 @@
         "kind": 5,
         "importPath": "offline_tools",
         "description": "offline_tools",
-        "peekOfCode": "core_db = get_db(\"core\")\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)\"\n)\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS commands (name TEXT PRIMARY KEY, language TEXT, code TEXT)\"\n)\naddress_db = get_db(\"addressbook\")\naddress_db[\"cursor\"].execute(\n    \"\"\"",
+        "peekOfCode": "core_db = get_db(\"core\")\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)\"\n)\ncore_db[\"cursor\"].execute(\n    \"CREATE TABLE IF NOT EXISTS commands (name TEXT PRIMARY KEY, language TEXT, code TEXT)\"\n)\ncore_db[\"cursor\"].execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS images (",
         "detail": "offline_tools",
         "documentation": {}
     },
@@ -2336,7 +3008,7 @@
         "kind": 5,
         "importPath": "offline_tools",
         "description": "offline_tools",
-        "peekOfCode": "address_db = get_db(\"addressbook\")\naddress_db[\"cursor\"].execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS contacts (\n        name TEXT PRIMARY KEY, \n        phone TEXT, \n        email TEXT, \n        address TEXT, \n        birthday TEXT, \n        notes TEXT, ",
+        "peekOfCode": "address_db = get_db(\"addressbook\")\naddress_db[\"cursor\"].execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS contacts (\n        name TEXT PRIMARY KEY,\n        phone TEXT,\n        email TEXT,\n        address TEXT,\n        birthday TEXT,\n        notes TEXT,",
         "detail": "offline_tools",
         "documentation": {}
     },
@@ -2363,7 +3035,7 @@
         "kind": 5,
         "importPath": "offline_tools",
         "description": "offline_tools",
-        "peekOfCode": "engine = pyttsx3.init()\ndef speak_response(text):\n    try:\n        engine.say(text)\n        engine.runAndWait()\n    except Exception as e:\n        print(f\"Text-to-speech error: {str(e)}\")",
+        "peekOfCode": "engine = pyttsx3.init()\ndef speak_response(text):\n    try:\n        engine.say(text)\n        engine.runAndWait()\n    except Exception as e:\n        print(f\"Text-to-speech error: {str(e)}\")\ndef save_image(image_path, description):\n    \"\"\"\n    Save an image to the local directory with metadata.",
         "detail": "offline_tools",
         "documentation": {}
     },
