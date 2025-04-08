@@ -16,6 +16,12 @@ import subprocess
 import sqlite3
 from speedtest import Speedtest
 from offline_tools import send_weekly_logs, show_desktop_notification
+from offline_tools import download_wake_word_model
+import os
+
+# Ensure the wake word model is downloaded
+if not os.path.exists("resources/wake_word.pmdl"):
+    print(download_wake_word_model())
 
 # Set up logging to debug response issues
 logging.basicConfig(

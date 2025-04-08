@@ -22,3 +22,7 @@ accelerate
 peft
 gradio
 openwakeword
+cryptography
+win10toast
+schedule
+pyshark

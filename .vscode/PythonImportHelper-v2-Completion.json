@@ -90,74 +90,43 @@
         "documentation": {}
     },
     {
-        "label": "call",
-        "importPath": "subprocess",
-        "description": "subprocess",
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
         "isExtraImport": true,
-        "detail": "subprocess",
+        "detail": "tqdm",
         "documentation": {}
     },
     {
-        "label": "snowboydecoder",
-        "kind": 6,
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
         "isExtraImport": true,
-        "importPath": "snowboydecoder",
-        "description": "snowboydecoder",
-        "detail": "snowboydecoder",
+        "detail": "tqdm",
         "documentation": {}
     },
     {
-        "label": "signal",
-        "kind": 6,
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
         "isExtraImport": true,
-        "importPath": "signal",
-        "description": "signal",
-        "detail": "signal",
+        "detail": "tqdm",
         "documentation": {}
     },
     {
-        "label": "wave",
-        "kind": 6,
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
         "isExtraImport": true,
-        "importPath": "wave",
-        "description": "wave",
-        "detail": "wave",
+        "detail": "tqdm",
         "documentation": {}
     },
     {
-        "label": "speech_recognition",
-        "kind": 6,
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
         "isExtraImport": true,
-        "importPath": "speech_recognition",
-        "description": "speech_recognition",
-        "detail": "speech_recognition",
-        "documentation": {}
-    },
-    {
-        "label": "snowboydecoder_arecord",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "snowboydecoder_arecord",
-        "description": "snowboydecoder_arecord",
-        "detail": "snowboydecoder_arecord",
-        "documentation": {}
-    },
-    {
-        "label": "snowboythreaded",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "snowboythreaded",
-        "description": "snowboythreaded",
-        "detail": "snowboythreaded",
-        "documentation": {}
-    },
-    {
-        "label": "time",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
+        "detail": "tqdm",
         "documentation": {}
     },
     {
@@ -170,21 +139,128 @@
         "documentation": {}
     },
     {
-        "label": "pyaudio",
-        "kind": 6,
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
         "isExtraImport": true,
-        "importPath": "pyaudio",
-        "description": "pyaudio",
-        "detail": "pyaudio",
+        "detail": "collections",
         "documentation": {}
     },
     {
-        "label": "snowboydetect",
+        "label": "defaultdict",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "openwakeword",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "snowboydetect",
-        "description": "snowboydetect",
-        "detail": "snowboydetect",
+        "importPath": "openwakeword",
+        "description": "openwakeword",
+        "detail": "openwakeword",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "scipy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "scipy",
+        "description": "scipy",
+        "detail": "scipy",
+        "documentation": {}
+    },
+    {
+        "label": "pickle",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pickle",
+        "description": "pickle",
+        "detail": "pickle",
+        "documentation": {}
+    },
+    {
+        "label": "LogisticRegression",
+        "importPath": "sklearn.linear_model",
+        "description": "sklearn.linear_model",
+        "isExtraImport": true,
+        "detail": "sklearn.linear_model",
+        "documentation": {}
+    },
+    {
+        "label": "make_pipeline",
+        "importPath": "sklearn.pipeline",
+        "description": "sklearn.pipeline",
+        "isExtraImport": true,
+        "detail": "sklearn.pipeline",
+        "documentation": {}
+    },
+    {
+        "label": "FunctionTransformer",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "StandardScaler",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "ThreadPool",
+        "importPath": "multiprocessing.pool",
+        "description": "multiprocessing.pool",
+        "isExtraImport": true,
+        "detail": "multiprocessing.pool",
+        "documentation": {}
+    },
+    {
+        "label": "ThreadPool",
+        "importPath": "multiprocessing.pool",
+        "description": "multiprocessing.pool",
+        "isExtraImport": true,
+        "detail": "multiprocessing.pool",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
         "documentation": {}
     },
     {
@@ -197,62 +273,413 @@
         "documentation": {}
     },
     {
-        "label": "*",
-        "importPath": "ctypes",
-        "description": "ctypes",
-        "isExtraImport": true,
-        "detail": "ctypes",
-        "documentation": {}
-    },
-    {
-        "label": "*",
-        "importPath": "ctypes",
-        "description": "ctypes",
-        "isExtraImport": true,
-        "detail": "ctypes",
-        "documentation": {}
-    },
-    {
-        "label": "contextmanager",
-        "importPath": "contextlib",
-        "description": "contextlib",
-        "isExtraImport": true,
-        "detail": "contextlib",
-        "documentation": {}
-    },
-    {
-        "label": "contextmanager",
-        "importPath": "contextlib",
-        "description": "contextlib",
-        "isExtraImport": true,
-        "detail": "contextlib",
-        "documentation": {}
-    },
-    {
-        "label": "threading",
+        "label": "functools",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "threading",
-        "description": "threading",
-        "detail": "threading",
+        "importPath": "functools",
+        "description": "functools",
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "partial",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "partial",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "pathlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "DefaultDict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Deque",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "itertools",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "itertools",
+        "description": "itertools",
+        "detail": "itertools",
+        "documentation": {}
+    },
+    {
+        "label": "pronouncing",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pronouncing",
+        "description": "pronouncing",
+        "detail": "pronouncing",
+        "documentation": {}
+    },
+    {
+        "label": "torch",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch",
+        "description": "torch",
+        "detail": "torch",
+        "documentation": {}
+    },
+    {
+        "label": "optim",
+        "importPath": "torch",
+        "description": "torch",
+        "isExtraImport": true,
+        "detail": "torch",
+        "documentation": {}
+    },
+    {
+        "label": "nn",
+        "importPath": "torch",
+        "description": "torch",
+        "isExtraImport": true,
+        "detail": "torch",
+        "documentation": {}
+    },
+    {
+        "label": "audiomentations",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "audiomentations",
+        "description": "audiomentations",
+        "detail": "audiomentations",
+        "documentation": {}
+    },
+    {
+        "label": "torch_audiomentations",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch_audiomentations",
+        "description": "torch_audiomentations",
+        "detail": "torch_audiomentations",
+        "documentation": {}
+    },
+    {
+        "label": "open_memmap",
+        "importPath": "numpy.lib.format",
+        "description": "numpy.lib.format",
+        "isExtraImport": true,
+        "detail": "numpy.lib.format",
+        "documentation": {}
+    },
+    {
+        "label": "open_memmap",
+        "importPath": "numpy.lib.format",
+        "description": "numpy.lib.format",
+        "isExtraImport": true,
+        "detail": "numpy.lib.format",
+        "documentation": {}
+    },
+    {
+        "label": "read_audio",
+        "importPath": "speechbrain.dataio.dataio",
+        "description": "speechbrain.dataio.dataio",
+        "isExtraImport": true,
+        "detail": "speechbrain.dataio.dataio",
+        "documentation": {}
+    },
+    {
+        "label": "reverberate",
+        "importPath": "speechbrain.processing.signal_processing",
+        "description": "speechbrain.processing.signal_processing",
+        "isExtraImport": true,
+        "detail": "speechbrain.processing.signal_processing",
+        "documentation": {}
+    },
+    {
+        "label": "torchaudio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torchaudio",
+        "description": "torchaudio",
+        "detail": "torchaudio",
+        "documentation": {}
+    },
+    {
+        "label": "mutagen",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "mutagen",
+        "description": "mutagen",
+        "detail": "mutagen",
+        "documentation": {}
+    },
+    {
+        "label": "acoustics",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "acoustics",
+        "description": "acoustics",
+        "detail": "acoustics",
+        "documentation": {}
+    },
+    {
+        "label": "AudioFeatures",
+        "importPath": "openwakeword.utils",
+        "description": "openwakeword.utils",
+        "isExtraImport": true,
+        "detail": "openwakeword.utils",
+        "documentation": {}
+    },
+    {
+        "label": "re_arg",
+        "importPath": "openwakeword.utils",
+        "description": "openwakeword.utils",
+        "isExtraImport": true,
+        "detail": "openwakeword.utils",
+        "documentation": {}
+    },
+    {
+        "label": "compute_features_from_generator",
+        "importPath": "openwakeword.utils",
+        "description": "openwakeword.utils",
+        "isExtraImport": true,
+        "detail": "openwakeword.utils",
+        "documentation": {}
+    },
+    {
+        "label": "AudioFeatures",
+        "importPath": "openwakeword.utils",
+        "description": "openwakeword.utils",
+        "isExtraImport": true,
+        "detail": "openwakeword.utils",
+        "documentation": {}
+    },
+    {
+        "label": "wave",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "wave",
+        "description": "wave",
+        "detail": "wave",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "torchinfo",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torchinfo",
+        "description": "torchinfo",
+        "detail": "torchinfo",
+        "documentation": {}
+    },
+    {
+        "label": "torchmetrics",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torchmetrics",
+        "description": "torchmetrics",
+        "detail": "torchmetrics",
+        "documentation": {}
+    },
+    {
+        "label": "copy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "copy",
+        "description": "copy",
+        "detail": "copy",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "yaml",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "yaml",
+        "description": "yaml",
+        "detail": "yaml",
+        "documentation": {}
+    },
+    {
+        "label": "generate_adversarial_texts",
+        "importPath": "openwakeword.data",
+        "description": "openwakeword.data",
+        "isExtraImport": true,
+        "detail": "openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "augment_clips",
+        "importPath": "openwakeword.data",
+        "description": "openwakeword.data",
+        "isExtraImport": true,
+        "detail": "openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "mmap_batch_generator",
+        "importPath": "openwakeword.data",
+        "description": "openwakeword.data",
+        "isExtraImport": true,
+        "detail": "openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "Process",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "isExtraImport": true,
+        "detail": "multiprocessing",
         "documentation": {}
     },
     {
         "label": "Queue",
-        "kind": 6,
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
         "isExtraImport": true,
-        "importPath": "Queue",
-        "description": "Queue",
-        "detail": "Queue",
-        "documentation": {}
-    },
-    {
-        "label": "base64",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "base64",
-        "description": "base64",
-        "detail": "base64",
+        "detail": "multiprocessing",
         "documentation": {}
     },
     {
@@ -265,35 +692,21 @@
         "documentation": {}
     },
     {
-        "label": "setup",
-        "importPath": "setuptools",
-        "description": "setuptools",
+        "label": "onnxruntime",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "setuptools",
+        "importPath": "onnxruntime",
+        "description": "onnxruntime",
+        "detail": "onnxruntime",
         "documentation": {}
     },
     {
-        "label": "find_packages",
-        "importPath": "setuptools",
-        "description": "setuptools",
+        "label": "scipy.io.wavfile",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "setuptools",
-        "documentation": {}
-    },
-    {
-        "label": "build",
-        "importPath": "distutils.command.build",
-        "description": "distutils.command.build",
-        "isExtraImport": true,
-        "detail": "distutils.command.build",
-        "documentation": {}
-    },
-    {
-        "label": "copy_tree",
-        "importPath": "distutils.dir_util",
-        "description": "distutils.dir_util",
-        "isExtraImport": true,
-        "detail": "distutils.dir_util",
+        "importPath": "scipy.io.wavfile",
+        "description": "scipy.io.wavfile",
+        "detail": "scipy.io.wavfile",
         "documentation": {}
     },
     {
@@ -303,6 +716,33 @@
         "importPath": "pytest",
         "description": "pytest",
         "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "platform",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "platform",
+        "description": "platform",
+        "detail": "platform",
+        "documentation": {}
+    },
+    {
+        "label": "mock",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "mock",
+        "description": "mock",
+        "detail": "mock",
+        "documentation": {}
+    },
+    {
+        "label": "setuptools",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "detail": "setuptools",
         "documentation": {}
     },
     {
@@ -533,15 +973,6 @@
         "documentation": {}
     },
     {
-        "label": "torch",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "torch",
-        "description": "torch",
-        "detail": "torch",
-        "documentation": {}
-    },
-    {
         "label": "tokenizer",
         "importPath": "conversation",
         "description": "conversation",
@@ -647,6 +1078,14 @@
     },
     {
         "label": "show_desktop_notification",
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "isExtraImport": true,
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "download_wake_word_model",
         "importPath": "offline_tools",
         "description": "offline_tools",
         "isExtraImport": true,
@@ -982,21 +1421,21 @@
         "documentation": {}
     },
     {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
-        "documentation": {}
-    },
-    {
         "label": "pygame",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "pygame",
         "description": "pygame",
         "detail": "pygame",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
         "documentation": {}
     },
     {
@@ -1024,6 +1463,15 @@
         "importPath": "io",
         "description": "io",
         "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "base64",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "base64",
+        "description": "base64",
+        "detail": "base64",
         "documentation": {}
     },
     {
@@ -1325,11 +1773,11 @@
         "documentation": {}
     },
     {
-        "label": "WakeWordDetector",
-        "importPath": "openwakeword",
-        "description": "openwakeword",
+        "label": "Model",
+        "importPath": "openwakeword.model",
+        "description": "openwakeword.model",
         "isExtraImport": true,
-        "detail": "openwakeword",
+        "detail": "openwakeword.model",
         "documentation": {}
     },
     {
@@ -1628,939 +2076,354 @@
         "documentation": {}
     },
     {
-        "label": "signal_handler",
+        "label": "get_reference_clip_features",
         "kind": 2,
-        "importPath": "snowboy.examples.Python.demo",
-        "description": "snowboy.examples.Python.demo",
-        "peekOfCode": "def signal_handler(signal, frame):\n    global interrupted\n    interrupted = True\ndef interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:\n    print(\"Error: need to specify model name\")\n    print(\"Usage: python demo.py your.model\")\n    sys.exit(-1)",
-        "detail": "snowboy.examples.Python.demo",
+        "importPath": "openwakeword-0.6.0.openwakeword.custom_verifier_model",
+        "description": "openwakeword-0.6.0.openwakeword.custom_verifier_model",
+        "peekOfCode": "def get_reference_clip_features(\n        reference_clip: str,\n        oww_model: openwakeword.Model,\n        model_name: str,\n        threshold: float = 0.5,\n        N: int = 3,\n        **kwargs\n        ):\n    \"\"\"\n    Processes input audio files (16-bit, 16-khz single-channel WAV files) and gets the openWakeWord",
+        "detail": "openwakeword-0.6.0.openwakeword.custom_verifier_model",
         "documentation": {}
     },
     {
-        "label": "interrupt_callback",
+        "label": "flatten_features",
         "kind": 2,
-        "importPath": "snowboy.examples.Python.demo",
-        "description": "snowboy.examples.Python.demo",
-        "peekOfCode": "def interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:\n    print(\"Error: need to specify model name\")\n    print(\"Usage: python demo.py your.model\")\n    sys.exit(-1)\nmodel = sys.argv[1]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)",
-        "detail": "snowboy.examples.Python.demo",
+        "importPath": "openwakeword-0.6.0.openwakeword.custom_verifier_model",
+        "description": "openwakeword-0.6.0.openwakeword.custom_verifier_model",
+        "peekOfCode": "def flatten_features(x):\n    return [i.flatten() for i in x]\ndef train_verifier_model(features: np.ndarray, labels: np.ndarray):\n    \"\"\"\n    Train a logistic regression binary classifier model on the provided features and labels\n    Args:\n        features (ndarray): A N x M numpy array, where N is the number of examples and M\n                             is the number of features\n        labels (ndarray): A 1D numpy array where each value corresponds to the label of the Nth\n                           example in the `features` argument",
+        "detail": "openwakeword-0.6.0.openwakeword.custom_verifier_model",
         "documentation": {}
     },
     {
-        "label": "interrupted",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo",
-        "description": "snowboy.examples.Python.demo",
-        "peekOfCode": "interrupted = False\ndef signal_handler(signal, frame):\n    global interrupted\n    interrupted = True\ndef interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:\n    print(\"Error: need to specify model name\")\n    print(\"Usage: python demo.py your.model\")",
-        "detail": "snowboy.examples.Python.demo",
-        "documentation": {}
-    },
-    {
-        "label": "model",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo",
-        "description": "snowboy.examples.Python.demo",
-        "peekOfCode": "model = sys.argv[1]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)\ndetector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)\nprint('Listening... Press Ctrl+C to exit')\n# main loop\ndetector.start(detected_callback=snowboydecoder.play_audio_file,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.03)\ndetector.terminate()",
-        "detail": "snowboy.examples.Python.demo",
-        "documentation": {}
-    },
-    {
-        "label": "detector",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo",
-        "description": "snowboy.examples.Python.demo",
-        "peekOfCode": "detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)\nprint('Listening... Press Ctrl+C to exit')\n# main loop\ndetector.start(detected_callback=snowboydecoder.play_audio_file,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.03)\ndetector.terminate()",
-        "detail": "snowboy.examples.Python.demo",
-        "documentation": {}
-    },
-    {
-        "label": "signal_handler",
+        "label": "train_verifier_model",
         "kind": 2,
-        "importPath": "snowboy.examples.Python.demo2",
-        "description": "snowboy.examples.Python.demo2",
-        "peekOfCode": "def signal_handler(signal, frame):\n    global interrupted\n    interrupted = True\ndef interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) != 3:\n    print(\"Error: need to specify 2 model names\")\n    print(\"Usage: python demo.py 1st.model 2nd.model\")\n    sys.exit(-1)",
-        "detail": "snowboy.examples.Python.demo2",
+        "importPath": "openwakeword-0.6.0.openwakeword.custom_verifier_model",
+        "description": "openwakeword-0.6.0.openwakeword.custom_verifier_model",
+        "peekOfCode": "def train_verifier_model(features: np.ndarray, labels: np.ndarray):\n    \"\"\"\n    Train a logistic regression binary classifier model on the provided features and labels\n    Args:\n        features (ndarray): A N x M numpy array, where N is the number of examples and M\n                             is the number of features\n        labels (ndarray): A 1D numpy array where each value corresponds to the label of the Nth\n                           example in the `features` argument\n    Returns:\n        The trained scikit-learn logistic regression model",
+        "detail": "openwakeword-0.6.0.openwakeword.custom_verifier_model",
         "documentation": {}
     },
     {
-        "label": "interrupt_callback",
+        "label": "train_custom_verifier",
         "kind": 2,
-        "importPath": "snowboy.examples.Python.demo2",
-        "description": "snowboy.examples.Python.demo2",
-        "peekOfCode": "def interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) != 3:\n    print(\"Error: need to specify 2 model names\")\n    print(\"Usage: python demo.py 1st.model 2nd.model\")\n    sys.exit(-1)\nmodels = sys.argv[1:]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)",
-        "detail": "snowboy.examples.Python.demo2",
+        "importPath": "openwakeword-0.6.0.openwakeword.custom_verifier_model",
+        "description": "openwakeword-0.6.0.openwakeword.custom_verifier_model",
+        "peekOfCode": "def train_custom_verifier(\n        positive_reference_clips: str,\n        negative_reference_clips: str,\n        output_path: str,\n        model_name: str,\n        **kwargs\n        ):\n    \"\"\"\n    Trains a voice-specific custom verifier model on examples of wake word/phrase speech and other speech\n    from a single user.",
+        "detail": "openwakeword-0.6.0.openwakeword.custom_verifier_model",
         "documentation": {}
     },
     {
-        "label": "interrupted",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo2",
-        "description": "snowboy.examples.Python.demo2",
-        "peekOfCode": "interrupted = False\ndef signal_handler(signal, frame):\n    global interrupted\n    interrupted = True\ndef interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) != 3:\n    print(\"Error: need to specify 2 model names\")\n    print(\"Usage: python demo.py 1st.model 2nd.model\")",
-        "detail": "snowboy.examples.Python.demo2",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo2",
-        "description": "snowboy.examples.Python.demo2",
-        "peekOfCode": "models = sys.argv[1:]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)\nsensitivity = [0.5]*len(models)\ndetector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity)\ncallbacks = [lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DING),\n             lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DONG)]\nprint('Listening... Press Ctrl+C to exit')\n# main loop\n# make sure you have the same numbers of callbacks and models",
-        "detail": "snowboy.examples.Python.demo2",
-        "documentation": {}
-    },
-    {
-        "label": "sensitivity",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo2",
-        "description": "snowboy.examples.Python.demo2",
-        "peekOfCode": "sensitivity = [0.5]*len(models)\ndetector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity)\ncallbacks = [lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DING),\n             lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DONG)]\nprint('Listening... Press Ctrl+C to exit')\n# main loop\n# make sure you have the same numbers of callbacks and models\ndetector.start(detected_callback=callbacks,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.03)",
-        "detail": "snowboy.examples.Python.demo2",
-        "documentation": {}
-    },
-    {
-        "label": "detector",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo2",
-        "description": "snowboy.examples.Python.demo2",
-        "peekOfCode": "detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity)\ncallbacks = [lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DING),\n             lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DONG)]\nprint('Listening... Press Ctrl+C to exit')\n# main loop\n# make sure you have the same numbers of callbacks and models\ndetector.start(detected_callback=callbacks,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.03)\ndetector.terminate()",
-        "detail": "snowboy.examples.Python.demo2",
-        "documentation": {}
-    },
-    {
-        "label": "callbacks",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo2",
-        "description": "snowboy.examples.Python.demo2",
-        "peekOfCode": "callbacks = [lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DING),\n             lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DONG)]\nprint('Listening... Press Ctrl+C to exit')\n# main loop\n# make sure you have the same numbers of callbacks and models\ndetector.start(detected_callback=callbacks,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.03)\ndetector.terminate()",
-        "detail": "snowboy.examples.Python.demo2",
-        "documentation": {}
-    },
-    {
-        "label": "wave_file",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo3",
-        "description": "snowboy.examples.Python.demo3",
-        "peekOfCode": "wave_file = sys.argv[1]\nmodel_file = sys.argv[2]\nf = wave.open(wave_file)\nassert f.getnchannels() == 1, \"Error: Snowboy only supports 1 channel of audio (mono, not stereo)\"\nassert f.getframerate() == 16000, \"Error: Snowboy only supports 16K sampling rate\"\nassert f.getsampwidth() == 2, \"Error: Snowboy only supports 16bit per sample\"\ndata = f.readframes(f.getnframes())\nf.close()\nsensitivity = 0.5\ndetection = snowboydecoder.HotwordDetector(model_file, sensitivity=sensitivity)",
-        "detail": "snowboy.examples.Python.demo3",
-        "documentation": {}
-    },
-    {
-        "label": "model_file",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo3",
-        "description": "snowboy.examples.Python.demo3",
-        "peekOfCode": "model_file = sys.argv[2]\nf = wave.open(wave_file)\nassert f.getnchannels() == 1, \"Error: Snowboy only supports 1 channel of audio (mono, not stereo)\"\nassert f.getframerate() == 16000, \"Error: Snowboy only supports 16K sampling rate\"\nassert f.getsampwidth() == 2, \"Error: Snowboy only supports 16bit per sample\"\ndata = f.readframes(f.getnframes())\nf.close()\nsensitivity = 0.5\ndetection = snowboydecoder.HotwordDetector(model_file, sensitivity=sensitivity)\nans = detection.detector.RunDetection(data)",
-        "detail": "snowboy.examples.Python.demo3",
-        "documentation": {}
-    },
-    {
-        "label": "f",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo3",
-        "description": "snowboy.examples.Python.demo3",
-        "peekOfCode": "f = wave.open(wave_file)\nassert f.getnchannels() == 1, \"Error: Snowboy only supports 1 channel of audio (mono, not stereo)\"\nassert f.getframerate() == 16000, \"Error: Snowboy only supports 16K sampling rate\"\nassert f.getsampwidth() == 2, \"Error: Snowboy only supports 16bit per sample\"\ndata = f.readframes(f.getnframes())\nf.close()\nsensitivity = 0.5\ndetection = snowboydecoder.HotwordDetector(model_file, sensitivity=sensitivity)\nans = detection.detector.RunDetection(data)\nif ans == 1:",
-        "detail": "snowboy.examples.Python.demo3",
-        "documentation": {}
-    },
-    {
-        "label": "data",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo3",
-        "description": "snowboy.examples.Python.demo3",
-        "peekOfCode": "data = f.readframes(f.getnframes())\nf.close()\nsensitivity = 0.5\ndetection = snowboydecoder.HotwordDetector(model_file, sensitivity=sensitivity)\nans = detection.detector.RunDetection(data)\nif ans == 1:\n    print('Hotword Detected!')\nelse:\n    print('Hotword Not Detected!')",
-        "detail": "snowboy.examples.Python.demo3",
-        "documentation": {}
-    },
-    {
-        "label": "sensitivity",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo3",
-        "description": "snowboy.examples.Python.demo3",
-        "peekOfCode": "sensitivity = 0.5\ndetection = snowboydecoder.HotwordDetector(model_file, sensitivity=sensitivity)\nans = detection.detector.RunDetection(data)\nif ans == 1:\n    print('Hotword Detected!')\nelse:\n    print('Hotword Not Detected!')",
-        "detail": "snowboy.examples.Python.demo3",
-        "documentation": {}
-    },
-    {
-        "label": "detection",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo3",
-        "description": "snowboy.examples.Python.demo3",
-        "peekOfCode": "detection = snowboydecoder.HotwordDetector(model_file, sensitivity=sensitivity)\nans = detection.detector.RunDetection(data)\nif ans == 1:\n    print('Hotword Detected!')\nelse:\n    print('Hotword Not Detected!')",
-        "detail": "snowboy.examples.Python.demo3",
-        "documentation": {}
-    },
-    {
-        "label": "ans",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo3",
-        "description": "snowboy.examples.Python.demo3",
-        "peekOfCode": "ans = detection.detector.RunDetection(data)\nif ans == 1:\n    print('Hotword Detected!')\nelse:\n    print('Hotword Not Detected!')",
-        "detail": "snowboy.examples.Python.demo3",
-        "documentation": {}
-    },
-    {
-        "label": "audioRecorderCallback",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python.demo4",
-        "description": "snowboy.examples.Python.demo4",
-        "peekOfCode": "def audioRecorderCallback(fname):\n    print \"converting audio to text\"\n    r = sr.Recognizer()\n    with sr.AudioFile(fname) as source:\n        audio = r.record(source)  # read the entire audio file\n    # recognize speech using Google Speech Recognition\n    try:\n        # for testing purposes, we're just using the default API key\n        # to use another API key, use `r.recognize_google(audio, key=\"GOOGLE_SPEECH_RECOGNITION_API_KEY\")`\n        # instead of `r.recognize_google(audio)`",
-        "detail": "snowboy.examples.Python.demo4",
-        "documentation": {}
-    },
-    {
-        "label": "detectedCallback",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python.demo4",
-        "description": "snowboy.examples.Python.demo4",
-        "peekOfCode": "def detectedCallback():\n  sys.stdout.write(\"recording audio...\")\n  sys.stdout.flush()\ndef signal_handler(signal, frame):\n    global interrupted\n    interrupted = True\ndef interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:",
-        "detail": "snowboy.examples.Python.demo4",
-        "documentation": {}
-    },
-    {
-        "label": "signal_handler",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python.demo4",
-        "description": "snowboy.examples.Python.demo4",
-        "peekOfCode": "def signal_handler(signal, frame):\n    global interrupted\n    interrupted = True\ndef interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:\n    print \"Error: need to specify model name\"\n    print \"Usage: python demo.py your.model\"\n    sys.exit(-1)",
-        "detail": "snowboy.examples.Python.demo4",
-        "documentation": {}
-    },
-    {
-        "label": "interrupt_callback",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python.demo4",
-        "description": "snowboy.examples.Python.demo4",
-        "peekOfCode": "def interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:\n    print \"Error: need to specify model name\"\n    print \"Usage: python demo.py your.model\"\n    sys.exit(-1)\nmodel = sys.argv[1]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)",
-        "detail": "snowboy.examples.Python.demo4",
-        "documentation": {}
-    },
-    {
-        "label": "interrupted",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo4",
-        "description": "snowboy.examples.Python.demo4",
-        "peekOfCode": "interrupted = False\ndef audioRecorderCallback(fname):\n    print \"converting audio to text\"\n    r = sr.Recognizer()\n    with sr.AudioFile(fname) as source:\n        audio = r.record(source)  # read the entire audio file\n    # recognize speech using Google Speech Recognition\n    try:\n        # for testing purposes, we're just using the default API key\n        # to use another API key, use `r.recognize_google(audio, key=\"GOOGLE_SPEECH_RECOGNITION_API_KEY\")`",
-        "detail": "snowboy.examples.Python.demo4",
-        "documentation": {}
-    },
-    {
-        "label": "model",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo4",
-        "description": "snowboy.examples.Python.demo4",
-        "peekOfCode": "model = sys.argv[1]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)\ndetector = snowboydecoder.HotwordDetector(model, sensitivity=0.38)\nprint \"Listening... Press Ctrl+C to exit\"\n# main loop\ndetector.start(detected_callback=detectedCallback,\n               audio_recorder_callback=audioRecorderCallback,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.01)",
-        "detail": "snowboy.examples.Python.demo4",
-        "documentation": {}
-    },
-    {
-        "label": "detector",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo4",
-        "description": "snowboy.examples.Python.demo4",
-        "peekOfCode": "detector = snowboydecoder.HotwordDetector(model, sensitivity=0.38)\nprint \"Listening... Press Ctrl+C to exit\"\n# main loop\ndetector.start(detected_callback=detectedCallback,\n               audio_recorder_callback=audioRecorderCallback,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.01)\ndetector.terminate()",
-        "detail": "snowboy.examples.Python.demo4",
-        "documentation": {}
-    },
-    {
-        "label": "signal_handler",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python.demo_arecord",
-        "description": "snowboy.examples.Python.demo_arecord",
-        "peekOfCode": "def signal_handler(signal, frame):\n    global interrupted\n    interrupted = True\ndef interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:\n    print(\"Error: need to specify model name\")\n    print(\"Usage: python demo.py your.model\")\n    sys.exit(-1)",
-        "detail": "snowboy.examples.Python.demo_arecord",
-        "documentation": {}
-    },
-    {
-        "label": "interrupt_callback",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python.demo_arecord",
-        "description": "snowboy.examples.Python.demo_arecord",
-        "peekOfCode": "def interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:\n    print(\"Error: need to specify model name\")\n    print(\"Usage: python demo.py your.model\")\n    sys.exit(-1)\nmodel = sys.argv[1]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)",
-        "detail": "snowboy.examples.Python.demo_arecord",
-        "documentation": {}
-    },
-    {
-        "label": "interrupted",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo_arecord",
-        "description": "snowboy.examples.Python.demo_arecord",
-        "peekOfCode": "interrupted = False\ndef signal_handler(signal, frame):\n    global interrupted\n    interrupted = True\ndef interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:\n    print(\"Error: need to specify model name\")\n    print(\"Usage: python demo.py your.model\")",
-        "detail": "snowboy.examples.Python.demo_arecord",
-        "documentation": {}
-    },
-    {
-        "label": "model",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo_arecord",
-        "description": "snowboy.examples.Python.demo_arecord",
-        "peekOfCode": "model = sys.argv[1]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)\ndetector = snowboydecoder_arecord.HotwordDetector(model, sensitivity=0.5)\nprint('Listening... Press Ctrl+C to exit')\n# main loop\ndetector.start(detected_callback=snowboydecoder_arecord.play_audio_file,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.03)\ndetector.terminate()",
-        "detail": "snowboy.examples.Python.demo_arecord",
-        "documentation": {}
-    },
-    {
-        "label": "detector",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo_arecord",
-        "description": "snowboy.examples.Python.demo_arecord",
-        "peekOfCode": "detector = snowboydecoder_arecord.HotwordDetector(model, sensitivity=0.5)\nprint('Listening... Press Ctrl+C to exit')\n# main loop\ndetector.start(detected_callback=snowboydecoder_arecord.play_audio_file,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.03)\ndetector.terminate()",
-        "detail": "snowboy.examples.Python.demo_arecord",
-        "documentation": {}
-    },
-    {
-        "label": "signal_handler",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python.demo_threaded",
-        "description": "snowboy.examples.Python.demo_threaded",
-        "peekOfCode": "def signal_handler(signal, frame):\n    global stop_program\n    stop_program = True\nif len(sys.argv) == 1:\n    print(\"Error: need to specify model name\")\n    print(\"Usage: python demo4.py your.model\")\n    sys.exit(-1)\nmodel = sys.argv[1]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)",
-        "detail": "snowboy.examples.Python.demo_threaded",
-        "documentation": {}
-    },
-    {
-        "label": "stop_program",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo_threaded",
-        "description": "snowboy.examples.Python.demo_threaded",
-        "peekOfCode": "stop_program = False\n# This a demo that shows running Snowboy in another thread\ndef signal_handler(signal, frame):\n    global stop_program\n    stop_program = True\nif len(sys.argv) == 1:\n    print(\"Error: need to specify model name\")\n    print(\"Usage: python demo4.py your.model\")\n    sys.exit(-1)\nmodel = sys.argv[1]",
-        "detail": "snowboy.examples.Python.demo_threaded",
-        "documentation": {}
-    },
-    {
-        "label": "model",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo_threaded",
-        "description": "snowboy.examples.Python.demo_threaded",
-        "peekOfCode": "model = sys.argv[1]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)\n# Initialize ThreadedDetector object and start the detection thread\nthreaded_detector = snowboythreaded.ThreadedDetector(model, sensitivity=0.5)\nthreaded_detector.start()\nprint('Listening... Press Ctrl+C to exit')\n# main loop\nthreaded_detector.start_recog(sleep_time=0.03)\n# Let audio initialization happen before requesting input",
-        "detail": "snowboy.examples.Python.demo_threaded",
-        "documentation": {}
-    },
-    {
-        "label": "threaded_detector",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.demo_threaded",
-        "description": "snowboy.examples.Python.demo_threaded",
-        "peekOfCode": "threaded_detector = snowboythreaded.ThreadedDetector(model, sensitivity=0.5)\nthreaded_detector.start()\nprint('Listening... Press Ctrl+C to exit')\n# main loop\nthreaded_detector.start_recog(sleep_time=0.03)\n# Let audio initialization happen before requesting input\ntime.sleep(1)\n# Do a simple task separate from the detection - addition of numbers\nwhile not stop_program:\n    try:",
-        "detail": "snowboy.examples.Python.demo_threaded",
-        "documentation": {}
-    },
-    {
-        "label": "RingBuffer",
+        "label": "mmap_batch_generator",
         "kind": 6,
-        "importPath": "snowboy.examples.Python.snowboydecoder",
-        "description": "snowboy.examples.Python.snowboydecoder",
-        "peekOfCode": "class RingBuffer(object):\n    \"\"\"Ring buffer to hold audio from PortAudio\"\"\"\n    def __init__(self, size = 4096):\n        self._buf = collections.deque(maxlen=size)\n    def extend(self, data):\n        \"\"\"Adds data to the end of buffer\"\"\"\n        self._buf.extend(data)\n    def get(self):\n        \"\"\"Retrieves data from the beginning of buffer and clears it\"\"\"\n        tmp = bytes(bytearray(self._buf))",
-        "detail": "snowboy.examples.Python.snowboydecoder",
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "class mmap_batch_generator:\n    \"\"\"\n    A generator class designed to dynamically build batches from mmaped numpy arrays.\n    The generator will return tuples of (data, labels) with a batch size determined\n    by the `n_per_class` initialization argument. When a mmaped numpy array has been\n    fully interated over, it will restart at the zeroth index automatically.\n    \"\"\"\n    def __init__(self,\n                 data_files: dict,\n                 label_files: dict = {},",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
         "documentation": {}
     },
     {
-        "label": "HotwordDetector",
+        "label": "stack_clips",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def stack_clips(audio_data, clip_size=16000*2):\n    \"\"\"\n    Takes an input list of 1D arrays (of different lengths), concatenates them together,\n    and then extracts clips of a uniform size by dividing the combined array.\n    Args:\n        audio_data (List[ndarray]): A list of 1D numpy arrays to combine and stack\n        clip_size (int): The desired total length of the uniform clip size (in samples)\n    Returns:\n        ndarray: A N by `clip_size` array with the audio data, converted to 16-bit PCM\n    \"\"\"",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "load_audio_clips",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def load_audio_clips(files, clip_size=32000):\n    \"\"\"\n    Takes the specified audio files and shapes them into an array of N by `clip_size`,\n    where N is determined by the length of the audio files and `clip_size` at run time.\n    Clips longer than `clip size` are truncated and extended into the N+1 row.\n    Clips shorter than `clip_size` are combined with the previous or next clip\n    (except for the last clip in `files`, which is ignored if it is too short.)\n    Args:\n        files (List[str]): A list of filepaths\n        clip_size (int): The number of samples (of 16khz audio) for all of the rows in the array",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "convert_clips",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def convert_clips(input_files, output_files, sr=16000, ncpu=1, backend=\"ffmpeg\"):\n    \"\"\"\n    Converts files in parallel with multithreading using Sox or ffmpeg.\n    Intended to only convert input audio files into single-channel, 16 khz clips.\n    Args:\n        input_files (List[str]): A list of paths to input files\n        output_files (List[str]): A list of paths to output files, corresponding 1:1 to the input files\n        sr (int): The output sample rate of the converted clip\n        ncpu (int): The number of CPUs to use for the conversion\n        backend (str): The utilty to use for conversion, \"sox\" or \"ffmpeg\"",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "filter_audio_paths",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def filter_audio_paths(target_dirs, min_length_secs, max_length_secs, duration_method=\"size\", glob_filter=None):\n    \"\"\"\n    Gets the paths of wav files in flat target directories, automatically filtering\n    out files below/above the specified length (in seconds). Assumes that all\n    wav files are sampled at 16khz, are single channel, and have 16-bit PCM data.\n    Uses `os.scandir` in Python for highly efficient file system exploration,\n    and doesn't require loading the files into memory for length estimation.\n    Args:\n        target_dir (List[str]): The target directories containing the audio files\n        min_length_secs (float): The minimum length in seconds (otherwise the clip is skipped)",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "estimate_clip_duration",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def estimate_clip_duration(audio_files: list, sizes: list):\n    \"\"\"Estimates the duration of each audio file in a list.\n    Assumes that all of the audio files have the same audio format,\n    bit depth, and sample rate.\n    Args:\n        audio_file (str): A list of audio file paths\n        sizes (int): The size of each audio file in bytes\n    Returns:\n        list: A list of durations (in seconds) for the audio files\n    \"\"\"",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "estimate_mp3_duration",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def estimate_mp3_duration(fpath):\n    \"\"\"Estimates the duration of an MP3 file from metadata and file-size.\n    Is only accurate for 16000 khz sample rate audio with a relatively\n    constant bit-rate.\n    Args:\n        fpath (str): The input path to the MP3 file\n    Returns:\n        float: The duration of the MP3 file in seconds\n    \"\"\"\n    conversion_factors = {",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "get_clip_duration",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def get_clip_duration(clip):\n    \"\"\"Gets the duration of an audio clip in seconds from file header information\"\"\"\n    try:\n        metadata = torchaudio.info(clip)\n    except RuntimeError:  # skip cases where file metadata can't be read\n        return 0\n    return metadata.num_frames/metadata.sample_rate\ndef get_wav_duration_from_filesize(size, nbytes=2):\n    \"\"\"\n    Calculates the duration (in seconds) from a WAV file, assuming it contains 16 khz single-channel audio.",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "get_wav_duration_from_filesize",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def get_wav_duration_from_filesize(size, nbytes=2):\n    \"\"\"\n    Calculates the duration (in seconds) from a WAV file, assuming it contains 16 khz single-channel audio.\n    The bit depth is user specified, and defaults to 2 for 16-bit PCM audio.\n    Args:\n        size (int): The file size in bytes\n        nbytes (int): How many bytes for each data point in the audio (e.g., 16-bit is 2, 32-bit is 4, etc.)\n    Returns:\n        float: The duration of the audio file in seconds\n    \"\"\"",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "mix_clips_batch",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def mix_clips_batch(\n        foreground_clips: List[str],\n        background_clips: List[str],\n        combined_size: int,\n        labels: List[int] = [],\n        batch_size: int = 32,\n        snr_low: float = 0,\n        snr_high: float = 0,\n        start_index: List[int] = [],\n        foreground_durations: List[float] = [],",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "get_frame_labels",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def get_frame_labels(combined_size, start, end, buffer=1):\n    sequence_label = np.zeros(np.ceil((combined_size-12400)/1280).astype(int))\n    frame_positions = np.arange(12400, combined_size, 1280)\n    start_frame = np.argmin(abs(frame_positions - start))\n    end_frame = np.argmin(abs(frame_positions - end))\n    sequence_label[start_frame:start_frame+2] = 1\n    sequence_label[end_frame-1:end_frame+1] = 1\n    return sequence_label\ndef mix_clip(fg, bg, snr, start):\n    fg_rms, bg_rms = fg.norm(p=2), bg.norm(p=2)",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "mix_clip",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def mix_clip(fg, bg, snr, start):\n    fg_rms, bg_rms = fg.norm(p=2), bg.norm(p=2)\n    snr = 10 ** (snr / 20)\n    scale = snr * bg_rms / fg_rms\n    bg[start:start + fg.shape[0]] = bg[start:start + fg.shape[0]] + scale*fg\n    return bg / 2\ndef truncate_clip(x, max_size, method=\"truncate_start\"):\n    \"\"\"\n    Truncates and audio clip with the specified method\n    Args:",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "truncate_clip",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def truncate_clip(x, max_size, method=\"truncate_start\"):\n    \"\"\"\n    Truncates and audio clip with the specified method\n    Args:\n        x (nd.array): An array of audio data\n        max_size (int): The maximum size (in samples)\n        method (str): Can be one of four options:\n            - \"truncate_start\": Truncate the start of the clip\n            - \"truncate_end\": Truncate the end of the clip\n            - \"truncate_both\": Truncate both the start and end of the clip",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "apply_reverb",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def apply_reverb(x, rir_files):\n    \"\"\"\n    Applies reverberation to the input audio clips\n    Args:\n        x (nd.array): A numpy array of shape (batch, audio_samples) containing the audio clips\n        rir_files (Union[str, list]): Either a path to an RIR (room impulse response) file or a list\n                                      of RIR files. If a list, one file will be randomly chosen\n                                      to apply to `x`\n    Returns:\n        nd.array: The reverberated audio clips",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "augment_clips",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def augment_clips(\n        clip_paths: List[str],\n        total_length: int,\n        sr: int = 16000,\n        batch_size: int = 128,\n        augmentation_probabilities: dict = {\n            \"SevenBandParametricEQ\": 0.25,\n            \"TanhDistortion\": 0.25,\n            \"PitchShift\": 0.25,\n            \"BandStopFilter\": 0.25,",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "create_fixed_size_clip",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def create_fixed_size_clip(x, n_samples, sr=16000, start=None, end_jitter=.200):\n    \"\"\"\n    Create a fixed-length clip of the specified size by padding an input clip with zeros\n    Optionally specify the start/end position of the input clip, or let it be chosen randomly.\n    Args:\n        x (ndarray): The input audio to pad to a fixed size\n        n_samples (int): The total number of samples for the fixed length clip\n        sr (int): The sample rate of the audio\n        start (int): The start position of the clip in the fixed length output, in samples (default: None)\n        end_jitter (float): The time (in seconds) from the end of the fixed length output",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "trim_mmap",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def trim_mmap(mmap_path):\n    \"\"\"\n    Trims blank rows from the end of a mmaped numpy array by creates new mmap array without the blank rows.\n    Note that a copy is created and disk usage will briefly double as the function runs.\n    Args:\n        mmap_path (str): The path to mmap array file to trim\n    Returns:\n        None\n    \"\"\"\n    # Identify the last full row in the mmaped file",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "generate_adversarial_texts",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def generate_adversarial_texts(input_text: str, N: int, include_partial_phrase: float = 0, include_input_words: float = 0):\n    \"\"\"\n    Generate adversarial words and phrases based on phoneme overlap.\n    Currently only works for english texts.\n    Note that homophones are excluded, as this wouldn't actually be an adversarial example for the input text.\n    Args:\n        input_text (str): The target text for adversarial phrases\n        N (int): The total number of adversarial texts to return. Uses sampling,\n                 so not all possible combinations will be included and some duplicates\n                 may be present.",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "phoneme_replacement",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.data",
+        "description": "openwakeword-0.6.0.openwakeword.data",
+        "peekOfCode": "def phoneme_replacement(input_chars, max_replace, replace_char='\"(.){1,3}\"'):\n    results = []\n    chars = list(input_chars)\n    # iterate over the number of characters to replace (1 to max_replace)\n    for r in range(1, max_replace+1):\n        # get all combinations for a fixed r\n        comb = itertools.combinations(range(len(chars)), r)\n        for indices in comb:\n            chars_copy = chars.copy()\n            for i in indices:",
+        "detail": "openwakeword-0.6.0.openwakeword.data",
+        "documentation": {}
+    },
+    {
+        "label": "get_false_positives",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.metrics",
+        "description": "openwakeword-0.6.0.openwakeword.metrics",
+        "peekOfCode": "def get_false_positives(scores: List, threshold: float, grouping_window: int = 50):\n    \"\"\"\n    Counts the number of false-positives based on a list of scores and a specified threshold.\n    Args:\n        scores (List): A list of predicted scores, between 0 and 1\n        threshold (float): The threshold to use to determine false-positive predictions\n        grouping_window (int: The size (in number of frames) for grouping scores above\n                                 the threshold into a single false positive for counting\n    Returns:\n        int: The number of false positive predictions in the list of scores",
+        "detail": "openwakeword-0.6.0.openwakeword.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "generate_roc_curve_fprs",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.metrics",
+        "description": "openwakeword-0.6.0.openwakeword.metrics",
+        "peekOfCode": "def generate_roc_curve_fprs(\n                            scores: list,\n                            n_points: int = 25,\n                            time_per_prediction: float = .08,\n                            **kwargs\n                            ):\n    \"\"\"\n    Generates the false positive rate (fpr) per hour for the given predictions\n    over a range of score thresholds. Assumes that all predictions should be less than the threshold,\n    else the prediction is a false positive.",
+        "detail": "openwakeword-0.6.0.openwakeword.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "generate_roc_curve_tprs",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.metrics",
+        "description": "openwakeword-0.6.0.openwakeword.metrics",
+        "peekOfCode": "def generate_roc_curve_tprs(\n                            scores: list,\n                            n_points: int = 25\n                            ):\n    \"\"\"\n    Generates the true positive rate (true accept rate) for the given predictions\n    over a range score thresholds. Assumes that all predictions are supposed to be equal to 1.\n    Args:\n        scores (list): A list of scores for each prediction\n    Returns:",
+        "detail": "openwakeword-0.6.0.openwakeword.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "Model",
         "kind": 6,
-        "importPath": "snowboy.examples.Python.snowboydecoder",
-        "description": "snowboy.examples.Python.snowboydecoder",
-        "peekOfCode": "class HotwordDetector(object):\n    \"\"\"\n    Snowboy decoder to detect whether a keyword specified by `decoder_model`\n    exists in a microphone input stream.\n    :param decoder_model: decoder model file path, a string or a list of strings\n    :param resource: resource file path.\n    :param sensitivity: decoder sensitivity, a float of a list of floats.\n                              The bigger the value, the more senstive the\n                              decoder. If an empty list is provided, then the\n                              default sensitivity in the model will be used.",
-        "detail": "snowboy.examples.Python.snowboydecoder",
+        "importPath": "openwakeword-0.6.0.openwakeword.model",
+        "description": "openwakeword-0.6.0.openwakeword.model",
+        "peekOfCode": "class Model():\n    \"\"\"\n    The main model class for openWakeWord. Creates a model object with the shared audio pre-processer\n    and for arbitrarily many custom wake word/wake phrase models.\n    \"\"\"\n    @re_arg({\"wakeword_model_paths\": \"wakeword_models\"})  # temporary handling of keyword argument change\n    def __init__(\n            self,\n            wakeword_models: List[str] = [],\n            class_mapping_dicts: List[dict] = [],",
+        "detail": "openwakeword-0.6.0.openwakeword.model",
         "documentation": {}
     },
     {
-        "label": "py_error_handler",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python.snowboydecoder",
-        "description": "snowboy.examples.Python.snowboydecoder",
-        "peekOfCode": "def py_error_handler(filename, line, function, err, fmt):\n    pass\nERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)\nc_error_handler = ERROR_HANDLER_FUNC(py_error_handler)\n@contextmanager\ndef no_alsa_error():\n    try:\n        asound = cdll.LoadLibrary('libasound.so')\n        asound.snd_lib_error_set_handler(c_error_handler)\n        yield",
-        "detail": "snowboy.examples.Python.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "no_alsa_error",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python.snowboydecoder",
-        "description": "snowboy.examples.Python.snowboydecoder",
-        "peekOfCode": "def no_alsa_error():\n    try:\n        asound = cdll.LoadLibrary('libasound.so')\n        asound.snd_lib_error_set_handler(c_error_handler)\n        yield\n        asound.snd_lib_error_set_handler(None)\n    except:\n        yield\n        pass\nclass RingBuffer(object):",
-        "detail": "snowboy.examples.Python.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "play_audio_file",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python.snowboydecoder",
-        "description": "snowboy.examples.Python.snowboydecoder",
-        "peekOfCode": "def play_audio_file(fname=DETECT_DING):\n    \"\"\"Simple callback function to play a wave file. By default it plays\n    a Ding sound.\n    :param str fname: wave file name\n    :return: None\n    \"\"\"\n    ding_wav = wave.open(fname, 'rb')\n    ding_data = ding_wav.readframes(ding_wav.getnframes())\n    with no_alsa_error():\n        audio = pyaudio.PyAudio()",
-        "detail": "snowboy.examples.Python.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.snowboydecoder",
-        "description": "snowboy.examples.Python.snowboydecoder",
-        "peekOfCode": "logger = logging.getLogger(\"snowboy\")\nlogger.setLevel(logging.INFO)\nTOP_DIR = os.path.dirname(os.path.abspath(__file__))\nRESOURCE_FILE = os.path.join(TOP_DIR, \"resources/common.res\")\nDETECT_DING = os.path.join(TOP_DIR, \"resources/ding.wav\")\nDETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\ndef py_error_handler(filename, line, function, err, fmt):\n    pass\nERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)\nc_error_handler = ERROR_HANDLER_FUNC(py_error_handler)",
-        "detail": "snowboy.examples.Python.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "TOP_DIR",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.snowboydecoder",
-        "description": "snowboy.examples.Python.snowboydecoder",
-        "peekOfCode": "TOP_DIR = os.path.dirname(os.path.abspath(__file__))\nRESOURCE_FILE = os.path.join(TOP_DIR, \"resources/common.res\")\nDETECT_DING = os.path.join(TOP_DIR, \"resources/ding.wav\")\nDETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\ndef py_error_handler(filename, line, function, err, fmt):\n    pass\nERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)\nc_error_handler = ERROR_HANDLER_FUNC(py_error_handler)\n@contextmanager\ndef no_alsa_error():",
-        "detail": "snowboy.examples.Python.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "RESOURCE_FILE",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.snowboydecoder",
-        "description": "snowboy.examples.Python.snowboydecoder",
-        "peekOfCode": "RESOURCE_FILE = os.path.join(TOP_DIR, \"resources/common.res\")\nDETECT_DING = os.path.join(TOP_DIR, \"resources/ding.wav\")\nDETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\ndef py_error_handler(filename, line, function, err, fmt):\n    pass\nERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)\nc_error_handler = ERROR_HANDLER_FUNC(py_error_handler)\n@contextmanager\ndef no_alsa_error():\n    try:",
-        "detail": "snowboy.examples.Python.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "DETECT_DING",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.snowboydecoder",
-        "description": "snowboy.examples.Python.snowboydecoder",
-        "peekOfCode": "DETECT_DING = os.path.join(TOP_DIR, \"resources/ding.wav\")\nDETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\ndef py_error_handler(filename, line, function, err, fmt):\n    pass\nERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)\nc_error_handler = ERROR_HANDLER_FUNC(py_error_handler)\n@contextmanager\ndef no_alsa_error():\n    try:\n        asound = cdll.LoadLibrary('libasound.so')",
-        "detail": "snowboy.examples.Python.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "DETECT_DONG",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.snowboydecoder",
-        "description": "snowboy.examples.Python.snowboydecoder",
-        "peekOfCode": "DETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\ndef py_error_handler(filename, line, function, err, fmt):\n    pass\nERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)\nc_error_handler = ERROR_HANDLER_FUNC(py_error_handler)\n@contextmanager\ndef no_alsa_error():\n    try:\n        asound = cdll.LoadLibrary('libasound.so')\n        asound.snd_lib_error_set_handler(c_error_handler)",
-        "detail": "snowboy.examples.Python.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "ERROR_HANDLER_FUNC",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.snowboydecoder",
-        "description": "snowboy.examples.Python.snowboydecoder",
-        "peekOfCode": "ERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)\nc_error_handler = ERROR_HANDLER_FUNC(py_error_handler)\n@contextmanager\ndef no_alsa_error():\n    try:\n        asound = cdll.LoadLibrary('libasound.so')\n        asound.snd_lib_error_set_handler(c_error_handler)\n        yield\n        asound.snd_lib_error_set_handler(None)\n    except:",
-        "detail": "snowboy.examples.Python.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "c_error_handler",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.snowboydecoder",
-        "description": "snowboy.examples.Python.snowboydecoder",
-        "peekOfCode": "c_error_handler = ERROR_HANDLER_FUNC(py_error_handler)\n@contextmanager\ndef no_alsa_error():\n    try:\n        asound = cdll.LoadLibrary('libasound.so')\n        asound.snd_lib_error_set_handler(c_error_handler)\n        yield\n        asound.snd_lib_error_set_handler(None)\n    except:\n        yield",
-        "detail": "snowboy.examples.Python.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "RingBuffer",
+        "label": "Model",
         "kind": 6,
-        "importPath": "snowboy.examples.Python.snowboydecoder_arecord",
-        "description": "snowboy.examples.Python.snowboydecoder_arecord",
-        "peekOfCode": "class RingBuffer(object):\n    \"\"\"Ring buffer to hold audio from audio capturing tool\"\"\"\n    def __init__(self, size = 4096):\n        self._buf = collections.deque(maxlen=size)\n    def extend(self, data):\n        \"\"\"Adds data to the end of buffer\"\"\"\n        self._buf.extend(data)\n    def get(self):\n        \"\"\"Retrieves data from the beginning of buffer and clears it\"\"\"\n        tmp = bytes(bytearray(self._buf))",
-        "detail": "snowboy.examples.Python.snowboydecoder_arecord",
+        "importPath": "openwakeword-0.6.0.openwakeword.train",
+        "description": "openwakeword-0.6.0.openwakeword.train",
+        "peekOfCode": "class Model(nn.Module):\n    def __init__(self, n_classes=1, input_shape=(16, 96), model_type=\"dnn\",\n                 layer_dim=128, n_blocks=1, seconds_per_example=None):\n        super().__init__()\n        # Store inputs as attributes\n        self.n_classes = n_classes\n        self.input_shape = input_shape\n        self.seconds_per_example = seconds_per_example\n        self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')\n        self.best_models = []",
+        "detail": "openwakeword-0.6.0.openwakeword.train",
         "documentation": {}
     },
     {
-        "label": "HotwordDetector",
+        "label": "convert_onnx_to_tflite",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.train",
+        "description": "openwakeword-0.6.0.openwakeword.train",
+        "peekOfCode": "def convert_onnx_to_tflite(onnx_model_path, output_path):\n    \"\"\"Converts an ONNX version of an openwakeword model to the Tensorflow tflite format.\"\"\"\n    # imports\n    import onnx\n    from onnx_tf.backend import prepare\n    import tensorflow as tf\n    # Convert to tflite from onnx model\n    onnx_model = onnx.load(onnx_model_path)\n    tf_rep = prepare(onnx_model, device=\"CPU\")\n    with tempfile.TemporaryDirectory() as tmp_dir:",
+        "detail": "openwakeword-0.6.0.openwakeword.train",
+        "documentation": {}
+    },
+    {
+        "label": "AudioFeatures",
         "kind": 6,
-        "importPath": "snowboy.examples.Python.snowboydecoder_arecord",
-        "description": "snowboy.examples.Python.snowboydecoder_arecord",
-        "peekOfCode": "class HotwordDetector(object):\n    \"\"\"\n    Snowboy decoder to detect whether a keyword specified by `decoder_model`\n    exists in a microphone input stream.\n    :param decoder_model: decoder model file path, a string or a list of strings\n    :param resource: resource file path.\n    :param sensitivity: decoder sensitivity, a float of a list of floats.\n                              The bigger the value, the more senstive the\n                              decoder. If an empty list is provided, then the\n                              default sensitivity in the model will be used.",
-        "detail": "snowboy.examples.Python.snowboydecoder_arecord",
+        "importPath": "openwakeword-0.6.0.openwakeword.utils",
+        "description": "openwakeword-0.6.0.openwakeword.utils",
+        "peekOfCode": "class AudioFeatures():\n    \"\"\"\n    A class for creating audio features from audio data, including melspectograms and Google's\n    `speech_embedding` features.\n    \"\"\"\n    def __init__(self,\n                 melspec_model_path: str = \"\",\n                 embedding_model_path: str = \"\",\n                 sr: int = 16000,\n                 ncpu: int = 1,",
+        "detail": "openwakeword-0.6.0.openwakeword.utils",
         "documentation": {}
     },
     {
-        "label": "play_audio_file",
+        "label": "bulk_predict",
         "kind": 2,
-        "importPath": "snowboy.examples.Python.snowboydecoder_arecord",
-        "description": "snowboy.examples.Python.snowboydecoder_arecord",
-        "peekOfCode": "def play_audio_file(fname=DETECT_DING):\n    \"\"\"Simple callback function to play a wave file. By default it plays\n    a Ding sound.\n    :param str fname: wave file name\n    :return: None\n    \"\"\"\n    os.system(\"aplay \" + fname + \" > /dev/null 2>&1\")\nclass HotwordDetector(object):\n    \"\"\"\n    Snowboy decoder to detect whether a keyword specified by `decoder_model`",
-        "detail": "snowboy.examples.Python.snowboydecoder_arecord",
+        "importPath": "openwakeword-0.6.0.openwakeword.utils",
+        "description": "openwakeword-0.6.0.openwakeword.utils",
+        "peekOfCode": "def bulk_predict(\n                 file_paths: List[str],\n                 wakeword_models: List[str],\n                 prediction_function: str = 'predict_clip',\n                 ncpu: int = 1,\n                 inference_framework: str = \"tflite\",\n                 **kwargs\n                 ):\n    \"\"\"\n    Bulk predict on the provided input files in parallel using multiprocessing using the specified model.",
+        "detail": "openwakeword-0.6.0.openwakeword.utils",
         "documentation": {}
     },
     {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.snowboydecoder_arecord",
-        "description": "snowboy.examples.Python.snowboydecoder_arecord",
-        "peekOfCode": "logger = logging.getLogger(\"snowboy\")\nlogger.setLevel(logging.INFO)\nTOP_DIR = os.path.dirname(os.path.abspath(__file__))\nRESOURCE_FILE = os.path.join(TOP_DIR, \"resources/common.res\")\nDETECT_DING = os.path.join(TOP_DIR, \"resources/ding.wav\")\nDETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\nclass RingBuffer(object):\n    \"\"\"Ring buffer to hold audio from audio capturing tool\"\"\"\n    def __init__(self, size = 4096):\n        self._buf = collections.deque(maxlen=size)",
-        "detail": "snowboy.examples.Python.snowboydecoder_arecord",
+        "label": "compute_features_from_generator",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.utils",
+        "description": "openwakeword-0.6.0.openwakeword.utils",
+        "peekOfCode": "def compute_features_from_generator(generator, n_total, clip_duration, output_file, device=\"cpu\", ncpu=1):\n    \"\"\"\n    Computes audio features from a generator that produces Numpy arrays of shape (batch_size, samples)\n    containing 16-bit PCM audio data.\n    Args:\n        generator (Generator): The generator that process the arrays of audio data\n        n_total (int): The total number of rows (audio clips) that the generator will produce.\n                       Ideally this is precise, but it can be approximate as well as the output\n                       .npy file will be automatically trimmed to remove empty values.\n        clip_duration (float): The duration (in samples) of the audio produced by the generator",
+        "detail": "openwakeword-0.6.0.openwakeword.utils",
         "documentation": {}
     },
     {
-        "label": "TOP_DIR",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.snowboydecoder_arecord",
-        "description": "snowboy.examples.Python.snowboydecoder_arecord",
-        "peekOfCode": "TOP_DIR = os.path.dirname(os.path.abspath(__file__))\nRESOURCE_FILE = os.path.join(TOP_DIR, \"resources/common.res\")\nDETECT_DING = os.path.join(TOP_DIR, \"resources/ding.wav\")\nDETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\nclass RingBuffer(object):\n    \"\"\"Ring buffer to hold audio from audio capturing tool\"\"\"\n    def __init__(self, size = 4096):\n        self._buf = collections.deque(maxlen=size)\n    def extend(self, data):\n        \"\"\"Adds data to the end of buffer\"\"\"",
-        "detail": "snowboy.examples.Python.snowboydecoder_arecord",
+        "label": "download_file",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.utils",
+        "description": "openwakeword-0.6.0.openwakeword.utils",
+        "peekOfCode": "def download_file(url, target_directory, file_size=None):\n    \"\"\"A simple function to download a file from a URL with a progress bar using only the requests library\"\"\"\n    local_filename = url.split('/')[-1]\n    with requests.get(url, stream=True) as r:\n        if file_size is not None:\n            progress_bar = tqdm(total=file_size, unit='iB', unit_scale=True, desc=f\"{local_filename}\")\n        else:\n            total_size = int(r.headers.get('content-length', 0))\n            progress_bar = tqdm(total=total_size, unit='iB', unit_scale=True, desc=f\"{local_filename}\")\n        with open(os.path.join(target_directory, local_filename), 'wb') as f:",
+        "detail": "openwakeword-0.6.0.openwakeword.utils",
         "documentation": {}
     },
     {
-        "label": "RESOURCE_FILE",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.snowboydecoder_arecord",
-        "description": "snowboy.examples.Python.snowboydecoder_arecord",
-        "peekOfCode": "RESOURCE_FILE = os.path.join(TOP_DIR, \"resources/common.res\")\nDETECT_DING = os.path.join(TOP_DIR, \"resources/ding.wav\")\nDETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\nclass RingBuffer(object):\n    \"\"\"Ring buffer to hold audio from audio capturing tool\"\"\"\n    def __init__(self, size = 4096):\n        self._buf = collections.deque(maxlen=size)\n    def extend(self, data):\n        \"\"\"Adds data to the end of buffer\"\"\"\n        self._buf.extend(data)",
-        "detail": "snowboy.examples.Python.snowboydecoder_arecord",
+        "label": "download_models",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.utils",
+        "description": "openwakeword-0.6.0.openwakeword.utils",
+        "peekOfCode": "def download_models(\n        model_names: List[str] = [],\n        target_directory: str = os.path.join(pathlib.Path(__file__).parent.resolve(), \"resources\", \"models\")\n        ):\n    \"\"\"\n    Download the specified models from the release assets in the openWakeWord GitHub repository.\n    Uses the official urls in the MODELS dictionary in openwakeword/__init__.py.\n    Args:\n        model_names (List[str]): The names of the models to download (e.g., hey_jarvis_v0.1). Both ONNX and\n                                 tflite models will be downloaded. If not provided (the default),",
+        "detail": "openwakeword-0.6.0.openwakeword.utils",
         "documentation": {}
     },
     {
-        "label": "DETECT_DING",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.snowboydecoder_arecord",
-        "description": "snowboy.examples.Python.snowboydecoder_arecord",
-        "peekOfCode": "DETECT_DING = os.path.join(TOP_DIR, \"resources/ding.wav\")\nDETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\nclass RingBuffer(object):\n    \"\"\"Ring buffer to hold audio from audio capturing tool\"\"\"\n    def __init__(self, size = 4096):\n        self._buf = collections.deque(maxlen=size)\n    def extend(self, data):\n        \"\"\"Adds data to the end of buffer\"\"\"\n        self._buf.extend(data)\n    def get(self):",
-        "detail": "snowboy.examples.Python.snowboydecoder_arecord",
+        "label": "re_arg",
+        "kind": 2,
+        "importPath": "openwakeword-0.6.0.openwakeword.utils",
+        "description": "openwakeword-0.6.0.openwakeword.utils",
+        "peekOfCode": "def re_arg(kwarg_map):\n    def decorator(func):\n        def wrapped(*args, **kwargs):\n            new_kwargs = {}\n            for k, v in kwargs.items():\n                if k in kwarg_map:\n                    logging.warning(f\"DEPRECATION: keyword argument '{k}' is no longer valid and \"\n                                    f\"will be removed in future releases. Use '{kwarg_map[k]}' instead.\")\n                new_kwargs[kwarg_map.get(k, k)] = v\n            return func(*args, **new_kwargs)",
+        "detail": "openwakeword-0.6.0.openwakeword.utils",
         "documentation": {}
     },
     {
-        "label": "DETECT_DONG",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python.snowboydecoder_arecord",
-        "description": "snowboy.examples.Python.snowboydecoder_arecord",
-        "peekOfCode": "DETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\nclass RingBuffer(object):\n    \"\"\"Ring buffer to hold audio from audio capturing tool\"\"\"\n    def __init__(self, size = 4096):\n        self._buf = collections.deque(maxlen=size)\n    def extend(self, data):\n        \"\"\"Adds data to the end of buffer\"\"\"\n        self._buf.extend(data)\n    def get(self):\n        \"\"\"Retrieves data from the beginning of buffer and clears it\"\"\"",
-        "detail": "snowboy.examples.Python.snowboydecoder_arecord",
-        "documentation": {}
-    },
-    {
-        "label": "ThreadedDetector",
+        "label": "VAD",
         "kind": 6,
-        "importPath": "snowboy.examples.Python.snowboythreaded",
-        "description": "snowboy.examples.Python.snowboythreaded",
-        "peekOfCode": "class ThreadedDetector(threading.Thread):\n    \"\"\"\n    Wrapper class around detectors to run them in a separate thread\n    and provide methods to pause, resume, and modify detection\n    \"\"\"\n    def __init__(self, models, **kwargs):\n        \"\"\"\n        Initialize Detectors object. **kwargs is for any __init__ keyword\n        arguments to be passed into HotWordDetector __init__() method.\n        \"\"\"",
-        "detail": "snowboy.examples.Python.snowboythreaded",
+        "importPath": "openwakeword-0.6.0.openwakeword.vad",
+        "description": "openwakeword-0.6.0.openwakeword.vad",
+        "peekOfCode": "class VAD():\n    \"\"\"\n    A model class for a voice activity detection (VAD) based on Silero's model:\n    https://github.com/snakers4/silero-vad\n    \"\"\"\n    def __init__(self,\n                 model_path: str = os.path.join(\n                    os.path.dirname(os.path.abspath(__file__)),\n                    \"resources\",\n                    \"models\",",
+        "detail": "openwakeword-0.6.0.openwakeword.vad",
         "documentation": {}
     },
     {
-        "label": "signal_handler",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python3.demo",
-        "description": "snowboy.examples.Python3.demo",
-        "peekOfCode": "def signal_handler(signal, frame):\n    global interrupted\n    interrupted = True\ndef interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:\n    print(\"Error: need to specify model name\")\n    print(\"Usage: python demo.py your.model\")\n    sys.exit(-1)",
-        "detail": "snowboy.examples.Python3.demo",
-        "documentation": {}
-    },
-    {
-        "label": "interrupt_callback",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python3.demo",
-        "description": "snowboy.examples.Python3.demo",
-        "peekOfCode": "def interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:\n    print(\"Error: need to specify model name\")\n    print(\"Usage: python demo.py your.model\")\n    sys.exit(-1)\nmodel = sys.argv[1]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)",
-        "detail": "snowboy.examples.Python3.demo",
-        "documentation": {}
-    },
-    {
-        "label": "interrupted",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo",
-        "description": "snowboy.examples.Python3.demo",
-        "peekOfCode": "interrupted = False\ndef signal_handler(signal, frame):\n    global interrupted\n    interrupted = True\ndef interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:\n    print(\"Error: need to specify model name\")\n    print(\"Usage: python demo.py your.model\")",
-        "detail": "snowboy.examples.Python3.demo",
-        "documentation": {}
-    },
-    {
-        "label": "model",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo",
-        "description": "snowboy.examples.Python3.demo",
-        "peekOfCode": "model = sys.argv[1]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)\ndetector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)\nprint('Listening... Press Ctrl+C to exit')\n# main loop\ndetector.start(detected_callback=snowboydecoder.play_audio_file,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.03)\ndetector.terminate()",
-        "detail": "snowboy.examples.Python3.demo",
-        "documentation": {}
-    },
-    {
-        "label": "detector",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo",
-        "description": "snowboy.examples.Python3.demo",
-        "peekOfCode": "detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)\nprint('Listening... Press Ctrl+C to exit')\n# main loop\ndetector.start(detected_callback=snowboydecoder.play_audio_file,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.03)\ndetector.terminate()",
-        "detail": "snowboy.examples.Python3.demo",
-        "documentation": {}
-    },
-    {
-        "label": "signal_handler",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python3.demo2",
-        "description": "snowboy.examples.Python3.demo2",
-        "peekOfCode": "def signal_handler(signal, frame):\n    global interrupted\n    interrupted = True\ndef interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) != 3:\n    print(\"Error: need to specify 2 model names\")\n    print(\"Usage: python demo.py 1st.model 2nd.model\")\n    sys.exit(-1)",
-        "detail": "snowboy.examples.Python3.demo2",
-        "documentation": {}
-    },
-    {
-        "label": "interrupt_callback",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python3.demo2",
-        "description": "snowboy.examples.Python3.demo2",
-        "peekOfCode": "def interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) != 3:\n    print(\"Error: need to specify 2 model names\")\n    print(\"Usage: python demo.py 1st.model 2nd.model\")\n    sys.exit(-1)\nmodels = sys.argv[1:]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)",
-        "detail": "snowboy.examples.Python3.demo2",
-        "documentation": {}
-    },
-    {
-        "label": "interrupted",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo2",
-        "description": "snowboy.examples.Python3.demo2",
-        "peekOfCode": "interrupted = False\ndef signal_handler(signal, frame):\n    global interrupted\n    interrupted = True\ndef interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) != 3:\n    print(\"Error: need to specify 2 model names\")\n    print(\"Usage: python demo.py 1st.model 2nd.model\")",
-        "detail": "snowboy.examples.Python3.demo2",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo2",
-        "description": "snowboy.examples.Python3.demo2",
-        "peekOfCode": "models = sys.argv[1:]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)\nsensitivity = [0.5]*len(models)\ndetector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity)\ncallbacks = [lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DING),\n             lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DONG)]\nprint('Listening... Press Ctrl+C to exit')\n# main loop\n# make sure you have the same numbers of callbacks and models",
-        "detail": "snowboy.examples.Python3.demo2",
-        "documentation": {}
-    },
-    {
-        "label": "sensitivity",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo2",
-        "description": "snowboy.examples.Python3.demo2",
-        "peekOfCode": "sensitivity = [0.5]*len(models)\ndetector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity)\ncallbacks = [lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DING),\n             lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DONG)]\nprint('Listening... Press Ctrl+C to exit')\n# main loop\n# make sure you have the same numbers of callbacks and models\ndetector.start(detected_callback=callbacks,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.03)",
-        "detail": "snowboy.examples.Python3.demo2",
-        "documentation": {}
-    },
-    {
-        "label": "detector",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo2",
-        "description": "snowboy.examples.Python3.demo2",
-        "peekOfCode": "detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity)\ncallbacks = [lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DING),\n             lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DONG)]\nprint('Listening... Press Ctrl+C to exit')\n# main loop\n# make sure you have the same numbers of callbacks and models\ndetector.start(detected_callback=callbacks,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.03)\ndetector.terminate()",
-        "detail": "snowboy.examples.Python3.demo2",
-        "documentation": {}
-    },
-    {
-        "label": "callbacks",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo2",
-        "description": "snowboy.examples.Python3.demo2",
-        "peekOfCode": "callbacks = [lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DING),\n             lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DONG)]\nprint('Listening... Press Ctrl+C to exit')\n# main loop\n# make sure you have the same numbers of callbacks and models\ndetector.start(detected_callback=callbacks,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.03)\ndetector.terminate()",
-        "detail": "snowboy.examples.Python3.demo2",
-        "documentation": {}
-    },
-    {
-        "label": "wave_file",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo3",
-        "description": "snowboy.examples.Python3.demo3",
-        "peekOfCode": "wave_file = sys.argv[1]\nmodel_file = sys.argv[2]\nf = wave.open(wave_file)\nassert f.getnchannels() == 1, \"Error: Snowboy only supports 1 channel of audio (mono, not stereo)\"\nassert f.getframerate() == 16000, \"Error: Snowboy only supports 16K sampling rate\"\nassert f.getsampwidth() == 2, \"Error: Snowboy only supports 16bit per sample\"\ndata = f.readframes(f.getnframes())\nf.close()\nsensitivity = 0.5\ndetection = snowboydecoder.HotwordDetector(model_file, sensitivity=sensitivity)",
-        "detail": "snowboy.examples.Python3.demo3",
-        "documentation": {}
-    },
-    {
-        "label": "model_file",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo3",
-        "description": "snowboy.examples.Python3.demo3",
-        "peekOfCode": "model_file = sys.argv[2]\nf = wave.open(wave_file)\nassert f.getnchannels() == 1, \"Error: Snowboy only supports 1 channel of audio (mono, not stereo)\"\nassert f.getframerate() == 16000, \"Error: Snowboy only supports 16K sampling rate\"\nassert f.getsampwidth() == 2, \"Error: Snowboy only supports 16bit per sample\"\ndata = f.readframes(f.getnframes())\nf.close()\nsensitivity = 0.5\ndetection = snowboydecoder.HotwordDetector(model_file, sensitivity=sensitivity)\nans = detection.detector.RunDetection(data)",
-        "detail": "snowboy.examples.Python3.demo3",
-        "documentation": {}
-    },
-    {
-        "label": "f",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo3",
-        "description": "snowboy.examples.Python3.demo3",
-        "peekOfCode": "f = wave.open(wave_file)\nassert f.getnchannels() == 1, \"Error: Snowboy only supports 1 channel of audio (mono, not stereo)\"\nassert f.getframerate() == 16000, \"Error: Snowboy only supports 16K sampling rate\"\nassert f.getsampwidth() == 2, \"Error: Snowboy only supports 16bit per sample\"\ndata = f.readframes(f.getnframes())\nf.close()\nsensitivity = 0.5\ndetection = snowboydecoder.HotwordDetector(model_file, sensitivity=sensitivity)\nans = detection.detector.RunDetection(data)\nif ans == 1:",
-        "detail": "snowboy.examples.Python3.demo3",
-        "documentation": {}
-    },
-    {
-        "label": "data",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo3",
-        "description": "snowboy.examples.Python3.demo3",
-        "peekOfCode": "data = f.readframes(f.getnframes())\nf.close()\nsensitivity = 0.5\ndetection = snowboydecoder.HotwordDetector(model_file, sensitivity=sensitivity)\nans = detection.detector.RunDetection(data)\nif ans == 1:\n    print('Hotword Detected!')\nelse:\n    print('Hotword Not Detected!')",
-        "detail": "snowboy.examples.Python3.demo3",
-        "documentation": {}
-    },
-    {
-        "label": "sensitivity",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo3",
-        "description": "snowboy.examples.Python3.demo3",
-        "peekOfCode": "sensitivity = 0.5\ndetection = snowboydecoder.HotwordDetector(model_file, sensitivity=sensitivity)\nans = detection.detector.RunDetection(data)\nif ans == 1:\n    print('Hotword Detected!')\nelse:\n    print('Hotword Not Detected!')",
-        "detail": "snowboy.examples.Python3.demo3",
-        "documentation": {}
-    },
-    {
-        "label": "detection",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo3",
-        "description": "snowboy.examples.Python3.demo3",
-        "peekOfCode": "detection = snowboydecoder.HotwordDetector(model_file, sensitivity=sensitivity)\nans = detection.detector.RunDetection(data)\nif ans == 1:\n    print('Hotword Detected!')\nelse:\n    print('Hotword Not Detected!')",
-        "detail": "snowboy.examples.Python3.demo3",
-        "documentation": {}
-    },
-    {
-        "label": "ans",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo3",
-        "description": "snowboy.examples.Python3.demo3",
-        "peekOfCode": "ans = detection.detector.RunDetection(data)\nif ans == 1:\n    print('Hotword Detected!')\nelse:\n    print('Hotword Not Detected!')",
-        "detail": "snowboy.examples.Python3.demo3",
-        "documentation": {}
-    },
-    {
-        "label": "audioRecorderCallback",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python3.demo4",
-        "description": "snowboy.examples.Python3.demo4",
-        "peekOfCode": "def audioRecorderCallback(fname):\n    print(\"converting audio to text\")\n    r = sr.Recognizer()\n    with sr.AudioFile(fname) as source:\n        audio = r.record(source)  # read the entire audio file\n    # recognize speech using Google Speech Recognition\n    try:\n        # for testing purposes, we're just using the default API key\n        # to use another API key, use `r.recognize_google(audio, key=\"GOOGLE_SPEECH_RECOGNITION_API_KEY\")`\n        # instead of `r.recognize_google(audio)`",
-        "detail": "snowboy.examples.Python3.demo4",
-        "documentation": {}
-    },
-    {
-        "label": "detectedCallback",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python3.demo4",
-        "description": "snowboy.examples.Python3.demo4",
-        "peekOfCode": "def detectedCallback():\n  print('recording audio...', end='', flush=True)\ndef signal_handler(signal, frame):\n    global interrupted\n    interrupted = True\ndef interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:\n    print(\"Error: need to specify model name\")",
-        "detail": "snowboy.examples.Python3.demo4",
-        "documentation": {}
-    },
-    {
-        "label": "signal_handler",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python3.demo4",
-        "description": "snowboy.examples.Python3.demo4",
-        "peekOfCode": "def signal_handler(signal, frame):\n    global interrupted\n    interrupted = True\ndef interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:\n    print(\"Error: need to specify model name\")\n    print(\"Usage: python demo.py your.model\")\n    sys.exit(-1)",
-        "detail": "snowboy.examples.Python3.demo4",
-        "documentation": {}
-    },
-    {
-        "label": "interrupt_callback",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python3.demo4",
-        "description": "snowboy.examples.Python3.demo4",
-        "peekOfCode": "def interrupt_callback():\n    global interrupted\n    return interrupted\nif len(sys.argv) == 1:\n    print(\"Error: need to specify model name\")\n    print(\"Usage: python demo.py your.model\")\n    sys.exit(-1)\nmodel = sys.argv[1]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)",
-        "detail": "snowboy.examples.Python3.demo4",
-        "documentation": {}
-    },
-    {
-        "label": "interrupted",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo4",
-        "description": "snowboy.examples.Python3.demo4",
-        "peekOfCode": "interrupted = False\ndef audioRecorderCallback(fname):\n    print(\"converting audio to text\")\n    r = sr.Recognizer()\n    with sr.AudioFile(fname) as source:\n        audio = r.record(source)  # read the entire audio file\n    # recognize speech using Google Speech Recognition\n    try:\n        # for testing purposes, we're just using the default API key\n        # to use another API key, use `r.recognize_google(audio, key=\"GOOGLE_SPEECH_RECOGNITION_API_KEY\")`",
-        "detail": "snowboy.examples.Python3.demo4",
-        "documentation": {}
-    },
-    {
-        "label": "model",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo4",
-        "description": "snowboy.examples.Python3.demo4",
-        "peekOfCode": "model = sys.argv[1]\n# capture SIGINT signal, e.g., Ctrl+C\nsignal.signal(signal.SIGINT, signal_handler)\ndetector = snowboydecoder.HotwordDetector(model, sensitivity=0.38)\nprint('Listening... Press Ctrl+C to exit')\n# main loop\ndetector.start(detected_callback=detectedCallback,\n               audio_recorder_callback=audioRecorderCallback,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.01)",
-        "detail": "snowboy.examples.Python3.demo4",
-        "documentation": {}
-    },
-    {
-        "label": "detector",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.demo4",
-        "description": "snowboy.examples.Python3.demo4",
-        "peekOfCode": "detector = snowboydecoder.HotwordDetector(model, sensitivity=0.38)\nprint('Listening... Press Ctrl+C to exit')\n# main loop\ndetector.start(detected_callback=detectedCallback,\n               audio_recorder_callback=audioRecorderCallback,\n               interrupt_check=interrupt_callback,\n               sleep_time=0.01)\ndetector.terminate()",
-        "detail": "snowboy.examples.Python3.demo4",
-        "documentation": {}
-    },
-    {
-        "label": "RingBuffer",
+        "label": "TestModels",
         "kind": 6,
-        "importPath": "snowboy.examples.Python3.snowboydecoder",
-        "description": "snowboy.examples.Python3.snowboydecoder",
-        "peekOfCode": "class RingBuffer(object):\n    \"\"\"Ring buffer to hold audio from PortAudio\"\"\"\n    def __init__(self, size=4096):\n        self._buf = collections.deque(maxlen=size)\n    def extend(self, data):\n        \"\"\"Adds data to the end of buffer\"\"\"\n        self._buf.extend(data)\n    def get(self):\n        \"\"\"Retrieves data from the beginning of buffer and clears it\"\"\"\n        tmp = bytes(bytearray(self._buf))",
-        "detail": "snowboy.examples.Python3.snowboydecoder",
+        "importPath": "openwakeword-0.6.0.tests.test_custom_verifier_model",
+        "description": "openwakeword-0.6.0.tests.test_custom_verifier_model",
+        "peekOfCode": "class TestModels:\n    def test_train_verifier_model(self):\n        with tempfile.TemporaryDirectory() as tmp_dir:\n            # Make random negative data for verifier model training\n            scipy.io.wavfile.write(os.path.join(tmp_dir, \"negative_reference.wav\"),\n                                   16000, np.random.randint(-1000, 1000, 16000*4).astype(np.int16))\n            # Load random clips\n            reference_clips = [os.path.join(\"tests\", \"data\", \"hey_mycroft_test.wav\")]\n            negative_clips = [os.path.join(tmp_dir, \"negative_reference.wav\")]\n            # Check for error message when no positive examples are found",
+        "detail": "openwakeword-0.6.0.tests.test_custom_verifier_model",
         "documentation": {}
     },
     {
-        "label": "HotwordDetector",
+        "label": "TestModels",
         "kind": 6,
-        "importPath": "snowboy.examples.Python3.snowboydecoder",
-        "description": "snowboy.examples.Python3.snowboydecoder",
-        "peekOfCode": "class HotwordDetector(object):\n    \"\"\"\n    Snowboy decoder to detect whether a keyword specified by `decoder_model`\n    exists in a microphone input stream.\n    :param decoder_model: decoder model file path, a string or a list of strings\n    :param resource: resource file path.\n    :param sensitivity: decoder sensitivity, a float of a list of floats.\n                              The bigger the value, the more senstive the\n                              decoder. If an empty list is provided, then the\n                              default sensitivity in the model will be used.",
-        "detail": "snowboy.examples.Python3.snowboydecoder",
+        "importPath": "openwakeword-0.6.0.tests.test_models",
+        "description": "openwakeword-0.6.0.tests.test_models",
+        "peekOfCode": "class TestModels:\n    def test_load_models_by_path(self):\n        # Load model with defaults\n        owwModel = openwakeword.Model(wakeword_models=[\n                                        os.path.join(\"openwakeword\", \"resources\", \"models\", \"alexa_v0.1.onnx\")\n                                      ], inference_framework=\"onnx\")\n        owwModel = openwakeword.Model(wakeword_models=[\n                                        os.path.join(\"openwakeword\", \"resources\", \"models\", \"alexa_v0.1.tflite\")\n                                      ], inference_framework=\"tflite\")\n        # Prediction on random data",
+        "detail": "openwakeword-0.6.0.tests.test_models",
         "documentation": {}
     },
     {
-        "label": "py_error_handler",
+        "label": "build_additional_requires",
         "kind": 2,
-        "importPath": "snowboy.examples.Python3.snowboydecoder",
-        "description": "snowboy.examples.Python3.snowboydecoder",
-        "peekOfCode": "def py_error_handler(filename, line, function, err, fmt):\n    pass\nERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)\nc_error_handler = ERROR_HANDLER_FUNC(py_error_handler)\n@contextmanager\ndef no_alsa_error():\n    try:\n        asound = cdll.LoadLibrary('libasound.so')\n        asound.snd_lib_error_set_handler(c_error_handler)\n        yield",
-        "detail": "snowboy.examples.Python3.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "no_alsa_error",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python3.snowboydecoder",
-        "description": "snowboy.examples.Python3.snowboydecoder",
-        "peekOfCode": "def no_alsa_error():\n    try:\n        asound = cdll.LoadLibrary('libasound.so')\n        asound.snd_lib_error_set_handler(c_error_handler)\n        yield\n        asound.snd_lib_error_set_handler(None)\n    except:\n        yield\n        pass\nclass RingBuffer(object):",
-        "detail": "snowboy.examples.Python3.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "play_audio_file",
-        "kind": 2,
-        "importPath": "snowboy.examples.Python3.snowboydecoder",
-        "description": "snowboy.examples.Python3.snowboydecoder",
-        "peekOfCode": "def play_audio_file(fname=DETECT_DING):\n    \"\"\"Simple callback function to play a wave file. By default it plays\n    a Ding sound.\n    :param str fname: wave file name\n    :return: None\n    \"\"\"\n    ding_wav = wave.open(fname, 'rb')\n    ding_data = ding_wav.readframes(ding_wav.getnframes())\n    with no_alsa_error():\n        audio = pyaudio.PyAudio()",
-        "detail": "snowboy.examples.Python3.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.snowboydecoder",
-        "description": "snowboy.examples.Python3.snowboydecoder",
-        "peekOfCode": "logger = logging.getLogger(\"snowboy\")\nlogger.setLevel(logging.INFO)\nTOP_DIR = os.path.dirname(os.path.abspath(__file__))\nRESOURCE_FILE = os.path.join(TOP_DIR, \"resources/common.res\")\nDETECT_DING = os.path.join(TOP_DIR, \"resources/ding.wav\")\nDETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\ndef py_error_handler(filename, line, function, err, fmt):\n    pass\nERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)\nc_error_handler = ERROR_HANDLER_FUNC(py_error_handler)",
-        "detail": "snowboy.examples.Python3.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "TOP_DIR",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.snowboydecoder",
-        "description": "snowboy.examples.Python3.snowboydecoder",
-        "peekOfCode": "TOP_DIR = os.path.dirname(os.path.abspath(__file__))\nRESOURCE_FILE = os.path.join(TOP_DIR, \"resources/common.res\")\nDETECT_DING = os.path.join(TOP_DIR, \"resources/ding.wav\")\nDETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\ndef py_error_handler(filename, line, function, err, fmt):\n    pass\nERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)\nc_error_handler = ERROR_HANDLER_FUNC(py_error_handler)\n@contextmanager\ndef no_alsa_error():",
-        "detail": "snowboy.examples.Python3.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "RESOURCE_FILE",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.snowboydecoder",
-        "description": "snowboy.examples.Python3.snowboydecoder",
-        "peekOfCode": "RESOURCE_FILE = os.path.join(TOP_DIR, \"resources/common.res\")\nDETECT_DING = os.path.join(TOP_DIR, \"resources/ding.wav\")\nDETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\ndef py_error_handler(filename, line, function, err, fmt):\n    pass\nERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)\nc_error_handler = ERROR_HANDLER_FUNC(py_error_handler)\n@contextmanager\ndef no_alsa_error():\n    try:",
-        "detail": "snowboy.examples.Python3.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "DETECT_DING",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.snowboydecoder",
-        "description": "snowboy.examples.Python3.snowboydecoder",
-        "peekOfCode": "DETECT_DING = os.path.join(TOP_DIR, \"resources/ding.wav\")\nDETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\ndef py_error_handler(filename, line, function, err, fmt):\n    pass\nERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)\nc_error_handler = ERROR_HANDLER_FUNC(py_error_handler)\n@contextmanager\ndef no_alsa_error():\n    try:\n        asound = cdll.LoadLibrary('libasound.so')",
-        "detail": "snowboy.examples.Python3.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "DETECT_DONG",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.snowboydecoder",
-        "description": "snowboy.examples.Python3.snowboydecoder",
-        "peekOfCode": "DETECT_DONG = os.path.join(TOP_DIR, \"resources/dong.wav\")\ndef py_error_handler(filename, line, function, err, fmt):\n    pass\nERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)\nc_error_handler = ERROR_HANDLER_FUNC(py_error_handler)\n@contextmanager\ndef no_alsa_error():\n    try:\n        asound = cdll.LoadLibrary('libasound.so')\n        asound.snd_lib_error_set_handler(c_error_handler)",
-        "detail": "snowboy.examples.Python3.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "ERROR_HANDLER_FUNC",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.snowboydecoder",
-        "description": "snowboy.examples.Python3.snowboydecoder",
-        "peekOfCode": "ERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)\nc_error_handler = ERROR_HANDLER_FUNC(py_error_handler)\n@contextmanager\ndef no_alsa_error():\n    try:\n        asound = cdll.LoadLibrary('libasound.so')\n        asound.snd_lib_error_set_handler(c_error_handler)\n        yield\n        asound.snd_lib_error_set_handler(None)\n    except:",
-        "detail": "snowboy.examples.Python3.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "c_error_handler",
-        "kind": 5,
-        "importPath": "snowboy.examples.Python3.snowboydecoder",
-        "description": "snowboy.examples.Python3.snowboydecoder",
-        "peekOfCode": "c_error_handler = ERROR_HANDLER_FUNC(py_error_handler)\n@contextmanager\ndef no_alsa_error():\n    try:\n        asound = cdll.LoadLibrary('libasound.so')\n        asound.snd_lib_error_set_handler(c_error_handler)\n        yield\n        asound.snd_lib_error_set_handler(None)\n    except:\n        yield",
-        "detail": "snowboy.examples.Python3.snowboydecoder",
-        "documentation": {}
-    },
-    {
-        "label": "get_wave",
-        "kind": 2,
-        "importPath": "snowboy.examples.REST_API.training_service",
-        "description": "snowboy.examples.REST_API.training_service",
-        "peekOfCode": "def get_wave(fname):\n    with open(fname) as infile:\n        return base64.b64encode(infile.read())\nendpoint = \"https://snowboy.kitt.ai/api/v1/train/\"\n############# MODIFY THE FOLLOWING #############\ntoken = \"\"\nhotword_name = \"???\"\nlanguage = \"en\"\nage_group = \"20_29\"\ngender = \"M\"",
-        "detail": "snowboy.examples.REST_API.training_service",
-        "documentation": {}
-    },
-    {
-        "label": "endpoint",
-        "kind": 5,
-        "importPath": "snowboy.examples.REST_API.training_service",
-        "description": "snowboy.examples.REST_API.training_service",
-        "peekOfCode": "endpoint = \"https://snowboy.kitt.ai/api/v1/train/\"\n############# MODIFY THE FOLLOWING #############\ntoken = \"\"\nhotword_name = \"???\"\nlanguage = \"en\"\nage_group = \"20_29\"\ngender = \"M\"\nmicrophone = \"??\" # e.g., macbook pro microphone\n############### END OF MODIFY ##################\nif __name__ == \"__main__\":",
-        "detail": "snowboy.examples.REST_API.training_service",
-        "documentation": {}
-    },
-    {
-        "label": "token",
-        "kind": 5,
-        "importPath": "snowboy.examples.REST_API.training_service",
-        "description": "snowboy.examples.REST_API.training_service",
-        "peekOfCode": "token = \"\"\nhotword_name = \"???\"\nlanguage = \"en\"\nage_group = \"20_29\"\ngender = \"M\"\nmicrophone = \"??\" # e.g., macbook pro microphone\n############### END OF MODIFY ##################\nif __name__ == \"__main__\":\n    try:\n        [_, wav1, wav2, wav3, out] = sys.argv",
-        "detail": "snowboy.examples.REST_API.training_service",
-        "documentation": {}
-    },
-    {
-        "label": "hotword_name",
-        "kind": 5,
-        "importPath": "snowboy.examples.REST_API.training_service",
-        "description": "snowboy.examples.REST_API.training_service",
-        "peekOfCode": "hotword_name = \"???\"\nlanguage = \"en\"\nage_group = \"20_29\"\ngender = \"M\"\nmicrophone = \"??\" # e.g., macbook pro microphone\n############### END OF MODIFY ##################\nif __name__ == \"__main__\":\n    try:\n        [_, wav1, wav2, wav3, out] = sys.argv\n    except ValueError:",
-        "detail": "snowboy.examples.REST_API.training_service",
-        "documentation": {}
-    },
-    {
-        "label": "language",
-        "kind": 5,
-        "importPath": "snowboy.examples.REST_API.training_service",
-        "description": "snowboy.examples.REST_API.training_service",
-        "peekOfCode": "language = \"en\"\nage_group = \"20_29\"\ngender = \"M\"\nmicrophone = \"??\" # e.g., macbook pro microphone\n############### END OF MODIFY ##################\nif __name__ == \"__main__\":\n    try:\n        [_, wav1, wav2, wav3, out] = sys.argv\n    except ValueError:\n        print \"Usage: %s wave_file1 wave_file2 wave_file3 out_model_name\" % sys.argv[0]",
-        "detail": "snowboy.examples.REST_API.training_service",
-        "documentation": {}
-    },
-    {
-        "label": "age_group",
-        "kind": 5,
-        "importPath": "snowboy.examples.REST_API.training_service",
-        "description": "snowboy.examples.REST_API.training_service",
-        "peekOfCode": "age_group = \"20_29\"\ngender = \"M\"\nmicrophone = \"??\" # e.g., macbook pro microphone\n############### END OF MODIFY ##################\nif __name__ == \"__main__\":\n    try:\n        [_, wav1, wav2, wav3, out] = sys.argv\n    except ValueError:\n        print \"Usage: %s wave_file1 wave_file2 wave_file3 out_model_name\" % sys.argv[0]\n        sys.exit()",
-        "detail": "snowboy.examples.REST_API.training_service",
-        "documentation": {}
-    },
-    {
-        "label": "gender",
-        "kind": 5,
-        "importPath": "snowboy.examples.REST_API.training_service",
-        "description": "snowboy.examples.REST_API.training_service",
-        "peekOfCode": "gender = \"M\"\nmicrophone = \"??\" # e.g., macbook pro microphone\n############### END OF MODIFY ##################\nif __name__ == \"__main__\":\n    try:\n        [_, wav1, wav2, wav3, out] = sys.argv\n    except ValueError:\n        print \"Usage: %s wave_file1 wave_file2 wave_file3 out_model_name\" % sys.argv[0]\n        sys.exit()\n    data = {",
-        "detail": "snowboy.examples.REST_API.training_service",
-        "documentation": {}
-    },
-    {
-        "label": "microphone",
-        "kind": 5,
-        "importPath": "snowboy.examples.REST_API.training_service",
-        "description": "snowboy.examples.REST_API.training_service",
-        "peekOfCode": "microphone = \"??\" # e.g., macbook pro microphone\n############### END OF MODIFY ##################\nif __name__ == \"__main__\":\n    try:\n        [_, wav1, wav2, wav3, out] = sys.argv\n    except ValueError:\n        print \"Usage: %s wave_file1 wave_file2 wave_file3 out_model_name\" % sys.argv[0]\n        sys.exit()\n    data = {\n        \"name\": hotword_name,",
-        "detail": "snowboy.examples.REST_API.training_service",
-        "documentation": {}
-    },
-    {
-        "label": "SnowboyBuild",
-        "kind": 6,
-        "importPath": "snowboy.setup",
-        "description": "snowboy.setup",
-        "peekOfCode": "class SnowboyBuild(build):\n    def run(self):\n        cmd = ['make']\n        swig_dir = os.path.join('swig', py_dir)\n        def compile():\n            call(cmd, cwd=swig_dir)\n        self.execute(compile, [], 'Compiling snowboy...')\n        # copy generated .so to build folder\n        self.mkpath(self.build_lib)\n        snowboy_build_lib = os.path.join(self.build_lib, 'snowboy')",
-        "detail": "snowboy.setup",
-        "documentation": {}
-    },
-    {
-        "label": "py_dir",
-        "kind": 5,
-        "importPath": "snowboy.setup",
-        "description": "snowboy.setup",
-        "peekOfCode": "py_dir = 'Python' if sys.version_info[0] < 3 else 'Python3'\nclass SnowboyBuild(build):\n    def run(self):\n        cmd = ['make']\n        swig_dir = os.path.join('swig', py_dir)\n        def compile():\n            call(cmd, cwd=swig_dir)\n        self.execute(compile, [], 'Compiling snowboy...')\n        # copy generated .so to build folder\n        self.mkpath(self.build_lib)",
-        "detail": "snowboy.setup",
+        "importPath": "openwakeword-0.6.0.setup",
+        "description": "openwakeword-0.6.0.setup",
+        "peekOfCode": "def build_additional_requires():\n    py_version = platform.python_version()[0:3].replace('.', \"\")\n    if platform.system() == \"Linux\" and platform.machine() == \"x86_64\":\n        additional_requires=[\n            f\"speexdsp_ns @ https://github.com/dscripka/openWakeWord/releases/download/v0.1.1/speexdsp_ns-0.1.2-cp{py_version}-cp{py_version}-linux_x86_64.whl\",\n        ]\n    elif platform.system() == \"Linux\" and platform.machine() == \"aarch64\":\n        additional_requires=[\n            f\"speexdsp_ns @ https://github.com/dscripka/openWakeWord/releases/download/v0.1.1/speexdsp_ns-0.1.2-cp{py_version}-cp{py_version}-linux_aarch64.whl\",\n        ],",
+        "detail": "openwakeword-0.6.0.setup",
         "documentation": {}
     },
     {
@@ -4521,7 +4384,16 @@
         "kind": 2,
         "importPath": "offline_tools",
         "description": "offline_tools",
-        "peekOfCode": "def listen_for_wake_word():\n    try:\n        print(\"Listening for wake word...\")\n        wake_word_detected = wake_word_detector.detect()\n        if wake_word_detected:\n            print(\"Wake word detected!\")\n            return True\n        return False\n    except Exception as e:\n        print(f\"Error in wake word detection: {e}\")",
+        "peekOfCode": "def listen_for_wake_word():\n    try:\n        print(\"Listening for wake word...\")\n        # Replace with actual audio frame fetching logic\n        audio_frame = my_function_to_get_audio_frame()\n        prediction = wake_word_model.predict(audio_frame)\n        if prediction:\n            print(\"Wake word detected!\")\n            return True\n        return False",
+        "detail": "offline_tools",
+        "documentation": {}
+    },
+    {
+        "label": "download_wake_word_model",
+        "kind": 2,
+        "importPath": "offline_tools",
+        "description": "offline_tools",
+        "peekOfCode": "def download_wake_word_model(destination_folder=\"resources\"):\n    \"\"\"\n    Downloads the wake word model to the specified destination folder.\n    Args:\n        destination_folder (str): The folder where the model will be saved.\n    Returns:\n        str: Success message or error message.\n    \"\"\"\n    import os\n    from openwakeword.download import download_pretrained",
         "detail": "offline_tools",
         "documentation": {}
     },
@@ -4589,11 +4461,11 @@
         "documentation": {}
     },
     {
-        "label": "wake_word_detector",
+        "label": "wake_word_model",
         "kind": 5,
         "importPath": "offline_tools",
         "description": "offline_tools",
-        "peekOfCode": "wake_word_detector = WakeWordDetector()\n# Function to listen for wake word\ndef listen_for_wake_word():\n    try:\n        print(\"Listening for wake word...\")\n        wake_word_detected = wake_word_detector.detect()\n        if wake_word_detected:\n            print(\"Wake word detected!\")\n            return True\n        return False",
+        "peekOfCode": "wake_word_model = Model(wakeword_models=[\"models/hey_jarvis.tflite\"])\n# Function to listen for wake word\ndef listen_for_wake_word():\n    try:\n        print(\"Listening for wake word...\")\n        # Replace with actual audio frame fetching logic\n        audio_frame = my_function_to_get_audio_frame()\n        prediction = wake_word_model.predict(audio_frame)\n        if prediction:\n            print(\"Wake word detected!\")",
         "detail": "offline_tools",
         "documentation": {}
     },

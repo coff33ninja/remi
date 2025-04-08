@@ -29,7 +29,7 @@ import socket
 import pyshark
 import pyperclip
 from PIL import ImageGrab
-from openwakeword import WakeWordDetector
+from openwakeword.model import Model
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -1503,18 +1503,44 @@ def sleep_system():
     except Exception as e:
         return f"Error putting system to sleep: {str(e)}"
 
-# Initialize the OpenWakeWord detector
-wake_word_detector = WakeWordDetector()
+# Initialize the OpenWakeWord model
+wake_word_model = Model(wakeword_models=["models/hey_jarvis.tflite"])
 
 # Function to listen for wake word
 def listen_for_wake_word():
     try:
         print("Listening for wake word...")
-        wake_word_detected = wake_word_detector.detect()
-        if wake_word_detected:
+        # Replace with actual audio frame fetching logic
+        audio_frame = my_function_to_get_audio_frame()
+        prediction = wake_word_model.predict(audio_frame)
+        if prediction:
             print("Wake word detected!")
             return True
         return False
     except Exception as e:
         print(f"Error in wake word detection: {e}")
         return False
+
+def download_wake_word_model(destination_folder="resources"):
+    """
+    Downloads the wake word model to the specified destination folder.
+
+    Args:
+        destination_folder (str): The folder where the model will be saved.
+
+    Returns:
+        str: Success message or error message.
+    """
+    import os
+    from openwakeword.download import download_pretrained
+
+    try:
+        os.makedirs(destination_folder, exist_ok=True)
+        download_pretrained(destination_folder)
+        return f"Wake word model downloaded successfully to {destination_folder}."
+    except Exception as e:
+        return f"Error downloading wake word model: {str(e)}"
+
+# Example usage
+if not os.path.exists("resources/wake_word.pmdl"):
+    print(download_wake_word_model())
